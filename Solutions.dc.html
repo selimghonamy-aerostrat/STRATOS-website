@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STRATOS | Intelligence-Driven Aviation</title>
+<meta name="description" content="EBT/CBTA assessment and training-records platform for airline recurrent pilot training, built on the ICAO, IATA and EASA method.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=open-sauce-sans@400,500,600,700,800&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  .stratos-runway{position:fixed;top:0;left:0;right:0;height:10px;z-index:130;pointer-events:none;background:transparent}
+  .stratos-runway .lane{position:absolute;inset:0;background:#141619;border-bottom:1px solid rgba(0,0,0,0.6)}
+  .stratos-runway .edge{position:absolute;left:0;right:0;height:1px;background:rgba(236,240,243,0.4)}
+  .stratos-runway .edge.t{top:0}
+  .stratos-runway .edge.b{bottom:0}
+  .stratos-runway .centre{position:absolute;top:50%;left:0;right:0;height:1px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,rgba(236,240,243,0.85) 0 12px,transparent 12px 26px)}
+  .stratos-runway .thresh{position:absolute;top:2px;bottom:2px;left:0;width:34px;background:repeating-linear-gradient(90deg,rgba(236,240,243,0.7) 0 2px,transparent 2px 5px)}
+  .stratos-runway .touchdown{position:absolute;top:2px;bottom:2px;right:0;width:26px;background:repeating-linear-gradient(90deg,rgba(63,158,232,0.6) 0 2px,transparent 2px 6px)}
+  .stratos-runway .laid{position:absolute;top:0;bottom:0;left:0;width:0;background:linear-gradient(90deg,rgba(63,158,232,0.06) 0%,rgba(63,158,232,0.28) 70%,rgba(63,158,232,0.55) 100%);mix-blend-mode:screen}
+  .stratos-runway .laid::after{content:'';position:absolute;top:0;bottom:0;right:0;width:2px;background:#3F9EE8;box-shadow:0 0 8px 1px rgba(63,158,232,0.75)}
+  .stratos-runway .ship{position:absolute;top:0;height:10px;left:0;width:20px;display:flex;align-items:center;justify-content:center;overflow:visible;transform-origin:50% 50%;will-change:left,transform}
+  .stratos-runway .ship svg{filter:drop-shadow(0 0 5px rgba(63,158,232,0.55))}
+  .stratos-runway .wake{position:absolute;top:4px;height:1px;left:0;width:0;background:linear-gradient(270deg,rgba(63,158,232,0.85),transparent);opacity:0}
+  .stratos-subnav a.is-active{color:#fff;border-bottom-color:#3F9EE8}
+  .stratos-slides{position:relative;overflow:hidden;border:1px solid rgba(180,180,180,0.28);touch-action:pan-y;cursor:grab}
+  .stratos-slides:active{cursor:grabbing}
+  .stratos-slides:focus-visible{outline:2px solid #3F9EE8;outline-offset:3px}
+  .stratos-slides-track{display:flex;transition:transform 0.62s cubic-bezier(.16,1,.3,1);will-change:transform}
+  .stratos-slide{flex:0 0 100%;min-width:100%;padding:52px 48px 46px;background:rgba(0,52,140,0.45)}
+  .stratos-dot{width:34px;height:3px;background:rgba(180,180,180,0.35);border:none;padding:0;cursor:pointer;transition:background 0.3s ease}
+  .stratos-dot.on{background:#3F9EE8}
+  .stratos-chip{background:transparent;border:1px solid rgba(180,180,180,0.35);color:#B4B4B4;font:600 12.5px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.06em;padding:0 14px;min-height:40px;cursor:pointer;transition:all 0.25s ease}
+  .stratos-chip:hover{color:#fff;border-color:rgba(236,240,243,0.6)}
+  .stratos-chip.on{background:#3F9EE8;border-color:#3F9EE8;color:#001227}
+  .stratos-node{background:transparent;border:none;padding:0;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0}
+  .stratos-node .bead{width:14px;height:14px;border-radius:50%;border:2px solid rgba(180,180,180,0.5);background:#001538;transition:all 0.3s ease}
+  .stratos-node.on .bead{border-color:#3F9EE8;background:#3F9EE8;box-shadow:0 0 0 5px rgba(63,158,232,0.22)}
+  @media (max-width:640px){ .stratos-slide{padding:36px 24px 32px} }
+  .stratos-subnav{position:sticky;top:104px;z-index:90;background:rgba(0,21,56,0.94);backdrop-filter:saturate(150%) blur(14px);border-top:none;border-bottom:1px solid rgba(180,180,180,0.28);box-shadow:0 10px 30px rgba(0,6,20,0.35)}
+  .stratos-subnav-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+  .stratos-subnav-inner::-webkit-scrollbar{display:none}
+  .stratos-subnav a{flex:none;padding:16px 20px;font:500 13px/1 'Inter',sans-serif;color:#B4B4B4;border-bottom:2px solid transparent;text-decoration:none;white-space:nowrap;min-height:48px;display:flex;align-items:center;transition:color 0.25s ease,border-color 0.25s ease}
+  .stratos-subnav a:hover{color:#fff;border-bottom-color:rgba(63,158,232,0.6);text-decoration:none}
+  .stratos-tabrail{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid rgba(180,180,180,0.28)}
+  .stratos-tabrail button{background:transparent;border:none;border-bottom:2px solid transparent;color:#B4B4B4;font:600 13.5px/1 'Inter',sans-serif;padding:0 20px;min-height:48px;cursor:pointer;transition:color 0.25s ease,border-color 0.25s ease}
+  .stratos-tabrail button:hover{color:#fff}
+  .stratos-tabrail button[aria-selected="true"]{color:#fff;border-bottom-color:#3F9EE8}
+  :focus-visible{outline:2px solid #3F9EE8;outline-offset:2px}
+  [data-scroll-target]{scroll-margin-top:164px}
+  body{margin:0;background:#001538}
+  a{color:#3F9EE8;text-decoration:none}
+  a:hover{color:#ffffff;text-decoration:underline}
+  a.stratos-btn:hover,a.stratos-btn-primary:hover{text-decoration:none}
+  ::selection{background:#3F9EE8;color:#fff}
+  @keyframes stratos-dash{to{stroke-dashoffset:-40}}
+  @keyframes stratos-blip{0%,100%{opacity:0.3}50%{opacity:1}}
+  @keyframes stratos-spin{to{transform:rotate(360deg)}}
+  @keyframes stratos-marquee{to{transform:translateX(-50%)}}
+  @keyframes stratos-sweep{to{transform:rotate(360deg)}}
+  @keyframes stratos-ring{0%{r:5;opacity:0.9}100%{r:18;opacity:0}}
+  @keyframes stratos-trace{to{stroke-dashoffset:-32}}
+  @keyframes stratos-outline{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.04);opacity:0.6}}
+  @keyframes stratos-page-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .stratos-page-enter{animation:stratos-page-in 0.9s cubic-bezier(.16,1,.3,1) both}
+  .stratos-reveal{opacity:1;transform:none}
+  .stratos-reveal{transition:opacity 0.7s cubic-bezier(.16,1,.3,1),transform 0.86s cubic-bezier(.16,1,.3,1);transform-origin:50% 100%}
+  .stratos-reveal[data-hidden]{opacity:0;transform:perspective(1400px) translateY(40px) translateZ(-70px) rotateX(6deg) scale(0.982)}
+  .stratos-pop{transition:opacity 0.62s cubic-bezier(.16,1,.3,1),transform 0.74s cubic-bezier(.16,1,.3,1)}
+  .stratos-reveal[data-hidden] .stratos-pop{opacity:0;transform:translateY(24px) scale(0.99)}
+  @keyframes stratos-pop{from{opacity:0;transform:translateY(58px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes stratos-railfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes stratos-railplane{0%{left:0;transform:translateY(0) rotate(0deg)}82%{left:82%;transform:translateY(0) rotate(0deg)}100%{left:100%;transform:translateY(-16px) rotate(-22deg)}}
+  @keyframes stratos-navsolid{from{background:rgba(0,18,41,0);border-bottom-color:rgba(255,255,255,0)}to{background:rgba(0,21,56,0.9);border-bottom-color:rgba(180,180,180,0.26)}}
+  @keyframes stratos-parallax{from{transform:translateY(-34px) scale(1.06)}to{transform:translateY(34px) scale(1.06)}}
+  @supports (animation-timeline: view()){
+    [data-rail-fill]{width:100% !important;transform-origin:left center;animation:stratos-railfill 1s linear both;animation-timeline:scroll(root block)}
+    [data-rail-plane]{animation:stratos-railplane 1s linear both;animation-timeline:scroll(root block)}
+    header[data-sticky]{animation:stratos-navsolid 1s linear both;animation-timeline:scroll(root block);animation-range:0 90px;backdrop-filter:saturate(150%) blur(16px)}
+  }
+  .stratos-d1{transition-delay:0.1s}
+  .stratos-d2{transition-delay:0.2s}
+  .stratos-d3{transition-delay:0.3s}
+  .stratos-card{transition:transform 0.45s cubic-bezier(.16,1,.3,1),background 0.4s ease,border-color 0.35s ease}
+  .stratos-card:hover{background:rgba(0,52,140,0.62) !important;border-color:#3F9EE8 !important}
+  .stratos-edge{position:relative}
+  .stratos-edge::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(63,158,232,0) 0%,rgba(63,158,232,0.5) 50%,rgba(63,158,232,0) 100%);pointer-events:none}
+  .stratos-tilt{transition:transform 0.35s cubic-bezier(.16,1,.3,1),background 0.35s ease,border-color 0.3s ease;transform-style:preserve-3d;will-change:transform}
+  .stratos-tilt:hover{border-color:#3F9EE8 !important;background:rgba(0,52,140,0.62) !important}
+  .stratos-fade-bottom{position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,rgba(0,21,56,0) 0%,#001538 100%);pointer-events:none}
+  .stratos-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;background:transparent;border:1px solid rgba(180,180,180,0.6);color:#fff;padding:15px 26px;font:600 14px/1 'Inter',sans-serif;letter-spacing:0.02em;cursor:pointer;min-height:48px;transition:background 0.3s ease,border-color 0.3s ease,color 0.3s ease}
+  .stratos-btn:hover{border-color:#fff;background:rgba(0,52,140,0.55)}
+  .stratos-btn-primary{background:#FF5A13;border-color:#FF5A13;color:#000}
+  .stratos-btn-primary:hover{background:#FF5A13;border-color:#FF5A13;color:#000;box-shadow:0 8px 24px rgba(255,90,19,0.3)}
+  .stratos-btn-light{background:transparent;border-color:rgba(180,180,180,0.6);color:#fff}
+  .stratos-nav-link{position:relative;display:inline-flex;align-items:center;height:48px;line-height:1;white-space:nowrap}
+  header[data-sticky]{top:0 !important;background:transparent;border-bottom:1px solid transparent;transition:background 0.45s ease,border-color 0.45s ease}
+  .stratos-scrolled header[data-sticky]{background:rgba(0,21,56,0.9);backdrop-filter:saturate(150%) blur(16px);border-bottom-color:rgba(180,180,180,0.26)}
+  .stratos-nav-link::after{content:'';position:absolute;left:0;bottom:10px;height:1.5px;width:0;background:#3F9EE8;transition:width 0.35s cubic-bezier(.16,1,.3,1)}
+  .stratos-nav-link:hover::after,.stratos-nav-link.active::after{width:100%}
+  .stratos-frame{background:transparent;padding:0;position:relative;border:1px solid rgba(180,180,180,0.3)}
+  .stratos-disc{cursor:pointer;transition:background 0.4s ease,border-color 0.4s ease}
+  .stratos-disc:hover{border-color:#3F9EE8 !important}
+  .stratos-discbody{overflow:hidden;animation:stratos-page-in 0.6s cubic-bezier(.16,1,.3,1) both}
+  .stratos-field{border:1px solid rgba(180,180,180,0.55);background:rgba(0,52,140,0.4);border-radius:2px;padding:16px;font:400 14.5px/1.5 'Inter',sans-serif;color:#fff;transition:border-color 0.25s ease,box-shadow 0.25s ease,background 0.25s ease}
+  .stratos-field::placeholder{color:#B4B4B4}
+  .stratos-field:focus{border-color:#00348C;background:rgba(0,52,140,0.55);box-shadow:0 0 0 3px rgba(0,52,140,0.6);outline:none}
+  .stratos-mobile-cta{display:none;transition:transform 0.35s cubic-bezier(.16,1,.3,1),opacity 0.3s ease}
+  .stratos-mobile-cta.is-hidden{transform:translateY(120%);opacity:0;pointer-events:none}
+  .stratos-menu-btn{display:none;background:transparent;border:1px solid rgba(180,180,180,0.6);border-radius:2px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+  .stratos-menu-btn span{display:block;width:18px;height:1.5px;background:#fff;position:relative}
+  .stratos-menu-btn span::before,.stratos-menu-btn span::after{content:'';position:absolute;left:0;width:18px;height:1.5px;background:#fff}
+  .stratos-menu-btn span::before{top:-6px}
+  .stratos-menu-btn span::after{top:6px}
+  .stratos-mobile-panel{display:flex;flex-direction:column;gap:4px;padding:14px 32px 28px}
+  .stratos-mobile-panel a{padding:14px 4px;font:600 16px/1 'Inter',sans-serif;color:#fff;border-bottom:1px solid rgba(180,180,180,0.24);min-height:44px;display:flex;align-items:center}
+  @media (max-width:1020px){
+    .stratos-mock-split{grid-template-columns:minmax(0,1fr) !important}
+    .stratos-mock-compname{width:150px !important}
+    .stratos-mobile-cta{display:flex}
+    .stratos-nav-desk{display:none !important}
+    .stratos-menu-btn{display:flex}
+    body{padding-bottom:72px}
+    .stratos-hero{height:auto !important;min-height:0 !important}
+    .stratos-hero-inner{height:auto !important;justify-content:flex-start !important;padding:150px 24px 120px 24px !important}
+    .stratos-hero-inner > div:first-child{margin-bottom:18px !important}
+    .stratos-hero-inner h1{margin-bottom:14px !important}
+    .stratos-hero-inner p{margin-bottom:18px !important}
+    .stratos-hero-inner > div:nth-of-type(3){margin-bottom:20px !important}
+    .stratos-section-pad{padding-left:24px !important;padding-right:24px !important}
+    section{padding-top:56px !important;padding-bottom:56px !important}
+    .stratos-hero-alt{padding-top:170px !important}
+    .stratos-hero-alt{padding:190px 24px 90px !important}
+  }
+  @media (max-width:820px){
+    .stratos-mock-rail{display:none !important}
+    .stratos-mock-hide-sm{display:none !important}
+    .stratos-mock-item{flex-wrap:wrap}
+    .stratos-mock-compname{width:100% !important}
+  }
+  @media (max-width:640px){
+    header > div{padding:0 20px !important;height:88px !important}
+    header img{height:56px !important}
+    .stratos-hero-inner{padding:132px 20px 120px 20px !important}
+    .stratos-section-pad{padding-left:20px !important;padding-right:20px !important}
+    .stratos-hero-alt{padding:170px 20px 80px !important}
+    .stratos-subnav{top:88px !important}
+    h1{font-size:clamp(28px,8vw,44px) !important}
+  }
+  @media (max-width:760px){
+    .stratos-altitude{grid-template-columns:minmax(0,1fr) !important}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important}
+    .stratos-reveal,.stratos-reveal[data-hidden],.stratos-reveal[data-hidden] .stratos-pop{opacity:1 !important;transform:none !important}
+  }
+
+  img,video,svg{max-width:100%}
+  a[href^="mailto:"]{overflow-wrap:anywhere}
+  @media (max-width:400px){ p,span,div,a,h1,h2,h3,button{overflow-wrap:anywhere} }
+  .stratos-mobile-cta .stratos-btn{flex:1 1 0;min-width:0;white-space:normal;text-align:center;line-height:1.2;padding:12px 10px}
+  @media (max-width:1020px){ .stratos-mobile-cta{padding:8px 16px !important} }
+  @media (max-width:640px){
+    section{padding-top:48px !important;padding-bottom:48px !important}
+    footer{padding:40px 20px 24px !important}
+    .stratos-slide{padding:30px 20px 28px}
+    [style*="padding: 40px 38px"],[style*="padding: 36px 34px"],[style*="padding: 36px 32px"],[style*="padding: 36px 30px"]{padding:26px 22px !important}
+  }
+  @media (max-width:400px){
+    .stratos-section-pad{padding-left:16px !important;padding-right:16px !important}
+    header > div{padding:0 16px !important}
+  }
+
+  @media (max-width:820px){
+    .stratos-hero-alt > div{gap:32px !important}
+    [role="tabpanel"]{padding:24px 20px !important}
+  }
+  @media (max-width:640px){
+    h2{font-size:clamp(24px,6.6vw,32px) !important;line-height:1.15 !important}
+    .stratos-btn{white-space:normal;text-align:center}
+    .stratos-hero-alt p{font-size:16px !important}
+    .stratos-demo-row{flex-wrap:wrap;row-gap:8px}
+    .stratos-demo-row > span:last-child{margin-left:46px}
+    .stratos-3col{grid-template-columns:minmax(0,1fr) !important}
+    .stratos-stack-sm{grid-template-columns:minmax(0,1fr) !important}
+    .stratos-tabrail button{padding:0 14px;font-size:13px}
+    footer > div > div:first-child{gap:24px !important}
+  }
+  @media (max-width:400px){
+    .stratos-hero-alt{padding:150px 16px 64px !important}
+    h1{font-size:clamp(26px,8.4vw,36px) !important}
+    .stratos-demo-row > span:last-child{margin-left:0}
+  }
+  @media (min-width:1800px){
+    .stratos-hero-alt{padding-top:240px !important}
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#001538;color:#fff;font-family:'Inter',sans-serif;overflow-x:clip;position:relative">
+
+  <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:200;background:#FF5A13;color:#000;font:600 13px/1 'Inter',sans-serif;padding:14px 20px" style-focus="left:12px;top:12px">Skip to content</a>
+  <span data-scroll-sentinel="" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none"></span>
+  <div className="stratos-runway" aria-hidden="true">
+    <div className="lane">
+      <div className="edge t"></div>
+      <div className="centre"></div>
+      <div className="laid"></div>
+      <div className="thresh"></div>
+      <div className="touchdown"></div>
+      <div className="edge b"></div>
+    </div>
+    <div className="wake"></div>
+    <div className="ship"><svg width="14" height="15" viewBox="0 0 40 32" style="transform:rotate(90deg);overflow:visible" fill="#3F9EE8"><path d="M20 0 L23 9 L36 20 L36 23 L23 19 L21 30 L26 32.5 L20 31.5 L14 32.5 L19 30 L17 19 L4 23 L4 20 L17 9 Z"></path></svg></div>
+  </div>
+
+  <!-- HEADER -->
+  <header data-sticky="" style="position:fixed;top:0;left:0;right:0;z-index:100">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:104px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.dc.html" aria-label="STRATOS home" style="display:block;line-height:0"><img src="uploads/svg/stratos-logo-tagline-option001-white.svg" alt="STRATOS" style="height:66px;max-width:46vw;display:block"></a>
+      <nav className="stratos-nav-desk" style="display:flex;align-items:center;height:48px;gap:26px;white-space:nowrap;flex-shrink:0">
+        <a href="index.dc.html" className="{{ navClass_home }}" style="{{ navLinkStyle_home }}">Home</a>
+        <a href="About.dc.html" className="{{ navClass_about }}" style="{{ navLinkStyle_about }}">About Us</a>
+        <div style="position:relative;display:flex;align-items:center;height:48px" onMouseEnter="{{ openSolutions }}" onMouseLeave="{{ closeSolutions }}" onFocus="{{ openSolutions }}" onBlur="{{ closeSolutions }}">
+          <a href="Solutions.dc.html" className="{{ navClass_solutions }}" style="{{ navLinkStyle_solutions }}" aria-haspopup="true" aria-expanded="{{ solutionsExpanded }}" onKeyDown="{{ solutionsKey }}">Solutions<span aria-hidden="true" style="display:inline-block;margin-left:7px;font-size:9px;line-height:1;opacity:0.8">▼</span></a>
+          <sc-if value="{{ solutionsOpen }}">
+            <div style="position:absolute;top:100%;left:-28px;width:420px;background:#001c49;border:1px solid rgba(180,180,180,0.32);border-top:2px solid #3F9EE8;border-radius:2px;box-shadow:0 24px 60px rgba(0,0,0,0.45);padding:10px;display:flex;flex-direction:column;gap:2px;white-space:normal">
+              <div style="padding:12px 14px 8px;font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#B4B4B4">Solutions</div>
+              <a href="EBT-CBTA.dc.html" style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:start;padding:14px;border-radius:2px;text-decoration:none" style-hover="background:rgba(0,52,140,0.6)">
+                <span style="width:44px;height:44px;border:1px solid rgba(180,180,180,0.55);border-radius:2px;display:flex;align-items:center;justify-content:center;font:800 10.5px/1 'Open Sauce Sans',sans-serif;color:#fff">EBT</span>
+                <span style="display:flex;flex-direction:column;gap:5px"><span style="font:600 14.5px/1.3 'Inter',sans-serif;color:#fff">Training · EBT / CBTA</span><span style="font:400 12.5px/1.5 'Inter',sans-serif;color:#B4B4B4">Competency assessment and training records for airline recurrent pilot training</span></span>
+                <span style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#3F9EE8;border:1px solid rgba(63,158,232,0.6);padding:5px 8px;border-radius:2px;white-space:nowrap">Live</span>
+              </a>
+              <a href="TMS.dc.html" style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:start;padding:14px;border-radius:2px;text-decoration:none" style-hover="background:rgba(0,52,140,0.6)">
+                <span style="width:44px;height:44px;border:1px solid rgba(180,180,180,0.55);border-radius:2px;display:flex;align-items:center;justify-content:center;font:800 10.5px/1 'Open Sauce Sans',sans-serif;color:#fff">TMS</span>
+                <span style="display:flex;flex-direction:column;gap:5px"><span style="font:600 14.5px/1.3 'Inter',sans-serif;color:#fff">Training · TMS</span><span style="font:400 12.5px/1.5 'Inter',sans-serif;color:#B4B4B4">Validity, planning, recurrent training, records and audit in one system</span></span>
+                <span style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#3F9EE8;border:1px solid rgba(63,158,232,0.6);padding:5px 8px;border-radius:2px;white-space:nowrap">Live</span>
+              </a>
+              <div style="height:1px;background:rgba(180,180,180,0.26);margin:6px 4px"></div>
+              <a href="Solutions.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;font:600 13px/1 'Inter',sans-serif;color:#3F9EE8;text-decoration:none;border-radius:2px" style-hover="background:rgba(0,52,140,0.6)">All solutions <span>→</span></a>
+            </div>
+          </sc-if>
+        </div>
+        <a href="Clients.dc.html" className="{{ navClass_clients }}" style="{{ navLinkStyle_clients }}">Clients</a>
+        <a href="Contact.dc.html" className="{{ navClass_contact }}" style="{{ navLinkStyle_contact }}">Contact Us</a>
+        <a href="Contact.dc.html" className="stratos-btn stratos-btn-primary" style="font-size:14px">Book a walkthrough</a>
+      </nav>
+      <button className="stratos-menu-btn" onClick="{{ toggleMenu }}" aria-label="Menu"><span></span></button>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div className="stratos-mobile-panel" style="background:rgba(0,21,56,0.97);border-top:1px solid rgba(180,180,180,0.26)">
+        <a href="index.dc.html">Home</a>
+        <a href="About.dc.html">About Us</a>
+        <a href="Solutions.dc.html">Solutions</a>
+        <a href="EBT-CBTA.dc.html">Training · EBT / CBTA</a>
+        <a href="TMS.dc.html">Training · TMS</a>
+        <a href="Clients.dc.html">Clients</a>
+        <a href="Contact.dc.html">Contact Us</a>
+      </div>
+    </sc-if>
+  </header>
+
+  <main id="main" data-screen-label="Solutions" className="stratos-page-enter">
+    <section className="stratos-hero-alt" style="position:relative;overflow:hidden;padding:210px 32px 80px;border-bottom:1px solid rgba(180,180,180,0.24)">
+      <img src="uploads/solutions-hero-bg.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.55;display:block;max-width:none">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.94) 0%,rgba(0,21,56,0.78) 45%,rgba(0,21,56,0.45) 100%),linear-gradient(180deg,rgba(0,21,56,0.55) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 70%,#001538 100%)"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto">
+        <div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.22em;color:#3F9EE8;text-transform:uppercase;margin-bottom:26px">SOLUTIONS</div>
+        <h1 style="font:700 clamp(32px,5.2vw,62px)/1.06 'Open Sauce Sans',sans-serif;letter-spacing:-0.025em;color:#fff;margin:0 0 30px;max-width:860px;text-wrap:pretty">Two connected products for airline pilot training.</h1>
+        <p style="font:400 17.5px/1.7 'Inter',sans-serif;color:#B4B4B4;max-width:640px;margin:0">STRATOS EBT/CBTA grades competency by the ICAO, IATA and EASA method. STRATOS TMS keeps every pilot current and every renewal planned. Both are configured to each airline's own training manual and authority, not tied to one regulator, and every airline's data is isolated from every other's.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px;margin-top:40px;max-width:1080px">
+          <a href="#sol-ebt" style="display:grid;grid-template-columns:40px minmax(0,1fr) 20px;gap:14px;align-items:center;padding:16px 18px;background:rgba(0,52,140,0.35);border:1px solid rgba(180,180,180,0.3);border-radius:2px;text-decoration:none;transition:background 0.25s ease,border-color 0.25s ease" style-hover="background:rgba(0,52,140,0.65);border-color:#3F9EE8;text-decoration:none">
+            <span style="width:40px;height:40px;border:1px solid rgba(63,158,232,0.6);border-radius:2px;display:flex;align-items:center;justify-content:center;font:700 12px/1 'Open Sauce Sans',sans-serif;color:#3F9EE8">01</span>
+            <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font:700 15px/1.25 'Open Sauce Sans',sans-serif;color:#fff">STRATOS EBT/CBTA</span><span style="font:400 12.5px/1.45 'Inter',sans-serif;color:#B4B4B4">Competency assessment and training records</span></span>
+            <span style="font:400 15px/1 'Inter',sans-serif;color:#3F9EE8;text-align:right">↓</span>
+          </a>
+          <a href="#sol-tms" style="display:grid;grid-template-columns:40px minmax(0,1fr) 20px;gap:14px;align-items:center;padding:16px 18px;background:rgba(0,52,140,0.35);border:1px solid rgba(180,180,180,0.3);border-radius:2px;text-decoration:none;transition:background 0.25s ease,border-color 0.25s ease" style-hover="background:rgba(0,52,140,0.65);border-color:#3F9EE8;text-decoration:none">
+            <span style="width:40px;height:40px;border:1px solid rgba(63,158,232,0.6);border-radius:2px;display:flex;align-items:center;justify-content:center;font:700 12px/1 'Open Sauce Sans',sans-serif;color:#3F9EE8">02</span>
+            <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font:700 15px/1.25 'Open Sauce Sans',sans-serif;color:#fff">STRATOS TMS</span><span style="font:400 12.5px/1.45 'Inter',sans-serif;color:#B4B4B4">Validity, planning, records and audit</span></span>
+            <span style="font:400 15px/1 'Inter',sans-serif;color:#3F9EE8;text-align:right">↓</span>
+          </a>
+          <a href="#sol-together" style="display:grid;grid-template-columns:40px minmax(0,1fr) 20px;gap:14px;align-items:center;padding:16px 18px;background:rgba(0,52,140,0.35);border:1px solid rgba(180,180,180,0.3);border-radius:2px;text-decoration:none;transition:background 0.25s ease,border-color 0.25s ease" style-hover="background:rgba(0,52,140,0.65);border-color:#3F9EE8;text-decoration:none">
+            <span style="width:40px;height:40px;border:1px solid rgba(63,158,232,0.6);border-radius:2px;display:flex;align-items:center;justify-content:center;font:700 12px/1 'Open Sauce Sans',sans-serif;color:#3F9EE8">03</span>
+            <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font:700 15px/1.25 'Open Sauce Sans',sans-serif;color:#fff">How they work together</span><span style="font:400 12.5px/1.45 'Inter',sans-serif;color:#B4B4B4">One crew list, one pilot record, one login</span></span>
+            <span style="font:400 15px/1 'Inter',sans-serif;color:#3F9EE8;text-align:right">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section className="stratos-section-pad" style="padding:88px 32px;background:#ECF0F3">
+      <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:28px 80px;align-items:end;margin-bottom:40px">
+          <div>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span id="sol-ebt" data-scroll-target=""></span><span style="font:600 12px/1 'Open Sauce Sans',sans-serif;color:#4A5361">01</span><span style="width:22px;height:1px;background:rgba(0,52,140,0.3);display:block"></span><span style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#00348C;text-transform:uppercase">STRATOS EBT/CBTA · Competence</span></div>
+            <h2 style="font:700 clamp(28px,3.6vw,46px)/1.1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#000;margin:0;text-wrap:pretty">Every grade consistent. Every skill measured.</h2>
+          </div>
+          <p style="font:400 16px/1.85 'Inter',sans-serif;color:#4A5361;margin:0;max-width:540px;text-wrap:pretty">Evidence-based training and assessment for airline recurrent pilot training. Grading, training planning, analytics and records in one system, built on the ICAO, IATA and EASA method. Select a module.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:1px;margin-bottom:40px">
+          <sc-for list="{{ ebtSpecs }}" as="sp" hint-placeholder-count="4">
+            <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:24px 22px;display:flex;flex-direction:column;gap:10px"><span style="font:700 clamp(28px,3vw,38px)/1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#00348C">{{ sp.v }}</span><span style="font:400 13.5px/1.5 'Inter',sans-serif;color:#4A5361">{{ sp.l }}</span></div>
+          </sc-for>
+        </div>
+        <div className="stratos-mock-split" style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:1px">
+          <div role="tablist" aria-label="Modules" style="display:flex;flex-direction:column;gap:1px">
+            <sc-for list="{{ ebtTabs }}" as="t" hint-placeholder-count="7">
+              <button role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.go }}" style="{{ t.style }}"><span style="font:600 11.5px/1.4 'Open Sauce Sans',sans-serif;color:#00348C;width:24px;flex:none">{{ t.n }}</span><span style="display:flex;flex-direction:column;gap:5px;min-width:0"><span style="font:600 14.5px/1.3 'Inter',sans-serif;color:#000">{{ t.title }}</span><span style="font:400 12px/1.4 'Inter',sans-serif;color:#4A5361">{{ t.spec }}</span></span></button>
+            </sc-for>
+          </div>
+          <div role="tabpanel" style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:clamp(28px,3.4vw,48px);display:flex;flex-direction:column;gap:16px">
+            <span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase">{{ ebtCur.spec }}</span>
+            <div style="font:700 clamp(22px,2.4vw,30px)/1.2 'Open Sauce Sans',sans-serif;letter-spacing:-0.015em;color:#000">{{ ebtCur.title }}</div>
+            <p style="font:400 15.5px/1.8 'Inter',sans-serif;color:#4A5361;margin:0;max-width:720px;text-wrap:pretty">{{ ebtCur.lead }}</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:0 40px;margin-top:8px">
+              <sc-for list="{{ ebtCur.points }}" as="pt" hint-placeholder-count="4">
+                <div style="display:flex;gap:12px;align-items:baseline;padding:13px 0;border-top:1px solid rgba(0,52,140,0.12)"><span style="width:8px;height:2px;background:#00348C;flex:none;transform:translateY(-4px)"></span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#000">{{ pt.t }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:32px">
+          <a href="EBT-CBTA.dc.html" className="stratos-btn stratos-btn-primary">Explore STRATOS EBT/CBTA</a>
+        </div>
+      </div>
+    </section>
+
+    <section className="stratos-section-pad" style="padding:88px 32px;background:#ECF0F3;border-top:1px solid rgba(0,52,140,0.16)">
+      <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:28px 80px;align-items:end;margin-bottom:40px">
+          <div>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span id="sol-tms" data-scroll-target=""></span><span style="font:600 12px/1 'Open Sauce Sans',sans-serif;color:#4A5361">02</span><span style="width:22px;height:1px;background:rgba(0,52,140,0.3);display:block"></span><span style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#00348C;text-transform:uppercase">STRATOS TMS · Compliance</span></div>
+            <h2 style="font:700 clamp(28px,3.6vw,46px)/1.1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#000;margin:0;text-wrap:pretty">Every pilot current. Every renewal planned.</h2>
+          </div>
+          <p style="font:400 16px/1.85 'Inter',sans-serif;color:#4A5361;margin:0;max-width:540px;text-wrap:pretty">The training management system. Validity, planning, recurrent training, records and audit in one place, configured to the airline's Operations Manual and authority. Select a module.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:1px;margin-bottom:40px">
+          <sc-for list="{{ tmsSpecs }}" as="sp" hint-placeholder-count="4">
+            <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:24px 22px;display:flex;flex-direction:column;gap:10px"><span style="font:700 clamp(28px,3vw,38px)/1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#00348C">{{ sp.v }}</span><span style="font:400 13.5px/1.5 'Inter',sans-serif;color:#4A5361">{{ sp.l }}</span></div>
+          </sc-for>
+        </div>
+        <div className="stratos-mock-split" style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:1px">
+          <div role="tablist" aria-label="Modules" style="display:flex;flex-direction:column;gap:1px">
+            <sc-for list="{{ tmsTabs }}" as="t" hint-placeholder-count="7">
+              <button role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.go }}" style="{{ t.style }}"><span style="font:600 11.5px/1.4 'Open Sauce Sans',sans-serif;color:#00348C;width:24px;flex:none">{{ t.n }}</span><span style="display:flex;flex-direction:column;gap:5px;min-width:0"><span style="font:600 14.5px/1.3 'Inter',sans-serif;color:#000">{{ t.title }}</span><span style="font:400 12px/1.4 'Inter',sans-serif;color:#4A5361">{{ t.spec }}</span></span></button>
+            </sc-for>
+          </div>
+          <div role="tabpanel" style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:clamp(28px,3.4vw,48px);display:flex;flex-direction:column;gap:16px">
+            <span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase">{{ tmsCur.spec }}</span>
+            <div style="font:700 clamp(22px,2.4vw,30px)/1.2 'Open Sauce Sans',sans-serif;letter-spacing:-0.015em;color:#000">{{ tmsCur.title }}</div>
+            <p style="font:400 15.5px/1.8 'Inter',sans-serif;color:#4A5361;margin:0;max-width:720px;text-wrap:pretty">{{ tmsCur.lead }}</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:0 40px;margin-top:8px">
+              <sc-for list="{{ tmsCur.points }}" as="pt" hint-placeholder-count="4">
+                <div style="display:flex;gap:12px;align-items:baseline;padding:13px 0;border-top:1px solid rgba(0,52,140,0.12)"><span style="width:8px;height:2px;background:#00348C;flex:none;transform:translateY(-4px)"></span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#000">{{ pt.t }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:32px">
+          <a href="TMS.dc.html" className="stratos-btn stratos-btn-primary">Explore STRATOS TMS</a>
+        </div>
+      </div>
+    </section>
+
+    <section className="stratos-section-pad" style="padding:88px 32px;background:#001538">
+      <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:28px 80px;align-items:end;margin-bottom:40px">
+          <div>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span id="sol-together" data-scroll-target=""></span><span style="font:600 12px/1 'Open Sauce Sans',sans-serif;color:#B4B4B4">03</span><span style="width:22px;height:1px;background:rgba(180,180,180,0.55);display:block"></span><span style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#3F9EE8;text-transform:uppercase">TMS + EBT/CBTA · Together</span></div>
+            <h2 style="font:700 clamp(28px,3.6vw,46px)/1.1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#fff;margin:0;text-wrap:pretty">How they work together.</h2>
+          </div>
+          <p style="font:400 16px/1.85 'Inter',sans-serif;color:#B4B4B4;margin:0;max-width:540px;text-wrap:pretty">For airlines that take both, the products share one crew list, one pilot record and one login. Follow one pilot's proficiency check through both: every step writes to the same record, so nothing is typed twice.</p>
+        </div>
+        <div role="tablist" aria-label="Steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:1px;margin-bottom:1px">
+          <sc-for list="{{ togSteps }}" as="st" hint-placeholder-count="4">
+            <button role="tab" aria-selected="{{ st.sel }}" onClick="{{ st.go }}" style="position:relative;display:flex;flex-direction:column;gap:12px;text-align:left;border:none;cursor:pointer;padding:24px 22px;min-height:96px;outline:1px solid rgba(180,180,180,0.28);background:{{ st.bg }};transition:background 0.25s ease">
+              <span style="position:absolute;top:0;left:0;right:0;height:3px;background:{{ st.bar }}"></span>
+              <span style="display:flex;align-items:center;gap:10px"><span style="font:700 12px/1 'Open Sauce Sans',sans-serif;color:{{ st.numFg }}">{{ st.n }}</span><span style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:{{ st.tagFg }};background:{{ st.tagBg }};border:1px solid {{ st.tagBd }};padding:4px 7px;border-radius:2px">{{ st.sys }}</span></span>
+              <span style="font:700 17px/1.3 'Open Sauce Sans',sans-serif;color:{{ st.fg }}">{{ st.title }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div role="tabpanel" style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:clamp(28px,3.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:28px 64px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="font:700 clamp(22px,2.4vw,30px)/1.2 'Open Sauce Sans',sans-serif;letter-spacing:-0.015em;color:#fff">{{ togCur.title }}</div>
+            <p style="font:400 15.5px/1.8 'Inter',sans-serif;color:#C9CED6;margin:0;text-wrap:pretty">{{ togCur.what }}</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:12px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#3F9EE8;text-transform:uppercase">Written in this step</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ togCur.writes }}" as="c" hint-placeholder-count="3"><span style="font:500 13px/1.2 'Inter',sans-serif;color:#fff;background:transparent;border:1px solid rgba(180,180,180,0.4);border-radius:2px;padding:10px 12px">{{ c.t }}</span></sc-for></div></div>
+            <div style="display:flex;gap:1px">
+              <button onClick="{{ stPrev }}" aria-label="Previous step" style="min-width:52px;height:48px;background:transparent;border:1px solid rgba(180,180,180,0.5);color:#fff;font:400 17px/1 'Inter',sans-serif;cursor:pointer" style-hover="background:rgba(0,52,140,0.55)">&larr;</button>
+              <button onClick="{{ stNext }}" aria-label="Next step" style="min-width:52px;height:48px;background:transparent;border:1px solid rgba(180,180,180,0.5);border-left:none;color:#fff;font:400 17px/1 'Inter',sans-serif;cursor:pointer" style-hover="background:rgba(0,52,140,0.55)">&rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="stratos-section-pad" style="padding:88px 32px;border-top:1px solid rgba(180,180,180,0.24);background:rgba(0,52,140,0.28)">
+      <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
+        <div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#3F9EE8;text-transform:uppercase;margin-bottom:22px">Architecture · one pilot record</div>
+        <h2 style="font:700 clamp(26px,3.4vw,42px)/1.12 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#fff;margin:0 0 20px;max-width:780px;text-wrap:pretty">What is shared, and who writes it.</h2>
+        <p style="font:400 15.5px/1.85 'Inter',sans-serif;color:#B4B4B4;margin:0 0 40px;max-width:700px;text-wrap:pretty">Both products read and write the same records. Tap a record type to see where its data comes from and where it goes.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:1px;margin-bottom:1px">
+          <sc-for list="{{ dmItems }}" as="d" hint-placeholder-count="8"><button onClick="{{ d.go }}" aria-pressed="{{ d.on }}" style="{{ d.style }}">{{ d.name }}</button></sc-for>
+        </div>
+        <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:28px 48px">
+          <div style="display:flex;flex-direction:column;gap:12px"><span style="font:700 clamp(19px,2vw,24px)/1.25 'Open Sauce Sans',sans-serif;color:#fff">{{ dmCur.name }}</span><p style="font:400 15px/1.75 'Inter',sans-serif;color:#C9CED6;margin:0">{{ dmCur.desc }}</p></div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#3F9EE8;text-transform:uppercase">Written by</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ dmCur.w }}" as="c" hint-placeholder-count="3"><span style="font:500 12.5px/1 'Inter',sans-serif;color:#fff;border:1px solid rgba(180,180,180,0.4);border-radius:2px;padding:9px 11px">{{ c.t }}</span></sc-for></div></div>
+            <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#3F9EE8;text-transform:uppercase">Read by</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ dmCur.r }}" as="c" hint-placeholder-count="3"><span style="font:500 12.5px/1 'Inter',sans-serif;color:#fff;border:1px solid rgba(180,180,180,0.4);border-radius:2px;padding:9px 11px">{{ c.t }}</span></sc-for></div></div>
+          </div>
+        </div>
+        <p style="font:400 13.5px/1.8 'Inter',sans-serif;color:#B4B4B4;margin:28px 0 0;max-width:820px">Every airline's data is isolated from every other's. Pilot and cabin-crew records are kept separate at the database level, and the data stays yours, exportable in full at any time.</p>
+      </div>
+    </section>
+
+    <section className="stratos-section-pad" style="padding:72px 32px;background:#ECF0F3">
+      <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
+        <div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#00348C;text-transform:uppercase;margin-bottom:22px">Who uses it</div>
+        <h2 style="font:700 clamp(26px,3.4vw,42px)/1.12 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#000;margin:0 0 20px;max-width:780px;text-wrap:pretty">One platform. Every role.</h2>
+        <p style="font:400 15.5px/1.85 'Inter',sans-serif;color:#4A5361;margin:0 0 40px;max-width:700px;text-wrap:pretty">Each user sees and changes only what their role allows, in both products, with one login. Every action is logged.</p>
+        <div className="stratos-tabrail" role="tablist" aria-label="Roles" style="border-bottom-color:rgba(0,52,140,0.2);margin-bottom:28px">
+          <sc-for list="{{ roleTabs }}" as="t" hint-placeholder-count="4"><button role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.go }}" style="{{ t.style }}">{{ t.label }}</button></sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:1px">
+          <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:32px 28px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#4A5361;text-transform:uppercase">The role</span><span style="font:700 21px/1.25 'Open Sauce Sans',sans-serif;color:#000;margin-top:6px">{{ roleCur.name }}</span><span style="font:400 13.5px/1.5 'Inter',sans-serif;color:#4A5361">{{ roleCur.who }}</span></div>
+          <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:32px 28px;display:flex;flex-direction:column;gap:4px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase;margin-bottom:10px">In STRATOS TMS</span><sc-for list="{{ roleCur.tms }}" as="x" hint-placeholder-count="3"><span style="font:500 14px/1.55 'Inter',sans-serif;color:#000;padding:11px 0;border-top:1px solid rgba(0,52,140,0.12)">{{ x.t }}</span></sc-for></div>
+          <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:32px 28px;display:flex;flex-direction:column;gap:4px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase;margin-bottom:10px">In STRATOS EBT/CBTA</span><sc-for list="{{ roleCur.ebt }}" as="x" hint-placeholder-count="3"><span style="font:500 14px/1.55 'Inter',sans-serif;color:#000;padding:11px 0;border-top:1px solid rgba(0,52,140,0.12)">{{ x.t }}</span></sc-for></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section className="stratos-section-pad" style="padding:72px 32px;background:#ECF0F3;border-top:1px solid rgba(0,52,140,0.22)">
+      <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
+        <div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#00348C;text-transform:uppercase;margin-bottom:22px">Implementation & timeline</div>
+        <h2 style="font:700 clamp(26px,3.4vw,42px)/1.12 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#000;margin:0 0 20px;max-width:780px;text-wrap:pretty">Four stages, about five weeks.</h2>
+        <p style="font:400 15.5px/1.85 'Inter',sans-serif;color:#4A5361;margin:0 0 40px;max-width:700px;text-wrap:pretty">Target timeline from receiving your manual, records and forms. You name one owner; we do the setup. Tap a stage.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:4px;margin-bottom:24px">
+          <sc-for list="{{ implTabs }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.go }}" aria-pressed="{{ t.on }}" style="{{ t.style }}"><span style="font:600 11px/1.3 'Open Sauce Sans',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:{{ t.sub }}">{{ t.week }}</span><span style="font:700 clamp(13px,1.4vw,16px)/1.25 'Open Sauce Sans',sans-serif;color:{{ t.fg }}">{{ t.name }}</span></button></sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:1px">
+          <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:28px 26px;display:flex;flex-direction:column;gap:4px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#4A5361;text-transform:uppercase;margin-bottom:10px">From you</span><sc-for list="{{ implCur.you }}" as="x" hint-placeholder-count="2"><span style="font:500 14px/1.55 'Inter',sans-serif;color:#000;padding:11px 0;border-top:1px solid rgba(0,52,140,0.12)">{{ x.t }}</span></sc-for></div>
+          <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:28px 26px;display:flex;flex-direction:column;gap:4px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase;margin-bottom:10px">STRATOS does</span><sc-for list="{{ implCur.we }}" as="x" hint-placeholder-count="3"><span style="font:500 14px/1.55 'Inter',sans-serif;color:#000;padding:11px 0;border-top:1px solid rgba(0,52,140,0.12)">{{ x.t }}</span></sc-for></div>
+          <div style="background:rgba(63,158,232,0.16);outline:1px solid #3F9EE8;padding:28px 26px;display:flex;flex-direction:column;gap:12px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase">Output</span><span style="font:700 19px/1.35 'Open Sauce Sans',sans-serif;color:#000">{{ implCur.out }}</span></div>
+        </div>
+        <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px 64px;align-items:start;padding-top:28px;border-top:1px solid rgba(0,52,140,0.16)">
+          <div><div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#00348C;text-transform:uppercase;margin-bottom:22px">Who does what</div><h3 style="font:700 clamp(20px,2.2vw,26px)/1.2 'Open Sauce Sans',sans-serif;letter-spacing:-0.015em;color:#000;margin:0;text-wrap:pretty">You own the programme. We make it workable.</h3></div>
+          <p style="font:400 15px/1.85 'Inter',sans-serif;color:#4A5361;margin:0">The airline keeps every regulatory obligation and the instructor sets every final grade; STRATOS never overwrites it. Authorities approve programmes, not software.</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="stratos-section-pad" style="padding:64px 32px;border-top:1px solid rgba(180,180,180,0.24)">
+      <div className="stratos-reveal" style="max-width:900px;margin:0 auto;text-align:center">
+        <h2 style="font:700 clamp(26px,3.4vw,40px)/1.1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#fff;margin:0 0 18px;text-wrap:pretty">Three steps. One decision.</h2>
+        <p style="font:400 17.5px/1.7 'Inter',sans-serif;color:#B4B4B4;margin:0 auto 28px;max-width:640px">Agree a pilot project: one fleet, the products you need, and success measures set in advance. Then share your manuals, records and forms, and go live.</p>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+          <a href="Contact.dc.html" className="stratos-btn stratos-btn-primary">Book a walkthrough</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:rgba(0,18,41,0.55);border-top:1px solid rgba(180,180,180,0.26);padding:56px 32px 28px">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:28px 40px;padding-bottom:32px;border-bottom:1px solid rgba(180,180,180,0.24)">
+        <div>
+          <img src="uploads/svg/stratos-logo-tagline-option001-white.svg" alt="STRATOS" style="height:40px;margin-bottom:12px;display:block">
+          <p style="font:600 14px/1.6 'Inter',sans-serif;color:#fff;max-width:300px;margin:0">STRATOS · Intelligence-Driven Aviation</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">Company</div>
+          <a href="index.dc.html" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Home</a>
+          <a href="About.dc.html" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">About Us</a>
+          <a href="Clients.dc.html" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Clients</a>
+          <a href="Contact.dc.html" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Contact Us</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">Solutions</div>
+          <a href="EBT-CBTA.dc.html" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Training · EBT / CBTA</a>
+          <a href="TMS.dc.html" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Training · TMS</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">Contact</div>
+          <a href="mailto:info@stratos-ida.com" style="font:400 14px/1.6 'Inter',sans-serif;color:#B4B4B4">info@stratos-ida.com</a>
+          <span style="font:400 14px/1.6 'Inter',sans-serif;color:#B4B4B4">Tallinn, Estonia</span>
+        </div>
+      </div>
+      <div style="padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <span style="font:400 13px/1 'Inter',sans-serif;color:#B4B4B4">© 2026 STRATOS · stratos-ida.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <div className="stratos-mobile-cta" style="position:fixed;left:0;right:0;bottom:0;z-index:130;background:rgba(0,18,41,0.96);padding:8px 24px;gap:10px;align-items:center;justify-content:space-between;border-top:1px solid rgba(180,180,180,0.32)">
+    
+    <a href="Contact.dc.html" className="stratos-btn stratos-btn-primary" style="font-size:13.5px">Book a walkthrough</a>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  mockCats = [
+    { short: 'Preparation & briefing', name: 'Preparation & briefing', items: [
+      ['1.1', 'Flight documentation & NOTAM review'],
+      ['1.2', 'Performance & load sheet verification'],
+      ['1.3', 'Weather & alternate assessment'],
+      ['1.4', 'Threat identification in briefing'],
+      ['1.5', 'Crew briefing & task sharing'],
+      ['1.6', 'Cockpit preparation flow']
+    ] },
+    { short: 'Normal procedures', name: 'Normal procedures', items: [
+      ['2.1', 'Take-off & initial climb'],
+      ['2.2', 'SID adherence & speed control'],
+      ['2.3', 'Automation mode management'],
+      ['2.4', 'Cruise monitoring & fuel checks'],
+      ['2.5', 'Descent planning & energy management'],
+      ['2.6', 'Standard callouts & cross-checks'],
+      ['2.7', 'Checklist discipline'],
+      ['2.8', 'Radio communication phraseology']
+    ] },
+    { short: 'Abnormal & emergency', name: 'Abnormal & emergency procedures', items: [
+      ['3.1', 'Engine fire after V1'],
+      ['3.2', 'Rejected take-off'],
+      ['3.3', 'Rapid depressurisation & emergency descent'],
+      ['3.4', 'Single-engine go-around'],
+      ['3.5', 'TCAS resolution advisory'],
+      ['3.6', 'Hydraulic failure management'],
+      ['3.7', 'Smoke or fumes in the cockpit']
+    ] },
+    { short: 'Approach & landing', name: 'Approach & landing', items: [
+      ['4.1', 'Precision approach flown to tolerance'],
+      ['4.2', 'Go-around from a low-energy state'],
+      ['4.3', 'Landing & rollout in crosswind']
+    ] }
+  ];
+
+  faqDefs = [
+    { q: 'Can we start with one product?', a: 'Yes. Take STRATOS TMS, STRATOS EBT/CBTA, or both. Each runs on its own. Together they share one crew list, one login and one pilot record, so a graded check updates the next expiry with no re-typing.' },
+    { q: 'We already use another platform.', a: 'STRATOS moves you across. Your forms are digitised, and your past grades and training records are moved into the new system. The migration is done by STRATOS.' },
+    { q: 'Do we have to change our forms?', a: 'No. If you have a training manual but no digital forms, we build the forms from your manual, rule for rule. If you already have forms you want to keep, we implement those exactly, same structure, same scoring logic, same sign-off chain, so instructors see what they already know, digitised.' },
+    { q: 'Will our pilots accept it?', a: 'Results are framed as coaching, not discipline. The instructor sets every grade and STRATOS never overwrites it. Pilots also see their own status in the portal instead of asking the office.' },
+    { q: 'What happens to our data?', a: 'It stays yours: isolated from every other airline and exportable in full at any time. Pilot and cabin-crew records are held separately at the database level rather than hidden in the interface, so a security review or an auditor gets a verifiable answer about isolation.' },
+    { q: 'Does it replace our LMS or rostering?', a: 'No. STRATOS works alongside both. Rostering stays where it is, and STRATOS does not deliver e-learning. Connecting the TMS to your existing LMS is on the roadmap: where the LMS supports module export, its learning modules can be embedded in the TMS.' },
+    { q: 'Is the software approved by the authority?', a: 'Authorities approve programmes, not software. STRATOS supports your compliance with EASA and your national rules, and the airline keeps every regulatory obligation.' },
+    { q: 'How long does implementation take?', a: 'About five weeks from receiving your manual, records and forms: discovery, build, configure and go-live. You name one owner; we do the setup.' }
+  ];
+
+  probDefs = [
+    { kicker: 'Paper & spreadsheets', verdict: 'Cannot compare.', body: 'One grade per page or per cell. Every cohort view and every audit answer is rebuilt by hand, and a lost folder is a missing record.' },
+    { kicker: 'Legacy & generic ETR', verdict: 'Cannot calculate.', body: 'Built to store records first, with competencies bolted on later. It can file a grade. It cannot calculate one against the framework.' },
+    { kicker: 'Native EBT/CBTA tools', verdict: 'Thin where it matters.', body: 'Analysis stops at the single record, no cohort view, no fleet risk picture, no instructor comparison. Configuration and rollout land on your team.' }
+  ];
+
+  compDefs = [
+    { code: 'PRO', name: 'Application of procedures and compliance with regulations', what: 'Identifies and applies the procedures for the operation in accordance with published operating instructions and applicable regulations.', mean: 2.7, below: 42, items: 11 },
+    { code: 'KNO', name: 'Application of knowledge', what: 'Demonstrates the practical and applicable knowledge of limitations, systems and their interaction, and the operating environment.', mean: 3.9, below: 6, items: 8 },
+    { code: 'COM', name: 'Communication', what: 'Communicates clearly, accurately and unambiguously in normal and non-normal situations, and confirms that information is understood.', mean: 3.4, below: 12, items: 7 },
+    { code: 'FPA', name: 'Flight path management, automation', what: 'Controls the flight path through automation, managing modes and transitions with the aircraft always where the crew intends it to be.', mean: 4.2, below: 3, items: 6 },
+    { code: 'FPM', name: 'Flight path management, manual control', what: 'Controls the flight path manually, maintaining the aircraft within normal parameters using the appropriate control inputs.', mean: 3.1, below: 19, items: 7 },
+    { code: 'LTW', name: 'Leadership and teamwork', what: 'Influences others to contribute to a shared purpose, and collaborates to accomplish the goals of the team.', mean: 4.5, below: 2, items: 8 },
+    { code: 'PSD', name: 'Problem solving and decision making', what: 'Identifies precursors, mitigates problems and makes timely decisions using an appropriate process under time pressure.', mean: 3.7, below: 9, items: 7 },
+    { code: 'SAW', name: 'Situation awareness and management of information', what: 'Perceives and comprehends the state of the aircraft, its people and the operating environment, and anticipates what comes next.', mean: 3.8, below: 8, items: 6 },
+    { code: 'WLM', name: 'Workload management', what: 'Maintains available capacity by prioritising and distributing tasks, using appropriate resources and reviewing the outcome.', mean: 3.5, below: 11, items: 5 }
+  ];
+
+  journeyDefs = [
+    { stage: 'STAGE 0', name: 'Conventional', desc: 'Traditional recurrent training and checking, Stage 0 in the Implementation Guide, and where most airlines still are today.', with: 'Your manual becomes working forms, built by us, rule for rule. Historical gradings are loaded at implementation, every grade is signed, stored and recurrency-tracked. You keep the programme exactly as approved, and the competency record starts building underneath it.', facts: [
+      { k: 'ENTRY', v: 'No competency data required to begin, the record starts from your existing paperwork.' },
+      { k: 'OUTPUT', v: 'Signed evaluations, an audit trail, and the first fleet-level competency picture.' }
+    ] },
+    { stage: 'STAGE 1', name: 'Mixed', desc: 'EBT running alongside the conventional programme. Instructor standardisation is supported by each instructor\u2019s average grade.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool. Migrated history means the clock starts with evidence already behind you.', facts: [
+      { k: 'DURATION', v: 'Set by your authority and your programme.' },
+      { k: 'OUTPUT', v: 'Each instructor\u2019s average grade, updated with every submission.' }
+    ] },
+    { stage: 'STAGE 2', name: 'Baseline', desc: 'Recurrent training and assessment are fully dedicated to EBT, and licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour, recurrency tracked. The same system you started in, nothing to migrate, and the data Enhanced EBT demands already accumulating.', facts: [
+      { k: 'SUBMISSION', v: 'Fleet, cohort and instructor evidence exported for the authority on demand.' },
+      { k: 'NEXT', v: 'The dataset Enhanced EBT requires is already accumulating in the same record.' }
+    ] }
+  ];
+
+  mockPilots = [
+    { name: 'Capt. Joe', slug: 'ash', init: 'CJ', meta: 'JOE · CPT · A320 · Last check 2026-09-13', score: '3.7', instructor: 'Saleh', form: 'Sim check', result: 'Pass', d: 0 },
+    { name: 'Capt. John', slug: 'mah', init: 'CJ', meta: 'JHN · CPT · A320 · Last check 2026-09-11', score: '2.8', instructor: 'Karim', form: 'Line check', result: 'Review', d: -0.7 },
+    { name: 'Capt. Mike', slug: 'isl', init: 'CM', meta: 'MIK · CPT · A320 · Last check 2026-09-09', score: '3.4', instructor: 'Adel', form: 'Sim check', result: 'Pass', d: -0.25 },
+    { name: 'Capt. Chris', slug: 'shr', init: 'CC', meta: 'CHR · CPT · A320 · Last check 2026-09-07', score: '3.1', instructor: 'Saleh', form: 'Training monitor', result: 'Pass', d: -0.45 },
+    { name: 'Capt. Harry', slug: 'omr', init: 'CH', meta: 'HRY · CPT · A320 · Last check 2026-09-04', score: '2.6', instructor: 'Mostafa', form: 'Cabin crew', result: 'Review', d: -0.9 }
+  ];
+
+  state = {
+    page: 'solutions',
+    scrolled: false,
+    solutionsOpen: false,
+    scrollY: 0,
+    scrollPct: 0,
+    selectedGrade: 'S3',
+    probIdx: 0,
+    faqIdx: 0,
+    selComp: 0,
+    journeyIdx: 0,
+    mockTab: 'form',
+    wizCat: 2,
+    wizStep: 'form',
+    declared: false,
+    recTab: 1,
+    selPilot: 0,
+    grades: {
+      '1.1': 4, '1.2': 4, '1.3': 3, '1.4': 4, '1.5': 5, '1.6': 4,
+      '2.1': 4, '2.2': 3, '2.3': 4, '2.4': 4, '2.5': 3, '2.6': 2, '2.7': 4, '2.8': 4,
+      '3.1': 4, '3.2': 3, '3.3': 2, '3.4': 4
+    },
+    stage: null,
+    f1: false, f2: false, f3: false,
+    menuOpen: false
+  };
+
+  go(page, extra, e) {
+    if (e && e.preventDefault) e.preventDefault();
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = prev;
+    if (window.location.hash) {
+      try { history.replaceState(null, '', window.location.pathname + window.location.search); } catch (err) {}
+    }
+    this.setState(Object.assign({ page, solutionsOpen: false, menuOpen: false }, extra || {}));
+  }
+
+  _arm() {
+    var self = this;
+    if (!this._io && 'IntersectionObserver' in window) {
+      try {
+        this._ioProg = 0;
+        this._io = new IntersectionObserver(function(es){
+          es.forEach(function(en){
+            self._signal = true;
+            if (en.isIntersecting) {
+              en.target.removeAttribute('data-hidden');
+              var idx = parseFloat(en.target.getAttribute('data-rev-idx'));
+              if (!isNaN(idx) && self._revCount) {
+                var p = (idx + 1) / self._revCount;
+                if (p > self._ioProg) self._ioProg = p;
+              }
+            } else if (self._armed && en.boundingClientRect.top > window.innerHeight) {
+              en.target.setAttribute('data-hidden', '1');
+              var i2 = parseFloat(en.target.getAttribute('data-rev-idx'));
+              if (!isNaN(i2) && self._revCount) self._ioProg = Math.min(self._ioProg, i2 / self._revCount);
+            }
+          });
+          if (self._rw) self._rw();
+        }, { threshold: 0.04, rootMargin: '0px 0px -8% 0px' });
+      } catch (e) { return; }
+    }
+    if (!this._io) return;
+    var all = document.querySelectorAll('.stratos-reveal');
+    this._revCount = all.length || 1;
+    all.forEach(function(el, n){ el.setAttribute('data-rev-idx', n); });
+    document.querySelectorAll('.stratos-reveal:not([data-observed])').forEach(function(el){
+      el.setAttribute('data-observed', '1');
+      var kids = el.children;
+      if (kids.length === 1 && kids[0].children.length > 1 && kids[0].children.length < 9) kids = kids[0].children;
+      if (kids.length > 1 && kids.length < 9) {
+        for (var i = 0; i < kids.length; i++) {
+          kids[i].classList.add('stratos-pop');
+          kids[i].style.transitionDelay = Math.min(i * 70, 350) + 'ms';
+        }
+      }
+      self._io.observe(el);
+    });
+    if (!this._armAnim) {
+      this._armAnim = function(){
+        if (self._armed) return;
+        self._armed = true;
+        document.querySelectorAll('.stratos-reveal').forEach(function(el){
+          if (el.getBoundingClientRect().top > window.innerHeight) el.setAttribute('data-hidden', '1');
+        });
+      };
+    }
+    if (!this._rw) {
+      var root = document.documentElement;
+      this._rw = function(){
+        var sentinel = document.querySelector('[data-scroll-sentinel]');
+        var top = sentinel ? sentinel.getBoundingClientRect().top : -window.scrollY;
+        if (self._lastTop != null && Math.abs(top - self._lastTop) > 0.5) { self._sawMove = true; self._signal = true; self._armAnim(); }
+        self._lastTop = top;
+        var max = root.scrollHeight - window.innerHeight;
+        var pct;
+        if (self._sawMove && max > 0) pct = Math.min(1, Math.max(0, -top / max));
+        else pct = Math.min(1, Math.max(0, self._ioProg || 0));
+        var ship = document.querySelector('.stratos-runway .ship');
+        var laid = document.querySelector('.stratos-runway .laid');
+        var wake = document.querySelector('.stratos-runway .wake');
+        if (!ship || !laid || !wake) return;
+        var cur = self._cur == null ? pct : self._cur + (pct - self._cur) * 0.2;
+        if (Math.abs(pct - cur) < 0.0004) cur = pct;
+        self._cur = cur;
+        if (self._shown === cur && self._laneW === ((laid.parentNode && laid.parentNode.clientWidth) || window.innerWidth)) return;
+        self._shown = cur;
+        pct = cur;
+        var lift = Math.min(1, Math.max(0, (pct - 0.7) / 0.24));
+        root.style.setProperty('--sc', pct.toFixed(4));
+        root.style.setProperty('--lift', lift.toFixed(4));
+        var laneW = (laid.parentNode && laid.parentNode.clientWidth) || window.innerWidth;
+        self._laneW = laneW;
+        var shipX = 2 + pct * Math.max(0, laneW - 24);
+        var tailX = shipX + 4;
+        ship.style.left = shipX.toFixed(1) + 'px';
+        ship.style.transform = 'translateY(' + (lift * -3).toFixed(2) + 'px) rotate(' + (lift * -24).toFixed(2) + 'deg) scale(' + (1 - lift * 0.3).toFixed(3) + ')';
+        ship.style.opacity = (1 - lift * 0.55).toFixed(3);
+        laid.style.width = Math.max(0, tailX).toFixed(1) + 'px';
+        var wakeW = Math.min(tailX, 26 + lift * 40);
+        wake.style.right = 'auto';
+        wake.style.left = Math.max(0, tailX - wakeW).toFixed(1) + 'px';
+        wake.style.width = wakeW.toFixed(1) + 'px';
+        wake.style.opacity = lift.toFixed(3);
+        var links = document.querySelectorAll('.stratos-subnav a');
+        if (links.length) {
+          var best = null;
+          links.forEach(function(a){
+            var t = document.getElementById(a.getAttribute('href').slice(1));
+            if (t && t.getBoundingClientRect().top <= 220) best = a;
+          });
+          links.forEach(function(a){ a.classList.toggle('is-active', a === best); });
+        }
+      };
+      var onScroll = function(){ self._signal = true; self._armAnim(); self._rw(); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      document.addEventListener('scroll', onScroll, { capture: true, passive: true });
+      window.addEventListener('resize', this._rw, { passive: true });
+      var tick = function(){ self._rw(); requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+      setInterval(function(){ self._rw(); }, 200);
+      setInterval(function(){
+        document.querySelectorAll('.stratos-reveal[data-hidden]').forEach(function(el){
+          if (el.getBoundingClientRect().top < window.innerHeight * 0.95) el.removeAttribute('data-hidden');
+        });
+      }, 400);
+      setTimeout(function(){
+        if (!self._signal) document.querySelectorAll('.stratos-reveal[data-hidden]').forEach(function(el){ el.removeAttribute('data-hidden'); });
+      }, 1500);
+      this._rw();
+    }
+  }
+
+  renderVals() {
+    const s = this.state;
+    setTimeout(() => this._arm(), 0);
+    const scrolled = s.scrolled;
+    const linkStyle = (active) =>
+      `font:${active ? '600' : '500'} 14px/1 "Inter",sans-serif;color:#fff;opacity:${active ? 1 : 0.8};cursor:pointer`;
+    const navClass = (active) => `stratos-nav-link${active ? ' active' : ''}`;
+
+    const homeSolutionCards = [
+      { mono: 'EBT/CBTA', title: 'Training · EBT / CBTA', desc: 'Evidence-based, competency-focused training and assessment for pilots and cabin crew, native to the ICAO/IATA framework.', roadmap: false, clickable: true }
+    ];
+    const goEbtFn = () => { window.location.href = 'EBT-CBTA.dc.html'; };
+    homeSolutionCards.forEach(c => { c.onClick = c.clickable ? goEbtFn : undefined; c.cursor = c.clickable ? 'pointer' : 'default'; });
+
+    const bandDefs = [
+      { code: 'S1', label: 'Unsatisfactory', range: 'BELOW 70%', color: '#FF5A13', flagged: true, note: 'The competency was not demonstrated to the required standard. Mandatory remedial training is flagged automatically and the record is held for Director review.' },
+      { code: 'S2', label: 'Below Standard', range: '70–79%', color: '#FF5A13', flagged: true, note: 'Performance fell short on one or more observed behaviours. The item is collected into the review step and carried into the coaching summary.' },
+      { code: 'S3', label: 'Standard', range: '80–87%', color: '#B4B4B4', flagged: false, note: 'The competency was demonstrated to the required standard. This is the threshold the fleet is measured against.' },
+      { code: 'S4', label: 'Above Standard', range: '88–95%', color: '#3F9EE8', flagged: false, note: 'Consistently strong performance across the observed behaviours, including under an introduced threat or error.' },
+      { code: 'S5', label: 'Excellent', range: 'ABOVE 95%', color: '#ffffff', flagged: false, note: 'Performance exceeded the standard throughout, with management of threats and errors handled without prompting.' }
+    ];
+    const sel = bandDefs.find(b => b.code === s.selectedGrade) || bandDefs[2];
+    const comp = this.compDefs[s.selComp];
+    const journey = this.journeyDefs[s.journeyIdx];
+    const idle = 'rgba(180,180,180,0.32)';
+    const bandColor = (b) => (b.code === sel.code ? b.color : idle);
+    const gradeBands = bandDefs.map(b => ({
+      code: b.code, label: b.label, range: b.range,
+      color: b.code === sel.code ? b.color : '#B4B4B4',
+      rowBg: b.code === sel.code ? 'rgba(180,180,180,0.26)' : 'rgba(0,52,140,0.45)',
+      rowAccent: b.code === sel.code ? b.color : 'transparent',
+      onClick: () => this.setState({ selectedGrade: b.code })
+    }));
+    const needleRot = { S1: -72, S2: -36, S3: 0, S4: 36, S5: 72 }[sel.code];
+
+    const tabStyle = (active) =>
+      `font:600 13px/1 "Inter",sans-serif;padding:12px 18px;border-radius:2px;cursor:pointer;transition:all 0.3s ease;border:1px solid ${active ? '#3F9EE8' : 'rgba(180,180,180,0.45)'};background:${active ? 'rgba(63,158,232,0.16)' : 'transparent'};color:${active ? '#fff' : '#B4B4B4'}`;
+
+    const onTiltMove = (e) => {
+      const el = e.currentTarget;
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = `perspective(900px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg) translateY(-4px)`;
+    };
+    const onTiltLeave = (e) => { e.currentTarget.style.transform = ''; };
+
+    const discStyle = (open) => open
+      ? 'background:rgba(180,180,180,0.24)'
+      : 'background:rgba(0,52,140,0.42)';
+    const discIcon = (open) => open ? 'transform:rotate(45deg)' : 'transform:rotate(0deg)';
+
+    const allItems = this.mockCats.reduce((acc, c) => acc.concat(c.items), []);
+    const total = allItems.length;
+    const graded = allItems.filter(it => s.grades[it[0]] !== undefined && s.grades[it[0]] !== null).length;
+    const numeric = allItems.map(it => s.grades[it[0]]).filter(v => typeof v === 'number');
+    const meanGrade = numeric.length ? (numeric.reduce((a, b) => a + b, 0) / numeric.length).toFixed(1) : 'N/A';
+    const exceptions = allItems
+      .filter(it => s.grades[it[0]] === 1 || s.grades[it[0]] === 2)
+      .map(it => ({ code: it[0], name: it[1], grade: s.grades[it[0]] }));
+
+    const clamp = (v) => Math.max(0.6, Math.min(5, v));
+    const pilot = this.mockPilots[s.selPilot];
+    const compBase = [
+      ['PRO','Application of procedures',2.7,2.9],
+      ['KNO','Application of knowledge',3.9,3.7],
+      ['COM','Communication',3.4,3.4],
+      ['FPA','Flight path mgmt · automation',4.2,4.0],
+      ['FPM','Flight path mgmt · manual',3.1,3.2],
+      ['LTW','Leadership & teamwork',4.5,4.2],
+      ['PSD','Problem solving & decision',3.7,3.5],
+      ['SAW','Situation awareness',3.8,3.7],
+      ['WLM','Workload management',3.5,3.3]
+    ];
+    const compRows = compBase.map(([code, name, v0, own0]) => {
+      const v = clamp(v0 + pilot.d);
+      const own = clamp(own0 + pilot.d);
+      return {
+        code, name,
+        value: v.toFixed(1),
+        width: (v / 5 * 100).toFixed(1) + '%',
+        own: (own / 5 * 100).toFixed(1) + '%',
+        color: v < 3.0 ? '#FF5A13' : '#3F9EE8',
+        below: v < 3.0
+      };
+    });
+    const belowTau = compRows.filter(c => c.below).map(c => c.name);
+
+    const chipS = (st) => { const c = { EXPIRED: ['#FFFFFF', '#000000'], RED: ['#C0362C', '#FBE3E0'], YELLOW: ['#8A6300', '#FDF1C9'], GREEN: ['#1F7A4D', '#E3F3EA'], MISSING: ['#333333', '#E1E1E1'], BLUE: ['#00348C', '#ECF5FD'] }[st] || ['#333333', '#E1E1E1']; return "display:inline-flex;align-items:center;font:700 10px/1 'Inter',sans-serif;letter-spacing:0.06em;padding:5px 8px;border-radius:20px;white-space:nowrap;color:" + c[0] + ';background:' + c[1]; };
+    const L = (a) => a.map(t => ({ t }));
+    const stepsD = [
+      { sys: 'TMS', title: 'Plans the check', what: 'The expiry engine sees the operator proficiency check falls due inside the planning window. The pilot is placed in the November simulator group and emailed the assignment, with a reminder before the session.', fields: [['OPC expiry', '30 Nov 2026', '50 days', 'YELLOW'], ['Next session', '14 Nov 2026 · FFS A320', 'Booked', 'BLUE'], ['Latest grade', 'Previous OPC · mean 3.4', 'On file', 'MISSING'], ['Notices', 'Assignment and reminder', 'Sent', 'GREEN']], writes: ['Group booking', 'Email to pilot', 'Audit entry · booked by the training office'] },
+      { sys: 'EBT/CBTA', title: 'Grades the check', what: 'The instructor grades the session on the airline\'s own simulator check form. STRATOS recommends each competency grade by the IATA lowest-of-three rule; the instructor sets the final grade and signs.', fields: [['OPC expiry', '30 Nov 2026', '50 days', 'YELLOW'], ['Session', '14 Nov 2026 · completed', 'Graded', 'BLUE'], ['Competencies', 'Mean 3.6 · all nine at or above 3', 'Standard', 'GREEN'], ['Report', 'Signed PDF generated on submission', 'Filed', 'GREEN']], writes: ['Competency grades and OB evidence', 'Signed PDF', 'Live fleet analytics'] },
+      { sys: 'TMS', title: 'Updates the record', what: 'The completed, graded session updates the TMS record with no re-typing. The expiry engine recalculates the check from its rule (6 calendar months, end of month) and the plan drops the pilot from November.', fields: [['OPC expiry', '31 May 2027', '231 days', 'GREEN'], ['Completion', '14 Nov 2026 · passed, first attempt', 'Recorded', 'GREEN'], ['Pilot portal', 'New expiry shown to the pilot', 'Updated', 'BLUE'], ['Monthly load', 'Removed from Nov 2026', 'Updated', 'BLUE']], writes: ['New expiry', 'Completion record', 'Portal update · office notified'] },
+      { sys: 'Both', title: 'Director sees both', what: 'Validity and competence for the same pilot, fleet and period, side by side. Board-ready reports and an audit pack are one click away.', fields: [['Training compliance', 'A320 fleet · month end', '98.6%', 'GREEN'], ['Pilot status', 'Every item current', 'GREEN', 'GREEN'], ['Fleet competency', 'Mean 3.5 · weakest PRO', 'Watch', 'YELLOW'], ['Audit pack', 'Pilot file, PDFs, change log', 'Ready', 'BLUE']], writes: ['KPI report', 'Fleet risk board', 'Audit pack on demand'] }
+    ];
+    const sI = s.solStep || 0;
+    const sc = stepsD[sI];
+    const caps = [
+      ['Live expiry dashboard & action list', 'Five status levels; the worst item sets the file', 'Compliance', 1, 0],
+      ['Expiry engine', 'OM-D rules, renewal windows, end-of-month counting', 'Compliance', 1, 0],
+      ['3-year renewal plan & monthly load', 'Overdue items pulled into month one', 'Compliance', 1, 0],
+      ['Simulator groups & schedule', 'Email on booking, change and cancellation', 'Compliance', 1, 0],
+      ['Pilot self-service portal', 'Licence, medical, renewals, upcoming training', 'Compliance', 1, 0],
+      ['Recurrency & expiry registry', 'Licence and medical per crew member, expiring first', 'Compliance', 1, 1],
+      ['Digital forms from your manual', 'Simulator, line, training and cabin crew checks', 'Competence', 0, 1],
+      ['Grade recommendation', 'IATA lowest-of-three; the instructor decides', 'Competence', 0, 1],
+      ['Day 2 planning', 'Built from Day 1 evidence; 329 IATA scenarios', 'Competence', 0, 1],
+      ['Policies, standards & alerts', 'Your rules applied to every result', 'Competence', 0, 1],
+      ['Cohort & fleet analytics', 'Micro, macro and trend; fleet risk board', 'Leadership', 0, 1],
+      ['Instructor consistency', 'Each grader compared with the fleet', 'Leadership', 0, 1],
+      ['KPI reports', 'MEETS / WATCH / BELOW by fleet and period', 'Leadership', 1, 0],
+      ['Digital pilot file', 'Six folders; encrypted export for an inspection', 'Audit', 1, 0],
+      ['Signed PDF per evaluation', 'Generated on submission', 'Audit', 0, 1],
+      ['Change log', 'Who, when and how; append-only after submission', 'Audit', 1, 1],
+      ['One crew list, one login', 'Shared users and role-based access', 'Together', 2, 2],
+      ['A graded check sets the next expiry', 'No double entry between systems', 'Together', 2, 2],
+      ['One audit trail', 'Compliance and competence evidence in one export', 'Together', 2, 2]
+    ];
+    const cf = s.capF || 'All';
+    const capVis = caps.filter(c => cf === 'All' || c[2] === cf);
+    const cell = (v) => v === 2 ? ['Shared', "font:700 11px/1 'Inter',sans-serif;letter-spacing:0.06em;color:#00348C;background:rgba(63,158,232,0.18);padding:6px 9px;border-radius:2px;justify-self:start"] : v ? ['Included', "font:700 11px/1 'Inter',sans-serif;letter-spacing:0.06em;color:#FFFFFF;background:#00348C;padding:6px 9px;border-radius:2px;justify-self:start"] : ['—', "font:500 14px/1 'Inter',sans-serif;color:#B4B4B4;justify-self:start"];
+    const dm = [
+      { name: 'Crew list', desc: 'One crew list, imported from the crew system and matched to every training record. Imports are reconciled, so gaps are found before the auditor finds them.', w: ['TMS · crew-system import'], r: ['STRATOS TMS', 'STRATOS EBT/CBTA', 'Pilot portal'] },
+      { name: 'Pilot record', desc: 'The single record both products update: licences, medicals, checks, courses, grades and documents, per pilot.', w: ['STRATOS TMS', 'STRATOS EBT/CBTA'], r: ['Director dashboards', 'Pilot portal', 'Audit export'] },
+      { name: 'Training rules', desc: 'Validity periods and renewal windows from your OM-D; competency model, scales and standards from your manual. Settings your EBT stage does not allow are blocked.', w: ['Admin · configured per airline'], r: ['TMS expiry engine', 'EBT/CBTA grading engine'] },
+      { name: 'Grades & evidence', desc: 'Competency grades with the observable behaviours, TEM outcome and instructor narrative behind each one.', w: ['STRATOS EBT/CBTA'], r: ['TMS completion', 'Fleet analytics', 'Coaching summaries'] },
+      { name: 'Expiries', desc: 'Calculated by the expiry engine from the latest record and its rule, never typed. Every expiry is traced to its rule.', w: ['TMS expiry engine'], r: ['Action list', '3-year plan', 'Pilot portal', 'KPI reports'] },
+      { name: 'Documents & reports', desc: 'Scans and certificates filed to the pilot, flagged when missing or outdated, plus a signed PDF for every evaluation.', w: ['TMS pilot file', 'EBT/CBTA signed PDF'], r: ['Pilot file', 'Inspection export'] },
+      { name: 'Audit log', desc: 'Every change: who, when and how it was entered. Every save is backed up automatically.', w: ['STRATOS TMS', 'STRATOS EBT/CBTA'], r: ['Training Director', 'Auditor export'] },
+      { name: 'Users & roles', desc: 'One login. Each user sees and changes only what their role allows, in both products.', w: ['Admin'], r: ['STRATOS TMS', 'STRATOS EBT/CBTA'] }
+    ];
+    const dI = s.dmI || 0;
+    const roles = [
+      { label: 'Training Director', name: 'Training Director & admins', who: 'Sees everything; sets the rules', tms: ['Rules, settings and users', 'KPI reports by fleet and period', 'The full audit trail'], ebt: ['Fleet dashboards and the risk board', 'Instructor consistency', 'Policies, standards and alerts'] },
+      { label: 'Instructors', name: 'Instructors & instructors', who: 'TRE / TRI / instructor', tms: ['Completed, graded sessions update the record automatically', 'Next expiry set from the rule'], ebt: ['Grade on forms built from your manual', 'Plan Day 2 from the pilot\'s Day 1', 'Sign; a PDF is generated on submission'] },
+      { label: 'Training office', name: 'Training coordinators', who: 'Runs the daily work', tms: ['Record training for one pilot or a class', 'Update crew, plan groups, book sessions', 'Import and export'], ebt: ['Grade in STRATOS EBT/CBTA if subscribed'] },
+      { label: 'Pilots & cabin crew', name: 'Pilots & cabin crew', who: 'Self-service, no calls to the office', tms: ['Portal: licence, medical, renewals, upcoming training', 'Email before each expiry'], ebt: ['Rate each session through a short link, no login', 'Results framed as coaching, not discipline'] }
+    ];
+    const rI = s.roleI || 0;
+    const impl = [
+      { week: 'Week 1', name: 'Discovery', you: ['Operations Manual and training manual', 'Current records and forms', 'One named owner'], we: ['Review manuals, records and forms', 'Map every record to a pilot'], out: 'Scope and plan agreed' },
+      { week: 'Weeks 2–3', name: 'Build', you: ['Answers to mapping questions'], we: ['Move records from Excel, paper or your old system', 'Build forms from your manual', 'Recalculate every expiry'], out: 'Records migrated, forms built' },
+      { week: 'Week 4', name: 'Configure', you: ['Review rules and standards'], we: ['Load the crew list and create accounts', 'Set up training rules and standards', 'Reconcile against the source data'], out: 'Director sign-off' },
+      { week: 'Week 5', name: 'Go-live', you: ['Team attends training on live data'], we: ['Train users on their own data', 'Switch on notices and dashboards'], out: 'Expiries, grades and dashboards live' }
+    ];
+    const iI = s.implI || 0;
+    const smp = (rows) => rows.map(([a, b, c, st]) => ({ a, b, c, chip: chipS(st) }));
+    const tmsMods = [
+      { title: 'Validity control', spec: '5 status levels · checked daily', lead: 'Every licence, medical, check and course is scored against the airline\'s own rule. A pilot\'s overall status is their worst item, so one lapsed check flags the whole file.', points: ['GREEN > 60 days · YELLOW ≤ 60 · RED < 30 · EXPIRED · MISSING', 'Daily action list by fleet, status and item', 'Data-gap report for mandatory items with no record', 'Red and expired items feed the plan and pilot notices automatically'], sampleTitle: 'Action list · 29 items', sample: smp([['Capt. K. Mansour', 'OPC · 9 overdue', 'EXPIRED', 'EXPIRED'], ['F/O S. Ibrahim', 'MED · 7 days', 'RED', 'RED'], ['F/O M. Tarek', 'CRM · no record', 'MISSING', 'MISSING'], ['Capt. Y. Salem', 'LPC · 41 days', 'YELLOW', 'YELLOW'], ['Capt. A. Farouk', 'LC · 167 days', 'GREEN', 'GREEN']]) },
+      { title: 'Expiry engine', spec: 'Calculated, not typed', lead: 'Validity periods, renewal windows and expiry counting are configured to the airline\'s OM-D and national authority. The new expiry is suggested from the rule and reviewed before saving.', points: ['Calendar-month and end-of-month counting', 'Renewal windows keep the original expiry', 'Medical interval set per pilot, by age and operation', 'Check spacing validated against OM limits'], sampleTitle: 'Rules · typical EASA / ICAO values', sample: smp([['OPC', 'ORO.FC.230 · 6 cal. months', 'End of month', 'BLUE'], ['LPC', 'FCL.740.A · 12 months', 'Keeps date', 'BLUE'], ['Line check', 'ORO.FC.230 · 12 cal. months', '3-mo window', 'BLUE'], ['Dangerous goods', 'ICAO Doc 9284', '24 months', 'BLUE'], ['Class 1 medical', 'MED.A.045', 'Age-based', 'BLUE']]) },
+      { title: 'Planning & scheduling', spec: '3-year plan · monthly load', lead: 'Every renewal is placed by expiry and lead time, with the reason shown for each month. Open next month\'s load, see the pilots due, book the simulator group.', points: ['Overdue items pulled into the first planning month', 'Simulator groups aligned to each pilot\'s check expiry', 'OPC + SIM shown as one booking', 'Email on booking, change and cancellation, plus a reminder'], sampleTitle: 'Monthly load · crew to schedule', sample: smp([['Nov 2026', 'Includes 3 overdue', '17', 'RED'], ['Dec 2026', 'OPC + SIM · 5', '18', 'BLUE'], ['Jan 2027', 'OPC + SIM · 7', '22', 'YELLOW'], ['Feb 2027', 'OPC + SIM · 5', '16', 'BLUE'], ['May 2027', 'Peak month', '24', 'YELLOW']]) },
+      { title: 'Recurrent cycle', spec: '3-year programme · per pilot', lead: 'Phases, base-month groups and checklists built from the airline\'s recurrent programme. A passed check or course writes the completion and the new expiry to the pilot\'s record.', points: ['Seasonal phases, e.g. cold and hot weather operations', 'Each item: date, result, score, attempts, remedial, simulator hours, feedback', 'Lapse warnings for checks that expire before the plan', 'Cycle KPIs: completion, on-time, first-pass and remedial rate'], sampleTitle: 'Cycle 2026 – 2029', sample: smp([['Y1 · Hot weather ops', 'Apr – Sep 2026', '100%', 'GREEN'], ['Y1 · Cold weather ops', 'Oct 2026 – Mar 2027', '64%', 'BLUE'], ['Y2 · Hot weather ops', 'Apr – Sep 2027', 'Planned', 'MISSING'], ['Y2 · Cold weather ops', 'Oct 2027 – Mar 2028', 'Planned', 'MISSING'], ['Y3 · Cycle complete', 'Oct 2028 – Mar 2029', 'Planned', 'MISSING']]) },
+      { title: 'Records & audit', spec: 'One digital file · six folders', lead: 'One digital file per pilot, ready for the inspector at any time. Crew-system imports are reconciled against training records, so gaps are found before the auditor finds them.', points: ['Record one pilot or a full class in one step', 'Documents flagged when missing or older than the record they support', 'Every change logged: who, when and how it was entered', 'Automatic backups · encrypted ZIP export for an inspection'], sampleTitle: 'Pilot file · Capt. K. Mansour', sample: smp([['Personal', 'Photo, ID, passport', 'Filed', 'GREEN'], ['Licence & medical', 'Authorisations', 'Filed', 'GREEN'], ['Simulator & checks', 'OPC record', 'Missing', 'RED'], ['Ground training', 'Courses', 'Filed', 'GREEN'], ['3-year cycle', 'Phase records', 'Filed', 'GREEN']]) },
+      { title: 'KPIs & reporting', spec: '8 KPIs · MEETS / WATCH / BELOW', lead: 'Monthly, quarterly and yearly reports for the Director, by fleet and activity. Targets are set by the airline\'s training department.', points: ['Training compliance, on-time renewal and first-pass rate', 'Overdue items and data gaps read the live action list', 'Simulator utilisation against plan, instructor observations', 'Export to PDF or Excel'], sampleTitle: 'KPI report · October 2026', sample: smp([['Training compliance', 'Target ≥ 98%', '98.0%', 'GREEN'], ['On-time renewal', 'Target ≥ 95%', '96.2%', 'GREEN'], ['Overdue items', 'Target 0', '3', 'RED'], ['First-pass rate', 'Target ≥ 95%', '96.4%', 'GREEN'], ['Instructor observations', 'Target 100%', '97%', 'YELLOW']]) },
+      { title: 'Pilot portal & notices', spec: 'Self-service · email', lead: 'Pilots see their own licence, medical, ratings, qualifications and upcoming training. Automatic messages close the loop, and the office stops chasing dates.', points: ['Email ahead of each expiry, e.g. 45 days, passports 90', 'Planned, changed or cancelled training by email', 'Daily digest of changes and expiries for admins', 'Role-based access; every action logged'], sampleTitle: 'Email notices', sample: smp([['Renewal notice', 'Class 1 medical · 8 days', 'Sent', 'GREEN'], ['Assignment', 'OPC + SIM · 4 pilots', 'Sent', 'GREEN'], ['Change notice', 'Class 1 medical · 04 Nov', 'Queued', 'YELLOW'], ['Passport notice', '90 days ahead', 'Sent', 'GREEN'], ['Daily digest', 'Admins · 07:00', 'Daily', 'BLUE']]) }
+    ];
+    const ebtMods = [
+      { title: 'Competency grading', spec: '9 competencies · 73 OBs', lead: 'Every check graded against the nine ICAO/IATA pilot competencies, with all 73 observable behaviours in IATA\'s own wording and numbering. Each exercise is mapped to the competencies it mainly tests and those it supports.', points: ['Recommended grade by the IATA lowest-of-three rule: how many OBs, how often, TEM outcome', '"Insufficient evidence" instead of a number when evidence is thin', 'Any item graded 1 or 2 needs observable-behaviour evidence', 'The instructor decides; a different final grade needs a written reason'], sampleTitle: 'Competency profile · fleet mean', sample: smp([['PRO', 'Application of procedures', '2.7', 'RED'], ['FPM', 'Manual flight path', '3.1', 'YELLOW'], ['COM', 'Communication', '3.4', 'GREEN'], ['KNO', 'Application of knowledge', '3.9', 'GREEN'], ['LTW', 'Leadership & teamwork', '4.5', 'GREEN']]) },
+      { title: 'Forms from your manual', spec: 'Forms · 6 building blocks', lead: 'Rebuilt from your own forms at onboarding: items, grading scale per section, attempts, TEM-applicable items and competency mapping. Printed in the layout of your own paper form.', points: ['Simulator check (OPC/LPC), line check, training & evaluation, cabin crew', 'Your scale per section: S/U/N-A, PASS/FAIL or 1–5', 'First and second attempts recorded', 'Signed on submission; a PDF is generated straight away'], sampleTitle: 'Forms', sample: smp([['Simulator check', 'OPC / LPC · FSTD', 'Live', 'GREEN'], ['Line check', 'Line ops · TEM', 'Live', 'GREEN'], ['Training & evaluation', 'Nine competencies', 'Live', 'GREEN'], ['Cabin crew', 'S / NI / U / N/A', 'Live', 'GREEN'], ['Remedial training', 'Built from your manual', 'Live', 'GREEN']]) },
+      { title: 'Training planning', spec: 'Day 1 → Day 2 · 329 scenarios', lead: 'The next session is built from what the last check found. The recurrent programme is planned as cycles, modules and two-day sessions, each with an assigned instructor.', points: ['Open a pilot\'s Day 1 and see which OBs were demonstrated', 'Choose the competencies to develop', 'IATA Appendix G.V scenarios ranked by coverage, tagged primary or secondary', 'A record of who chose what and when'], sampleTitle: 'Day 2 · ranked scenarios', sample: smp([['Unreliable airspeed', 'FPM · SAW · WLM', '3 / 3', 'BLUE'], ['Engine failure after V1', 'FPM · PRO · COM', '3 / 3', 'BLUE'], ['Go-around, low energy', 'FPM · WLM', '2 / 3', 'BLUE'], ['Wind shear on approach', 'SAW · PSD', '2 / 3', 'BLUE'], ['Your own scenario', 'Visible only to you', 'Custom', 'MISSING']]) },
+      { title: 'Analytics at three altitudes', spec: 'Micro · macro · trend', lead: 'Evaluate the pilot, analyse the cohort, monitor the fleet. Macro analysis separates one pilot struggling from a whole class weak on the same competency.', points: ['Micro: one evaluation, category by category', 'Macro: a cohort side by side, weakest skills ranked', 'Trend: one pilot\'s history, improving, plateauing or slipping', 'Fleet risk board: the pilots to review first'], sampleTitle: 'Fleet risk · share below standard', sample: smp([['PRO', 'Procedures', '42%', 'RED'], ['FPM', 'Manual flight path', '26%', 'RED'], ['COM', 'Communication', '18%', 'YELLOW'], ['WLM', 'Workload', '11%', 'YELLOW'], ['SAW', 'Situation awareness', '5%', 'GREEN']]) },
+      { title: 'Instructor consistency', spec: 'Each grader vs the fleet', lead: 'Each instructor\'s average grade, updated with every submission and compared with the fleet mean, so standards stay consistent. Trainees rate each session through a short link, no login.', points: ['Drift shown against the fleet mean with a tolerance band', 'Supports instructor standardisation in Mixed EBT', 'Quick feedback after each session, no login required', 'Director dashboard for instructor ratings'], sampleTitle: 'Instructor drift · vs fleet mean', sample: smp([['Saleh', '+0.10', 'Within', 'GREEN'], ['Karim', '−0.05', 'Within', 'GREEN'], ['Adel', '+0.45', 'Review', 'YELLOW'], ['Mostafa', '−0.50', 'Review', 'YELLOW'], ['Nabil', '+0.20', 'Within', 'GREEN']]) },
+      { title: 'Signed records & audit', spec: 'Signed PDF · append-only log', lead: 'Submitting a form calculates the grades, generates a signed PDF, adds a permanent record and feeds live analytics at once. Every edit after submission is logged.', points: ['Signed PDF per evaluation, ready to file or share', 'Permanent per-pilot history with the observed behaviours behind each grade', 'Below-standard alerts email your training managers', 'Records exported for IOSA and your authority'], sampleTitle: 'Audit trail · one evaluation', sample: smp([['18:42', 'Submitted and signed', 'Signed', 'GREEN'], ['18:41', 'PDF generated', 'Filed', 'GREEN'], ['18:30', 'Grade 3.3 amended S3 → S2', 'Logged', 'YELLOW'], ['16:05', 'Form opened, session 2', 'Logged', 'BLUE'], ['09:12', 'Check scheduled', 'Logged', 'BLUE']]) },
+      { title: 'Stage coverage', spec: 'Conventional → Mixed EBT', lead: 'Each airline sets its own stage, with a start date, and moves up on the same platform: same records, same pilots, same history. Each check is graded under the stage in force on its date.', points: ['Conventional checking: native', 'Introducing EBT principles (Day 1 → Day 2): native', 'Mixed EBT: native for pilot assessment', 'Baseline EBT: same engine; equivalency tables on the roadmap'], sampleTitle: 'IATA EBT stages', sample: smp([['Stage 0', 'Conventional', 'Live', 'GREEN'], ['Stage 1', 'EBT principles', 'Live', 'GREEN'], ['Stage 2', 'Mixed EBT', 'Live', 'GREEN'], ['Stage 3', 'Baseline EBT', 'Engine live', 'BLUE'], ['Enhanced', 'Needs flight data', 'Out of scope', 'MISSING']]) }
+    ];
+    const tabsOf = (mods, cur, key, light) => mods.map((m, i) => ({ n: '0' + (i + 1), title: m.title, spec: m.spec, sel: i === cur ? 'true' : 'false', go: () => this.setState({ [key]: i }),
+      style: 'display:flex;gap:14px;align-items:baseline;text-align:left;border:none;cursor:pointer;min-height:48px;padding:18px 20px;transition:background 0.25s ease;' + (light ? ('outline:1px solid rgba(0,52,140,0.16);background:' + (i === cur ? '#FFFFFF' : 'rgba(255,255,255,0.5)') + ';box-shadow:' + (i === cur ? 'inset 3px 0 0 #00348C' : 'none')) : ('outline:1px solid rgba(180,180,180,0.28);background:' + (i === cur ? 'rgba(63,158,232,0.2)' : 'rgba(0,52,140,0.3)') + ';box-shadow:' + (i === cur ? 'inset 3px 0 0 #3F9EE8' : 'none'))) }));
+    const tmsI = s.tmsTab || 0, ebtI = s.ebtTab || 0;
+    const curOf = (m) => Object.assign({}, m, { points: m.points.map(t => ({ t })) });
+    const solX = {
+      ebtSpecs: [{ v: '9', l: 'ICAO/IATA pilot competencies' }, { v: '73', l: 'observable behaviours, IATA wording' }, { v: '329', l: 'IATA scenarios for Day 2 planning' }, { v: 'Forms', l: 'as many as you use, built natively rule for rule' }],
+      tmsSpecs: [{ v: '7', l: 'modules in one system' }, { v: '5', l: 'status levels, worst item sets the file' }, { v: '3-year', l: 'recurrent cycle, run per pilot' }, { v: '8', l: 'KPIs, targets set per airline' }],
+      tmsTabs: tabsOf(tmsMods, tmsI, 'tmsTab', true), ebtTabs: tabsOf(ebtMods, ebtI, 'ebtTab', true),
+      tmsCur: curOf(tmsMods[tmsI]), ebtCur: curOf(ebtMods[ebtI]),
+      togSteps: stepsD.map((x, i) => { const on = i === sI; return { n: '0' + (i + 1), sys: x.sys, title: x.title, sel: on ? 'true' : 'false', go: () => this.setState({ solStep: i }), bg: on ? 'rgba(63,158,232,0.22)' : 'rgba(0,52,140,0.3)', bar: on ? '#3F9EE8' : 'transparent', fg: on ? '#FFFFFF' : '#C9CED6', numFg: '#3F9EE8', tagFg: on ? '#001538' : '#B4B4B4', tagBg: on ? '#3F9EE8' : 'transparent', tagBd: on ? '#3F9EE8' : 'rgba(180,180,180,0.45)' }; }),
+      togCur: { title: sc.title, what: sc.what, writes: L(sc.writes) },
+      solSteps: stepsD.map((x, i) => ({ n: '0' + (i + 1), sys: x.sys, title: x.title, sel: i === sI ? 'true' : 'false', go: () => this.setState({ solStep: i }), style: 'display:flex;flex-direction:column;gap:10px;text-align:left;border:none;cursor:pointer;padding:20px 22px;min-height:48px;outline:1px solid rgba(180,180,180,0.28);transition:background 0.25s ease;background:' + (i === sI ? 'rgba(63,158,232,0.2)' : 'rgba(0,52,140,0.3)') + ';box-shadow:' + (i === sI ? 'inset 3px 0 0 #3F9EE8' : 'none') })),
+      stCur: { sys: sc.sys, title: sc.title, what: sc.what, writes: L(sc.writes), fields: sc.fields.map(([l, v, c, st]) => ({ l, v, c, chip: chipS(st), bg: '#FFFFFF' })) },
+      stPrev: () => this.setState(st => ({ solStep: ((st.solStep || 0) + 3) % 4 })),
+      stNext: () => this.setState(st => ({ solStep: ((st.solStep || 0) + 1) % 4 })),
+      capFilters: ['All', 'Compliance', 'Competence', 'Leadership', 'Audit', 'Together'].map(f => ({ label: f, on: cf === f ? 'true' : 'false', go: () => this.setState({ capF: f }), style: "font:600 12.5px/1 'Inter',sans-serif;padding:0 14px;min-height:40px;border-radius:2px;cursor:pointer;border:1px solid " + (cf === f ? '#00348C' : 'rgba(0,52,140,0.3)') + ';background:' + (cf === f ? '#00348C' : '#FFFFFF') + ';color:' + (cf === f ? '#FFFFFF' : '#00348C') })),
+      capCount: capVis.length + ' of ' + caps.length + ' capabilities',
+      capRows: capVis.map(([cap, detail, area, t, e]) => { const a = cell(t), b = cell(e); return { cap, detail, area, tms: a[0], tmsStyle: a[1], ebt: b[0], ebtStyle: b[1] }; }),
+      dmItems: dm.map((d, i) => ({ name: d.name, on: i === dI ? 'true' : 'false', go: () => this.setState({ dmI: i }), style: "text-align:left;border:none;cursor:pointer;min-height:56px;padding:16px 18px;font:600 14px/1.3 'Inter',sans-serif;outline:1px solid rgba(180,180,180,0.28);transition:background 0.25s ease;background:" + (i === dI ? '#3F9EE8' : 'rgba(0,52,140,0.45)') + ';color:' + (i === dI ? '#001538' : '#FFFFFF') })),
+      dmCur: { name: dm[dI].name, desc: dm[dI].desc, w: L(dm[dI].w), r: L(dm[dI].r) },
+      roleTabs: roles.map((r, i) => ({ label: r.label, sel: i === rI ? 'true' : 'false', go: () => this.setState({ roleI: i }), style: 'color:' + (i === rI ? '#000' : '#4A5361') + ';border-bottom-color:' + (i === rI ? '#00348C' : 'transparent') })),
+      roleCur: { name: roles[rI].name, who: roles[rI].who, tms: L(roles[rI].tms), ebt: L(roles[rI].ebt) },
+      implTabs: impl.map((x, i) => ({ week: x.week, name: x.name, on: i === iI ? 'true' : 'false', go: () => this.setState({ implI: i }), fg: i === iI ? '#FFFFFF' : '#000', sub: i === iI ? '#ECF0F3' : '#4A5361', style: 'display:flex;flex-direction:column;gap:8px;text-align:left;border:none;cursor:pointer;padding:16px 16px;min-height:64px;border-radius:2px;transition:background 0.25s ease;background:' + (i === iI ? '#00348C' : (i < iI ? 'rgba(63,158,232,0.35)' : '#FFFFFF')) + ';outline:1px solid rgba(0,52,140,0.16)' })),
+      implCur: { you: L(impl[iI].you), we: L(impl[iI].we), out: impl[iI].out }
+    };
+    return {
+      ...solX,
+      isHome: s.page === 'home',
+      isAbout: s.page === 'about',
+      isSolutions: s.page === 'solutions',
+      isEbtcbta: s.page === 'ebtcbta',
+      isClients: s.page === 'clients',
+      isContact: s.page === 'contact',
+
+      scrolled,
+      notScrolled: !scrolled,
+
+
+      navLinkStyle_home: linkStyle(s.page === 'home'),
+      navLinkStyle_about: linkStyle(s.page === 'about'),
+      navLinkStyle_solutions: linkStyle(s.page === 'solutions'),
+      navLinkStyle_clients: linkStyle(s.page === 'clients'),
+      navLinkStyle_contact: linkStyle(s.page === 'contact'),
+      navClass_home: navClass(s.page === 'home'),
+      navClass_about: navClass(s.page === 'about'),
+      navClass_solutions: navClass(s.page === 'solutions'),
+      navClass_clients: navClass(s.page === 'clients'),
+      navClass_contact: navClass(s.page === 'contact'),
+
+      solutionsOpen: s.solutionsOpen,
+      solutionsExpanded: s.solutionsOpen ? 'true' : 'false',
+      solutionsKey: (e) => {
+        if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); this.setState({ solutionsOpen: true }); }
+        if (e.key === 'Escape') this.setState({ solutionsOpen: false });
+      },
+      openSolutions: () => this.setState({ solutionsOpen: true }),
+      closeSolutions: () => this.setState({ solutionsOpen: false }),
+      menuOpen: s.menuOpen,
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
+
+      goHome: () => { window.location.href = 'index.dc.html'; },
+      goAbout: () => { window.location.href = 'About.dc.html'; },
+      goSolutions: () => { window.location.href = 'Solutions.dc.html'; },
+      goClients: () => { window.location.href = 'Clients.dc.html'; },
+      goContact: () => { window.location.href = 'Contact.dc.html'; },
+      goEbt: () => { window.location.href = 'EBT-CBTA.dc.html'; },
+
+      f1Open: s.f1, f2Open: s.f2, f3Open: s.f3,
+      f1Style: discStyle(s.f1), f2Style: discStyle(s.f2), f3Style: discStyle(s.f3),
+      f1Icon: discIcon(s.f1), f2Icon: discIcon(s.f2), f3Icon: discIcon(s.f3),
+      toggleF1: () => this.setState(st => ({ f1: !st.f1 })),
+      toggleF2: () => this.setState(st => ({ f2: !st.f2 })),
+      toggleF3: () => this.setState(st => ({ f3: !st.f3 })),
+
+      onTiltMove, onTiltLeave,
+
+      isMockForm: s.mockTab === 'form',
+      isMockGrade: s.mockTab === 'grade',
+      isMockFleet: s.mockTab === 'fleet',
+      setMockForm: () => this.setState({ mockTab: 'form' }),
+      setMockGrade: () => this.setState({ mockTab: 'grade' }),
+      setMockFleet: () => this.setState({ mockTab: 'fleet' }),
+      tabSelForm: s.mockTab === 'form' ? 'true' : 'false',
+      tabSelGrade: s.mockTab === 'grade' ? 'true' : 'false',
+      tabSelFleet: s.mockTab === 'fleet' ? 'true' : 'false',
+      tabStyleForm: tabStyle(s.mockTab === 'form'),
+      tabStyleGrade: tabStyle(s.mockTab === 'grade'),
+      tabStyleFleet: tabStyle(s.mockTab === 'fleet'),
+      mockPath: { form: '/crew/ash/new-check', grade: '/crew/' + pilot.slug, fleet: '/oversight' }[s.mockTab],
+      mockCrumbRoot: s.mockTab === 'fleet' ? 'Oversight' : 'Crew',
+      mockCrumb: { form: 'New check', grade: pilot.name, fleet: 'Overview' }[s.mockTab],
+      railItems: ['Oversight','Crew','Competency','Registry','Instructors','Feedback','Audit'].map(label => {
+        const on = (s.mockTab === 'fleet' && label === 'Oversight') || (s.mockTab !== 'fleet' && label === 'Crew');
+        const target = label === 'Oversight' ? 'fleet' : (label === 'Crew' ? 'grade' : null);
+        return {
+          label,
+          bg: on ? 'rgba(180,180,180,0.34)' : 'transparent',
+          fg: on ? '#fff' : '#B4B4B4',
+          fw: on ? 600 : 400,
+          cursor: target ? 'pointer' : 'default',
+          go: target ? () => this.setState({ mockTab: target }) : undefined
+        };
+      }),
+      gradedCount: graded,
+      gradedPct: Math.round(graded / total * 100) + '%',
+      gradedDeg: (graded / total * 360).toFixed(1) + 'deg',
+      isWizForm: s.wizStep === 'form',
+      isWizReview: s.wizStep === 'review',
+      goReview: () => this.setState({ wizStep: 'review' }),
+      backToForm: (e) => { if (e) e.preventDefault(); this.setState({ wizStep: 'form' }); },
+      catTitle: this.mockCats[s.wizCat].name,
+      exceptionNote: exceptions.length
+        ? 'Grades of 1 and 2 tint the row and are collected automatically into the review step, ' + exceptions.length + ' so far.'
+        : 'Grades of 1 and 2 tint the row and are collected automatically into the review step.',
+      wizardCats: this.mockCats.map((cat, ci) => {
+        const done = cat.items.filter(it => s.grades[it[0]] !== undefined && s.grades[it[0]] !== null).length;
+        const complete = done === cat.items.length;
+        const active = ci === s.wizCat;
+        return {
+          name: cat.short,
+          count: done + '/' + cat.items.length,
+          tick: complete ? '✓' : '',
+          ring: complete || active ? '#3F9EE8' : 'rgba(180,180,180,0.6)',
+          fill: complete ? '#3F9EE8' : 'transparent',
+          bg: active ? 'rgba(63,158,232,0.16)' : 'transparent',
+          fg: active || complete ? '#fff' : '#B4B4B4',
+          go: () => this.setState({ wizCat: ci, wizStep: 'form' })
+        };
+      }),
+      wizardItems: this.mockCats[s.wizCat].items.map(([code, name]) => {
+        const g = s.grades[code];
+        const low = g === 1 || g === 2;
+        return {
+          code, name,
+          rowBg: low ? 'rgba(255,90,19,0.12)' : 'rgba(0,52,140,0.4)',
+          border: low ? 'rgba(255,90,19,0.45)' : 'rgba(180,180,180,0.24)',
+          scale: ['1','2','3','4','5','N/A'].map(lbl => {
+            const val = lbl === 'N/A' ? 'NA' : Number(lbl);
+            const on = g === val;
+            const warn = on && (val === 1 || val === 2);
+            return {
+              code: lbl,
+              bg: on ? (warn ? '#FF5A13' : '#3F9EE8') : 'rgba(0,52,140,0.5)',
+              fg: on ? (warn ? '#fff' : '#000') : 'rgba(180,180,180,0.75)',
+              border: on ? (warn ? '#FF5A13' : '#3F9EE8') : 'rgba(180,180,180,0.32)',
+              set: () => this.setState(st => {
+                const next = Object.assign({}, st.grades);
+                if (next[code] === val) { delete next[code]; } else { next[code] = val; }
+                return { grades: next };
+              })
+            };
+          })
+        };
+      }),
+      exceptionRows: exceptions,
+      noExceptions: exceptions.length === 0,
+      reviewStats: [
+        { label: 'Items graded', value: graded + '/' + total, color: graded === total ? '#3F9EE8' : '#fff' },
+        { label: 'Exceptions', value: String(exceptions.length), color: exceptions.length ? '#FF5A13' : '#3F9EE8' },
+        { label: 'Mean grade', value: meanGrade + ' / 5', color: Number(meanGrade) < 3.0 ? '#FF5A13' : '#3F9EE8' }
+      ],
+      toggleDeclare: () => this.setState(st => ({ declared: !st.declared })),
+      declareTick: s.declared ? '✓' : '',
+      declareRing: s.declared ? '#3F9EE8' : 'rgba(180,180,180,0.6)',
+      declareFill: s.declared ? '#3F9EE8' : 'transparent',
+      declareBorder: s.declared ? 'rgba(63,158,232,0.5)' : 'rgba(180,180,180,0.26)',
+      submitNote: s.declared
+        ? 'A signed PDF is generated and the record updates immediately.'
+        : 'Sign the declaration to unlock submit.',
+      submitStyle: 'font:600 12.5px/1 \'Inter\',sans-serif;border:none;border-radius:2px;padding:11px 16px;'
+        + (s.declared
+          ? 'color:#000;background:#FF5A13;cursor:pointer'
+          : 'color:#B4B4B4;background:rgba(0,52,140,0.55);cursor:not-allowed'),
+      signSubmit: () => { if (s.declared) this.setState({ mockTab: 'grade', selPilot: 0, recTab: 1 }); },
+
+      pilotInit: pilot.init,
+      pilotName: pilot.name,
+      pilotMeta: pilot.meta,
+      pilotScore: pilot.score,
+      pilotResult: pilot.result,
+      pilotResultColor: pilot.result === 'Pass' ? '#3F9EE8' : '#FF5A13',
+      pilotResultBorder: pilot.result === 'Pass' ? 'rgba(63,158,232,0.55)' : 'rgba(255,90,19,0.55)',
+      recordTabs: ['Record','Competency','Analysis','History'].map((label, i) => ({
+        label,
+        sel: i === s.recTab ? 'true' : 'false',
+        bg: i === s.recTab ? 'rgba(63,158,232,0.18)' : 'transparent',
+        fg: i === s.recTab ? '#fff' : '#B4B4B4',
+        go: () => this.setState({ recTab: i })
+      })),
+      isRecRecord: s.recTab === 0,
+      isRecComp: s.recTab === 1,
+      isRecAnalysis: s.recTab === 2,
+      isRecHistory: s.recTab === 3,
+      compRows: compRows,
+      compNote: belowTau.length
+        ? 'Below standard on ' + belowTau.join(', ') + '. Exceptions from the last check open one click deeper, collapsed by exception rather than listing every manoeuvre.'
+        : 'Every competency at or above standard. Exceptions from the last check open one click deeper, collapsed by exception rather than listing every manoeuvre.',
+      historyRows: [
+        ['2026-09-13','Sim check','Simulator check · LOFT, engine failure profile', 0],
+        ['2026-05-22','Line check','Line check · scheduled sector', -0.1],
+        ['2026-02-08','Sim check','Simulator check · recurrent', -0.2],
+        ['2025-10-17','Training monitor','Training / evaluation monitor', -0.3],
+        ['2025-06-03','Sim check','Simulator check · recurrent', -0.4]
+      ].map(([date, form, title, delta]) => {
+        const v = clamp(Number(pilot.score) + delta);
+        return { date, form, title, instructor: pilot.instructor, score: v.toFixed(1), color: v < 3.0 ? '#FF5A13' : '#3F9EE8' };
+      }),
+      trendBars: [
+        ['Jun 25', -0.4], ['Oct 25', -0.3], ['Feb 26', -0.2], ['May 26', -0.1], ['Sep 26', 0]
+      ].map(([label, delta]) => {
+        const v = clamp(Number(pilot.score) + delta);
+        return { label, value: v.toFixed(1), height: (v / 5 * 100).toFixed(1) + '%', color: v < 3.0 ? '#FF5A13' : '#3F9EE8' };
+      }),
+      analysisNote: Number(pilot.score) < 3.0
+        ? 'Trend is improving but still below standard. STRATOS holds the pilot in the remedial cohort until two consecutive checks clear 3.0.'
+        : 'Trend is stable and above standard. The coaching summary reinforces the weakest competency rather than the overall score.',
+      auditRows: [
+        { stamp: '2026-09-13 18:42', text: 'Check submitted and signed by ' + pilot.instructor + ' (' + pilot.form + ').', dot: '#3F9EE8' },
+        { stamp: '2026-09-13 18:41', text: 'Declaration accepted; signed PDF generated.', dot: '#3F9EE8' },
+        { stamp: '2026-09-13 18:30', text: 'Grade on 3.3 amended from S3 to S2 before submission.', dot: '#FF5A13' },
+        { stamp: '2026-09-13 16:05', text: 'Form opened on tablet, simulator session 2.', dot: '#B4B4B4' },
+        { stamp: '2026-09-09 09:12', text: 'Check scheduled by Karim.', dot: '#B4B4B4' }
+      ],
+      overviewStats: [
+        { label: 'Fleet mean', value: '3.5', note: 'A320 · all forms · standard 3.0', color: '#fff' },
+        { label: 'Checks this month', value: '12', note: '5 pending review', color: '#fff' },
+        { label: 'Below standard', value: '4', note: 'Pilots with a competency under 3.0', color: '#FF5A13' },
+        { label: 'Checks overdue', value: '4', note: 'Last check older than six months', color: '#FF5A13' }
+      ],
+      pendingRows: [
+        ['Capt. Joe','Saleh','Sim check','3.7','Pass'],
+        ['Capt. John','Karim','Line check','2.8','Review'],
+        ['Capt. Mike','Adel','Sim check','3.4','Pass'],
+        ['Capt. Chris','Saleh','Training monitor','3.1','Pass'],
+        ['Capt. Harry','Mostafa','Cabin crew','2.6','Review']
+      ].map(([pilot, instructor, form, score, state], pi) => {
+        const warn = state === 'Review';
+        return {
+          pilot, instructor, form, score, state,
+          go: () => this.setState({ mockTab: 'grade', selPilot: pi, recTab: 1 }),
+          color: warn ? '#FF5A13' : '#3F9EE8',
+          bg: warn ? 'rgba(255,90,19,0.1)' : 'rgba(0,52,140,0.4)',
+          border: warn ? 'rgba(255,90,19,0.4)' : 'rgba(180,180,180,0.24)',
+          border2: warn ? 'rgba(255,90,19,0.55)' : 'rgba(63,158,232,0.5)'
+        };
+      }),
+      riskRows: [
+        ['PRO · Application of procedures', 42],
+        ['FPM · Flight path mgmt · manual', 26],
+        ['COM · Communication', 18],
+        ['WLM · Workload management', 11],
+        ['SAW · Situation awareness', 5]
+      ].map(([name, pct]) => ({
+        name, pct: pct + '%', width: pct + '%',
+        color: pct >= 26 ? '#FF5A13' : '#3F9EE8'
+      })),
+      howSteps: [
+        { num: 'STEP 01', title: 'Grade the check', desc: 'The instructor works through the airline\u2019s own form in a wizard, items scored 1–5 or N/A, category by category, on a tablet in the sim.', accent: '#3F9EE8' },
+        { num: 'STEP 02', title: 'Review and sign', desc: 'Grades of 1 and 2 are collected automatically, the nine ICAO competencies are derived from the item grades, and the instructor signs a declaration before submit unlocks.', accent: '#3F9EE8' },
+        { num: 'STEP 03', title: 'The record updates', desc: 'The check joins the pilot\u2019s history, measured against the fleet mean and their own rolling average on a 0–5 scale with standard 3.0.', accent: 'rgba(180,180,180,0.6)' },
+        { num: 'STEP 04', title: 'Oversight sees it', desc: 'Cohort standing, competency profile, risk contribution and instructor deviation recompute, and every edit after submission is logged, append-only.', accent: 'rgba(180,180,180,0.6)' }
+      ],
+
+      stageOptions: ['Paper / PDF forms', 'Spreadsheets', 'An existing ETR system', 'Starting EBT/CBTA'].map(label => ({
+        label,
+        onClick: () => this.setState({ stage: label }),
+        style: `font:500 13px/1 "Inter",sans-serif;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.25s ease;border:1px solid ${s.stage === label ? '#3F9EE8' : 'rgba(180,180,180,0.5)'};background:${s.stage === label ? 'rgba(63,158,232,0.16)' : 'rgba(0,52,140,0.45)'};color:${s.stage === label ? '#fff' : '#B4B4B4'}`
+      })),
+
+      probSlides: this.probDefs.map((p, i) => ({
+        kicker: p.kicker, verdict: p.verdict, body: p.body,
+        index: (i + 1) + ' / ' + this.probDefs.length
+      })),
+      probTrackStyle: 'display:flex;transform:translateX(' + (-100 * s.probIdx) + '%)',
+      probDots: this.probDefs.map((p, i) => ({
+        cls: 'stratos-dot' + (i === s.probIdx ? ' on' : ''),
+        aria: 'Show ' + p.kicker,
+        go: () => this.setState({ probIdx: i })
+      })),
+      probPrev: () => this.setState(st => ({ probIdx: (st.probIdx + this.probDefs.length - 1) % this.probDefs.length })),
+      probNext: () => this.setState(st => ({ probIdx: (st.probIdx + 1) % this.probDefs.length })),
+      probKey: (e) => {
+        const n = this.probDefs.length;
+        if (e.key === 'ArrowRight') { e.preventDefault(); this.setState(st => ({ probIdx: (st.probIdx + 1) % n })); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); this.setState(st => ({ probIdx: (st.probIdx + n - 1) % n })); }
+      },
+      probDown: (e) => { this._px = e.clientX; },
+      probUp: (e) => {
+        if (this._px == null) return;
+        const dx = e.clientX - this._px;
+        this._px = null;
+        if (Math.abs(dx) < 44) return;
+        const n = this.probDefs.length;
+        this.setState(st => ({ probIdx: (st.probIdx + (dx < 0 ? 1 : n - 1)) % n }));
+      },
+
+      competencyChips: this.compDefs.map((c, i) => ({
+        code: c.code,
+        cls: 'stratos-chip' + (i === s.selComp ? ' on' : ''),
+        on: i === s.selComp ? 'true' : 'false',
+        go: () => this.setState({ selComp: i })
+      })),
+      compCode: comp.code,
+      compName: comp.name,
+      compWhat: comp.what,
+      compMean: comp.mean.toFixed(1),
+      compWidth: (comp.mean / 5 * 100).toFixed(1) + '%',
+      compColor: comp.mean < 3.0 ? '#FF5A13' : '#3F9EE8',
+      compBelow: comp.below + '%',
+      compItems: String(comp.items),
+
+      journeyNodes: this.journeyDefs.map((j, i) => ({
+        stage: j.stage, name: j.name,
+        cls: 'stratos-node' + (i === s.journeyIdx ? ' on' : ''),
+        on: i === s.journeyIdx ? 'true' : 'false',
+        fg: i === s.journeyIdx ? '#fff' : '#B4B4B4',
+        line: i === s.journeyIdx ? '#3F9EE8' : 'rgba(180,180,180,0.3)',
+        go: () => this.setState({ journeyIdx: i })
+      })),
+      journeyDesc: journey.desc,
+      journeyWith: journey.with,
+      journeyFacts: journey.facts,
+
+      selectedBandColor: sel.color === '#B4B4B4' ? '#ECF0F3' : sel.color,
+      selectedBandNote: sel.note,
+
+      faqTabs: this.faqDefs.map((q, i) => ({
+        q: q.q,
+        on: i === s.faqIdx ? 'true' : 'false',
+        bg: i === s.faqIdx ? 'rgba(0,52,140,0.62)' : 'rgba(0,52,140,0.4)',
+        fg: i === s.faqIdx ? '#fff' : '#B4B4B4',
+        accent: i === s.faqIdx ? '#3F9EE8' : 'transparent',
+        go: () => this.setState({ faqIdx: i })
+      })),
+      faqQ: this.faqDefs[s.faqIdx].q,
+      faqA: this.faqDefs[s.faqIdx].a,
+
+      evidenceBand: [
+        { value: '120+', label: 'Pilots graded in daily production' },
+        { value: '250+', label: 'Cabin crew on the same platform' },
+        { value: '14,000+', label: 'Grades recorded to date' },
+        { value: '9', label: 'ICAO competencies on every check' }
+      ],
+
+      competencyList: [
+        { code: 'PRO', name: 'Application of procedures and compliance with regulations' },
+        { code: 'KNO', name: 'Application of knowledge' },
+        { code: 'COM', name: 'Communication' },
+        { code: 'FPA', name: 'Flight path management, automation' },
+        { code: 'FPM', name: 'Flight path management, manual control' },
+        { code: 'LTW', name: 'Leadership and teamwork' },
+        { code: 'PSD', name: 'Problem solving and decision making' },
+        { code: 'SAW', name: 'Situation awareness and management of information' },
+        { code: 'WLM', name: 'Workload management' }
+      ],
+
+      bandScale: bandDefs.map((b, i) => ({
+        code: b.code,
+        height: (18 + i * 12) + 'px',
+        color: b.code === s.selectedGrade ? (b.color === '#B4B4B4' ? '#ECF0F3' : b.color) : 'rgba(180,180,180,0.4)',
+        on: b.code === s.selectedGrade ? 'true' : 'false',
+        go: () => this.setState({ selectedGrade: b.code })
+      })),
+
+      principleCards: [
+        { num: '01', title: 'Absolute precision', desc: 'Aviation data gets the rigour a flight deck demands. Grading rules, competency mappings and regulatory alignment are treated as non-negotiable, not approximated.' },
+        { num: '02', title: 'Architectural foresight', desc: 'Every module and database structure is built to plug into a wider system, which is why pilot and cabin-crew evaluation already coexist on one platform.' },
+        { num: '03', title: 'Actionable clarity', desc: 'Complex metrics are distilled into a risk ranking, a heatmap, a coaching summary, rather than raw numbers a Director has to interpret alone.' },
+        { num: '04', title: 'Continuous integration', desc: 'An evaluation feeds analytics, analytics feed coaching and risk flags, and trainee feedback feeds back into how training is run.' }
+      ],
+
+      goEbtDemo: (e) => { if (e) e.preventDefault(); this.setState({ page: 'ebtcbta' }, () => { setTimeout(() => { const el = document.getElementById('inside-stratos'); if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 80); }, 260); }); },
+
+      formCards: [
+        { code: 'Sim check', title: 'Simulator Check', status: 'Live', desc: 'The periodic evaluation a pilot completes in the flight simulator, graded directly across all nine core EBT competencies.', scale: 'Nine-competency model · S1–S5' },
+        { code: 'Line check', title: 'Line Check', status: 'Live', desc: 'An in-flight evaluation during real operations, structured into Threat & Error Management, CRM, EBT Competency and Knowledge.', scale: 'Four sections · nine competencies inside' },
+        { code: 'Training monitor', title: 'Training / Evaluation Monitor', status: 'In progress', desc: 'An ongoing training-monitor form used alongside the simulator and line checks, carried forward toward the same nine-competency model.', scale: 'Legacy technical / CRM categories' },
+        { code: 'Cabin crew', title: 'Cabin Crew Assessment', status: 'Live', desc: 'The annual evaluation for cabin crew, using a categorical framework suited to cabin operations rather than the pilot model, by design.', scale: 'Categorical scale · cabin operations' }
+      ].map(fm => Object.assign({}, fm, {
+        statusColor: fm.status === 'Live' ? '#3F9EE8' : '#FF5A13',
+        statusBorder: fm.status === 'Live' ? 'rgba(63,158,232,0.5)' : 'rgba(255,90,19,0.5)'
+      })),
+
+      altitudes: [
+        { num: '01', name: 'Micro', unit: 'One evaluation', short: 'A category-by-category breakdown of one exam, exactly what happened in this session.', desc: 'A category-by-category breakdown of one specific exam, detecting automatically whether the form uses numeric or categorical scoring. The closest view available, exactly what happened in this session, category by category, behaviour by behaviour.', points: ['Observed behaviours held against each grade', 'Threat and error management captured in the same record'] },
+        { num: '02', name: 'Macro', unit: 'A cohort, side by side', short: 'Separates one pilot struggling from a whole class weak on the same competency.', desc: 'A comparison across every pilot in a training group, class, rank or aircraft type, using each pilot\u2019s latest exam. This is what separates \u201cone pilot struggled\u201d from \u201cthis entire class is weak on the same competency\u201d, a training-programme issue rather than an individual one.', points: ['Template coverage: who has and has not completed each module, filterable by rank', 'Per-skill, per-attempt heatmap flagging any skill with more than three borderline results'] },
+        { num: '03', name: 'Trend', unit: 'One pilot, over time', short: 'A series of disconnected evaluations becomes a visible trajectory.', desc: 'A chronological view of a pilot\u2019s full history on a given form, with per-skill and per-category pass rates charted over time. A series of disconnected evaluations becomes a visible trajectory, improving, plateauing or slipping, long before any single report would show it.', points: ['Dedicated Line Check (Line check) competency profile across the whole line-check history', 'Predictive risk flagging surfaces a short list of names, not a wall of numbers'] }
+      ],
+
+      concordanceRows: [
+        ['Saleh', 0.1], ['Karim', -0.05], ['Adel', 0.45], ['Mostafa', -0.5], ['Nabil', 0.2]
+      ].map(([name, drift]) => {
+        const half = Math.min(Math.abs(drift) / 1.2, 0.5) * 100;
+        return {
+          name,
+          label: (drift >= 0 ? '+' : '−') + Math.abs(drift).toFixed(2),
+          color: Math.abs(drift) > 0.4 ? '#FF5A13' : '#3F9EE8',
+          left: drift >= 0 ? '50%' : (50 - half) + '%',
+          width: Math.max(half, 1.5) + '%'
+        };
+      }),
+
+      regRows: [
+        { ref: 'ICAO Doc 9868', what: 'Procedures for air navigation services, training.' },
+        { ref: 'ICAO Doc 9995', what: 'The Evidence-Based Training manual itself.' },
+        { ref: 'IATA/ICAO/IFALPA', what: 'EBT Implementation Guide, Edition 2 (2024), the grading engine is built to it.' },
+        { ref: 'EASA ORO.FC.231', what: 'Evidence-based training.' },
+        { ref: 'IATA IOSA', what: 'Records exported for the operational safety audit, and for inspection by the airline\'s own authority.' }
+      ],
+
+      stageCards: [
+        { num: 'STAGE 0', name: 'Conventional', desc: 'Traditional recurrent training and checking, where most airlines still are.', with: 'Your manual becomes working forms, built by us, rule for rule. Historical gradings loaded at implementation. You keep the programme exactly as approved, and the competency record starts building underneath it.' },
+        { num: 'STAGE 1', name: 'Mixed', desc: 'EBT running alongside the conventional programme, both graded and recorded.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool.' },
+        { num: 'STAGE 2', name: 'Baseline', desc: 'Recurrent training and assessment fully dedicated to EBT; licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour. The same system you started in, nothing to migrate.' }
+      ],
+
+      roleCards: [
+        { num: '01', name: 'Training Director', who: 'Sees everything', desc: 'Every pilot, every instructor, every form, the fleet-wide dashboards and the administrative controls. Manages accounts and oversees the training programme as a whole.' },
+        { num: '02', name: 'Instructor', who: 'TRE / TRI / Instructor', desc: 'Fills out evaluation forms during and after a session, against the same competency standard the rest of the pool is held to. Sees their own evaluation history and the pilots they have assessed.' },
+        { num: '03', name: 'Trainee', who: 'Pilot / Cabin crew', desc: 'The subject of the evaluation, and a participant in it, rating the ground and simulator experience through a short-lived link after each session, with no login required.' }
+      ],
+
+      implSteps: [
+        { num: '01', name: 'Discovery', desc: 'Collect the airline\u2019s training manual and existing evaluation forms, digital or paper.' },
+        { num: '02', name: 'Build', desc: 'Each form recreated exactly: same structure, scoring bands and sign-off chain, even from paper originals. Built by aviation training and compliance specialists, cross-checked against your Operations Manual.' },
+        { num: '03', name: 'Configure', desc: 'Pilot and crew rosters loaded, instructor and Director accounts created, department structure set (pilots vs cabin crew).' },
+        { num: '04', name: 'Go-live', desc: 'Instructors use the forms they already know, now digital. Grading, reporting and analytics run automatically from the first submission.' }
+      ],
+
+      productionStats: [
+        { value: '120+', label: 'Pilots on the platform' },
+        { value: '250+', label: 'Cabin crew' },
+        { value: '14,000+', label: 'Grades recorded' }
+      ],
+
+      roadmapCards: [
+      ],
+
+      homeSolutionCards,
+      moduleCards: [
+        { tag: 'MODULE 01', title: 'Digital Evaluation Forms', desc: 'Simulator check, line check, training monitor and cabin crew forms, built to the airline\u2019s own structure with built-in validation and full observed-behaviour detail.' },
+        { tag: 'MODULE 02', title: 'Competency Grading Engine', desc: 'Automatic grading on the airline\u2019s official rules, including the \u201clowest of three\u201d principle, on the airline\u2019s own scale.' },
+        { tag: 'MODULE 03', title: 'Instant Reports & Records', desc: 'A signed PDF report the moment a form is submitted, with pending-approval review and a full audit trail.' },
+        { tag: 'MODULE 04', title: 'AI Coaching Assistant', desc: 'Plain-language coaching summaries drawn from a pilot\u2019s history once there\u2019s enough data to say something meaningful.' },
+        { tag: 'MODULE 05', title: 'Micro, Macro & Trend Analytics', desc: 'Single-exam, cohort, and pilot-history views, plus fleet dashboards with risk ranking and each instructor\u2019s average grade.' },
+        { tag: 'MODULE 06', title: 'Trainee Feedback Loop', desc: 'No-login QR feedback after each session, rolled up into a dedicated Director dashboard.' }
+      ],
+
+      gradeBands,
+      band1Color: bandColor(bandDefs[0]),
+      band2Color: bandColor(bandDefs[1]),
+      band3Color: bandColor(bandDefs[2]),
+      band4Color: bandColor(bandDefs[3]),
+      band5Color: bandColor(bandDefs[4]),
+      selectS1: () => this.setState({ selectedGrade: 'S1' }),
+      selectS2: () => this.setState({ selectedGrade: 'S2' }),
+      selectS3: () => this.setState({ selectedGrade: 'S3' }),
+      selectS4: () => this.setState({ selectedGrade: 'S4' }),
+      selectS5: () => this.setState({ selectedGrade: 'S5' }),
+      needleStyle: `transform:rotate(${needleRot}deg)`,
+      selectedCode: sel.code,
+      selectedLabel: sel.label,
+      selectedRange: sel.range,
+      selectedCodeStyle: 'color:#ffffff',
+      showRemedialAlert: sel.flagged,
+      selectedGradeLabel: `Grade ${sel.code}`,
+
+      tickerItems2x: (() => {
+        const items = ['Nine ICAO/IATA pilot competencies','All 73 IATA observable behaviours','ICAO Doc 9995','IATA EBT Implementation Guide, Edition 2 (2024)','IATA Competency Assessment and Evaluation guidance, 4th edition (2025)','EASA ORO.FC.231'];
+        return items.concat(items);
+      })()
+    };
+  }
+}
+
+</script>
+</body>
+</html>
