@@ -1,0 +1,31 @@
+# STRATOS
+
+> STRATOS (Intelligence-Driven Aviation) is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It builds software for the way airlines operate and started with pilot training: STRATOS EBT/CBTA and STRATOS TMS are live with airlines today.
+
+Website: https://stratos-ida.com
+Contact: info@stratos-ida.com
+Location: Tallinn, Estonia
+
+## Products
+
+- [STRATOS EBT/CBTA](https://stratos-ida.com/ebt-cbta): Evidence-Based Training (EBT) and Competency-Based Training and Assessment (CBTA) platform for airline recurrent pilot training. Every check is graded against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method (also ECAA). Produces a signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and analytics at three levels: pilot, cohort and fleet. For Training Directors, Heads of Training and TRE/TRI leads.
+- [STRATOS TMS](https://stratos-ida.com/tms): Training management system for airlines. Pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority. Gives a daily action list of renewals by status (green, yellow, red, expired, missing). For Directors of Training, Heads of Training and Crew Training Managers.
+- [How they work together](https://stratos-ida.com/solutions): Airlines that take both products share one crew list, one pilot record and one login, so nothing is typed twice.
+
+## Key facts
+
+- Not tied to one regulator: each airline is configured to its own training manual and authority.
+- Every airline's data is isolated from every other's; pilot and cabin-crew records are kept separate at the database level, and data is exportable in full at any time.
+- Role-based access in both products, with every action logged.
+- The instructor always sets the final grade; any override needs a written reason, and STRATOS never overwrites it. The airline keeps every regulatory obligation.
+- STRATOS EBT/CBTA sits alongside an airline's LMS; it does not deliver e-learning.
+- Implementation: four stages, about five weeks from receiving the airline's manual, records and forms. The airline names one owner; STRATOS does the setup.
+- Founding reference client: AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+
+## Pages
+
+- [Home](https://stratos-ida.com/): Company overview.
+- [About](https://stratos-ida.com/about): Vision, mission, team experience and direction.
+- [Solutions](https://stratos-ida.com/solutions): Both products and how they connect.
+- [Clients](https://stratos-ida.com/clients): Airlines using STRATOS.
+- [Contact](https://stratos-ida.com/contact): Book a walkthrough on your own check forms and crew data.

@@ -1,0 +1,15 @@
+{
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/index.dc.html" },
+    { "source": "/about", "destination": "/About.dc.html" },
+    { "source": "/solutions", "destination": "/Solutions.dc.html" },
+    { "source": "/ebt-cbta", "destination": "/EBT-CBTA.dc.html" },
+    { "source": "/tms", "destination": "/TMS.dc.html" },
+    { "source": "/clients", "destination": "/Clients.dc.html" },
+    { "source": "/contact", "destination": "/Contact.dc.html" }
+  ],
+  "headers": [
+    { "source": "/llms.txt", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }] }
+  ]
+}
