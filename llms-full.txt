@@ -2,7 +2,7 @@
 
 > Complete text of stratos-ida.com plus the STRATOS EBT/CBTA Platform Handbook, as plain Markdown. Short index: https://stratos-ida.com/llms.txt
 
-Company: STRATOS (Intelligence-Driven Aviation) · Website: https://stratos-ida.com · Email: info@stratos-ida.com · Based in Tallinn, Estonia
+Company: STRATOS (Intelligence-Driven Aviation) · Website: https://stratos-ida.com · Email: info@stratos-ida.com · LinkedIn: https://www.linkedin.com/company/stratos-ida/ · Based in Tallinn, Estonia
 
 ---
 
@@ -437,6 +437,7 @@ Book a walkthrough, send one of your check forms and see how it grades in STRATO
 
 - **Email:** info@stratos-ida.com
 - **Location:** Tallinn, Estonia
+- **LinkedIn:** https://www.linkedin.com/company/stratos-ida/
 - **Contact form:** https://stratos-ida.com/contact (full name, airline, role, email, product of interest, current EBT stage, message)
 
 ## What a first call covers

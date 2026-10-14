@@ -5,6 +5,7 @@
 Website: https://stratos-ida.com
 Contact: info@stratos-ida.com
 Location: Tallinn, Estonia
+LinkedIn: https://www.linkedin.com/company/stratos-ida/
 
 ## Products
 

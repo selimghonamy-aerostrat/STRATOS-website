@@ -6,6 +6,7 @@ Book a walkthrough, send one of your check forms and see how it grades in STRATO
 
 - **Email:** info@stratos-ida.com
 - **Location:** Tallinn, Estonia
+- **LinkedIn:** https://www.linkedin.com/company/stratos-ida/
 - **Contact form:** https://stratos-ida.com/contact (full name, airline, role, email, product of interest, current EBT stage, message)
 
 ## What a first call covers
