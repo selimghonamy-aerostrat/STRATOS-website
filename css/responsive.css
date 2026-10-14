@@ -1,0 +1,58 @@
+/* Phone and tablet refinements, shared by every page. Desktop (>1020px) is unchanged. */
+
+@media (max-width:1020px){
+  /* Solid header bar on phones and tablets, never see-through */
+  header[data-sticky],
+  .stratos-scrolled header[data-sticky]{
+    background:#001538 !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    animation:none !important;
+    border-bottom:1px solid rgba(180,180,180,0.26) !important;
+  }
+
+  /* Solid, scrollable menu panel */
+  header .stratos-mobile-panel{
+    height:auto !important;
+    background:#001538 !important;
+    max-height:calc(100vh - 104px);
+    max-height:calc(100dvh - 104px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    box-shadow:0 24px 48px rgba(0,0,0,0.5);
+  }
+  header .stratos-mobile-panel a{min-height:48px}
+  .stratos-menu-btn{width:48px !important;height:48px !important}
+
+  /* Homepage hero: full screen with the content centred, no empty band */
+  .stratos-hero .stratos-hero-inner{
+    min-height:100vh !important;
+    min-height:100svh !important;
+    justify-content:center !important;
+    padding-top:128px !important;
+    padding-bottom:72px !important;
+  }
+
+  /* Comfortable tap targets (44px+) */
+  footer a{min-height:44px;display:inline-flex !important;align-items:center}
+  button[aria-label*=" grade "]{width:40px !important;height:40px !important}
+
+  /* Readable small labels */
+  [style*=" 9.5px/"],[style*=" 10px/"],[style*=" 9.5px /"],[style*=" 10px /"]{font-size:11px !important}
+}
+
+@media (max-width:640px){
+  header .stratos-mobile-panel{
+    max-height:calc(100vh - 88px);
+    max-height:calc(100dvh - 88px);
+    padding:14px 20px 28px !important;
+  }
+  .stratos-hero .stratos-hero-inner{padding-top:112px !important;padding-bottom:56px !important}
+}
+
+/* Any touchscreen, including tablets in landscape that get the desktop layout */
+@media (pointer:coarse){
+  footer a{min-height:44px;display:inline-flex !important;align-items:center}
+  button[aria-label*=" grade "]{width:40px !important;height:40px !important}
+  [style*=" 9.5px/"],[style*=" 10px/"],[style*=" 9.5px /"],[style*=" 10px /"]{font-size:11px !important}
+}
