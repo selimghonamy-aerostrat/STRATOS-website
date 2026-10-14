@@ -1,15 +1,172 @@
 {
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/", "destination": "/index.dc.html" },
-    { "source": "/about", "destination": "/About.dc.html" },
-    { "source": "/solutions", "destination": "/Solutions.dc.html" },
-    { "source": "/ebt-cbta", "destination": "/EBT-CBTA.dc.html" },
-    { "source": "/tms", "destination": "/TMS.dc.html" },
-    { "source": "/clients", "destination": "/Clients.dc.html" },
-    { "source": "/contact", "destination": "/Contact.dc.html" }
+    {
+      "source": "/",
+      "destination": "/index.dc.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/About.dc.html"
+    },
+    {
+      "source": "/solutions",
+      "destination": "/Solutions.dc.html"
+    },
+    {
+      "source": "/ebt-cbta",
+      "destination": "/EBT-CBTA.dc.html"
+    },
+    {
+      "source": "/tms",
+      "destination": "/TMS.dc.html"
+    },
+    {
+      "source": "/clients",
+      "destination": "/Clients.dc.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/Contact.dc.html"
+    },
+    {
+      "source": "/index.md",
+      "destination": "/md/index.md"
+    },
+    {
+      "source": "/about.md",
+      "destination": "/md/about.md"
+    },
+    {
+      "source": "/solutions.md",
+      "destination": "/md/solutions.md"
+    },
+    {
+      "source": "/ebt-cbta.md",
+      "destination": "/md/ebt-cbta.md"
+    },
+    {
+      "source": "/tms.md",
+      "destination": "/md/tms.md"
+    },
+    {
+      "source": "/clients.md",
+      "destination": "/md/clients.md"
+    },
+    {
+      "source": "/contact.md",
+      "destination": "/md/contact.md"
+    }
   ],
   "headers": [
-    { "source": "/llms.txt", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }] }
+    {
+      "source": "/(llms|llms-full)\\.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/index.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://stratos-ida.com/>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/about.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://stratos-ida.com/about>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/solutions.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://stratos-ida.com/solutions>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/ebt-cbta.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://stratos-ida.com/ebt-cbta>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/tms.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://stratos-ida.com/tms>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/clients.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://stratos-ida.com/clients>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/contact.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://stratos-ida.com/contact>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/md/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }

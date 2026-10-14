@@ -8,9 +8,9 @@ Location: Tallinn, Estonia
 
 ## Products
 
-- [STRATOS EBT/CBTA](https://stratos-ida.com/ebt-cbta): Evidence-Based Training (EBT) and Competency-Based Training and Assessment (CBTA) platform for airline recurrent pilot training. Every check is graded against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method (also ECAA). Produces a signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and analytics at three levels: pilot, cohort and fleet. For Training Directors, Heads of Training and TRE/TRI leads.
-- [STRATOS TMS](https://stratos-ida.com/tms): Training management system for airlines. Pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority. Gives a daily action list of renewals by status (green, yellow, red, expired, missing). For Directors of Training, Heads of Training and Crew Training Managers.
-- [How they work together](https://stratos-ida.com/solutions): Airlines that take both products share one crew list, one pilot record and one login, so nothing is typed twice.
+- [STRATOS EBT/CBTA](https://stratos-ida.com/ebt-cbta.md): Evidence-Based Training (EBT) and Competency-Based Training and Assessment (CBTA) platform for airline recurrent pilot training. Every check is graded against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method (also ECAA). Produces a signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and analytics at three levels: pilot, cohort and fleet. For Training Directors, Heads of Training and TRE/TRI leads.
+- [STRATOS TMS](https://stratos-ida.com/tms.md): Training management system for airlines. Pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority. Gives a daily action list of renewals by status (green, yellow, red, expired, missing). For Directors of Training, Heads of Training and Crew Training Managers.
+- [How they work together](https://stratos-ida.com/solutions.md): Airlines that take both products share one crew list, one pilot record and one login, so nothing is typed twice.
 
 ## Key facts
 
@@ -24,8 +24,13 @@ Location: Tallinn, Estonia
 
 ## Pages
 
-- [Home](https://stratos-ida.com/): Company overview.
-- [About](https://stratos-ida.com/about): Vision, mission, team experience and direction.
-- [Solutions](https://stratos-ida.com/solutions): Both products and how they connect.
-- [Clients](https://stratos-ida.com/clients): Airlines using STRATOS.
-- [Contact](https://stratos-ida.com/contact): Book a walkthrough on your own check forms and crew data.
+- [Home](https://stratos-ida.com/index.md): Company overview.
+- [About](https://stratos-ida.com/about.md): Vision, mission, team experience and direction.
+- [Solutions](https://stratos-ida.com/solutions.md): Both products and how they connect.
+- [Clients](https://stratos-ida.com/clients.md): Airlines using STRATOS.
+- [Contact](https://stratos-ida.com/contact.md): Book a walkthrough on your own check forms and crew data.
+
+## Optional
+
+- [Full site content](https://stratos-ida.com/llms-full.txt): every page plus the full EBT/CBTA handbook in one Markdown file.
+- [EBT/CBTA Platform Handbook (PDF)](https://stratos-ida.com/uploads/STRATOS_EBT_CBTA_Handbook.pdf): every module, the grading engine and the status of each one.
