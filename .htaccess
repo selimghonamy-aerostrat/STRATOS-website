@@ -1,9 +1,0 @@
-# Hostinger / Apache: serve clean URLs (used only if the site is hosted on Hostinger instead of Vercel)
-DirectoryIndex index.dc.html
-RewriteEngine On
-RewriteRule ^about/?$ About.dc.html [L]
-RewriteRule ^solutions/?$ Solutions.dc.html [L]
-RewriteRule ^ebt-cbta/?$ EBT-CBTA.dc.html [L]
-RewriteRule ^tms/?$ TMS.dc.html [L]
-RewriteRule ^clients/?$ Clients.dc.html [L]
-RewriteRule ^contact/?$ Contact.dc.html [L]

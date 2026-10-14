@@ -56,6 +56,10 @@
     {
       "source": "/contact.md",
       "destination": "/md/contact.md"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/favicon-96.png"
     }
   ],
   "headers": [
