@@ -15,6 +15,7 @@ Contact.dc.html      Contact Us      → /contact
 
 js/support.js        Page runtime (renders the <x-dc> templates; generated, do not edit)
 js/hero-video.js     Keeps the homepage background video playing on all browsers
+css/responsive.css   Phone/tablet fixes shared by every page (solid mobile menu, hero size, tap targets)
 
 uploads/             Images, video, logos, handbook PDF
 uploads/brand/       Share image (og-image.png) and raster logo for structured data
