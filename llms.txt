@@ -1,6 +1,6 @@
 # STRATOS
 
-> STRATOS (Intelligence-Driven Aviation) is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It builds software for the way airlines operate and started with pilot training: STRATOS EBT/CBTA and STRATOS TMS are live with airlines today.
+> STRATOS, also known as STRATOS IDA (Intelligence-Driven Aviation), is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It builds software for the way airlines operate and started with pilot training: STRATOS EBT/CBTA and STRATOS TMS are live with airlines today.
 
 Website: https://stratos-ida.com
 Contact: info@stratos-ida.com
