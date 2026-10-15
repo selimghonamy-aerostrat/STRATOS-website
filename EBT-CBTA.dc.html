@@ -389,7 +389,7 @@
       </div>
     </section>
 
-    <section className="stratos-section-pad" style="padding:88px 32px;background:#001538">
+    <section className="stratos-section-pad" style="padding:88px 32px;background:#00348C">
       <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
         <span id="ebt-demo" data-scroll-target=""></span>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:20px 72px;align-items:end;margin-bottom:36px">
@@ -400,22 +400,22 @@
           <p style="font:400 15.5px/1.8 'Inter',sans-serif;color:#FFFFFF;margin:0;max-width:540px;text-wrap:pretty">Grade a sample simulator check, then submit. Grading, reporting, record-keeping and analytics happen at once.</p>
         </div>
         <div className="stratos-mock-split" style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start">
-          <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28)">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid rgba(180,180,180,0.24)">
-              <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 14px/1.3 'Inter',sans-serif;color:#fff">Simulator form · Capt. John</span><span style="font:400 12px/1.3 'Inter',sans-serif;color:#B4B4B4">A320 · OPC · sample data</span></div>
-              <span style="font:600 11px/1 'Inter',sans-serif;color:#B4B4B4">Standard: grade 3</span>
+          <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16)">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid rgba(0,52,140,0.12)">
+              <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 14px/1.3 'Inter',sans-serif;color:#000">Simulator form · Capt. John</span><span style="font:400 12px/1.3 'Inter',sans-serif;color:#4A5361">A320 · OPC · sample data</span></div>
+              <span style="font:600 11px/1 'Inter',sans-serif;color:#4A5361">Standard: grade 3</span>
             </div>
             <div style="display:flex;flex-direction:column">
               <sc-for list="{{ demoRows }}" as="r" hint-placeholder-count="9">
-                <div className="stratos-demo-row" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 20px;border-bottom:1px solid rgba(180,180,180,0.14);background:{{ r.bg }}">
-                  <span style="display:flex;gap:12px;align-items:baseline;min-width:0"><span style="font:700 12px/1 'Open Sauce Sans',sans-serif;color:#3F9EE8;width:34px;flex:none">{{ r.code }}</span><span style="font:400 13px/1.35 'Inter',sans-serif;color:#ECF0F3">{{ r.name }}</span></span>
+                <div className="stratos-demo-row" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 20px;border-bottom:1px solid rgba(0,52,140,0.08);background:{{ r.bg }}">
+                  <span style="display:flex;gap:12px;align-items:baseline;min-width:0"><span style="font:700 12px/1 'Open Sauce Sans',sans-serif;color:#00348C;width:34px;flex:none">{{ r.code }}</span><span style="font:400 13px/1.35 'Inter',sans-serif;color:#4A5361">{{ r.name }}</span></span>
                   <span style="display:flex;gap:4px;flex:none"><sc-for list="{{ r.btns }}" as="b" hint-placeholder-count="5"><button onClick="{{ b.go }}" aria-label="{{ b.aria }}" style="{{ b.style }}">{{ b.v }}</button></sc-for></span>
                 </div>
               </sc-for>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px">
-              <span style="font:400 12.5px/1.5 'Inter',sans-serif;color:#B4B4B4">{{ demoHint }}</span>
-              <span style="display:flex;gap:8px"><button onClick="{{ demoReset }}" className="stratos-btn" style="min-height:42px;padding:10px 16px;font-size:13px">Reset</button><button onClick="{{ demoSubmit }}" className="stratos-btn stratos-btn-primary" style="min-height:42px;padding:10px 18px;font-size:13px">Submit</button></span>
+              <span style="font:400 12.5px/1.5 'Inter',sans-serif;color:#4A5361">{{ demoHint }}</span>
+              <span style="display:flex;gap:8px"><button onClick="{{ demoReset }}" className="stratos-btn" style="color:#00348C;border-color:rgba(0,52,140,0.4);min-height:42px;padding:10px 16px;font-size:13px">Reset</button><button onClick="{{ demoSubmit }}" className="stratos-btn stratos-btn-primary" style="min-height:42px;padding:10px 18px;font-size:13px">Submit</button></span>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:1px">
@@ -426,7 +426,7 @@
               </div>
             </sc-for>
             <sc-if value="{{ demoAlertOn }}" hint-placeholder-val="{{ false }}">
-              <div style="padding:16px 20px;background:rgba(255,90,19,0.14);outline:1px solid rgba(255,90,19,0.55);display:flex;gap:12px;align-items:flex-start"><span style="font:700 10px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#001538;background:#FF5A13;padding:5px 8px;border-radius:2px;flex:none">Alert</span><span style="font:500 13.5px/1.55 'Inter',sans-serif;color:#fff">{{ demoAlert }}</span></div>
+              <div style="padding:16px 20px;background:#FFF1EB;outline:1px solid rgba(255,90,19,0.55);display:flex;gap:12px;align-items:flex-start"><span style="font:700 10px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#001538;background:#FF5A13;padding:5px 8px;border-radius:2px;flex:none">Alert</span><span style="font:500 13.5px/1.55 'Inter',sans-serif;color:#000">{{ demoAlert }}</span></div>
             </sc-if>
           </div>
         </div>
@@ -569,16 +569,16 @@
       </div>
     </section>
 
-    <section className="stratos-section-pad" style="padding:64px 32px;border-top:1px solid rgba(180,180,180,0.24);background:#00348C">
+    <section className="stratos-section-pad" style="padding:64px 32px;border-top:1px solid rgba(0,52,140,0.12);background:#FFFFFF">
       <div className="stratos-reveal" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:28px 64px;align-items:center">
         <div>
-          <h2 style="font:700 clamp(26px,3.2vw,38px)/1.1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#fff;margin:0 0 20px">Three steps. One decision.</h2>
+          <h2 style="font:700 clamp(26px,3.2vw,38px)/1.1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#000;margin:0 0 20px">Three steps. One decision.</h2>
           <a href="/contact" className="stratos-btn stratos-btn-primary">Book a walkthrough</a>
         </div>
         <div style="display:flex;flex-direction:column">
-          <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid rgba(180,180,180,0.28)"><span style="font:700 13px/1.5 'Open Sauce Sans',sans-serif;color:#3F9EE8">01</span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#ECF0F3"><strong style="color:#fff">Documentation intake.</strong> Training manual and any existing forms shared; quote sized to scope.</span></div>
-          <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid rgba(180,180,180,0.28)"><span style="font:700 13px/1.5 'Open Sauce Sans',sans-serif;color:#3F9EE8">02</span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#ECF0F3"><strong style="color:#fff">Pilot scope agreed.</strong> One fleet, one or two forms, success criteria agreed in advance.</span></div>
-          <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid rgba(180,180,180,0.28)"><span style="font:700 13px/1.5 'Open Sauce Sans',sans-serif;color:#3F9EE8">03</span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#ECF0F3"><strong style="color:#fff">Go-live, then expand.</strong> Forms developed, accounts live, instructors trained; then fleet-wide rollout.</span></div>
+          <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid rgba(0,52,140,0.16)"><span style="font:700 13px/1.5 'Open Sauce Sans',sans-serif;color:#00348C">01</span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#4A5361"><strong style="color:#000">Documentation intake.</strong> Training manual and any existing forms shared; quote sized to scope.</span></div>
+          <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid rgba(0,52,140,0.16)"><span style="font:700 13px/1.5 'Open Sauce Sans',sans-serif;color:#00348C">02</span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#4A5361"><strong style="color:#000">Pilot scope agreed.</strong> One fleet, one or two forms, success criteria agreed in advance.</span></div>
+          <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid rgba(0,52,140,0.16)"><span style="font:700 13px/1.5 'Open Sauce Sans',sans-serif;color:#00348C">03</span><span style="font:400 14.5px/1.6 'Inter',sans-serif;color:#4A5361"><strong style="color:#000">Go-live, then expand.</strong> Forms developed, accounts live, instructors trained; then fleet-wide rollout.</span></div>
         </div>
       </div>
     </section>
@@ -766,7 +766,7 @@ class Component extends DCLogic {
     const mean = (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(1);
     const minV = Math.min.apply(null, vals);
     const low = comps.filter(c => g[c[0]] < 3).map(c => c[0]);
-    const btnS = (on, warn) => 'width:30px;height:30px;border-radius:2px;cursor:pointer;font:700 12px/1 "Inter",sans-serif;transition:all 0.2s ease;border:1px solid ' + (on ? (warn ? '#FF5A13' : '#3F9EE8') : 'rgba(180,180,180,0.32)') + ';background:' + (on ? (warn ? '#FF5A13' : '#3F9EE8') : 'transparent') + ';color:' + (on ? '#001538' : '#B4B4B4');
+    const btnS = (on, warn) => 'width:30px;height:30px;border-radius:2px;cursor:pointer;font:700 12px/1 "Inter",sans-serif;transition:all 0.2s ease;border:1px solid ' + (on ? (warn ? '#FF5A13' : '#3F9EE8') : 'rgba(0,52,140,0.25)') + ';background:' + (on ? (warn ? '#FF5A13' : '#3F9EE8') : 'transparent') + ';color:' + (on ? '#001538' : '#4A5361');
     const outD = [
       ['01', 'Calculates', 'Competency grades', 'Nine competencies graded on your scale. Lowest: ' + comps.filter(c => g[c[0]] === minV).map(c => c[0]).join(', ') + ' at ' + minV + '.'],
       ['02', 'Generates', 'Signed PDF report', 'Simulator check · Capt. John, following your sign-off chain.'],
@@ -809,7 +809,7 @@ class Component extends DCLogic {
       demoHint: sub ? 'Submitted. Change a grade to resubmit.' : 'Set grades 1–5, then submit.',
       demoSubmit: () => this.setState({ submitted: true }),
       demoReset: () => this.setState({ grades: { KNO: 4, PRO: 3, COM: 4, FPA: 2, FPM: 4, LTW: 4, PSD: 3, SAW: 3, WLM: 4 }, submitted: false }),
-      demoOut: outD.map(o => ({ n: o[0], k: o[1], t: o[2], body: sub ? o[3] : 'Waiting for submission.', bg: sub ? 'rgba(63,158,232,0.16)' : 'rgba(0,52,140,0.3)', bd: sub ? 'rgba(63,158,232,0.6)' : 'rgba(180,180,180,0.24)', numFg: sub ? '#3F9EE8' : '#FFFFFF', fg: '#FFFFFF', sub: '#FFFFFF' })),
+      demoOut: outD.map(o => ({ n: o[0], k: o[1], t: o[2], body: sub ? o[3] : 'Waiting for submission.', bg: sub ? '#E8F3FC' : '#FFFFFF', bd: sub ? '#3F9EE8' : 'rgba(0,52,140,0.16)', numFg: '#00348C', fg: '#000', sub: '#4A5361' })),
       demoAlertOn: sub && low.length > 0,
       demoAlert: 'Below standard on ' + low.join(', ') + '. Your training managers are emailed; the save is not blocked.',
       altTabs: alts.map((a, i) => ({ label: a.label, sel: i === s.altI ? 'true' : 'false', go: () => this.setState({ altI: i }), style: 'color:' + (i === s.altI ? '#000' : '#4A5361') + ';border-bottom-color:' + (i === s.altI ? '#00348C' : 'transparent') })),
