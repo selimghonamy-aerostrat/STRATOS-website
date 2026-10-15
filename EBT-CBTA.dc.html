@@ -783,7 +783,7 @@ class Component extends DCLogic {
     const heat = [[4,3,4,2,4,4,3,4,4],[3,4,3,2,3,4,4,3,4],[4,4,4,3,4,3,4,4,3],[3,3,4,2,3,4,3,3,4],[4,4,3,1,4,4,4,4,4],[3,4,4,2,3,3,3,4,3],[4,3,4,3,4,4,4,3,4],[3,4,3,2,4,3,4,4,3]];
     const heatCells = [];
     heat.forEach((row, i) => { heatCells.push({ v: 'P' + (i + 1), fg: '#4A5361', bg: 'transparent' }); row.forEach((v, j) => heatCells.push({ v: String(v), fg: v < 3 ? '#FFFFFF' : '#000', bg: v < 3 ? '#FF5A13' : (v >= 4 ? 'rgba(0,52,140,0.18)' : 'rgba(0,52,140,0.08)') })); });
-    const trend = [['Q3 25', 3.8], ['Q4 25', 3.6], ['Q1 26', 3.3], ['Q2 26', 3.0], ['Q3 26', 2.6]];
+    const trend = [['Q3 25', 5], ['Q4 25', 4], ['Q1 26', 4], ['Q2 26', 3], ['Q3 26', 2]];
     const risks = [
       ['Capt. Joe', 'A320 · CPT', 'Last four line checks trending downward on Situation Awareness (SAW).'],
       ['Capt. John', 'B737 · FO', 'Three consecutive grades of 2 on FPA (automation), latest a 1.'],
@@ -818,7 +818,7 @@ class Component extends DCLogic {
       microRows: codes.map((c, i) => ({ code: c, v: String(micro[i]), w: (micro[i] / 5 * 100) + '%', c: micro[i] < 3 ? '#FF5A13' : '#00348C' })),
       compCodes: codes.map(t => ({ t })),
       heatCells,
-      trendBars: trend.map(([q, v]) => ({ q, v: v.toFixed(1), h: (v / 5 * 100) + '%', c: v < 3 ? '#FF5A13' : '#00348C' })),
+      trendBars: trend.map(([q, v]) => ({ q, v: String(v), h: (v / 5 * 100) + '%', c: v < 3 ? '#FF5A13' : '#00348C' })),
       riskRows: risks.map((r, i) => ({ n: String(i + 1), name: r[0], fleet: r[1], why: r[2], open: i === s.riskI, on: i === s.riskI ? 'true' : 'false', go: () => this.setState({ riskI: i }), bg: i === s.riskI ? 'rgba(63,158,232,0.16)' : 'transparent', numFg: i === s.riskI ? '#00348C' : '#4A5361' })),
       instrRows: instr.map(([name, v]) => ({ name, v: v.toFixed(1), left: ((v - 1) / 4 * 100) + '%', c: v < 3 ? '#FF5A13' : '#00348C' })),
       liveCaps: live.map(([t, d]) => ({ t, d }))
