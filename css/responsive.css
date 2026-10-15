@@ -58,3 +58,8 @@
   button[aria-label*=" grade "]{width:40px !important;height:40px !important}
   [style*=" 9.5px/"],[style*=" 10px/"],[style*=" 9.5px /"],[style*=" 10px /"]{font-size:11px !important}
 }
+
+/* Page heroes on phones: text spans the full width, so even out the photo overlay */
+@media (max-width:640px){
+  .stratos-hero-alt > img + div{background:linear-gradient(180deg,rgba(0,21,56,0.6) 0%,rgba(0,21,56,0.55) 60%,#001538 100%) !important}
+}

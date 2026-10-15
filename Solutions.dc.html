@@ -295,8 +295,8 @@
 
   <main id="main" data-screen-label="Solutions" className="stratos-page-enter">
     <section className="stratos-hero-alt" style="position:relative;overflow:hidden;padding:210px 32px 80px;border-bottom:1px solid rgba(180,180,180,0.24)">
-      <img src="uploads/solutions-hero-bg.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.55;display:block;max-width:none">
-      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.94) 0%,rgba(0,21,56,0.78) 45%,rgba(0,21,56,0.45) 100%),linear-gradient(180deg,rgba(0,21,56,0.55) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 70%,#001538 100%)"></div>
+      <img src="uploads/solutions-hero-bg.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:1;display:block;max-width:none">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.8) 0%,rgba(0,21,56,0.5) 45%,rgba(0,21,56,0.15) 100%),linear-gradient(180deg,rgba(0,21,56,0.45) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 72%,#001538 100%)"></div>
       <div style="position:relative;max-width:1280px;margin:0 auto">
         <div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.22em;color:#3F9EE8;text-transform:uppercase;margin-bottom:26px">SOLUTIONS</div>
         <h1 style="font:700 clamp(32px,5.2vw,62px)/1.06 'Open Sauce Sans',sans-serif;letter-spacing:-0.025em;color:#fff;margin:0 0 30px;max-width:860px;text-wrap:pretty">Two connected products for airline pilot training.</h1>
@@ -429,7 +429,7 @@
       </div>
     </section>
 
-    <section className="stratos-section-pad" style="padding:88px 32px;border-top:1px solid rgba(180,180,180,0.24);background:rgba(0,52,140,0.28)">
+    <section className="stratos-section-pad" style="padding:88px 32px;border-top:1px solid rgba(180,180,180,0.24);background:#00348C">
       <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
         <div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.2em;color:#3F9EE8;text-transform:uppercase;margin-bottom:22px">Architecture · one pilot record</div>
         <h2 style="font:700 clamp(26px,3.4vw,42px)/1.12 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#fff;margin:0 0 20px;max-width:780px;text-wrap:pretty">What is shared, and who writes it.</h2>
@@ -437,11 +437,11 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:1px;margin-bottom:1px">
           <sc-for list="{{ dmItems }}" as="d" hint-placeholder-count="8"><button onClick="{{ d.go }}" aria-pressed="{{ d.on }}" style="{{ d.style }}">{{ d.name }}</button></sc-for>
         </div>
-        <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:28px 48px">
-          <div style="display:flex;flex-direction:column;gap:12px"><span style="font:700 clamp(19px,2vw,24px)/1.25 'Open Sauce Sans',sans-serif;color:#fff">{{ dmCur.name }}</span><p style="font:400 15px/1.75 'Inter',sans-serif;color:#C9CED6;margin:0">{{ dmCur.desc }}</p></div>
+        <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:28px 48px">
+          <div style="display:flex;flex-direction:column;gap:12px"><span style="font:700 clamp(19px,2vw,24px)/1.25 'Open Sauce Sans',sans-serif;color:#000">{{ dmCur.name }}</span><p style="font:400 15px/1.75 'Inter',sans-serif;color:#4A5361;margin:0">{{ dmCur.desc }}</p></div>
           <div style="display:flex;flex-direction:column;gap:18px">
-            <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#3F9EE8;text-transform:uppercase">Written by</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ dmCur.w }}" as="c" hint-placeholder-count="3"><span style="font:500 12.5px/1 'Inter',sans-serif;color:#fff;border:1px solid rgba(180,180,180,0.4);border-radius:2px;padding:9px 11px">{{ c.t }}</span></sc-for></div></div>
-            <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#3F9EE8;text-transform:uppercase">Read by</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ dmCur.r }}" as="c" hint-placeholder-count="3"><span style="font:500 12.5px/1 'Inter',sans-serif;color:#fff;border:1px solid rgba(180,180,180,0.4);border-radius:2px;padding:9px 11px">{{ c.t }}</span></sc-for></div></div>
+            <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase">Written by</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ dmCur.w }}" as="c" hint-placeholder-count="3"><span style="font:500 12.5px/1 'Inter',sans-serif;color:#000;border:1px solid rgba(0,52,140,0.25);border-radius:2px;padding:9px 11px">{{ c.t }}</span></sc-for></div></div>
+            <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase">Read by</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ dmCur.r }}" as="c" hint-placeholder-count="3"><span style="font:500 12.5px/1 'Inter',sans-serif;color:#000;border:1px solid rgba(0,52,140,0.25);border-radius:2px;padding:9px 11px">{{ c.t }}</span></sc-for></div></div>
           </div>
         </div>
         <p style="font:400 13.5px/1.8 'Inter',sans-serif;color:#B4B4B4;margin:28px 0 0;max-width:820px">Every airline's data is isolated from every other's. Pilot and cabin-crew records are kept separate at the database level, and the data stays yours, exportable in full at any time.</p>
@@ -965,7 +965,7 @@ class Component extends DCLogic {
       capFilters: ['All', 'Compliance', 'Competence', 'Leadership', 'Audit', 'Together'].map(f => ({ label: f, on: cf === f ? 'true' : 'false', go: () => this.setState({ capF: f }), style: "font:600 12.5px/1 'Inter',sans-serif;padding:0 14px;min-height:40px;border-radius:2px;cursor:pointer;border:1px solid " + (cf === f ? '#00348C' : 'rgba(0,52,140,0.3)') + ';background:' + (cf === f ? '#00348C' : '#FFFFFF') + ';color:' + (cf === f ? '#FFFFFF' : '#00348C') })),
       capCount: capVis.length + ' of ' + caps.length + ' capabilities',
       capRows: capVis.map(([cap, detail, area, t, e]) => { const a = cell(t), b = cell(e); return { cap, detail, area, tms: a[0], tmsStyle: a[1], ebt: b[0], ebtStyle: b[1] }; }),
-      dmItems: dm.map((d, i) => ({ name: d.name, on: i === dI ? 'true' : 'false', go: () => this.setState({ dmI: i }), style: "text-align:left;border:none;cursor:pointer;min-height:56px;padding:16px 18px;font:600 14px/1.3 'Inter',sans-serif;outline:1px solid rgba(180,180,180,0.28);transition:background 0.25s ease;background:" + (i === dI ? '#3F9EE8' : 'rgba(0,52,140,0.45)') + ';color:' + (i === dI ? '#001538' : '#FFFFFF') })),
+      dmItems: dm.map((d, i) => ({ name: d.name, on: i === dI ? 'true' : 'false', go: () => this.setState({ dmI: i }), style: "text-align:left;border:none;cursor:pointer;min-height:56px;padding:16px 18px;font:600 14px/1.3 'Inter',sans-serif;outline:1px solid rgba(0,52,140,0.16);transition:background 0.25s ease;background:" + (i === dI ? '#3F9EE8' : '#FFFFFF') + ';color:' + (i === dI ? '#001538' : '#00348C') })),
       dmCur: { name: dm[dI].name, desc: dm[dI].desc, w: L(dm[dI].w), r: L(dm[dI].r) },
       roleTabs: roles.map((r, i) => ({ label: r.label, sel: i === rI ? 'true' : 'false', go: () => this.setState({ roleI: i }), style: 'color:' + (i === rI ? '#000' : '#4A5361') + ';border-bottom-color:' + (i === rI ? '#00348C' : 'transparent') })),
       roleCur: { name: roles[rI].name, who: roles[rI].who, tms: L(roles[rI].tms), ebt: L(roles[rI].ebt) },

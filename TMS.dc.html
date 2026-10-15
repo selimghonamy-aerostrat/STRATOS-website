@@ -295,8 +295,8 @@
 
   <main id="main" data-screen-label="TMS" className="stratos-page-enter">
     <section className="stratos-hero-alt" style="position:relative;overflow:hidden;padding:210px 32px 80px;border-bottom:1px solid rgba(180,180,180,0.24)">
-      <img src="uploads/tms-hero-bg.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.5;display:block;max-width:none">
-      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.95) 0%,rgba(0,21,56,0.82) 45%,rgba(0,21,56,0.55) 100%),linear-gradient(180deg,rgba(0,21,56,0.55) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 70%,#001538 100%)"></div>
+      <img src="uploads/tms-hero-bg.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:1;display:block;max-width:none">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.8) 0%,rgba(0,21,56,0.5) 45%,rgba(0,21,56,0.15) 100%),linear-gradient(180deg,rgba(0,21,56,0.45) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 72%,#001538 100%)"></div>
       <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:48px 72px;align-items:end">
         <div>
           <a href="/solutions" style="font:600 13px/1 'Inter',sans-serif;color:#3F9EE8;display:inline-flex;align-items:center;gap:6px">← All Solutions</a>
@@ -415,7 +415,7 @@
       </div>
     </section>
 
-    <section className="stratos-section-pad" style="padding:88px 32px;background:rgba(0,52,140,0.28)">
+    <section className="stratos-section-pad" style="padding:88px 32px;background:#00348C">
       <div className="stratos-reveal" style="max-width:1280px;margin:0 auto">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:20px 72px;align-items:end;margin-bottom:32px">
           <div>
@@ -426,14 +426,14 @@
         </div>
         <div className="stratos-mock-split" style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:1px">
           <div role="tablist" aria-label="Modules" style="display:flex;flex-direction:column;gap:1px">
-            <sc-for list="{{ modTabs }}" as="t" hint-placeholder-count="6"><button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.go }}" style="text-align:left;border:none;cursor:pointer;padding:16px 20px;min-height:52px;display:flex;gap:14px;align-items:baseline;outline:1px solid rgba(180,180,180,0.28);background:{{ t.bg }};box-shadow:{{ t.shadow }};transition:background 0.25s ease"><span style="font:600 11.5px/1 'Open Sauce Sans',sans-serif;color:#3F9EE8;width:22px;flex:none">{{ t.n }}</span><span style="font:600 14.5px/1.3 'Inter',sans-serif;color:{{ t.fg }}">{{ t.title }}</span></button></sc-for>
+            <sc-for list="{{ modTabs }}" as="t" hint-placeholder-count="6"><button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.go }}" style="text-align:left;border:none;cursor:pointer;padding:16px 20px;min-height:52px;display:flex;gap:14px;align-items:baseline;outline:1px solid rgba(0,52,140,0.16);background:{{ t.bg }};box-shadow:{{ t.shadow }};transition:background 0.25s ease"><span style="font:600 11.5px/1 'Open Sauce Sans',sans-serif;color:#00348C;width:22px;flex:none">{{ t.n }}</span><span style="font:600 14.5px/1.3 'Inter',sans-serif;color:{{ t.fg }}">{{ t.title }}</span></button></sc-for>
           </div>
-          <div role="tabpanel" style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:clamp(26px,3.2vw,44px);display:flex;flex-direction:column;gap:16px">
-            <span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#3F9EE8;text-transform:uppercase">{{ modCur.k }}</span>
-            <span style="font:700 clamp(20px,2.4vw,28px)/1.2 'Open Sauce Sans',sans-serif;letter-spacing:-0.015em;color:#fff">{{ modCur.h }}</span>
-            <p style="font:400 15px/1.8 'Inter',sans-serif;color:#C9CED6;margin:0;max-width:680px;text-wrap:pretty">{{ modCur.lead }}</p>
+          <div role="tabpanel" style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:clamp(26px,3.2vw,44px);display:flex;flex-direction:column;gap:16px">
+            <span style="font:600 11px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase">{{ modCur.k }}</span>
+            <span style="font:700 clamp(20px,2.4vw,28px)/1.2 'Open Sauce Sans',sans-serif;letter-spacing:-0.015em;color:#000">{{ modCur.h }}</span>
+            <p style="font:400 15px/1.8 'Inter',sans-serif;color:#4A5361;margin:0;max-width:680px;text-wrap:pretty">{{ modCur.lead }}</p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:0 36px;margin-top:4px">
-              <sc-for list="{{ modCur.pts }}" as="p" hint-placeholder-count="4"><div style="display:flex;gap:12px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(180,180,180,0.22)"><span style="width:8px;height:2px;background:#3F9EE8;flex:none;transform:translateY(-4px)"></span><span style="font:400 14px/1.6 'Inter',sans-serif;color:#fff">{{ p.t }}</span></div></sc-for>
+              <sc-for list="{{ modCur.pts }}" as="p" hint-placeholder-count="4"><div style="display:flex;gap:12px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(0,52,140,0.12)"><span style="width:8px;height:2px;background:#3F9EE8;flex:none;transform:translateY(-4px)"></span><span style="font:400 14px/1.6 'Inter',sans-serif;color:#000">{{ p.t }}</span></div></sc-for>
             </div>
           </div>
         </div>
@@ -491,7 +491,7 @@
       </div>
     </section>
 
-    <section className="stratos-section-pad" style="padding:64px 32px;border-top:1px solid rgba(180,180,180,0.24);background:rgba(0,52,140,0.28)">
+    <section className="stratos-section-pad" style="padding:64px 32px;border-top:1px solid rgba(180,180,180,0.24);background:#00348C">
       <div className="stratos-reveal" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:28px 64px;align-items:center">
         <div>
           <h2 style="font:700 clamp(26px,3.2vw,38px)/1.1 'Open Sauce Sans',sans-serif;letter-spacing:-0.02em;color:#fff;margin:0 0 20px">Three steps. One decision.</h2>
@@ -735,7 +735,7 @@ class Component extends DCLogic {
       legend: [ST[4], ST[2], ST[1], ST[0], ST[3]].map(x => Object.assign({ t: x.t === 'Green' ? 'Green · current' : x.t }, lgFg(x))),
       valItems: valNames.map((item, i) => { const x = ST[s.val[i]]; return { item, t: x.t, fg: x.fg, bg: x.bg, bd: x.bd, rowBg: x.rank < 2 ? 'rgba(255,90,19,0.05)' : 'transparent', go: () => this.setState(st => { const v = st.val.slice(); v[i] = (v[i] + 1) % 5; return { val: v }; }) }; }),
       worst: lgFg(ST[worstI]) && Object.assign({ t: ST[worstI].t }, lgFg(ST[worstI])),
-      modTabs: mods.map((m, i) => ({ n: '0' + (i + 1), title: m.title, on: i === s.modI ? 'true' : 'false', go: () => this.setState({ modI: i }), bg: i === s.modI ? 'rgba(63,158,232,0.22)' : 'rgba(0,52,140,0.3)', shadow: i === s.modI ? 'inset 3px 0 0 #3F9EE8' : 'none', fg: i === s.modI ? '#FFFFFF' : '#C9CED6' })),
+      modTabs: mods.map((m, i) => ({ n: '0' + (i + 1), title: m.title, on: i === s.modI ? 'true' : 'false', go: () => this.setState({ modI: i }), bg: i === s.modI ? '#FFFFFF' : 'rgba(255,255,255,0.86)', shadow: i === s.modI ? 'inset 4px 0 0 #00348C' : 'none', fg: i === s.modI ? '#000' : '#4A5361' })),
       modCur: Object.assign({}, mods[s.modI], { pts: mods[s.modI].pts.map(t => ({ t })) }),
       loop: loop.map(([t], i) => { const on = i === s.loopI; return { n: '0' + (i + 1), t, arrow: i < 3 ? '→' : '↺', on: on ? 'true' : 'false', go: () => this.setState({ loopI: i }), bg: on ? '#00348C' : '#FFFFFF', bd: on ? '#00348C' : 'rgba(0,52,140,0.2)', fg: on ? '#FFFFFF' : '#000', numBg: on ? '#3F9EE8' : '#ECF0F3', numFg: on ? '#001538' : '#00348C' }; }),
       loopCur: loop[s.loopI][1],
