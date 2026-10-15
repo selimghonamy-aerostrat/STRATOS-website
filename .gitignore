@@ -1,2 +1,6 @@
 .DS_Store
 .vercel
+
+# Local files, not part of the website
+*.code-workspace
+Copy of STRATOS Brand Guidelines*.pdf
