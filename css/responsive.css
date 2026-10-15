@@ -48,6 +48,8 @@
     padding:14px 20px 28px !important;
   }
   .stratos-hero .stratos-hero-inner{padding-top:112px !important;padding-bottom:56px !important}
+  /* Text spans the full width here, so even out the video overlay to keep it readable */
+  .stratos-hero > video + div{background:linear-gradient(180deg,rgba(0,21,56,0.55) 0%,rgba(0,21,56,0.5) 60%,#001538 100%) !important}
 }
 
 /* Any touchscreen, including tablets in landscape that get the desktop layout */
