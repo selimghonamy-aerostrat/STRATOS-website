@@ -104,12 +104,12 @@
   @keyframes stratos-pop{from{opacity:0;transform:translateY(58px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
   @keyframes stratos-railfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
   @keyframes stratos-railplane{0%{left:0;transform:translateY(0) rotate(0deg)}82%{left:82%;transform:translateY(0) rotate(0deg)}100%{left:100%;transform:translateY(-16px) rotate(-22deg)}}
-  @keyframes stratos-navsolid{from{background:rgba(0,18,41,0);border-bottom-color:rgba(255,255,255,0)}to{background:rgba(0,21,56,0.9);border-bottom-color:rgba(180,180,180,0.26)}}
+  @keyframes stratos-navsolid{from{background:rgba(0,18,41,0);border-bottom-color:rgba(255,255,255,0);backdrop-filter:saturate(100%) blur(0px)}to{background:rgba(0,21,56,0.9);border-bottom-color:rgba(180,180,180,0.26);backdrop-filter:saturate(150%) blur(16px)}}
   @keyframes stratos-parallax{from{transform:translateY(-34px) scale(1.06)}to{transform:translateY(34px) scale(1.06)}}
   @supports (animation-timeline: view()){
     [data-rail-fill]{width:100% !important;transform-origin:left center;animation:stratos-railfill 1s linear both;animation-timeline:scroll(root block)}
     [data-rail-plane]{animation:stratos-railplane 1s linear both;animation-timeline:scroll(root block)}
-    header[data-sticky]{animation:stratos-navsolid 1s linear both;animation-timeline:scroll(root block);animation-range:0 90px;backdrop-filter:saturate(150%) blur(16px)}
+    header[data-sticky]{animation:stratos-navsolid 1s linear both;animation-timeline:scroll(root block);animation-range:0 90px}
   }
   .stratos-d1{transition-delay:0.1s}
   .stratos-d2{transition-delay:0.2s}
@@ -296,7 +296,7 @@
   <main id="main" data-screen-label="Solutions" className="stratos-page-enter">
     <section className="stratos-hero-alt" style="position:relative;overflow:hidden;padding:210px 32px 80px;border-bottom:1px solid rgba(180,180,180,0.24)">
       <img src="uploads/solutions-hero-bg.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:1;display:block;max-width:none">
-      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.8) 0%,rgba(0,21,56,0.5) 45%,rgba(0,21,56,0.15) 100%),linear-gradient(180deg,rgba(0,21,56,0.45) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 72%,#001538 100%)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.8) 0%,rgba(0,21,56,0.5) 45%,rgba(0,21,56,0.15) 100%),linear-gradient(180deg,rgba(0,21,56,0.25) 0%,rgba(0,21,56,0) 20%,rgba(0,21,56,0) 72%,#001538 100%)"></div>
       <div style="position:relative;max-width:1280px;margin:0 auto">
         <div style="font:600 12px/1 'Open Sauce Sans',sans-serif;letter-spacing:0.22em;color:#3F9EE8;text-transform:uppercase;margin-bottom:26px">SOLUTIONS</div>
         <h1 style="font:700 clamp(32px,5.2vw,62px)/1.06 'Open Sauce Sans',sans-serif;letter-spacing:-0.025em;color:#fff;margin:0 0 30px;max-width:860px;text-wrap:pretty">Two connected products for airline pilot training.</h1>

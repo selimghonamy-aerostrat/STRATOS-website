@@ -534,12 +534,14 @@
         @keyframes stratos-navsolid {
           from {
             background: rgba(0, 18, 41, 0);
-            border-bottom-color: rgba(255, 255, 255, 0)
+            border-bottom-color: rgba(255, 255, 255, 0);
+            backdrop-filter: saturate(100%) blur(0px)
           }
 
           to {
             background: rgba(0, 21, 56, 0.9);
-            border-bottom-color: rgba(180, 180, 180, 0.26)
+            border-bottom-color: rgba(180, 180, 180, 0.26);
+            backdrop-filter: saturate(150%) blur(16px)
           }
         }
 
@@ -569,8 +571,7 @@
           header[data-sticky] {
             animation: stratos-navsolid 1s linear both;
             animation-timeline: scroll(root block);
-            animation-range: 0 90px;
-            backdrop-filter: saturate(150%) blur(16px)
+            animation-range: 0 90px
           }
         }
 
@@ -1214,7 +1215,7 @@
           <img src="uploads/about-hero-bg.jpg" alt="" aria-hidden="true"
             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right 55%;opacity:1;display:block;max-width:none">
           <div
-            style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.8) 0%,rgba(0,21,56,0.5) 45%,rgba(0,21,56,0.15) 100%),linear-gradient(180deg,rgba(0,21,56,0.45) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 72%,#001538 100%)">
+            style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,21,56,0.8) 0%,rgba(0,21,56,0.5) 45%,rgba(0,21,56,0.15) 100%),linear-gradient(180deg,rgba(0,21,56,0.25) 0%,rgba(0,21,56,0) 20%,rgba(0,21,56,0) 72%,#001538 100%)">
           </div>
           <div style="position:relative;max-width:1280px;margin:0 auto">
             <div
