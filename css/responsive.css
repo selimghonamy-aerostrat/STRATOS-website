@@ -63,3 +63,44 @@
 @media (max-width:640px){
   .stratos-hero-alt > img + div{background:linear-gradient(180deg,rgba(0,21,56,0.6) 0%,rgba(0,21,56,0.55) 60%,#001538 100%) !important}
 }
+
+/* ---- Mobile spacing scale ----
+   Section rhythm: 40px on a 390px phone, growing with the screen to 56px on tablets.
+   Selectors are more specific than the per-page rules so this file sets the scale. */
+@media (max-width:1020px){
+  main > section:not(.stratos-hero):not(.stratos-hero-alt){
+    padding-top:clamp(40px,8vw,56px) !important;
+    padding-bottom:clamp(40px,8vw,56px) !important;
+  }
+  /* No trailing margin on the last block of a section, so gaps stay even */
+  main > section > .stratos-reveal > :last-child{margin-bottom:0 !important}
+
+  /* Content is always visible on phones and tablets. The scroll-in effect hid each
+     section until it was well on screen, which showed as empty bands while scrolling. */
+  .stratos-reveal[data-hidden],
+  .stratos-reveal[data-hidden] .stratos-pop{opacity:1 !important;transform:none !important}
+}
+@media (pointer:coarse){
+  .stratos-reveal[data-hidden],
+  .stratos-reveal[data-hidden] .stratos-pop{opacity:1 !important;transform:none !important}
+}
+
+/* ---- Compact footer on phones ---- */
+@media (max-width:640px){
+  html body footer{padding:32px 20px 20px !important}
+  footer > div > div:first-child{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:24px 16px !important;
+    padding-bottom:24px !important;
+  }
+  /* Brand and contact span the full width; Company and Solutions sit side by side */
+  footer > div > div:first-child > div:first-child,
+  footer > div > div:first-child > div:last-child{grid-column:1 / -1}
+  footer > div > div:first-child > div{gap:0 !important}
+  footer > div > div:first-child img{height:34px !important;margin-bottom:8px !important}
+  footer > div > div:first-child a,
+  footer > div > div:first-child span{min-height:40px;font-size:14px !important;line-height:1.3 !important}
+  footer > div > div:first-child > div:last-child{flex-direction:row !important;flex-wrap:wrap;column-gap:20px !important}
+  footer > div > div:first-child > div:last-child > div:first-child{flex-basis:100%}
+  footer > div > div:last-child{padding-top:16px !important}
+}
