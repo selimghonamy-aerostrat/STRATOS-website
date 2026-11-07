@@ -1,5 +1,34 @@
 {
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "stratos-ida.com"
+        }
+      ],
+      "destination": "https://aero-strat.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.stratos-ida.com"
+        }
+      ],
+      "destination": "https://aero-strat.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/uploads/STRATOS_EBT_CBTA_Handbook.pdf",
+      "destination": "/uploads/AeroStrat_EBT_CBTA_Handbook.pdf",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
@@ -81,7 +110,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://stratos-ida.com/>; rel=\"canonical\""
+          "value": "<https://aero-strat.com/>; rel=\"canonical\""
         }
       ]
     },
@@ -94,7 +123,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://stratos-ida.com/about>; rel=\"canonical\""
+          "value": "<https://aero-strat.com/about>; rel=\"canonical\""
         }
       ]
     },
@@ -107,7 +136,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://stratos-ida.com/solutions>; rel=\"canonical\""
+          "value": "<https://aero-strat.com/solutions>; rel=\"canonical\""
         }
       ]
     },
@@ -120,7 +149,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://stratos-ida.com/ebt-cbta>; rel=\"canonical\""
+          "value": "<https://aero-strat.com/ebt-cbta>; rel=\"canonical\""
         }
       ]
     },
@@ -133,7 +162,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://stratos-ida.com/tms>; rel=\"canonical\""
+          "value": "<https://aero-strat.com/tms>; rel=\"canonical\""
         }
       ]
     },
@@ -146,7 +175,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://stratos-ida.com/clients>; rel=\"canonical\""
+          "value": "<https://aero-strat.com/clients>; rel=\"canonical\""
         }
       ]
     },
@@ -159,7 +188,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://stratos-ida.com/contact>; rel=\"canonical\""
+          "value": "<https://aero-strat.com/contact>; rel=\"canonical\""
         }
       ]
     },

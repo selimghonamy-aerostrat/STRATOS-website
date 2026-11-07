@@ -1,8 +1,8 @@
-# STRATOS TMS: pilot training management system
+# AeroStrat TMS: pilot training management system
 
-> Every pilot current. Every renewal planned. STRATOS TMS puts validity, planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority. It connects to STRATOS EBT/CBTA for airlines that subscribe to it. Live.
+> Every pilot current. Every renewal planned. AeroStrat TMS puts validity, planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority. It connects to AeroStrat EBT/CBTA for airlines that subscribe to it. Live.
 
-Canonical page: https://stratos-ida.com/tms
+Canonical page: https://aero-strat.com/tms
 For: Directors of Training, Heads of Training and Crew Training Managers.
 
 Key numbers: 5 status levels, checked daily · worst item sets the pilot's status · 3-year recurrent cycle, run per pilot · KPI targets set per airline.
@@ -74,13 +74,13 @@ Monthly, quarterly and yearly reports for the Director, by fleet and activity. E
 
 A record entered once updates the plan, the pilot and the reports: results entered once → expiry recalculated, certificate filed (EBT/CBTA grade linked for subscribers) → renewal plan and monthly load rebuilt → pilots booked into simulator, classroom and checks with email notice → live validity, KPIs and audit-ready pilot files for the Director.
 
-## Integration with STRATOS EBT/CBTA
+## Integration with AeroStrat EBT/CBTA
 
-For airlines subscribed to STRATOS EBT/CBTA, both systems share one crew list, one pilot record and one login. A completed, graded session updates the TMS record and the next expiry, with no double entry. The Director sees validity, competency trends and instructor concordance side by side, per pilot and per fleet. On the roadmap: connecting to the airline's existing LMS (STRATOS does not build an LMS).
+For airlines subscribed to AeroStrat EBT/CBTA, both systems share one crew list, one pilot record and one login. A completed, graded session updates the TMS record and the next expiry, with no double entry. The Director sees validity, competency trends and instructor concordance side by side, per pilot and per fleet. On the roadmap: connecting to the airline's existing LMS (AeroStrat does not build an LMS).
 
 ## Implementation & migration: we move your records, you sign off
 
-From Excel, paper or a legacy TMS, STRATOS does the full migration and implementation. The training department reviews and approves; it does not re-key records.
+From Excel, paper or a legacy TMS, AeroStrat does the full migration and implementation. The training department reviews and approves; it does not re-key records.
 
 - **We migrate:** Excel training sheets, paper records, legacy TMS data, crew master & rosters, training history, certificates & scans, licences & medicals, simulator & check records.
 - **We configure:** training rules from the Operations Manual; the recurrent programme (courses, phases, simulator cycle).
@@ -94,4 +94,4 @@ Every record mapped to the pilot, every expiry recalculated, every document file
 2. **Data & scope intake:** records, rules and manuals shared; quote sized to your crew list.
 3. **Migrate · go live:** records migrated, rules configured, team trained, live across the fleet.
 
-Contact: https://stratos-ida.com/contact · info@stratos-ida.com
+Contact: https://aero-strat.com/contact · info@aero-strat.com

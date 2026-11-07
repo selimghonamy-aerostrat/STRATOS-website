@@ -1,6 +1,6 @@
-# STRATOS website
+# AeroStrat website
 
-Source for **https://stratos-ida.com**, the website of STRATOS (Intelligence-Driven Aviation). Hosted on Vercel; every push to `main` deploys to production automatically.
+Source for **https://aero-strat.com**, the website of AeroStrat (Intelligence Driven Aviation). Hosted on Vercel; every push to `main` deploys to production automatically.
 
 ## Structure
 
@@ -16,10 +16,12 @@ Contact.dc.html      Contact Us      → /contact
 js/support.js        Page runtime (renders the <x-dc> templates; generated, do not edit)
 js/hero-video.js     Keeps the homepage background video playing on all browsers
 css/responsive.css   Phone/tablet fixes shared by every page (solid mobile menu, hero size, tap targets)
+css/fonts.css        Open Sauce One, the AeroStrat brand typeface (files in fonts/)
 
 uploads/             Images, video, logos, handbook PDF
 uploads/brand/       Share image (og-image.png) and raster logo for structured data
-uploads/svg/         Header/footer logo
+uploads/svg/         AeroStrat logos from the brand guidelines: horizontal / stacked, with or without
+                     tagline, in white (for dark backgrounds) and navy (for light backgrounds)
 
 md/                  Markdown copy of each page for AI crawlers, served at /<page>.md
 llms.txt             Short site summary for AI assistants
@@ -31,6 +33,10 @@ sitemap.xml          Page list for Google/Bing
 favicon.svg, favicon-96.png, apple-touch-icon.png   Browser and home-screen icons
 vercel.json          Clean URLs, Markdown routes and response headers
 ```
+
+## Brand
+
+AeroStrat. Navy `#00348C`, red `#EB2427`, white. Wordmark in Aksen Expanded (logo files only), text in Open Sauce One. Source: `AeroStrat - Brand Guidelines - v1-2.pdf`.
 
 ## Editing content
 

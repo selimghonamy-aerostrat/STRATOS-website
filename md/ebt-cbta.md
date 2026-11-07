@@ -1,8 +1,8 @@
-# STRATOS EBT/CBTA: EBT/CBTA assessment platform for airlines
+# AeroStrat EBT/CBTA: EBT/CBTA assessment platform for airlines
 
-> From paper records to performance intelligence. STRATOS EBT/CBTA grades every check against the ICAO nine-competency framework on the airline's own forms, and turns every submission into pilot, cohort and fleet analytics. Built on the ICAO, IATA and EASA method (also ECAA). Live, in daily production at AlMasria Universal Airlines.
+> From paper records to performance intelligence. AeroStrat EBT/CBTA grades every check against the ICAO nine-competency framework on the airline's own forms, and turns every submission into pilot, cohort and fleet analytics. Built on the ICAO, IATA and EASA method (also ECAA). Live, in daily production at AlMasria Universal Airlines.
 
-Canonical page: https://stratos-ida.com/ebt-cbta
+Canonical page: https://aero-strat.com/ebt-cbta
 For: Training Directors, Heads of Training and TRE/TRI leads.
 
 Key numbers: 9 ICAO core competencies · 73 observable behaviours (IATA wording and numbering) · 329 IATA scenarios for Day 2 planning · 3 analytical altitudes (micro, macro, trend) · 4 one-click outcomes on submission.
@@ -17,16 +17,16 @@ EBT/CBTA expects grades derived from observed behaviour, trends tracked across t
 
 ## Positioning: the EBT/CBTA layer
 
-STRATOS EBT/CBTA sits alongside the airline's LMS and can be integrated with STRATOS TMS.
+AeroStrat EBT/CBTA sits alongside the airline's LMS and can be integrated with AeroStrat TMS.
 
-- **LMS (adjacent system):** delivers e-learning content (course hosting, SCORM playback, knowledge checks). STRATOS does not deliver e-learning.
-- **STRATOS EBT/CBTA:** calculates competency grades against the ICAO nine-competency framework using the airline's own scoring rules. A signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and pilot, cohort and fleet analytics.
-- **STRATOS TMS (integrates):** validity, planning and scheduling, on one pilot record.
-- **Responsibilities:** the airline owns every regulatory obligation (implementation plan, safety risk assessment, authority submissions). STRATOS supports it: captures evidence, recommends grades, applies the correct standard and raises policy flags. The instructor decides and sets the final grade; any override needs a written reason. STRATOS never overwrites it.
+- **LMS (adjacent system):** delivers e-learning content (course hosting, SCORM playback, knowledge checks). AeroStrat does not deliver e-learning.
+- **AeroStrat EBT/CBTA:** calculates competency grades against the ICAO nine-competency framework using the airline's own scoring rules. A signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and pilot, cohort and fleet analytics.
+- **AeroStrat TMS (integrates):** validity, planning and scheduling, on one pilot record.
+- **Responsibilities:** the airline owns every regulatory obligation (implementation plan, safety risk assessment, authority submissions). AeroStrat supports it: captures evidence, recommends grades, applies the correct standard and raises policy flags. The instructor decides and sets the final grade; any override needs a written reason. AeroStrat never overwrites it.
 
 ## Native to the EBT transition
 
-Whether an airline is starting EBT or already running it, STRATOS supports the programme at its current stage and carries it to the next, on one platform. Each airline sets its own stage, with a start date, and moves up with the same records, pilots and history. Each check is graded under the stage in force on its date.
+Whether an airline is starting EBT or already running it, AeroStrat supports the programme at its current stage and carries it to the next, on one platform. Each airline sets its own stage, with a start date, and moves up with the same records, pilots and history. Each check is graded under the stage in force on its date.
 
 - **Conventional checking ("train, then check"):** native.
 - **Mixed EBT ("check, then train"):** native for pilot assessment, live. A Day 1 proficiency check comes first; Day 2 training is planned from its findings, with ranked scenarios from the 329 in IATA's EBT workbook. The nine competencies are graded 1–5 as the airline's manual defines, with optional observable behaviours and TEM outcomes. Same engine, cycles and modules are live; equivalency tables and line-check intervals are on the roadmap.
@@ -94,11 +94,11 @@ For pilots with two or more checks, a plain-language coaching and remediation su
 
 ## Onboarding: fitted to the airline
 
-STRATOS develops forms from the airline's training manual, with competency mapping, OBs and TEM, or digitises existing forms exactly as they are. Support and maintenance included.
+AeroStrat develops forms from the airline's training manual, with competency mapping, OBs and TEM, or digitises existing forms exactly as they are. Support and maintenance included.
 
 1. **Discovery:** the training manual and any existing evaluation forms, digital or paper.
 2. **Build:** each form developed from the manual, or existing forms digitised as they are.
 3. **Configure:** rosters loaded, instructor and Director accounts created, departments set.
 4. **Go-live:** grading, reporting and analytics run from the first submission.
 
-Handbook (PDF): https://stratos-ida.com/uploads/STRATOS_EBT_CBTA_Handbook.pdf · Contact: https://stratos-ida.com/contact
+Handbook (PDF): https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf · Contact: https://aero-strat.com/contact

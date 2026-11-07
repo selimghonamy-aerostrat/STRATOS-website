@@ -1,32 +1,32 @@
-# STRATOS: full site content for AI assistants
+# AeroStrat: full site content for AI assistants
 
-> Complete text of stratos-ida.com plus the STRATOS EBT/CBTA Platform Handbook, as plain Markdown. Short index: https://stratos-ida.com/llms.txt
+> Complete text of aero-strat.com plus the AeroStrat EBT/CBTA Platform Handbook, as plain Markdown. Short index: https://aero-strat.com/llms.txt
 
-Company: STRATOS (Intelligence-Driven Aviation) · Website: https://stratos-ida.com · Email: info@stratos-ida.com · LinkedIn: https://www.linkedin.com/company/stratos-ida/ · Based in Tallinn, Estonia
+Company: AeroStrat (Intelligence Driven Aviation) · Website: https://aero-strat.com · Email: info@aero-strat.com · LinkedIn: https://www.linkedin.com/company/stratos-ida/ · Based in Tallinn, Estonia
 
 ---
 
-# STRATOS: Intelligence-Driven Aviation
+# AeroStrat: Intelligence Driven Aviation
 
-> STRATOS is an aviation technology company based in Tallinn, Estonia. Its team brings 25+ years of experience in the aviation sector together with deep technology expertise, to build software for the way airlines operate. Two products for airline pilot training are live: STRATOS EBT/CBTA and STRATOS TMS.
+> AeroStrat is an aviation technology company based in Tallinn, Estonia. Its team brings 25+ years of experience in the aviation sector together with deep technology expertise, to build software for the way airlines operate. Two products for airline pilot training are live: AeroStrat EBT/CBTA and AeroStrat TMS.
 
-Canonical page: https://stratos-ida.com/
+Canonical page: https://aero-strat.com/
 
 ## Who we are
 
-STRATOS pairs 25+ years of experience in the aviation sector (flight operations, crew training, regulation and oversight, seen from inside the airline) with deep expertise in software engineering, data and analytics, delivered as secure systems an airline can rely on every day. What it builds follows how airlines are run and regulated.
+AeroStrat pairs 25+ years of experience in the aviation sector (flight operations, crew training, regulation and oversight, seen from inside the airline) with deep expertise in software engineering, data and analytics, delivered as secure systems an airline can rely on every day. What it builds follows how airlines are run and regulated.
 
 - **One shared foundation:** every product is set up to the airline's own manuals and authority, and works from the same records.
 
 ## Direction
 
-An airline runs on connected disciplines. STRATOS is building technology for each of them, one domain at a time, on one shared foundation. It started with training.
+An airline runs on connected disciplines. AeroStrat is building technology for each of them, one domain at a time, on one shared foundation. It started with training.
 
 ## The training solution
 
 Two connected products for airline pilot training: one measures how well pilots perform, the other keeps every pilot current. Airlines can take one, or both on a single pilot record.
 
-### STRATOS EBT/CBTA: every grade consistent, every skill measured
+### AeroStrat EBT/CBTA: every grade consistent, every skill measured
 
 Evidence-based training and assessment, graded by the ICAO, IATA and EASA method on forms built from the airline's own manual.
 
@@ -34,9 +34,9 @@ Evidence-based training and assessment, graded by the ICAO, IATA and EASA method
 - Day 2 training planned from the pilot's Day 1 evidence
 - Trends by pilot, cohort, fleet and instructor
 
-Details: https://stratos-ida.com/ebt-cbta
+Details: https://aero-strat.com/ebt-cbta
 
-### STRATOS TMS: every pilot current, every renewal planned
+### AeroStrat TMS: every pilot current, every renewal planned
 
 The training management system: validity, planning, recurrent training, records and audit in one place.
 
@@ -44,7 +44,7 @@ The training management system: validity, planning, recurrent training, records 
 - Renewals planned months ahead, pilots reminded before anything lapses
 - One digital file per pilot, ready for the inspector
 
-Details: https://stratos-ida.com/tms
+Details: https://aero-strat.com/tms
 
 ### One pilot record: entered once, never re-typed
 
@@ -58,15 +58,15 @@ Built on ICAO, IATA and EASA guidance, set up to each airline's manuals and auth
 
 ## Contact
 
-Book a live walkthrough on a sample of your own crew, records and check forms: https://stratos-ida.com/contact · info@stratos-ida.com
+Book a live walkthrough on a sample of your own crew, records and check forms: https://aero-strat.com/contact · info@aero-strat.com
 
 ---
 
-# About STRATOS
+# About AeroStrat
 
-> STRATOS is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It is developing technology across the airline and started with training: STRATOS EBT/CBTA and STRATOS TMS are live today.
+> AeroStrat is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It is developing technology across the airline and started with training: AeroStrat EBT/CBTA and AeroStrat TMS are live today.
 
-Canonical page: https://stratos-ida.com/about
+Canonical page: https://aero-strat.com/about
 
 - **Vision:** Unifying fragmented data into a single source of operational intelligence and continuous oversight.
 - **Mission:** Turning complex aviation data into connected intelligence that raises safety, performance and continuous improvement.
@@ -80,15 +80,15 @@ Canonical page: https://stratos-ida.com/about
 
 ## Products
 
-- **STRATOS EBT/CBTA** (live): competency assessment and training records. It captures, grades and analyses evaluation data against the ICAO/IATA competency framework.
-- **STRATOS TMS** (live): validity, planning, recurrent training, records and audit in one system, sharing one crew list and one pilot record with STRATOS EBT/CBTA.
+- **AeroStrat EBT/CBTA** (live): competency assessment and training records. It captures, grades and analyses evaluation data against the ICAO/IATA competency framework.
+- **AeroStrat TMS** (live): validity, planning, recurrent training, records and audit in one system, sharing one crew list and one pilot record with AeroStrat EBT/CBTA.
 - **What they are not:** neither product delivers e-learning courses. They record, plan and analyse training and assessment.
 
 ## Direction: one domain at a time, on one shared foundation
 
-An airline runs on connected disciplines. STRATOS is building technology for each of them. Training is live; the next domains follow on the same foundation.
+An airline runs on connected disciplines. AeroStrat is building technology for each of them. Training is live; the next domains follow on the same foundation.
 
-1. **Training (live):** STRATOS EBT/CBTA for competency assessment and STRATOS TMS for training management, on one pilot record.
+1. **Training (live):** AeroStrat EBT/CBTA for competency assessment and AeroStrat TMS for training management, on one pilot record.
 2. **Safety & Compliance (next):** occurrence reporting and audit findings tied back to the competency evidence behind them.
 3. **Flight Operations (next):** crew qualification, currency and rostering constraints in the same record as training.
 4. **Maintenance & Engineering (next):** technical training and authorisation tracking on the shared competency framework.
@@ -109,33 +109,33 @@ An airline runs on connected disciplines. STRATOS is building technology for eac
 
 ## How we work with you: set up from your manuals
 
-STRATOS staff onboard each airline from its own manuals. STRATOS builds the airline's check forms from its paper forms, sets its grading scale and document control, and configures the platform to its authority. Building forms is part of the implementation service, not a self-serve builder. Forms stay as they are, whether they start on paper or in digital form. Support and maintenance are included.
+AeroStrat staff onboard each airline from its own manuals. AeroStrat builds the airline's check forms from its paper forms, sets its grading scale and document control, and configures the platform to its authority. Building forms is part of the implementation service, not a self-serve builder. Forms stay as they are, whether they start on paper or in digital form. Support and maintenance are included.
 
 ---
 
-# STRATOS solutions: EBT/CBTA and TMS for airline pilot training
+# AeroStrat solutions: EBT/CBTA and TMS for airline pilot training
 
-> Two connected products for airline pilot training. STRATOS EBT/CBTA grades competency by the ICAO, IATA and EASA method. STRATOS TMS keeps every pilot current and every renewal planned. Both are configured to each airline's own training manual and authority, not tied to one regulator, and every airline's data is isolated from every other's.
+> Two connected products for airline pilot training. AeroStrat EBT/CBTA grades competency by the ICAO, IATA and EASA method. AeroStrat TMS keeps every pilot current and every renewal planned. Both are configured to each airline's own training manual and authority, not tied to one regulator, and every airline's data is isolated from every other's.
 
-Canonical page: https://stratos-ida.com/solutions
+Canonical page: https://aero-strat.com/solutions
 
-## 1. STRATOS EBT/CBTA (competence): every grade consistent, every skill measured
+## 1. AeroStrat EBT/CBTA (competence): every grade consistent, every skill measured
 
 Evidence-based training and assessment for airline recurrent pilot training. Grading, training planning, analytics and records in one system, built on the ICAO, IATA and EASA method.
 
 - 9 ICAO/IATA pilot competencies · 73 observable behaviours in IATA wording · 329 IATA scenarios for Day 2 planning · as many forms as the airline uses, built natively rule for rule
 - Modules: competency grading (IATA lowest-of-three rule), forms built from the airline's manual, Day 2 planning, three-altitude analytics and fleet risk board, instructor standardisation, signed PDF and append-only audit log, EBT stage support (conventional checking native; Mixed EBT native for pilot assessment)
 
-Full detail: https://stratos-ida.com/ebt-cbta
+Full detail: https://aero-strat.com/ebt-cbta
 
-## 2. STRATOS TMS (compliance): every pilot current, every renewal planned
+## 2. AeroStrat TMS (compliance): every pilot current, every renewal planned
 
 The training management system. Validity, planning, recurrent training, records and audit in one place, configured to the airline's Operations Manual and authority.
 
 - 5 status levels checked daily; the worst item sets the pilot's file · 3-year recurrent cycle run per pilot · KPI targets set per airline
 - Modules: validity control, expiry engine (OM-D rules, renewal windows, end-of-month counting), 3-year plan and monthly load, recurrent cycle, digital pilot file, reports (MEETS / WATCH / BELOW), pilot portal & email notices
 
-Full detail: https://stratos-ida.com/tms
+Full detail: https://aero-strat.com/tms
 
 ## 3. How they work together: one crew list, one pilot record, one login
 
@@ -169,52 +169,52 @@ One login. Each user sees and changes only what their role allows, in both produ
 
 ## Implementation: four stages, about five weeks
 
-Target timeline from receiving the airline's manual, records and forms. The airline names one owner; STRATOS does the setup.
+Target timeline from receiving the airline's manual, records and forms. The airline names one owner; AeroStrat does the setup.
 
-1. **Stage 1:** the airline provides its Operations Manual and training manual, current records and forms, and one named owner. STRATOS reviews them and maps every record to a pilot. Output: scope and plan agreed.
-2. **Stage 2:** the airline answers mapping questions. STRATOS moves records from Excel, paper or the old system, builds forms from the manual and recalculates every expiry. Output: records migrated, forms built.
-3. **Stage 3:** the airline reviews rules and standards. STRATOS loads the crew list, creates accounts, sets up training rules and standards, and reconciles against the source data. Output: Director sign-off.
-4. **Stage 4:** the team attends training on live data. STRATOS trains users on their own data and switches on notices and dashboards. Output: expiries, grades and dashboards live.
+1. **Stage 1:** the airline provides its Operations Manual and training manual, current records and forms, and one named owner. AeroStrat reviews them and maps every record to a pilot. Output: scope and plan agreed.
+2. **Stage 2:** the airline answers mapping questions. AeroStrat moves records from Excel, paper or the old system, builds forms from the manual and recalculates every expiry. Output: records migrated, forms built.
+3. **Stage 3:** the airline reviews rules and standards. AeroStrat loads the crew list, creates accounts, sets up training rules and standards, and reconciles against the source data. Output: Director sign-off.
+4. **Stage 4:** the team attends training on live data. AeroStrat trains users on their own data and switches on notices and dashboards. Output: expiries, grades and dashboards live.
 
-The airline owns the programme and keeps every regulatory obligation; the instructor sets every final grade and STRATOS never overwrites it. Authorities approve programmes, not software.
+The airline owns the programme and keeps every regulatory obligation; the instructor sets every final grade and AeroStrat never overwrites it. Authorities approve programmes, not software.
 
 ## Frequently asked questions
 
 **Can we start with one product?**
-Yes. Take STRATOS TMS, STRATOS EBT/CBTA, or both. Each runs on its own. Together they share one crew list, one login and one pilot record, so a graded check updates the next expiry with no re-typing.
+Yes. Take AeroStrat TMS, AeroStrat EBT/CBTA, or both. Each runs on its own. Together they share one crew list, one login and one pilot record, so a graded check updates the next expiry with no re-typing.
 
 **We already use another platform.**
-STRATOS moves you across. Your forms are digitised, and your past grades and training records are moved into the new system. The migration is done by STRATOS.
+AeroStrat moves you across. Your forms are digitised, and your past grades and training records are moved into the new system. The migration is done by AeroStrat.
 
 **Do we have to change our forms?**
-No. If you have a training manual but no digital forms, STRATOS builds the forms from your manual, rule for rule. If you already have forms you want to keep, STRATOS implements those exactly: same structure, same scoring logic, same sign-off chain, so instructors see what they already know, digitised.
+No. If you have a training manual but no digital forms, AeroStrat builds the forms from your manual, rule for rule. If you already have forms you want to keep, AeroStrat implements those exactly: same structure, same scoring logic, same sign-off chain, so instructors see what they already know, digitised.
 
 **Will our pilots accept it?**
-Results are framed as coaching, not discipline. The instructor sets every grade and STRATOS never overwrites it. Pilots also see their own status in the portal instead of asking the office.
+Results are framed as coaching, not discipline. The instructor sets every grade and AeroStrat never overwrites it. Pilots also see their own status in the portal instead of asking the office.
 
 **What happens to our data?**
 It stays yours: isolated from every other airline and exportable in full at any time. Pilot and cabin-crew records are held separately at the database level rather than hidden in the interface, so a security review or an auditor gets a verifiable answer about isolation.
 
 **Does it replace our LMS or rostering?**
-No. STRATOS works alongside both. Rostering stays where it is, and STRATOS does not deliver e-learning. Connecting the TMS to an existing LMS is on the roadmap: where the LMS supports module export, its learning modules can be embedded in the TMS.
+No. AeroStrat works alongside both. Rostering stays where it is, and AeroStrat does not deliver e-learning. Connecting the TMS to an existing LMS is on the roadmap: where the LMS supports module export, its learning modules can be embedded in the TMS.
 
 **Is the software approved by the authority?**
-Authorities approve programmes, not software. STRATOS supports your compliance with EASA and your national rules, and the airline keeps every regulatory obligation.
+Authorities approve programmes, not software. AeroStrat supports your compliance with EASA and your national rules, and the airline keeps every regulatory obligation.
 
 **How long does implementation take?**
-Four stages, about five weeks, from receiving your manual, records and forms. You name one owner; STRATOS does the setup.
+Four stages, about five weeks, from receiving your manual, records and forms. You name one owner; AeroStrat does the setup.
 
 ## Three steps, one decision
 
-Agree a pilot project: one fleet, the products you need, and success measures set in advance. Then share your manuals, records and forms, and go live. Contact: https://stratos-ida.com/contact · info@stratos-ida.com
+Agree a pilot project: one fleet, the products you need, and success measures set in advance. Then share your manuals, records and forms, and go live. Contact: https://aero-strat.com/contact · info@aero-strat.com
 
 ---
 
-# STRATOS EBT/CBTA: EBT/CBTA assessment platform for airlines
+# AeroStrat EBT/CBTA: EBT/CBTA assessment platform for airlines
 
-> From paper records to performance intelligence. STRATOS EBT/CBTA grades every check against the ICAO nine-competency framework on the airline's own forms, and turns every submission into pilot, cohort and fleet analytics. Built on the ICAO, IATA and EASA method (also ECAA). Live, in daily production at AlMasria Universal Airlines.
+> From paper records to performance intelligence. AeroStrat EBT/CBTA grades every check against the ICAO nine-competency framework on the airline's own forms, and turns every submission into pilot, cohort and fleet analytics. Built on the ICAO, IATA and EASA method (also ECAA). Live, in daily production at AlMasria Universal Airlines.
 
-Canonical page: https://stratos-ida.com/ebt-cbta
+Canonical page: https://aero-strat.com/ebt-cbta
 For: Training Directors, Heads of Training and TRE/TRI leads.
 
 Key numbers: 9 ICAO core competencies · 73 observable behaviours (IATA wording and numbering) · 329 IATA scenarios for Day 2 planning · 3 analytical altitudes (micro, macro, trend) · 4 one-click outcomes on submission.
@@ -229,16 +229,16 @@ EBT/CBTA expects grades derived from observed behaviour, trends tracked across t
 
 ## Positioning: the EBT/CBTA layer
 
-STRATOS EBT/CBTA sits alongside the airline's LMS and can be integrated with STRATOS TMS.
+AeroStrat EBT/CBTA sits alongside the airline's LMS and can be integrated with AeroStrat TMS.
 
-- **LMS (adjacent system):** delivers e-learning content (course hosting, SCORM playback, knowledge checks). STRATOS does not deliver e-learning.
-- **STRATOS EBT/CBTA:** calculates competency grades against the ICAO nine-competency framework using the airline's own scoring rules. A signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and pilot, cohort and fleet analytics.
-- **STRATOS TMS (integrates):** validity, planning and scheduling, on one pilot record.
-- **Responsibilities:** the airline owns every regulatory obligation (implementation plan, safety risk assessment, authority submissions). STRATOS supports it: captures evidence, recommends grades, applies the correct standard and raises policy flags. The instructor decides and sets the final grade; any override needs a written reason. STRATOS never overwrites it.
+- **LMS (adjacent system):** delivers e-learning content (course hosting, SCORM playback, knowledge checks). AeroStrat does not deliver e-learning.
+- **AeroStrat EBT/CBTA:** calculates competency grades against the ICAO nine-competency framework using the airline's own scoring rules. A signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and pilot, cohort and fleet analytics.
+- **AeroStrat TMS (integrates):** validity, planning and scheduling, on one pilot record.
+- **Responsibilities:** the airline owns every regulatory obligation (implementation plan, safety risk assessment, authority submissions). AeroStrat supports it: captures evidence, recommends grades, applies the correct standard and raises policy flags. The instructor decides and sets the final grade; any override needs a written reason. AeroStrat never overwrites it.
 
 ## Native to the EBT transition
 
-Whether an airline is starting EBT or already running it, STRATOS supports the programme at its current stage and carries it to the next, on one platform. Each airline sets its own stage, with a start date, and moves up with the same records, pilots and history. Each check is graded under the stage in force on its date.
+Whether an airline is starting EBT or already running it, AeroStrat supports the programme at its current stage and carries it to the next, on one platform. Each airline sets its own stage, with a start date, and moves up with the same records, pilots and history. Each check is graded under the stage in force on its date.
 
 - **Conventional checking ("train, then check"):** native.
 - **Mixed EBT ("check, then train"):** native for pilot assessment, live. A Day 1 proficiency check comes first; Day 2 training is planned from its findings, with ranked scenarios from the 329 in IATA's EBT workbook. The nine competencies are graded 1–5 as the airline's manual defines, with optional observable behaviours and TEM outcomes. Same engine, cycles and modules are live; equivalency tables and line-check intervals are on the roadmap.
@@ -306,22 +306,22 @@ For pilots with two or more checks, a plain-language coaching and remediation su
 
 ## Onboarding: fitted to the airline
 
-STRATOS develops forms from the airline's training manual, with competency mapping, OBs and TEM, or digitises existing forms exactly as they are. Support and maintenance included.
+AeroStrat develops forms from the airline's training manual, with competency mapping, OBs and TEM, or digitises existing forms exactly as they are. Support and maintenance included.
 
 1. **Discovery:** the training manual and any existing evaluation forms, digital or paper.
 2. **Build:** each form developed from the manual, or existing forms digitised as they are.
 3. **Configure:** rosters loaded, instructor and Director accounts created, departments set.
 4. **Go-live:** grading, reporting and analytics run from the first submission.
 
-Handbook (PDF): https://stratos-ida.com/uploads/STRATOS_EBT_CBTA_Handbook.pdf · Contact: https://stratos-ida.com/contact
+Handbook (PDF): https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf · Contact: https://aero-strat.com/contact
 
 ---
 
-# STRATOS TMS: pilot training management system
+# AeroStrat TMS: pilot training management system
 
-> Every pilot current. Every renewal planned. STRATOS TMS puts validity, planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority. It connects to STRATOS EBT/CBTA for airlines that subscribe to it. Live.
+> Every pilot current. Every renewal planned. AeroStrat TMS puts validity, planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority. It connects to AeroStrat EBT/CBTA for airlines that subscribe to it. Live.
 
-Canonical page: https://stratos-ida.com/tms
+Canonical page: https://aero-strat.com/tms
 For: Directors of Training, Heads of Training and Crew Training Managers.
 
 Key numbers: 5 status levels, checked daily · worst item sets the pilot's status · 3-year recurrent cycle, run per pilot · KPI targets set per airline.
@@ -393,13 +393,13 @@ Monthly, quarterly and yearly reports for the Director, by fleet and activity. E
 
 A record entered once updates the plan, the pilot and the reports: results entered once → expiry recalculated, certificate filed (EBT/CBTA grade linked for subscribers) → renewal plan and monthly load rebuilt → pilots booked into simulator, classroom and checks with email notice → live validity, KPIs and audit-ready pilot files for the Director.
 
-## Integration with STRATOS EBT/CBTA
+## Integration with AeroStrat EBT/CBTA
 
-For airlines subscribed to STRATOS EBT/CBTA, both systems share one crew list, one pilot record and one login. A completed, graded session updates the TMS record and the next expiry, with no double entry. The Director sees validity, competency trends and instructor concordance side by side, per pilot and per fleet. On the roadmap: connecting to the airline's existing LMS (STRATOS does not build an LMS).
+For airlines subscribed to AeroStrat EBT/CBTA, both systems share one crew list, one pilot record and one login. A completed, graded session updates the TMS record and the next expiry, with no double entry. The Director sees validity, competency trends and instructor concordance side by side, per pilot and per fleet. On the roadmap: connecting to the airline's existing LMS (AeroStrat does not build an LMS).
 
 ## Implementation & migration: we move your records, you sign off
 
-From Excel, paper or a legacy TMS, STRATOS does the full migration and implementation. The training department reviews and approves; it does not re-key records.
+From Excel, paper or a legacy TMS, AeroStrat does the full migration and implementation. The training department reviews and approves; it does not re-key records.
 
 - **We migrate:** Excel training sheets, paper records, legacy TMS data, crew master & rosters, training history, certificates & scans, licences & medicals, simulator & check records.
 - **We configure:** training rules from the Operations Manual; the recurrent programme (courses, phases, simulator cycle).
@@ -413,66 +413,66 @@ Every record mapped to the pilot, every expiry recalculated, every document file
 2. **Data & scope intake:** records, rules and manuals shared; quote sized to your crew list.
 3. **Migrate · go live:** records migrated, rules configured, team trained, live across the fleet.
 
-Contact: https://stratos-ida.com/contact · info@stratos-ida.com
+Contact: https://aero-strat.com/contact · info@aero-strat.com
 
 ---
 
-# STRATOS clients
+# AeroStrat clients
 
-Canonical page: https://stratos-ida.com/clients
+Canonical page: https://aero-strat.com/clients
 
 ## AlMasria Universal Airlines
 
-Founding reference client of STRATOS. STRATOS EBT/CBTA is in daily production at AlMasria Universal Airlines, covering 120+ pilots and 250+ cabin crew, with more than 14,000 grades recorded to date.
+Founding reference client of AeroStrat. AeroStrat EBT/CBTA is in daily production at AlMasria Universal Airlines, covering 120+ pilots and 250+ cabin crew, with more than 14,000 grades recorded to date.
 
-To see STRATOS on your own forms, book a walkthrough: https://stratos-ida.com/contact
+To see AeroStrat on your own forms, book a walkthrough: https://aero-strat.com/contact
 
 ---
 
-# Contact STRATOS
+# Contact AeroStrat
 
-Canonical page: https://stratos-ida.com/contact
+Canonical page: https://aero-strat.com/contact
 
-Book a walkthrough, send one of your check forms and see how it grades in STRATOS, or see STRATOS TMS on a sample of your own crew and training data.
+Book a walkthrough, send one of your check forms and see how it grades in AeroStrat, or see AeroStrat TMS on a sample of your own crew and training data.
 
-- **Email:** info@stratos-ida.com
+- **Email:** info@aero-strat.com
 - **Location:** Tallinn, Estonia
 - **LinkedIn:** https://www.linkedin.com/company/stratos-ida/
-- **Contact form:** https://stratos-ida.com/contact (full name, airline, role, email, product of interest, current EBT stage, message)
+- **Contact form:** https://aero-strat.com/contact (full name, airline, role, email, product of interest, current EBT stage, message)
 
 ## What a first call covers
 
-- **For STRATOS TMS:** your crew list, your current training records and the training rules in your OM-D.
-- **For STRATOS EBT/CBTA:** your EBT stage and plans, your check forms, and what STRATOS needs from you to set up: your forms and competency mapping, your standards, your instructor ranks, and the training managers who receive alerts.
+- **For AeroStrat TMS:** your crew list, your current training records and the training rules in your OM-D.
+- **For AeroStrat EBT/CBTA:** your EBT stage and plans, your check forms, and what AeroStrat needs from you to set up: your forms and competency mapping, your standards, your instructor ranks, and the training managers who receive alerts.
 
 ## Read first
 
-The STRATOS EBT/CBTA Platform Handbook covers every module, the grading engine and the honest status of each one: https://stratos-ida.com/uploads/STRATOS_EBT_CBTA_Handbook.pdf
+The AeroStrat EBT/CBTA Platform Handbook covers every module, the grading engine and the honest status of each one: https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf
 
 ---
 
-# STRATOS EBT/CBTA Platform Handbook (full text)
+# AeroStrat EBT/CBTA Platform Handbook (full text)
 
-Source PDF: https://stratos-ida.com/uploads/STRATOS_EBT_CBTA_Handbook.pdf
+Source PDF: https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf
 
-STRATOS
+AeroStrat
 INTELLIGENCE-DRIVEN AVIATION
 EBT/CBTA Platform Handbook
 What it is, how it's built for your airline, and every module inside it — explained without the
 technical jargon.
 Prepared for internal and client use
 September 2026
-STRATOS EBT/CBTA Platform Handbook
-1. What Is STRATOS EBT/CBTA?
-EBT/CBTA is a training methodology. STRATOS EBT/CBTA is the platform built natively to run
+AeroStrat EBT/CBTA Platform Handbook
+1. What Is AeroStrat EBT/CBTA?
+EBT/CBTA is a training methodology. AeroStrat EBT/CBTA is the platform built natively to run
 it.
 It helps to separate two things that sound similar but aren't. “EBT/CBTA” is not a product — it's an
 internationally recognized training methodology: a set of rules, from ICAO and IATA, for how pilots and
 cabin crew should be evaluated against defined competencies instead of a simple pass/fail mark.
-“STRATOS EBT/CBTA” is the software product built to run that methodology day to day for an airline.
+“AeroStrat EBT/CBTA” is the software product built to run that methodology day to day for an airline.
 The distinction matters because most training-record tools were not built this way. They were built as
 general-purpose record-keeping tools first, and the EBT/CBTA competency structure was bolted on
-afterward. STRATOS was built the other way around: the grading logic, the data model, and every screen in
+afterward. AeroStrat was built the other way around: the grading logic, the data model, and every screen in
 the product are constructed directly from the EBT/CBTA framework from day one. It is native to the
 methodology, not adapted to it.
 What problem it actually solves
@@ -481,16 +481,16 @@ Electronic Training Records (ETR) tool, plain Excel spreadsheets, or an older le
 designed around EBT/CBTA competencies in the first place. All three approaches share the same weakness:
 they can store a grade, but they cannot natively calculate it against the competency framework, and they
 cannot turn a stack of individual evaluations into fleet-wide intelligence.
-STRATOS EBT/CBTA is built to replace all three of those options — paper, spreadsheets, and generic
+AeroStrat EBT/CBTA is built to replace all three of those options — paper, spreadsheets, and generic
 legacy ETR systems alike — with a single platform where every evaluation form, grading rule, and
 analytics view is native to the EBT/CBTA methodology itself.
-The moment an examiner submits a form, STRATOS automatically:
+The moment an examiner submits a form, AeroStrat automatically:
 • Calculates the pilot's competency grades using the airline's official EBT/CBTA scoring rules
 • Generates a clean, signed PDF report of the evaluation
 • Adds the result to that pilot's full training history
 • Feeds the result into fleet-wide analytics dashboards the Training Director can see in real time
 Where it's built and proven
-STRATOS is the product of an Egypt/Estonia-based aviation technology venture, in daily production use at
+AeroStrat is the product of an Egypt/Estonia-based aviation technology venture, in daily production use at
 El Masria Universal Airlines (“AlMasria”), which remains the platform's founding reference client and
 proving ground.
 1.1 What the Product Is Built On
@@ -499,7 +499,7 @@ reason the product looks the way it does:
 • Absolute precision — aviation data gets the same rigor a flight deck demands. Grading rules,
 competency mappings, and regulatory alignment are treated as non-negotiable, not approximated.
 Page 2
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 • Architectural foresight — every module, form, and database structure is built to plug into a wider,
 future-proof system — which is why pilot and cabin-crew evaluation already coexist on one platform,
 and why new modules can be added without reworking what already exists.
@@ -512,7 +512,7 @@ how training itself is run.
 1.2 What This Means for Your Training Department
 A Training Director doesn't need another records system — there's usually already one, even if it's just a
 shared spreadsheet. What's actually in short supply is defensible evidence, standardization across the
-examiner pool, and hours back in the training department's week. That's the gap STRATOS EBT/CBTA is
+examiner pool, and hours back in the training department's week. That's the gap AeroStrat EBT/CBTA is
 built to close:
 • Audit-ready by design — every grade traces back to the specific observed behavior it came from, so
 an ECAA, GACA, or IOSA audit is answered with real evidence on demand, not reconstructed from
@@ -521,7 +521,7 @@ memory the week before an inspection.
 objective, ongoing evidence that grading standards are applied evenly across every TRE and TRI —
 usually the first thing an inspector asks about and the hardest thing to prove on paper.
 • Protects a just, non-punitive safety culture — this is the philosophy EBT/CBTA itself is built on:
-competency data is there to identify training needs, not to single out individual pilots. STRATOS keeps
+competency data is there to identify training needs, not to single out individual pilots. AeroStrat keeps
 that intent intact by turning results into coaching and remedial guidance rather than a disciplinary
 record.
 • Time back for the training department — an evaluation that used to mean a paper trail, a manual
@@ -535,13 +535,13 @@ These are the industry terms worth understanding once, since the rest of the han
 EBT — Evidence-Based Training
 EBT is ICAO's methodology for evaluating pilots against a defined set of core competencies — things like
 Application of Procedures, Communication, Leadership & Teamwork, Problem Solving, and Workload
-Management — instead of a single pass/fail mark for a whole session. STRATOS grades against the full
+Management — instead of a single pass/fail mark for a whole session. AeroStrat grades against the full
 nine competencies in this framework.
 Page 3
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 CBTA — Competency-Based Training and Assessment
 CBTA is IATA's parallel methodology, applied more broadly across training and assessment. “EBT/CBTA”
-together is the modern, competency-focused standard that STRATOS is built natively around.
+together is the modern, competency-focused standard that AeroStrat is built natively around.
 ETR — Electronic Training Records
 This is the precise category for the product itself: a digital system of record for training evaluations, built
 around the EBT/CBTA methodology. It is not a Learning Management System (LMS) — it doesn't deliver
@@ -549,7 +549,7 @@ e-learning courses — and it is not (yet) a full Training Management System (TM
 scheduling or rostering. What it does, it does natively and deeply: capturing, grading, and analyzing real
 evaluation data against the international competency framework, in a way that generic ETR tools,
 spreadsheets, and legacy systems were never built to do.
-3. Who Uses STRATOS
+3. Who Uses AeroStrat
 The platform is built around three roles, each with a different screen and a different job:
 • Training Director — sees everything: every pilot, every examiner, every form, fleet-wide dashboards,
 and administrative controls. Manages user accounts and oversees the training program as a whole.
@@ -561,9 +561,9 @@ trainee feedback loop (Module 6.6) after each training session.
 Pilot records and cabin-crew records are kept securely separate within the system (each department only
 sees its own data), even though both run on the same platform.
 Page 4
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 4. The Evaluation Forms
-Everything in STRATOS starts with one of the airline's official evaluation forms, digitized exactly as the
+Everything in AeroStrat starts with one of the airline's official evaluation forms, digitized exactly as the
 regulator and the airline already use them. These forms are built directly from real, currently-in-use
 Egyptian airline documentation — not a generic template — which makes them some of the most detailed,
 operationally accurate EBT-aligned evaluation forms running at any Egyptian carrier today.
@@ -596,18 +596,18 @@ scored using the airline's official rules, not a generic average.
 up during the session and how the crew managed them — a core requirement of the EBT/CBTA
 methodology, not an optional add-on.
 • Observed-behavior detail — the specific behaviors the examiner actually saw, not just a final number
-— this is what lets STRATOS later explain why a grade was what it was.
+— this is what lets AeroStrat later explain why a grade was what it was.
 • Free-text comments — space for the examiner's own notes and context on the session, tied directly to
 the record.
 Page 5
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 • Sign-off block — the formal approval step (examiner, trainee, inspector, and operations training
 manager where required) that closes the record out.
 Page 6
-STRATOS EBT/CBTA Platform Handbook
-5. How We Set Up STRATOS for an Airline
+AeroStrat EBT/CBTA Platform Handbook
+5. How We Set Up AeroStrat for an Airline
 The platform is implemented around the airline's own standards — not the other way around.
-An airline coming to STRATOS starts from one of two places, and the platform is built to handle both
+An airline coming to AeroStrat starts from one of two places, and the platform is built to handle both
 without asking the airline to change its own paperwork or standards:
 • The airline has a training manual but no digital forms yet — we take the airline's own Operations
 Manual and governing training documents and build the digital forms directly from them, matching the
@@ -632,9 +632,9 @@ Because the forms are built from the airline's own manual or existing paperwork 
 template, onboarding doesn't require the airline to redesign its training standards to fit the software — the
 software is fitted to the airline.
 Page 7
-STRATOS EBT/CBTA Platform Handbook
-6. The Modules — What STRATOS Actually Does
-STRATOS is organized into modules. Each one covers a distinct part of the training-evaluation
+AeroStrat EBT/CBTA Platform Handbook
+6. The Modules — What AeroStrat Actually Does
+AeroStrat is organized into modules. Each one covers a distinct part of the training-evaluation
 workflow — and the analytics layer is where the platform goes furthest beyond a digital filing
 cabinet.
 6.1 Digital Evaluation Forms
@@ -642,7 +642,7 @@ The starting point for every record in the system — F-001, F-002, F-003, and F
 own structure as described in Section 5. Built-in validation reduces the data-entry errors common with
 paper and spreadsheets, and every form records the specific behaviors observed, not just a final number.
 6.2 Competency Grading Engine
-The calculation layer behind every form. Once an examiner enters their observations, STRATOS
+The calculation layer behind every form. Once an examiner enters their observations, AeroStrat
 automatically works out the pilot's grade on each competency, using the airline's official EBT/CBTA rules
 — including the “lowest of three” principle used across the industry, where a competency grade reflects the
 weakest of: how many good behaviors were demonstrated, how consistently, and how any threats or errors
@@ -653,7 +653,7 @@ training
 • The same grading logic is applied consistently every time — removing the inconsistency that creeps in
 with manual, spreadsheet-based scoring
 6.3 Instant Reports & Records
-The moment a form is submitted, STRATOS generates a polished, professional PDF report of the
+The moment a form is submitted, AeroStrat generates a polished, professional PDF report of the
 evaluation — ready to file, print, or share — and stores it permanently against that pilot's record, with a full
 audit trail of any later edits.
 • A pending-approval step before a submitted evaluation becomes final, so a Director can review before
@@ -669,15 +669,15 @@ focus on next, in words a Training Director or the pilot can immediately underst
 • Looks at patterns across a pilot's history, not just a single day's score
 • Produces written, human-readable coaching notes and remediation suggestions — not just numbers
 Page 8
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 • Runs only once there's enough history to say something meaningful
 • Compute is switched on deliberately by the Training Director, as a cost-control measure
 Page 9
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 6.5 Data Analysis — Micro, Macro & Trend Intelligence
-This is the heart of what sets STRATOS apart from every alternative an airline might otherwise be using —
+This is the heart of what sets AeroStrat apart from every alternative an airline might otherwise be using —
 paper, Excel, or a generic ETR tool. All three of those can store a grade. None of them can turn that grade
-into organizational intelligence the way STRATOS does, at three distinct levels of analysis:
+into organizational intelligence the way AeroStrat does, at three distinct levels of analysis:
 Micro analysis — the single evaluation, examined closely
 A category-by-category breakdown of one specific exam, automatically detecting whether that form uses
 numeric or categorical scoring and presenting the result accordingly. This is the closest, most granular view
@@ -704,19 +704,19 @@ fleet, a quarter-over-quarter trend, and examiner concordance — how consistent
 grade against each other, so the Training Director can see if standards are being applied evenly across the
 team.
 Predictive risk flagging
-Rather than making a Director scroll through every pilot's record to spot a problem, STRATOS
+Rather than making a Director scroll through every pilot's record to spot a problem, AeroStrat
 automatically surfaces only the pilots whose patterns suggest they need attention — turning analysis into a
 short, actionable list instead of a wall of numbers.
 Why this is the real differentiator
 Grading and digital records are table stakes — any ETR tool or well-built spreadsheet can store a score.
 Micro, macro, and trend analysis, examiner concordance, and predictive risk flagging are what turn
-STRATOS from a records system into a genuine training-intelligence platform. This analytics layer is the
-single biggest reason STRATOS replaces paper, Excel, and legacy ETR tools rather than just digitizing
+AeroStrat from a records system into a genuine training-intelligence platform. This analytics layer is the
+single biggest reason AeroStrat replaces paper, Excel, and legacy ETR tools rather than just digitizing
 Page 10
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 alongside them.
 Page 11
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 6.6 Trainee Feedback Loop
 After a training session, the Director can generate a short-lived QR code or link that the trainee scans — no
 login required. The trainee rates their ground and simulator training experience and can leave free-text
@@ -739,9 +739,9 @@ system
 • A Director-only switch controls whether the AI Assistant's compute is running, as a deliberate cost-
 control measure
 Page 12
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 7. What Makes This Different — Beyond Grading and Records
-It's easy to describe STRATOS as “digital forms plus grading” and stop there — but that undersells what
+It's easy to describe AeroStrat as “digital forms plus grading” and stop there — but that undersells what
 actually separates it from paper, Excel, and legacy ETR tools:
 • Built native to the methodology, not adapted to it: every screen, rule, and data field traces back to
 the EBT/CBTA framework itself, rather than a generic system with competencies bolted on.
@@ -763,14 +763,14 @@ real data separation between departments.
 • Regulator-facing from day one: audit readiness isn't a feature bolted on before an inspection — it's a
 byproduct of how every record is captured (Section 1.2).
 • Built for the safety culture the methodology demands: EBT/CBTA exists to move training away
-from punitive pass/fail checks; STRATOS is built to protect that intent in how results are surfaced and
+from punitive pass/fail checks; AeroStrat is built to protect that intent in how results are surfaced and
 used.
 Page 13
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 8. Current Status — Honest Picture
-STRATOS is live and in daily production use, but it is not yet a fully complete EBT/CBTA system end-to-
+AeroStrat is live and in daily production use, but it is not yet a fully complete EBT/CBTA system end-to-
 end. This section is here so the handbook stays accurate rather than promotional. EBT/CBTA is a voluntary
-upgrade path in Egypt today, not yet a regulatory mandate — so STRATOS is positioned commercially as
+upgrade path in Egypt today, not yet a regulatory mandate — so AeroStrat is positioned commercially as
 an operational improvement airlines can choose to adopt, not as a compliance requirement.
 Area Status Notes
 Pilot forms (F-001, F-002) Live Full 9-competency EBT structure in
@@ -803,15 +803,15 @@ inspector sign-off.
 3. Automatic certification-expiry (“recurrency”) tracking, so a pilot's next required check is flagged
 automatically instead of tracked manually.
 Page 14
-STRATOS EBT/CBTA Platform Handbook
+AeroStrat EBT/CBTA Platform Handbook
 4. Support for a second airline client, which requires separating data by airline (not just by department)
 inside the system — the main technical step to onboarding beyond the first customer.
 5. A bounded scheduling layer — assigning a pilot to a simulator slot, instructor, and date — without
-turning STRATOS into a full resourcing/rostering product.
+turning AeroStrat into a full resourcing/rostering product.
 10. Glossary
 • EBT: Evidence-Based Training — ICAO's competency-focused training and evaluation methodology.
 • CBTA: Competency-Based Training and Assessment — IATA's parallel methodology.
-• ETR: Electronic Training Records — the precise product category for STRATOS today.
+• ETR: Electronic Training Records — the precise product category for AeroStrat today.
 • TEM: Threat & Error Management — tracking how crew identify and handle threats and errors during
 a session.
 • Just Culture: the non-punitive safety philosophy EBT/CBTA is built on — evaluation data is used to
@@ -819,15 +819,15 @@ identify training needs, not to assign blame.
 • Concordance: how consistently different examiners grade the same competencies against each other
 — the standardization signal a Training Director and a regulator both look for.
 • IOSA / ECAA / GACA: IOSA is IATA's operational safety audit; ECAA and GACA are the Egyptian
-and Saudi civil aviation regulators. All three are the kinds of audits STRATOS's records are built to
+and Saudi civil aviation regulators. All three are the kinds of audits AeroStrat's records are built to
 answer.
 • TRE / TRI: Type Rating Examiner / Type Rating Instructor — qualified examiners who conduct and
 sign off evaluations.
-• S1–S5: The five-band grading scale STRATOS uses, from S1 (Unsatisfactory, below 70%) to S5
+• S1–S5: The five-band grading scale AeroStrat uses, from S1 (Unsatisfactory, below 70%) to S5
 (Excellent, above 95%).
-• Micro / Macro / Trend analysis: STRATOS's three analytical altitudes — a single exam, a cohort
+• Micro / Macro / Trend analysis: AeroStrat's three analytical altitudes — a single exam, a cohort
 comparison, and a pilot's history over time (Section 6.5).
-• LMS: Learning Management System — delivers e-learning courses. STRATOS is not an LMS.
-• TMS: Training Management System — handles scheduling and rostering. STRATOS is not yet a full
+• LMS: Learning Management System — delivers e-learning courses. AeroStrat is not an LMS.
+• TMS: Training Management System — handles scheduling and rostering. AeroStrat is not yet a full
 TMS.
 Page 15

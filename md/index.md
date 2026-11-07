@@ -1,24 +1,24 @@
-# STRATOS: Intelligence-Driven Aviation
+# AeroStrat: Intelligence Driven Aviation
 
-> STRATOS is an aviation technology company based in Tallinn, Estonia. Its team brings 25+ years of experience in the aviation sector together with deep technology expertise, to build software for the way airlines operate. Two products for airline pilot training are live: STRATOS EBT/CBTA and STRATOS TMS.
+> AeroStrat is an aviation technology company based in Tallinn, Estonia. Its team brings 25+ years of experience in the aviation sector together with deep technology expertise, to build software for the way airlines operate. Two products for airline pilot training are live: AeroStrat EBT/CBTA and AeroStrat TMS.
 
-Canonical page: https://stratos-ida.com/
+Canonical page: https://aero-strat.com/
 
 ## Who we are
 
-STRATOS pairs 25+ years of experience in the aviation sector (flight operations, crew training, regulation and oversight, seen from inside the airline) with deep expertise in software engineering, data and analytics, delivered as secure systems an airline can rely on every day. What it builds follows how airlines are run and regulated.
+AeroStrat pairs 25+ years of experience in the aviation sector (flight operations, crew training, regulation and oversight, seen from inside the airline) with deep expertise in software engineering, data and analytics, delivered as secure systems an airline can rely on every day. What it builds follows how airlines are run and regulated.
 
 - **One shared foundation:** every product is set up to the airline's own manuals and authority, and works from the same records.
 
 ## Direction
 
-An airline runs on connected disciplines. STRATOS is building technology for each of them, one domain at a time, on one shared foundation. It started with training.
+An airline runs on connected disciplines. AeroStrat is building technology for each of them, one domain at a time, on one shared foundation. It started with training.
 
 ## The training solution
 
 Two connected products for airline pilot training: one measures how well pilots perform, the other keeps every pilot current. Airlines can take one, or both on a single pilot record.
 
-### STRATOS EBT/CBTA: every grade consistent, every skill measured
+### AeroStrat EBT/CBTA: every grade consistent, every skill measured
 
 Evidence-based training and assessment, graded by the ICAO, IATA and EASA method on forms built from the airline's own manual.
 
@@ -26,9 +26,9 @@ Evidence-based training and assessment, graded by the ICAO, IATA and EASA method
 - Day 2 training planned from the pilot's Day 1 evidence
 - Trends by pilot, cohort, fleet and instructor
 
-Details: https://stratos-ida.com/ebt-cbta
+Details: https://aero-strat.com/ebt-cbta
 
-### STRATOS TMS: every pilot current, every renewal planned
+### AeroStrat TMS: every pilot current, every renewal planned
 
 The training management system: validity, planning, recurrent training, records and audit in one place.
 
@@ -36,7 +36,7 @@ The training management system: validity, planning, recurrent training, records 
 - Renewals planned months ahead, pilots reminded before anything lapses
 - One digital file per pilot, ready for the inspector
 
-Details: https://stratos-ida.com/tms
+Details: https://aero-strat.com/tms
 
 ### One pilot record: entered once, never re-typed
 
@@ -50,4 +50,4 @@ Built on ICAO, IATA and EASA guidance, set up to each airline's manuals and auth
 
 ## Contact
 
-Book a live walkthrough on a sample of your own crew, records and check forms: https://stratos-ida.com/contact · info@stratos-ida.com
+Book a live walkthrough on a sample of your own crew, records and check forms: https://aero-strat.com/contact · info@aero-strat.com

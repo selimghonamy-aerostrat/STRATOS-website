@@ -1,37 +1,37 @@
-# STRATOS
+# AeroStrat
 
-> STRATOS, also known as STRATOS IDA (Intelligence-Driven Aviation), is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It builds software for the way airlines operate and started with pilot training: STRATOS EBT/CBTA and STRATOS TMS are live with airlines today.
+> AeroStrat (Intelligence Driven Aviation) is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It builds software for the way airlines operate and started with pilot training: AeroStrat EBT/CBTA and AeroStrat TMS are live with airlines today.
 
-Website: https://stratos-ida.com
-Contact: info@stratos-ida.com
+Website: https://aero-strat.com
+Contact: info@aero-strat.com
 Location: Tallinn, Estonia
 LinkedIn: https://www.linkedin.com/company/stratos-ida/
 
 ## Products
 
-- [STRATOS EBT/CBTA](https://stratos-ida.com/ebt-cbta.md): Evidence-Based Training (EBT) and Competency-Based Training and Assessment (CBTA) platform for airline recurrent pilot training. Every check is graded against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method (also ECAA). Produces a signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and analytics at three levels: pilot, cohort and fleet. For Training Directors, Heads of Training and TRE/TRI leads.
-- [STRATOS TMS](https://stratos-ida.com/tms.md): Training management system for airlines. Pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority. Gives a daily action list of renewals by status (green, yellow, red, expired, missing). For Directors of Training, Heads of Training and Crew Training Managers.
-- [How they work together](https://stratos-ida.com/solutions.md): Airlines that take both products share one crew list, one pilot record and one login, so nothing is typed twice.
+- [AeroStrat EBT/CBTA](https://aero-strat.com/ebt-cbta.md): Evidence-Based Training (EBT) and Competency-Based Training and Assessment (CBTA) platform for airline recurrent pilot training. Every check is graded against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method (also ECAA). Produces a signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and analytics at three levels: pilot, cohort and fleet. For Training Directors, Heads of Training and TRE/TRI leads.
+- [AeroStrat TMS](https://aero-strat.com/tms.md): Training management system for airlines. Pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority. Gives a daily action list of renewals by status (green, yellow, red, expired, missing). For Directors of Training, Heads of Training and Crew Training Managers.
+- [How they work together](https://aero-strat.com/solutions.md): Airlines that take both products share one crew list, one pilot record and one login, so nothing is typed twice.
 
 ## Key facts
 
 - Not tied to one regulator: each airline is configured to its own training manual and authority.
 - Every airline's data is isolated from every other's; pilot and cabin-crew records are kept separate at the database level, and data is exportable in full at any time.
 - Role-based access in both products, with every action logged.
-- The instructor always sets the final grade; any override needs a written reason, and STRATOS never overwrites it. The airline keeps every regulatory obligation.
-- STRATOS EBT/CBTA sits alongside an airline's LMS; it does not deliver e-learning.
-- Implementation: four stages, about five weeks from receiving the airline's manual, records and forms. The airline names one owner; STRATOS does the setup.
+- The instructor always sets the final grade; any override needs a written reason, and AeroStrat never overwrites it. The airline keeps every regulatory obligation.
+- AeroStrat EBT/CBTA sits alongside an airline's LMS; it does not deliver e-learning.
+- Implementation: four stages, about five weeks from receiving the airline's manual, records and forms. The airline names one owner; AeroStrat does the setup.
 - Founding reference client: AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
 
 ## Pages
 
-- [Home](https://stratos-ida.com/index.md): Company overview.
-- [About](https://stratos-ida.com/about.md): Vision, mission, team experience and direction.
-- [Solutions](https://stratos-ida.com/solutions.md): Both products and how they connect.
-- [Clients](https://stratos-ida.com/clients.md): Airlines using STRATOS.
-- [Contact](https://stratos-ida.com/contact.md): Book a walkthrough on your own check forms and crew data.
+- [Home](https://aero-strat.com/index.md): Company overview.
+- [About](https://aero-strat.com/about.md): Vision, mission, team experience and direction.
+- [Solutions](https://aero-strat.com/solutions.md): Both products and how they connect.
+- [Clients](https://aero-strat.com/clients.md): Airlines using AeroStrat.
+- [Contact](https://aero-strat.com/contact.md): Book a walkthrough on your own check forms and crew data.
 
 ## Optional
 
-- [Full site content](https://stratos-ida.com/llms-full.txt): every page plus the full EBT/CBTA handbook in one Markdown file.
-- [EBT/CBTA Platform Handbook (PDF)](https://stratos-ida.com/uploads/STRATOS_EBT_CBTA_Handbook.pdf): every module, the grading engine and the status of each one.
+- [Full site content](https://aero-strat.com/llms-full.txt): every page plus the full EBT/CBTA handbook in one Markdown file.
+- [EBT/CBTA Platform Handbook (PDF)](https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf): every module, the grading engine and the status of each one.

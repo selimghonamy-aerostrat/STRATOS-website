@@ -1,4 +1,4 @@
-# STRATOS — stratos-ida.com
+# AeroStrat — aero-strat.com
 # Search engines and AI assistants are welcome to read this site.
 
 User-agent: *
@@ -26,4 +26,4 @@ User-agent: Meta-ExternalAgent
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://stratos-ida.com/sitemap.xml
+Sitemap: https://aero-strat.com/sitemap.xml
