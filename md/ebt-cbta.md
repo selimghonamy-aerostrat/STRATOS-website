@@ -101,4 +101,27 @@ AeroStrat develops forms from the airline's training manual, with competency map
 3. **Configure:** rosters loaded, instructor and Director accounts created, departments set.
 4. **Go-live:** grading, reporting and analytics run from the first submission.
 
+## Frequently asked questions
+
+**What is AeroStrat EBT/CBTA?**
+Evidence-based training and assessment software for airlines. It grades every check against the nine ICAO/IATA pilot competencies and all 73 observable behaviours, on forms built from the airline's own manual, and turns every submission into pilot, cohort and fleet analytics. It is live, in daily production at AlMasria Universal Airlines.
+
+**How is a competency grade calculated?**
+Each grade is derived from observed behaviours by the IATA lowest-of-three method: how many observable behaviours, how often, and the TEM outcome. When the evidence is thin, AeroStrat shows "insufficient evidence" instead of a number.
+
+**Who sets the final grade?**
+The instructor. AeroStrat recommends a grade, applies the correct standard and raises policy flags. A different final grade needs a written reason, and AeroStrat never overwrites it.
+
+**Do we need to be running EBT already?**
+No. Conventional checking and Mixed EBT are both supported natively. Each airline sets its own stage with a start date and moves up with the same records, pilots and history, and each check is graded under the stage in force on its date. Enhanced EBT, which needs flight data, is a future plan.
+
+**How does Day 2 planning work?**
+Open a pilot's Day 1 check and see which observable behaviours were demonstrated, then choose the competencies to develop. AeroStrat ranks scenarios from the 329 in IATA's EBT workbook by coverage, and records who chose what and when.
+
+**Is AeroStrat EBT/CBTA an LMS?**
+No. It does not deliver e-learning. It sits alongside the airline's LMS, and can be integrated with AeroStrat TMS on one pilot record.
+
+**Which reports does it produce for audits?**
+Every submission creates a signed PDF and a permanent record in the pilot's history. Every edit after submission is logged in an append-only audit trail, and records export for IOSA and the airline's authority.
+
 Handbook (PDF): https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf · Contact: https://aero-strat.com/contact

@@ -61,6 +61,26 @@ For airlines that take both, the products share one crew list, one pilot record 
 
 Built on ICAO, IATA and EASA guidance, set up to each airline's manuals and authority.
 
+## Frequently asked questions
+
+**What is AeroStrat?**
+AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia. It is building one connected software ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live with airlines today.
+
+**Which AeroStrat products are live today?**
+Two training products. AeroStrat EBT/CBTA grades every pilot check against the ICAO nine-competency framework on the airline's own forms. AeroStrat TMS keeps every pilot current with validity control, renewal planning, recurrent training, records and audit. Airlines can take one, or both on a single pilot record.
+
+**What comes after training?**
+Safety & Compliance, Flight Operations, Maintenance & Engineering and Network Planning, each built on the same foundation as training: one crew list, one record and one login across every module.
+
+**Which regulators does AeroStrat support?**
+AeroStrat is built on ICAO, IATA and EASA guidance and is not tied to one regulator. Each airline is set up to its own manuals and national authority, including EASA and ECAA frameworks.
+
+**Who uses AeroStrat today?**
+Founding reference client AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+
+**How can we see it?**
+Book a live walkthrough on a sample of your own crew, records and check forms at aero-strat.com/contact, or email info@aero-strat.com.
+
 ## Contact
 
 Book a live walkthrough on a sample of your own crew, records and check forms: https://aero-strat.com/contact · info@aero-strat.com

@@ -116,3 +116,26 @@
   footer > div > div:first-child a,
   footer > div > div:first-child span{font-size:13px !important}
 }
+
+/* FAQ accordion (home, Solutions, EBT/CBTA, TMS). Answers stay in the page
+   source for search engines and AI crawlers; <details> opens without JS. */
+.aerostrat-faq-list{display:flex;flex-direction:column;gap:1px}
+.aerostrat-faq-item{background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16)}
+.aerostrat-faq-item > summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:24px clamp(20px,2.6vw,32px);min-height:48px;
+}
+.aerostrat-faq-item > summary::-webkit-details-marker{display:none}
+.aerostrat-faq-item > summary::after{
+  content:'';flex:none;width:14px;height:14px;
+  background:linear-gradient(#00348C,#00348C) center/14px 2px no-repeat,linear-gradient(#00348C,#00348C) center/2px 14px no-repeat;
+  transition:transform 0.25s ease;
+}
+.aerostrat-faq-item[open] > summary::after{transform:rotate(45deg)}
+.aerostrat-faq-item > summary:hover{background:rgba(63,158,232,0.08)}
+.aerostrat-faq-item > summary:focus-visible{outline:2px solid #3F9EE8;outline-offset:-2px}
+.aerostrat-faq-item h3{margin:0;font:700 clamp(16px,1.6vw,19px)/1.35 'Open Sauce One',sans-serif;color:#000;text-wrap:pretty}
+.aerostrat-faq-item[open] h3{color:#00348C}
+.aerostrat-faq-item > p{margin:0;padding:0 clamp(20px,2.6vw,32px) 26px;max-width:860px;font:400 15.5px/1.8 'Inter',sans-serif;color:#4A5361;text-wrap:pretty}
+.aerostrat-faq-item[open]{box-shadow:inset 3px 0 0 #FF5A13}
+@media (prefers-reduced-motion:reduce){.aerostrat-faq-item > summary::after{transition:none}}

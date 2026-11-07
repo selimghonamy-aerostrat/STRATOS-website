@@ -69,6 +69,26 @@ For airlines that take both, the products share one crew list, one pilot record 
 
 Built on ICAO, IATA and EASA guidance, set up to each airline's manuals and authority.
 
+## Frequently asked questions
+
+**What is AeroStrat?**
+AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia. It is building one connected software ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live with airlines today.
+
+**Which AeroStrat products are live today?**
+Two training products. AeroStrat EBT/CBTA grades every pilot check against the ICAO nine-competency framework on the airline's own forms. AeroStrat TMS keeps every pilot current with validity control, renewal planning, recurrent training, records and audit. Airlines can take one, or both on a single pilot record.
+
+**What comes after training?**
+Safety & Compliance, Flight Operations, Maintenance & Engineering and Network Planning, each built on the same foundation as training: one crew list, one record and one login across every module.
+
+**Which regulators does AeroStrat support?**
+AeroStrat is built on ICAO, IATA and EASA guidance and is not tied to one regulator. Each airline is set up to its own manuals and national authority, including EASA and ECAA frameworks.
+
+**Who uses AeroStrat today?**
+Founding reference client AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+
+**How can we see it?**
+Book a live walkthrough on a sample of your own crew, records and check forms at aero-strat.com/contact, or email info@aero-strat.com.
+
 ## Contact
 
 Book a live walkthrough on a sample of your own crew, records and check forms: https://aero-strat.com/contact · info@aero-strat.com
@@ -326,6 +346,29 @@ AeroStrat develops forms from the airline's training manual, with competency map
 3. **Configure:** rosters loaded, instructor and Director accounts created, departments set.
 4. **Go-live:** grading, reporting and analytics run from the first submission.
 
+## Frequently asked questions
+
+**What is AeroStrat EBT/CBTA?**
+Evidence-based training and assessment software for airlines. It grades every check against the nine ICAO/IATA pilot competencies and all 73 observable behaviours, on forms built from the airline's own manual, and turns every submission into pilot, cohort and fleet analytics. It is live, in daily production at AlMasria Universal Airlines.
+
+**How is a competency grade calculated?**
+Each grade is derived from observed behaviours by the IATA lowest-of-three method: how many observable behaviours, how often, and the TEM outcome. When the evidence is thin, AeroStrat shows "insufficient evidence" instead of a number.
+
+**Who sets the final grade?**
+The instructor. AeroStrat recommends a grade, applies the correct standard and raises policy flags. A different final grade needs a written reason, and AeroStrat never overwrites it.
+
+**Do we need to be running EBT already?**
+No. Conventional checking and Mixed EBT are both supported natively. Each airline sets its own stage with a start date and moves up with the same records, pilots and history, and each check is graded under the stage in force on its date. Enhanced EBT, which needs flight data, is a future plan.
+
+**How does Day 2 planning work?**
+Open a pilot's Day 1 check and see which observable behaviours were demonstrated, then choose the competencies to develop. AeroStrat ranks scenarios from the 329 in IATA's EBT workbook by coverage, and records who chose what and when.
+
+**Is AeroStrat EBT/CBTA an LMS?**
+No. It does not deliver e-learning. It sits alongside the airline's LMS, and can be integrated with AeroStrat TMS on one pilot record.
+
+**Which reports does it produce for audits?**
+Every submission creates a signed PDF and a permanent record in the pilot's history. Every edit after submission is logged in an append-only audit trail, and records export for IOSA and the airline's authority.
+
 Handbook (PDF): https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf · Contact: https://aero-strat.com/contact
 
 ---
@@ -419,6 +462,29 @@ From Excel, paper or a legacy TMS, AeroStrat does the full migration and impleme
 - **We validate:** reconciliation against the source data; Director sign-off before go-live.
 
 Every record mapped to the pilot, every expiry recalculated, every document filed in the pilot's digital file. Users are trained on the live system with their own data.
+
+## Frequently asked questions
+
+**What is AeroStrat TMS?**
+A training management system for airline pilots. It puts validity control, renewal planning, recurrent training, digital pilot files and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority.
+
+**How does validity tracking work?**
+Every licence, medical, check and course is scored against the airline's own rule, and a pilot's overall status is their worst item, so one lapsed check flags the whole file. Five status levels are checked daily, for example green, yellow, red, expired and missing.
+
+**How are renewals planned?**
+Every renewal is placed by expiry and lead time on a 3-year plan by month, with the reason shown for each month. Overdue items are pulled into the first planning month automatically, and simulator groups are aligned to each pilot's check expiry.
+
+**Do pilots get reminders before something expires?**
+Yes. Pilots get an email ahead of each expiry, for example 45 days before, or 90 for passports, and when training is planned, changed or cancelled. They also see their own status in the pilot portal.
+
+**Can you migrate our existing records?**
+Yes. From Excel, paper or a legacy TMS, AeroStrat does the full migration: every record mapped to the pilot, every expiry recalculated and reconciled against the source data. The Director signs off before go-live, and the training department does not re-key records.
+
+**Is the pilot file ready for an inspection?**
+Yes. Each pilot has one digital file in six folders, every change is logged (who, when and how), missing or out-of-date documents are flagged, and the file exports as an encrypted ZIP for an inspection.
+
+**Does it work with AeroStrat EBT/CBTA?**
+Yes, for airlines that subscribe to both. They share one crew list, one pilot record and one login, so a completed, graded session updates the TMS record and the next expiry with no double entry.
 
 ## Three steps, one decision
 

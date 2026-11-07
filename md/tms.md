@@ -88,6 +88,29 @@ From Excel, paper or a legacy TMS, AeroStrat does the full migration and impleme
 
 Every record mapped to the pilot, every expiry recalculated, every document filed in the pilot's digital file. Users are trained on the live system with their own data.
 
+## Frequently asked questions
+
+**What is AeroStrat TMS?**
+A training management system for airline pilots. It puts validity control, renewal planning, recurrent training, digital pilot files and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority.
+
+**How does validity tracking work?**
+Every licence, medical, check and course is scored against the airline's own rule, and a pilot's overall status is their worst item, so one lapsed check flags the whole file. Five status levels are checked daily, for example green, yellow, red, expired and missing.
+
+**How are renewals planned?**
+Every renewal is placed by expiry and lead time on a 3-year plan by month, with the reason shown for each month. Overdue items are pulled into the first planning month automatically, and simulator groups are aligned to each pilot's check expiry.
+
+**Do pilots get reminders before something expires?**
+Yes. Pilots get an email ahead of each expiry, for example 45 days before, or 90 for passports, and when training is planned, changed or cancelled. They also see their own status in the pilot portal.
+
+**Can you migrate our existing records?**
+Yes. From Excel, paper or a legacy TMS, AeroStrat does the full migration: every record mapped to the pilot, every expiry recalculated and reconciled against the source data. The Director signs off before go-live, and the training department does not re-key records.
+
+**Is the pilot file ready for an inspection?**
+Yes. Each pilot has one digital file in six folders, every change is logged (who, when and how), missing or out-of-date documents are flagged, and the file exports as an encrypted ZIP for an inspection.
+
+**Does it work with AeroStrat EBT/CBTA?**
+Yes, for airlines that subscribe to both. They share one crew list, one pilot record and one login, so a completed, graded session updates the TMS record and the next expiry with no double entry.
+
 ## Three steps, one decision
 
 1. **Live demo:** the TMS shown on a sample of your own crew and training data.
