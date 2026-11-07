@@ -4,6 +4,15 @@
 
 Canonical page: https://aero-strat.com/
 
+## Vision and ecosystem
+
+AeroStrat is building one connected technology ecosystem for airline operations, on a single shared foundation: one crew list, one record and one login across every product.
+
+- **Training (live):** AeroStrat EBT/CBTA and AeroStrat TMS, in use with airlines today.
+- **Safety (in development):** safety and oversight built on the same operational data.
+- **Fleet management (in development):** fleet data connected to crew and training records.
+- **Fleet operations (in development):** day-to-day operational tools on the same foundation.
+
 ## Who we are
 
 AeroStrat pairs 25+ years of experience in the aviation sector (flight operations, crew training, regulation and oversight, seen from inside the airline) with deep expertise in software engineering, data and analytics, delivered as secure systems an airline can rely on every day. What it builds follows how airlines are run and regulated.

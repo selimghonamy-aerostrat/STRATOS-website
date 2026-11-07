@@ -7,6 +7,15 @@ Contact: info@aero-strat.com
 Location: Tallinn, Estonia
 LinkedIn: https://www.linkedin.com/company/aero-strat/
 
+## Vision and ecosystem
+
+AeroStrat is building one connected technology ecosystem for airline operations, on a single shared foundation: one crew list, one record and one login across every product.
+
+- **Training (live):** AeroStrat EBT/CBTA and AeroStrat TMS, in use with airlines today.
+- **Safety (in development):** safety and oversight built on the same operational data.
+- **Fleet management (in development):** fleet data connected to crew and training records.
+- **Fleet operations (in development):** day-to-day operational tools on the same foundation.
+
 ## Products
 
 - [AeroStrat EBT/CBTA](https://aero-strat.com/ebt-cbta.md): Evidence-Based Training (EBT) and Competency-Based Training and Assessment (CBTA) platform for airline recurrent pilot training. Every check is graded against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method (also ECAA). Produces a signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and analytics at three levels: pilot, cohort and fleet. For Training Directors, Heads of Training and TRE/TRI leads.

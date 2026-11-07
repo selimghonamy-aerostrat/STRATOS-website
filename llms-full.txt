@@ -12,6 +12,15 @@ Company: AeroStrat (Intelligence Driven Aviation) · Website: https://aero-strat
 
 Canonical page: https://aero-strat.com/
 
+## Vision and ecosystem
+
+AeroStrat is building one connected technology ecosystem for airline operations, on a single shared foundation: one crew list, one record and one login across every product.
+
+- **Training (live):** AeroStrat EBT/CBTA and AeroStrat TMS, in use with airlines today.
+- **Safety (in development):** safety and oversight built on the same operational data.
+- **Fleet management (in development):** fleet data connected to crew and training records.
+- **Fleet operations (in development):** day-to-day operational tools on the same foundation.
+
 ## Who we are
 
 AeroStrat pairs 25+ years of experience in the aviation sector (flight operations, crew training, regulation and oversight, seen from inside the airline) with deep expertise in software engineering, data and analytics, delivered as secure systems an airline can rely on every day. What it builds follows how airlines are run and regulated.
@@ -64,7 +73,7 @@ Book a live walkthrough on a sample of your own crew, records and check forms: h
 
 # About AeroStrat
 
-> AeroStrat is an aviation technology company based in Tallinn, Estonia. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It is developing technology across the airline and started with training: AeroStrat EBT/CBTA and AeroStrat TMS are live today.
+> AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia, building one connected ecosystem for airline operations: training, safety, fleet management and fleet operations. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It started with training, where AeroStrat EBT/CBTA and AeroStrat TMS are live today.
 
 Canonical page: https://aero-strat.com/about
 
