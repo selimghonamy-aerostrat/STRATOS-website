@@ -19,7 +19,7 @@ css/responsive.css   Phone/tablet fixes shared by every page (solid mobile menu,
 css/fonts.css        Open Sauce One, the AeroStrat brand typeface (files in fonts/)
 
 uploads/             Images, video, logos, handbook PDF
-uploads/brand/       Share image (og-image.png) and raster logo for structured data
+uploads/brand/       Share images (og-image.png for the site, og-ebt-cbta.png, og-tms.png) and raster logo for structured data
 uploads/svg/         AeroStrat logos from the brand guidelines: horizontal / stacked, with or without
                      tagline, in white (for dark backgrounds) and navy (for light backgrounds)
 
@@ -31,6 +31,9 @@ sitemap.xml          Page list for Google/Bing
 <hex>.txt            IndexNow key for Bing; do not delete or rename
 
 favicon.svg, favicon-96.png, apple-touch-icon.png   Browser and home-screen icons
+site.webmanifest     App name and icons for browsers and phones
+404.html             Branded "page not found" page (not indexed)
+.well-known/security.txt   Security contact (info@aero-strat.com); renew the Expires date yearly
 vercel.json          Clean URLs, Markdown routes and response headers
 ```
 
@@ -43,6 +46,17 @@ AeroStrat. Logo colours navy `#00348C`, red `#EB2427`, white; website buttons an
 Page text lives in each `*.dc.html` file. SEO tags (title, description, canonical, Open Graph, JSON-LD) are in each page's `<head>`.
 
 When page text changes, also update the matching file in `md/` and rebuild `llms-full.txt` so AI assistants see the same content.
+
+## Search engines and AI assistants
+
+After publishing changed pages, notify Bing (and ChatGPT search / Copilot, which use Bing) through IndexNow:
+
+```
+curl -X POST https://api.indexnow.org/IndexNow -H 'Content-Type: application/json' \
+  -d '{"host":"aero-strat.com","key":"0790cee3ef27844194c3e76ea620a11b","urlList":["https://aero-strat.com/"]}'
+```
+
+Google: submit `https://aero-strat.com/sitemap.xml` in Search Console.
 
 ## Publishing
 
