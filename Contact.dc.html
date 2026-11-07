@@ -335,7 +335,7 @@
           <label style="display:flex;flex-direction:column;gap:10px">
           <span style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Current EBT stage</span>
           <div style="display:flex;flex-wrap:wrap;gap:10px">
-            <sc-for list="{{ stageOptions }}" as="o" hint-placeholder-count="4">
+            <sc-for list="{{ stageOptions }}" as="o" hint-placeholder-count="5">
               <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
             </sc-for>
           </div>
@@ -969,7 +969,7 @@ class Component extends DCLogic {
         style: `font:500 13px/1 "Inter",sans-serif;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.25s ease;border:1px solid ${s.product === label ? '#00348C' : 'rgba(0,52,140,0.25)'};background:${s.product === label ? '#00348C' : '#FFFFFF'};color:${s.product === label ? '#FFFFFF' : '#000000'}`
       })),
 
-      stageOptions: ['Conventional', 'Introducing EBT Principles', 'Mixed EBT', 'Not sure'].map(label => ({
+      stageOptions: ['Conventional', 'EBT principles', 'Mixed EBT', 'Baseline EBT', 'Not sure'].map(label => ({
         label,
         onClick: () => this.setState({ stage: label }),
         style: `font:500 13px/1 "Inter",sans-serif;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.25s ease;border:1px solid ${s.stage === label ? '#00348C' : 'rgba(0,52,140,0.25)'};background:${s.stage === label ? '#00348C' : '#FFFFFF'};color:${s.stage === label ? '#FFFFFF' : '#000000'}`
