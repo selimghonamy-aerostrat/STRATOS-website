@@ -123,8 +123,8 @@
   .aerostrat-fade-bottom{position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,rgba(0,21,56,0) 0%,#001538 100%);pointer-events:none}
   .aerostrat-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;background:transparent;border:1px solid rgba(180,180,180,0.6);color:#fff;padding:15px 26px;font:600 14px/1 'Inter',sans-serif;letter-spacing:0.02em;cursor:pointer;min-height:48px;transition:background 0.3s ease,border-color 0.3s ease,color 0.3s ease}
   .aerostrat-btn:hover{border-color:#fff;background:rgba(0,52,140,0.55)}
-  .aerostrat-btn-primary{background:#EB2427;border-color:#EB2427;color:#fff}
-  .aerostrat-btn-primary:hover{background:#D11E21;border-color:#D11E21;color:#fff;box-shadow:0 8px 24px rgba(235,36,39,0.3)}
+  .aerostrat-btn-primary{background:#FF5A13;border-color:#FF5A13;color:#000}
+  .aerostrat-btn-primary:hover{background:#FF5A13;border-color:#FF5A13;color:#000;box-shadow:0 8px 24px rgba(255,90,19,0.3)}
   .aerostrat-btn-light{background:transparent;border-color:rgba(180,180,180,0.6);color:#fff}
   .aerostrat-nav-link{position:relative;display:inline-flex;align-items:center;height:48px;line-height:1;white-space:nowrap}
   header[data-sticky]{top:0 !important;background:transparent;border-bottom:1px solid transparent;transition:background 0.45s ease,border-color 0.45s ease}
@@ -232,7 +232,7 @@
 
 <div style="min-height:100vh;background:#001538;color:#fff;font-family:'Inter',sans-serif;overflow-x:clip;position:relative">
 
-  <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:200;background:#EB2427;color:#fff;font:600 13px/1 'Inter',sans-serif;padding:14px 20px" style-focus="left:12px;top:12px">Skip to content</a>
+  <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:200;background:#FF5A13;color:#000;font:600 13px/1 'Inter',sans-serif;padding:14px 20px" style-focus="left:12px;top:12px">Skip to content</a>
   <span data-scroll-sentinel="" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none"></span>
   <div className="aerostrat-runway" aria-hidden="true">
     <div className="lane">
@@ -250,7 +250,7 @@
   <!-- HEADER -->
   <header data-sticky="" style="position:fixed;top:0;left:0;right:0;z-index:100">
     <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:104px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-      <a href="/" aria-label="AeroStrat home" style="display:block;line-height:0"><img src="uploads/svg/aerostrat-horizontal-tagline-white.svg" alt="AeroStrat" style="height:56px;max-width:46vw;display:block"></a>
+      <a href="/" aria-label="AeroStrat home" style="display:block;line-height:0"><img src="uploads/svg/aerostrat-lockup-white.svg" alt="AeroStrat" style="height:50px;max-width:46vw;display:block"></a>
       <nav className="aerostrat-nav-desk" style="display:flex;align-items:center;height:48px;gap:26px;white-space:nowrap;flex-shrink:0">
         <a href="/" className="{{ navClass_home }}" style="{{ navLinkStyle_home }}">Home</a>
         <a href="/about" className="{{ navClass_about }}" style="{{ navLinkStyle_about }}">About Us</a>
@@ -316,8 +316,8 @@
           <div style="background:rgba(0,52,140,0.3);outline:1px solid rgba(180,180,180,0.28);padding:14px 18px;display:flex;justify-content:space-between;gap:12px"><span style="font:600 12px/1.3 'Inter',sans-serif;color:#fff">Overview · validity of active crew</span><span style="font:400 12px/1.3 'Inter',sans-serif;color:#B4B4B4">Sample data</span></div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px">
             <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10.5px/1 'Inter',sans-serif;letter-spacing:0.1em;color:#B4B4B4;text-transform:uppercase">Active crew</span><span style="font:700 32px/1 'Open Sauce One',sans-serif;color:#fff">148</span></div>
-            <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10.5px/1 'Inter',sans-serif;letter-spacing:0.1em;color:#EB2427;text-transform:uppercase">Expired</span><span style="font:700 32px/1 'Open Sauce One',sans-serif;color:#fff">3</span></div>
-            <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10.5px/1 'Inter',sans-serif;letter-spacing:0.1em;color:#F26467;text-transform:uppercase">Red &lt; 30 d</span><span style="font:700 32px/1 'Open Sauce One',sans-serif;color:#fff">7</span></div>
+            <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10.5px/1 'Inter',sans-serif;letter-spacing:0.1em;color:#FF5A13;text-transform:uppercase">Expired</span><span style="font:700 32px/1 'Open Sauce One',sans-serif;color:#fff">3</span></div>
+            <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10.5px/1 'Inter',sans-serif;letter-spacing:0.1em;color:#FF8A57;text-transform:uppercase">Red &lt; 30 d</span><span style="font:700 32px/1 'Open Sauce One',sans-serif;color:#fff">7</span></div>
             <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10.5px/1 'Inter',sans-serif;letter-spacing:0.1em;color:#F2B84B;text-transform:uppercase">Yellow 30–60 d</span><span style="font:700 32px/1 'Open Sauce One',sans-serif;color:#fff">15</span></div>
           </div>
         </div>
@@ -338,11 +338,11 @@
         <sc-if value="{{ isToday }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;flex-direction:column;gap:1px">
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:1px">
-              <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:26px 24px;display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#EB2427;text-transform:uppercase">Time</span><span style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#000">Hours lost to admin</span><p style="font:400 14px/1.7 'Inter',sans-serif;color:#4A5361;margin:0">The same dates are typed into spreadsheets, forms and emails. Staff check records instead of planning.</p></div>
-              <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:26px 24px;display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#EB2427;text-transform:uppercase">Errors</span><span style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#000">One typo, one lapse</span><p style="font:400 14px/1.7 'Inter',sans-serif;color:#4A5361;margin:0">A wrong date or a missed renewal stays hidden until the roster is built or an inspector asks for the file.</p></div>
-              <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:26px 24px;display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#EB2427;text-transform:uppercase">Legacy tools</span><span style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#000">Built for another era</span><p style="font:400 14px/1.7 'Inter',sans-serif;color:#4A5361;margin:0">Older systems often run on one PC, send no reminders and do not connect to rostering or competency data.</p></div>
+              <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:26px 24px;display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#FF5A13;text-transform:uppercase">Time</span><span style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#000">Hours lost to admin</span><p style="font:400 14px/1.7 'Inter',sans-serif;color:#4A5361;margin:0">The same dates are typed into spreadsheets, forms and emails. Staff check records instead of planning.</p></div>
+              <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:26px 24px;display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#FF5A13;text-transform:uppercase">Errors</span><span style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#000">One typo, one lapse</span><p style="font:400 14px/1.7 'Inter',sans-serif;color:#4A5361;margin:0">A wrong date or a missed renewal stays hidden until the roster is built or an inspector asks for the file.</p></div>
+              <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:26px 24px;display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#FF5A13;text-transform:uppercase">Legacy tools</span><span style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#000">Built for another era</span><p style="font:400 14px/1.7 'Inter',sans-serif;color:#4A5361;margin:0">Older systems often run on one PC, send no reminders and do not connect to rostering or competency data.</p></div>
             </div>
-            <div style="background:rgba(255,255,255,0.55);outline:1px solid rgba(0,52,140,0.16);padding:18px 24px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center"><span style="font:600 12px/1 'Inter',sans-serif;color:#4A5361">Records in many systems:</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#000">Cabinets</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#000">Spreadsheets</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#000">Legacy TMS</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#EB2427">No forward planning</span></div>
+            <div style="background:rgba(255,255,255,0.55);outline:1px solid rgba(0,52,140,0.16);padding:18px 24px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center"><span style="font:600 12px/1 'Inter',sans-serif;color:#4A5361">Records in many systems:</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#000">Cabinets</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#000">Spreadsheets</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#000">Legacy TMS</span><span style="font:500 13.5px/1 'Inter',sans-serif;color:#FF5A13">No forward planning</span></div>
           </div>
         </sc-if>
         <sc-if value="{{ isWith }}" hint-placeholder-val="{{ false }}">
@@ -511,7 +511,7 @@
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:28px 40px;padding-bottom:32px;border-bottom:1px solid rgba(180,180,180,0.24)">
         <div>
-          <img src="uploads/svg/aerostrat-horizontal-tagline-white.svg" alt="AeroStrat" style="height:40px;margin-bottom:12px;display:block">
+          <img src="uploads/svg/aerostrat-lockup-white.svg" alt="AeroStrat" style="height:40px;margin-bottom:12px;display:block">
           <p style="font:600 14px/1.6 'Inter',sans-serif;color:#fff;max-width:300px;margin:0">AeroStrat · Intelligence Driven Aviation</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
@@ -673,13 +673,13 @@ class Component extends DCLogic {
     ['home', 'about', 'solutions', 'clients', 'contact'].forEach(k => { nav['navLinkStyle_' + k] = linkStyle(k === 'solutions'); nav['navClass_' + k] = 'aerostrat-nav-link' + (k === 'solutions' ? ' active' : ''); });
     // status scale: 0 expired, 1 red, 2 yellow, 3 missing, 4 green
     const ST = [
-      { t: 'Expired', fg: '#FFFFFF', bg: '#EB2427', bd: '#EB2427', rank: 0 },
-      { t: 'Red', fg: '#B71C1F', bg: 'rgba(235,36,39,0.12)', bd: 'rgba(235,36,39,0.6)', rank: 1 },
+      { t: 'Expired', fg: '#001538', bg: '#FF5A13', bd: '#FF5A13', rank: 0 },
+      { t: 'Red', fg: '#C2410C', bg: 'rgba(255,90,19,0.12)', bd: 'rgba(255,90,19,0.6)', rank: 1 },
       { t: 'Yellow', fg: '#8A5A00', bg: 'rgba(242,184,75,0.22)', bd: 'rgba(242,184,75,0.8)', rank: 3 },
       { t: 'Missing', fg: '#4A5361', bg: 'transparent', bd: 'rgba(74,83,97,0.5)', rank: 2 },
       { t: 'Green', fg: '#00348C', bg: 'rgba(63,158,232,0.16)', bd: 'rgba(63,158,232,0.6)', rank: 4 }
     ];
-    const STD = { EXPIRED: { fg: '#FFFFFF', bg: '#000000' }, RED: { fg: '#EB2427', bg: '#FBDADB' }, YELLOW: { fg: '#B23A00', bg: '#FFEFE7' }, MISSING: { fg: '#333333', bg: '#E1E1E1' }, GREEN: { fg: '#00348C', bg: '#E6F2FC' } };
+    const STD = { EXPIRED: { fg: '#FFFFFF', bg: '#000000' }, RED: { fg: '#FF5A13', bg: '#FFDECF' }, YELLOW: { fg: '#B23A00', bg: '#FFEFE7' }, MISSING: { fg: '#333333', bg: '#E1E1E1' }, GREEN: { fg: '#00348C', bg: '#E6F2FC' } };
     const rows = [
       ['Capt. K. Mansour', 'CPT', 'A320', 'OPC · Operator proficiency check', '02 Oct 2026', 'EXPIRED', '02 Apr 2027'],
       ['F/O S. Ibrahim', 'FO', 'B737', 'MED · Class 1 medical', '18 Oct 2026', 'RED', '18 Oct 2027'],
@@ -695,7 +695,7 @@ class Component extends DCLogic {
     const tiles = [
       { f: 'action', label: 'Needs action', n: cur.filter(r => r[5] !== 'GREEN').length, c: '#002A70', sub: 'all open items' },
       { f: 'EXPIRED', label: 'Expired', n: cnt('EXPIRED'), c: '#000000', sub: 'past expiry' },
-      { f: 'RED', label: 'Red', n: cnt('RED'), c: '#EB2427', sub: 'under 30 days' },
+      { f: 'RED', label: 'Red', n: cnt('RED'), c: '#FF5A13', sub: 'under 30 days' },
       { f: 'YELLOW', label: 'Yellow', n: cnt('YELLOW'), c: '#B23A00', sub: '30–60 days' },
       { f: 'MISSING', label: 'Missing', n: cnt('MISSING'), c: '#B4B4B4', sub: 'mandatory, no record' },
       { f: 'GREEN', label: 'Renewed', n: cnt('GREEN'), c: '#00348C', sub: 'recorded today' }
@@ -733,7 +733,7 @@ class Component extends DCLogic {
       conRows: vis.map(([r, i]) => { const st = STD[r[5]], d = !!s.done[i]; return { pilot: r[0], rank: r[1], fleet: r[2], item: r[3], exp: r[4], status: d ? 'GREEN' : r[5], sFg: st.fg, sBg: st.bg, btn: d ? 'Undo' : '+ Record', bFg: d ? '#666666' : '#00348C', go: () => this.setState(x => ({ done: Object.assign({}, x.done, { [i]: !x.done[i] }) })) }; }),
       conEmpty: vis.length === 0,
       legend: [ST[4], ST[2], ST[1], ST[0], ST[3]].map(x => Object.assign({ t: x.t === 'Green' ? 'Green · current' : x.t }, lgFg(x))),
-      valItems: valNames.map((item, i) => { const x = ST[s.val[i]]; return { item, t: x.t, fg: x.fg, bg: x.bg, bd: x.bd, rowBg: x.rank < 2 ? 'rgba(235,36,39,0.05)' : 'transparent', go: () => this.setState(st => { const v = st.val.slice(); v[i] = (v[i] + 1) % 5; return { val: v }; }) }; }),
+      valItems: valNames.map((item, i) => { const x = ST[s.val[i]]; return { item, t: x.t, fg: x.fg, bg: x.bg, bd: x.bd, rowBg: x.rank < 2 ? 'rgba(255,90,19,0.05)' : 'transparent', go: () => this.setState(st => { const v = st.val.slice(); v[i] = (v[i] + 1) % 5; return { val: v }; }) }; }),
       worst: lgFg(ST[worstI]) && Object.assign({ t: ST[worstI].t }, lgFg(ST[worstI])),
       modTabs: mods.map((m, i) => ({ n: '0' + (i + 1), title: m.title, on: i === s.modI ? 'true' : 'false', go: () => this.setState({ modI: i }), bg: i === s.modI ? '#FFFFFF' : 'rgba(255,255,255,0.86)', shadow: i === s.modI ? 'inset 4px 0 0 #00348C' : 'none', fg: i === s.modI ? '#000' : '#4A5361' })),
       modCur: Object.assign({}, mods[s.modI], { pts: mods[s.modI].pts.map(t => ({ t })) }),

@@ -36,7 +36,7 @@ vercel.json          Clean URLs, Markdown routes and response headers
 
 ## Brand
 
-AeroStrat. Navy `#00348C`, red `#EB2427`, white. Wordmark in Aksen Expanded (logo files only), text in Open Sauce One. Source: `AeroStrat - Brand Guidelines - v1-2.pdf`.
+AeroStrat. Logo colours navy `#00348C`, red `#EB2427`, white; website buttons and highlights keep the orange `#FF5A13`. The S icon (favicon, `uploads/svg/aerostrat-icon-*.svg`) sits beside the wordmark in the header and footer (`aerostrat-lockup-*.svg`). Wordmark in Aksen Expanded (logo files only), text in Open Sauce One. Source: `AeroStrat - Brand Guidelines - v1-2.pdf`.
 
 ## Editing content
 

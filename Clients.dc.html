@@ -122,8 +122,8 @@
   .aerostrat-fade-bottom{position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,rgba(0,21,56,0) 0%,#001538 100%);pointer-events:none}
   .aerostrat-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;background:transparent;border:1px solid rgba(180,180,180,0.6);color:#fff;padding:15px 26px;font:600 14px/1 'Inter',sans-serif;letter-spacing:0.02em;cursor:pointer;min-height:48px;transition:background 0.3s ease,border-color 0.3s ease,color 0.3s ease}
   .aerostrat-btn:hover{border-color:#fff;background:rgba(0,52,140,0.55)}
-  .aerostrat-btn-primary{background:#EB2427;border-color:#EB2427;color:#fff}
-  .aerostrat-btn-primary:hover{background:#D11E21;border-color:#D11E21;color:#fff;box-shadow:0 8px 24px rgba(235,36,39,0.3)}
+  .aerostrat-btn-primary{background:#FF5A13;border-color:#FF5A13;color:#000}
+  .aerostrat-btn-primary:hover{background:#FF5A13;border-color:#FF5A13;color:#000;box-shadow:0 8px 24px rgba(255,90,19,0.3)}
   .aerostrat-btn-light{background:transparent;border-color:rgba(180,180,180,0.6);color:#fff}
   .aerostrat-nav-link{position:relative;display:inline-flex;align-items:center;height:48px;line-height:1;white-space:nowrap}
   header[data-sticky]{top:0 !important;background:transparent;border-bottom:1px solid transparent;transition:background 0.45s ease,border-color 0.45s ease}
@@ -231,7 +231,7 @@
 
 <div style="min-height:100vh;background:#001538;color:#fff;font-family:'Inter',sans-serif;overflow-x:clip;position:relative">
 
-  <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:200;background:#EB2427;color:#fff;font:600 13px/1 'Inter',sans-serif;padding:14px 20px" style-focus="left:12px;top:12px">Skip to content</a>
+  <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:200;background:#FF5A13;color:#000;font:600 13px/1 'Inter',sans-serif;padding:14px 20px" style-focus="left:12px;top:12px">Skip to content</a>
   <span data-scroll-sentinel="" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none"></span>
   <div className="aerostrat-runway" aria-hidden="true">
     <div className="lane">
@@ -249,7 +249,7 @@
   <!-- HEADER -->
   <header data-sticky="" style="position:fixed;top:0;left:0;right:0;z-index:100">
     <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:104px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-      <a href="/" aria-label="AeroStrat home" style="display:block;line-height:0"><img src="uploads/svg/aerostrat-horizontal-tagline-white.svg" alt="AeroStrat" style="height:56px;max-width:46vw;display:block"></a>
+      <a href="/" aria-label="AeroStrat home" style="display:block;line-height:0"><img src="uploads/svg/aerostrat-lockup-white.svg" alt="AeroStrat" style="height:50px;max-width:46vw;display:block"></a>
       <nav className="aerostrat-nav-desk" style="display:flex;align-items:center;height:48px;gap:26px;white-space:nowrap;flex-shrink:0">
         <a href="/" className="{{ navClass_home }}" style="{{ navLinkStyle_home }}">Home</a>
         <a href="/about" className="{{ navClass_about }}" style="{{ navLinkStyle_about }}">About Us</a>
@@ -312,7 +312,7 @@
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:28px 40px;padding-bottom:32px;border-bottom:1px solid rgba(180,180,180,0.24)">
         <div>
-          <img src="uploads/svg/aerostrat-horizontal-tagline-white.svg" alt="AeroStrat" style="height:40px;margin-bottom:12px;display:block">
+          <img src="uploads/svg/aerostrat-lockup-white.svg" alt="AeroStrat" style="height:40px;margin-bottom:12px;display:block">
           <p style="font:600 14px/1.6 'Inter',sans-serif;color:#fff;max-width:300px;margin:0">AeroStrat · Intelligence Driven Aviation</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
@@ -596,8 +596,8 @@ class Component extends DCLogic {
     homeSolutionCards.forEach(c => { c.onClick = c.clickable ? goEbtFn : undefined; c.cursor = c.clickable ? 'pointer' : 'default'; });
 
     const bandDefs = [
-      { code: 'S1', label: 'Unsatisfactory', range: 'BELOW 70%', color: '#EB2427', flagged: true, note: 'The competency was not demonstrated to the required standard. Mandatory remedial training is flagged automatically and the record is held for Director review.' },
-      { code: 'S2', label: 'Below Standard', range: '70–79%', color: '#EB2427', flagged: true, note: 'Performance fell short on one or more observed behaviours. The item is collected into the review step and carried into the coaching summary.' },
+      { code: 'S1', label: 'Unsatisfactory', range: 'BELOW 70%', color: '#FF5A13', flagged: true, note: 'The competency was not demonstrated to the required standard. Mandatory remedial training is flagged automatically and the record is held for Director review.' },
+      { code: 'S2', label: 'Below Standard', range: '70–79%', color: '#FF5A13', flagged: true, note: 'Performance fell short on one or more observed behaviours. The item is collected into the review step and carried into the coaching summary.' },
       { code: 'S3', label: 'Standard', range: '80–87%', color: '#B4B4B4', flagged: false, note: 'The competency was demonstrated to the required standard. This is the threshold the fleet is measured against.' },
       { code: 'S4', label: 'Above Standard', range: '88–95%', color: '#3F9EE8', flagged: false, note: 'Consistently strong performance across the observed behaviours, including under an introduced threat or error.' },
       { code: 'S5', label: 'Excellent', range: 'ABOVE 95%', color: '#ffffff', flagged: false, note: 'Performance exceeded the standard throughout, with management of threats and errors handled without prompting.' }
@@ -663,7 +663,7 @@ class Component extends DCLogic {
         value: v.toFixed(1),
         width: (v / 5 * 100).toFixed(1) + '%',
         own: (own / 5 * 100).toFixed(1) + '%',
-        color: v < 3.0 ? '#EB2427' : '#3F9EE8',
+        color: v < 3.0 ? '#FF5A13' : '#3F9EE8',
         below: v < 3.0
       };
     });
@@ -777,17 +777,17 @@ class Component extends DCLogic {
         const low = g === 1 || g === 2;
         return {
           code, name,
-          rowBg: low ? 'rgba(235,36,39,0.12)' : 'rgba(0,52,140,0.4)',
-          border: low ? 'rgba(235,36,39,0.45)' : 'rgba(180,180,180,0.24)',
+          rowBg: low ? 'rgba(255,90,19,0.12)' : 'rgba(0,52,140,0.4)',
+          border: low ? 'rgba(255,90,19,0.45)' : 'rgba(180,180,180,0.24)',
           scale: ['1','2','3','4','5','N/A'].map(lbl => {
             const val = lbl === 'N/A' ? 'NA' : Number(lbl);
             const on = g === val;
             const warn = on && (val === 1 || val === 2);
             return {
               code: lbl,
-              bg: on ? (warn ? '#EB2427' : '#3F9EE8') : 'rgba(0,52,140,0.5)',
+              bg: on ? (warn ? '#FF5A13' : '#3F9EE8') : 'rgba(0,52,140,0.5)',
               fg: on ? (warn ? '#fff' : '#000') : 'rgba(180,180,180,0.75)',
-              border: on ? (warn ? '#EB2427' : '#3F9EE8') : 'rgba(180,180,180,0.32)',
+              border: on ? (warn ? '#FF5A13' : '#3F9EE8') : 'rgba(180,180,180,0.32)',
               set: () => this.setState(st => {
                 const next = Object.assign({}, st.grades);
                 if (next[code] === val) { delete next[code]; } else { next[code] = val; }
@@ -801,8 +801,8 @@ class Component extends DCLogic {
       noExceptions: exceptions.length === 0,
       reviewStats: [
         { label: 'Items graded', value: graded + '/' + total, color: graded === total ? '#3F9EE8' : '#fff' },
-        { label: 'Exceptions', value: String(exceptions.length), color: exceptions.length ? '#EB2427' : '#3F9EE8' },
-        { label: 'Mean grade', value: meanGrade + ' / 5', color: Number(meanGrade) < 3.0 ? '#EB2427' : '#3F9EE8' }
+        { label: 'Exceptions', value: String(exceptions.length), color: exceptions.length ? '#FF5A13' : '#3F9EE8' },
+        { label: 'Mean grade', value: meanGrade + ' / 5', color: Number(meanGrade) < 3.0 ? '#FF5A13' : '#3F9EE8' }
       ],
       toggleDeclare: () => this.setState(st => ({ declared: !st.declared })),
       declareTick: s.declared ? '✓' : '',
@@ -814,7 +814,7 @@ class Component extends DCLogic {
         : 'Sign the declaration to unlock submit.',
       submitStyle: 'font:600 12.5px/1 \'Inter\',sans-serif;border:none;border-radius:2px;padding:11px 16px;'
         + (s.declared
-          ? 'color:#fff;background:#EB2427;cursor:pointer'
+          ? 'color:#000;background:#FF5A13;cursor:pointer'
           : 'color:#B4B4B4;background:rgba(0,52,140,0.55);cursor:not-allowed'),
       signSubmit: () => { if (s.declared) this.setState({ mockTab: 'grade', selPilot: 0, recTab: 1 }); },
 
@@ -823,8 +823,8 @@ class Component extends DCLogic {
       pilotMeta: pilot.meta,
       pilotScore: pilot.score,
       pilotResult: pilot.result,
-      pilotResultColor: pilot.result === 'Pass' ? '#3F9EE8' : '#EB2427',
-      pilotResultBorder: pilot.result === 'Pass' ? 'rgba(63,158,232,0.55)' : 'rgba(235,36,39,0.55)',
+      pilotResultColor: pilot.result === 'Pass' ? '#3F9EE8' : '#FF5A13',
+      pilotResultBorder: pilot.result === 'Pass' ? 'rgba(63,158,232,0.55)' : 'rgba(255,90,19,0.55)',
       recordTabs: ['Record','Competency','Analysis','History'].map((label, i) => ({
         label,
         sel: i === s.recTab ? 'true' : 'false',
@@ -848,13 +848,13 @@ class Component extends DCLogic {
         ['2025-06-03','Sim check','Simulator check · recurrent', -0.4]
       ].map(([date, form, title, delta]) => {
         const v = clamp(Number(pilot.score) + delta);
-        return { date, form, title, instructor: pilot.instructor, score: v.toFixed(1), color: v < 3.0 ? '#EB2427' : '#3F9EE8' };
+        return { date, form, title, instructor: pilot.instructor, score: v.toFixed(1), color: v < 3.0 ? '#FF5A13' : '#3F9EE8' };
       }),
       trendBars: [
         ['Jun 25', -0.4], ['Oct 25', -0.3], ['Feb 26', -0.2], ['May 26', -0.1], ['Sep 26', 0]
       ].map(([label, delta]) => {
         const v = clamp(Number(pilot.score) + delta);
-        return { label, value: v.toFixed(1), height: (v / 5 * 100).toFixed(1) + '%', color: v < 3.0 ? '#EB2427' : '#3F9EE8' };
+        return { label, value: v.toFixed(1), height: (v / 5 * 100).toFixed(1) + '%', color: v < 3.0 ? '#FF5A13' : '#3F9EE8' };
       }),
       analysisNote: Number(pilot.score) < 3.0
         ? 'Trend is improving but still below standard. AeroStrat holds the pilot in the remedial cohort until two consecutive checks clear 3.0.'
@@ -862,15 +862,15 @@ class Component extends DCLogic {
       auditRows: [
         { stamp: '2026-09-13 18:42', text: 'Check submitted and signed by ' + pilot.instructor + ' (' + pilot.form + ').', dot: '#3F9EE8' },
         { stamp: '2026-09-13 18:41', text: 'Declaration accepted; signed PDF generated.', dot: '#3F9EE8' },
-        { stamp: '2026-09-13 18:30', text: 'Grade on 3.3 amended from S3 to S2 before submission.', dot: '#EB2427' },
+        { stamp: '2026-09-13 18:30', text: 'Grade on 3.3 amended from S3 to S2 before submission.', dot: '#FF5A13' },
         { stamp: '2026-09-13 16:05', text: 'Form opened on tablet, simulator session 2.', dot: '#B4B4B4' },
         { stamp: '2026-09-09 09:12', text: 'Check scheduled by Karim.', dot: '#B4B4B4' }
       ],
       overviewStats: [
         { label: 'Fleet mean', value: '3.5', note: 'A320 · all forms · standard 3.0', color: '#fff' },
         { label: 'Checks this month', value: '12', note: '5 pending review', color: '#fff' },
-        { label: 'Below standard', value: '4', note: 'Pilots with a competency under 3.0', color: '#EB2427' },
-        { label: 'Checks overdue', value: '4', note: 'Last check older than six months', color: '#EB2427' }
+        { label: 'Below standard', value: '4', note: 'Pilots with a competency under 3.0', color: '#FF5A13' },
+        { label: 'Checks overdue', value: '4', note: 'Last check older than six months', color: '#FF5A13' }
       ],
       pendingRows: [
         ['Capt. Joe','Saleh','Sim check','3.7','Pass'],
@@ -883,10 +883,10 @@ class Component extends DCLogic {
         return {
           pilot, instructor, form, score, state,
           go: () => this.setState({ mockTab: 'grade', selPilot: pi, recTab: 1 }),
-          color: warn ? '#EB2427' : '#3F9EE8',
-          bg: warn ? 'rgba(235,36,39,0.1)' : 'rgba(0,52,140,0.4)',
-          border: warn ? 'rgba(235,36,39,0.4)' : 'rgba(180,180,180,0.24)',
-          border2: warn ? 'rgba(235,36,39,0.55)' : 'rgba(63,158,232,0.5)'
+          color: warn ? '#FF5A13' : '#3F9EE8',
+          bg: warn ? 'rgba(255,90,19,0.1)' : 'rgba(0,52,140,0.4)',
+          border: warn ? 'rgba(255,90,19,0.4)' : 'rgba(180,180,180,0.24)',
+          border2: warn ? 'rgba(255,90,19,0.55)' : 'rgba(63,158,232,0.5)'
         };
       }),
       riskRows: [
@@ -897,7 +897,7 @@ class Component extends DCLogic {
         ['SAW · Situation awareness', 5]
       ].map(([name, pct]) => ({
         name, pct: pct + '%', width: pct + '%',
-        color: pct >= 26 ? '#EB2427' : '#3F9EE8'
+        color: pct >= 26 ? '#FF5A13' : '#3F9EE8'
       })),
       howSteps: [
         { num: 'STEP 01', title: 'Grade the check', desc: 'The instructor works through the airline\u2019s own form in a wizard, items scored 1–5 or N/A, category by category, on a tablet in the sim.', accent: '#3F9EE8' },
@@ -950,7 +950,7 @@ class Component extends DCLogic {
       compWhat: comp.what,
       compMean: comp.mean.toFixed(1),
       compWidth: (comp.mean / 5 * 100).toFixed(1) + '%',
-      compColor: comp.mean < 3.0 ? '#EB2427' : '#3F9EE8',
+      compColor: comp.mean < 3.0 ? '#FF5A13' : '#3F9EE8',
       compBelow: comp.below + '%',
       compItems: String(comp.items),
 
@@ -1011,8 +1011,8 @@ class Component extends DCLogic {
         { code: 'Training monitor', title: 'Training / Evaluation Monitor', status: 'In progress', desc: 'An ongoing training-monitor form used alongside the simulator and line checks, carried forward toward the same nine-competency model.', scale: 'Legacy technical / CRM categories' },
         { code: 'Cabin crew', title: 'Cabin Crew Assessment', status: 'Live', desc: 'The annual evaluation for cabin crew, using a categorical framework suited to cabin operations rather than the pilot model, by design.', scale: 'Categorical scale · cabin operations' }
       ].map(fm => Object.assign({}, fm, {
-        statusColor: fm.status === 'Live' ? '#3F9EE8' : '#EB2427',
-        statusBorder: fm.status === 'Live' ? 'rgba(63,158,232,0.5)' : 'rgba(235,36,39,0.5)'
+        statusColor: fm.status === 'Live' ? '#3F9EE8' : '#FF5A13',
+        statusBorder: fm.status === 'Live' ? 'rgba(63,158,232,0.5)' : 'rgba(255,90,19,0.5)'
       })),
 
       altitudes: [
@@ -1028,7 +1028,7 @@ class Component extends DCLogic {
         return {
           name,
           label: (drift >= 0 ? '+' : '−') + Math.abs(drift).toFixed(2),
-          color: Math.abs(drift) > 0.4 ? '#EB2427' : '#3F9EE8',
+          color: Math.abs(drift) > 0.4 ? '#FF5A13' : '#3F9EE8',
           left: drift >= 0 ? '50%' : (50 - half) + '%',
           width: Math.max(half, 1.5) + '%'
         };
@@ -1071,7 +1071,7 @@ class Component extends DCLogic {
       clientForms: [
         { code: 'Sim check', title: 'Simulator Check', note: 'Full nine-competency EBT structure', status: 'Live', color: '#3F9EE8' },
         { code: 'Line check', title: 'Line Check', note: 'TEM, CRM, EBT competency and knowledge', status: 'Live', color: '#3F9EE8' },
-        { code: 'Training monitor', title: 'Training / Evaluation Monitor', note: 'Legacy technical and CRM categories, migrating', status: 'In progress', color: '#EB2427' },
+        { code: 'Training monitor', title: 'Training / Evaluation Monitor', note: 'Legacy technical and CRM categories, migrating', status: 'In progress', color: '#FF5A13' },
         { code: 'Cabin crew', title: 'Cabin Crew Assessment', note: 'Categorical scale suited to cabin operations', status: 'Live', color: '#3F9EE8' }
       ],
 
