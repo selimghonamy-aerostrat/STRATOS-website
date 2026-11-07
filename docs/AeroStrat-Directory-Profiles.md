@@ -27,7 +27,7 @@ Use the same facts everywhere. AI assistants and Google trust a company more whe
 **Long description**
 > AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia. Its vision is to establish the definitive digital operating system for global airlines, unifying fragmented data into a single source of operational intelligence and continuous oversight.
 >
-> AeroStrat builds one connected ecosystem for airline operations on a single shared foundation: one crew list, one record and one login across every module, set up to each airline's own manuals and authority. Its team pairs 25 years of experience in the aviation sector with deep technology expertise.
+> AeroStrat builds one connected ecosystem for airline operations on a single shared foundation: one crew list, one record and one login across every module, set up to each airline's own manuals and authority. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise.
 >
 > AeroStrat started with pilot training, where two products are live with airlines today:
 > - AeroStrat EBT/CBTA: grades every pilot check against the ICAO nine-competency framework on the airline's own forms, following the ICAO, IATA and EASA method, with analytics for the pilot, the cohort and the fleet.

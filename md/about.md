@@ -1,6 +1,6 @@
 # About AeroStrat
 
-> AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia, building one connected ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. It started with training, where AeroStrat EBT/CBTA and AeroStrat TMS are live today.
+> AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia, building one connected ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. It started with training, where AeroStrat EBT/CBTA and AeroStrat TMS are live today.
 
 Canonical page: https://aero-strat.com/about
 
@@ -9,7 +9,7 @@ Canonical page: https://aero-strat.com/about
 
 ## Who we are
 
-- **Experience:** 25 years of experience in the aviation sector. Flight operations, crew training, regulation and oversight, seen from inside the airline.
+- **Experience:** 25+ years of experience in the aviation sector. Flight operations, crew training, regulation and oversight, seen from inside the airline.
 - **Expertise:** Deep technology. Software engineering, data and analytics, delivered as secure systems an airline can rely on every day.
 - **Base:** Tallinn, Estonia. An aviation technology company working with airlines and their authorities.
 - **In production:** AlMasria Universal Airlines. Founding reference client: 120+ pilots and 250+ cabin crew, with more than 14,000 grades recorded to date.
