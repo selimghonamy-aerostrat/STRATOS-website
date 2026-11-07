@@ -35,11 +35,14 @@ site.webmanifest     App name and icons for browsers and phones
 404.html             Branded "page not found" page (not indexed)
 .well-known/security.txt   Security contact (info@aero-strat.com); renew the Expires date yearly
 vercel.json          Clean URLs, Markdown routes and response headers
+
+docs/                Internal, not published (.vercelignore): brand book PDF and
+                     ready-to-paste directory profiles (LinkedIn, Crunchbase, G2…)
 ```
 
 ## Brand
 
-AeroStrat brand book: `AeroStrat_Brand_Guidelines_NEWVERSIOn.pdf` (issue 002.3, Nov. 2026; kept out of git).
+AeroStrat brand book: `docs/brand/AeroStrat_Brand_Guidelines_NEWVERSIOn.pdf` (issue 002.3, Nov. 2026).
 
 - Colours: Deep Blue `#00348C` (brand, navigation), Coral Orange `#FF5A13` (logo swoosh, primary buttons, alerts), Sky Blue `#3F9EE8` (active states, metrics), Unbiased Grey `#B4B4B4`, Light Gray `#ECF0F3`, black.
 - Logo: the S icon (two aircraft in the stratosphere "S") beside the AeroStrat wordmark with the orange swoosh. Files in `uploads/svg/`: `aerostrat-lockup-tagline-*` (header and footer), `aerostrat-lockup-*` (no tagline), `aerostrat-lockup-stacked-*`, `aerostrat-icon-*`, and wordmark-only versions. `-white` for dark backgrounds, `-navy` for light ones.
