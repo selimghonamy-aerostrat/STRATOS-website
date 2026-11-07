@@ -70,9 +70,8 @@ Google: submit `https://aero-strat.com/sitemap.xml` in Search Console.
 
 The Contact page posts to `/api/contact`, which emails the enquiry through Resend (connected in Vercel → Integrations → Resend; the key is the `RESEND_API_KEY` environment variable). Reply-to is the visitor's address. A hidden field filters out spam bots.
 
-- Today messages go to `selimghonamy@aero-strat.com` from Resend's test sender, because aero-strat.com is not yet verified in Resend.
-- To send to `info@aero-strat.com`: add Resend's three DNS records at Hostinger (TXT `resend._domainkey`, CNAME `send`, CNAME `rsend`; exact values in the Resend dashboard), wait for "Verified", then set these in Vercel → Settings → Environment Variables (Production) and redeploy:
-  `CONTACT_TO=info@aero-strat.com` and `CONTACT_FROM=AeroStrat website <website@aero-strat.com>`
+- Messages go to `info@aero-strat.com` (Google alias of `selimghonamy@aero-strat.com`) from `website@aero-strat.com`. Override with `CONTACT_TO` / `CONTACT_FROM` in Vercel → Settings → Environment Variables.
+- aero-strat.com is verified in Resend (2026-11-07) through three records at Hostinger DNS: TXT `resend._domainkey`, CNAME `send`, CNAME `rsend`. Do not delete them, or the form stops sending.
 
 ## EBT/CBTA handbook
 

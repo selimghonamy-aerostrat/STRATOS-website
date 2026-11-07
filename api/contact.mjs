@@ -1,11 +1,10 @@
 // Contact form → email via Resend (Vercel Marketplace integration).
 // RESEND_API_KEY is set by the integration. Optional settings in Vercel:
-//   CONTACT_TO   where enquiries go (default: the Resend account owner)
-//   CONTACT_FROM sender, e.g. "AeroStrat website <website@aero-strat.com>"
-//                once aero-strat.com is verified in Resend (default: Resend's test sender)
+//   CONTACT_TO   where enquiries go (default info@aero-strat.com, an alias of selimghonamy@)
+//   CONTACT_FROM sender (default website@aero-strat.com; aero-strat.com is verified in Resend)
 
-const TO = process.env.CONTACT_TO || 'selimghonamy@aero-strat.com';
-const FROM = process.env.CONTACT_FROM || 'AeroStrat website <onboarding@resend.dev>';
+const TO = process.env.CONTACT_TO || 'info@aero-strat.com';
+const FROM = process.env.CONTACT_FROM || 'AeroStrat website <website@aero-strat.com>';
 const ORIGINS = ['https://aero-strat.com', 'https://www.aero-strat.com'];
 
 const LIMITS = { name: 120, airline: 160, role: 120, email: 200, product: 60, stage: 60, message: 5000 };
