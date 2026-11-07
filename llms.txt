@@ -9,12 +9,16 @@ LinkedIn: https://www.linkedin.com/company/aero-strat/
 
 ## Vision and ecosystem
 
-AeroStrat is building one connected technology ecosystem for airline operations, on a single shared foundation: one crew list, one record and one login across every product.
+- **Vision:** To establish the definitive digital operating system for global airlines, unifying fragmented data into a single source of operational intelligence and continuous oversight.
+- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimize performance, elevate safety and drive continuous improvement across their entire ecosystem.
 
-- **Training (live):** AeroStrat EBT/CBTA and AeroStrat TMS, in use with airlines today.
-- **Safety (in development):** safety and oversight built on the same operational data.
-- **Fleet management (in development):** fleet data connected to crew and training records.
-- **Fleet operations (in development):** day-to-day operational tools on the same foundation.
+AeroStrat is building one connected technology ecosystem for airline operations on a single shared foundation: one crew list, one record and one login across every module. Training is live; the next domains follow on the same foundation.
+
+1. **Training (live):** AeroStrat EBT/CBTA for competency assessment and AeroStrat TMS for training management, on one pilot record.
+2. **Safety & Compliance (next):** occurrence reporting and audit findings tied back to the competency evidence behind them.
+3. **Flight Operations (next):** crew qualification, currency and rostering constraints in the same record as training.
+4. **Maintenance & Engineering (next):** technical training and authorisation tracking on the shared competency framework.
+5. **Network Planning (next):** capacity and crew readiness modelled against the training pipeline.
 
 ## Products
 
@@ -31,6 +35,28 @@ AeroStrat is building one connected technology ecosystem for airline operations,
 - AeroStrat EBT/CBTA sits alongside an airline's LMS; it does not deliver e-learning.
 - Implementation: four stages, about five weeks from receiving the airline's manual, records and forms. The airline names one owner; AeroStrat does the setup.
 - Founding reference client: AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+
+## Frequently asked questions
+
+**What is AeroStrat?** A next-generation aviation technology company in Tallinn, Estonia, building one connected software ecosystem for airline operations. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live with airlines today.
+
+**What does AeroStrat EBT/CBTA do?** It grades every pilot check against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method, with a signed PDF per evaluation and analytics for the pilot, the cohort and the fleet.
+
+**What does AeroStrat TMS do?** It manages pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority.
+
+**Which regulators does it support?** It is not tied to one regulator: each airline is configured to its own training manual and authority, including EASA and ECAA frameworks.
+
+**How long does implementation take?** Four stages, about five weeks from receiving the airline's manual, records and forms. The airline names one owner; AeroStrat does the setup.
+
+**Is it a learning management system (LMS)?** No. Neither product delivers e-learning; they record, plan and analyse training and assessment, alongside the airline's LMS.
+
+**Who decides the final grade?** The instructor always sets the final grade. Any override needs a written reason, and AeroStrat never overwrites it.
+
+**How is airline data protected?** Every airline's data is isolated from every other's, pilot and cabin-crew records are kept separate at the database level, access is role-based with every action logged, and data is exportable in full at any time.
+
+**Who uses AeroStrat today?** Founding reference client AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+
+**How do I see it?** Book a walkthrough on your own check forms and crew data at https://aero-strat.com/contact or email info@aero-strat.com.
 
 ## Pages
 

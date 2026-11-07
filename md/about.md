@@ -4,8 +4,8 @@
 
 Canonical page: https://aero-strat.com/about
 
-- **Vision:** Unifying fragmented data into a single source of operational intelligence and continuous oversight.
-- **Mission:** Turning complex aviation data into connected intelligence that raises safety, performance and continuous improvement.
+- **Vision:** To establish the definitive digital operating system for global airlines, unifying fragmented data into a single source of operational intelligence and continuous oversight.
+- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimize performance, elevate safety and drive continuous improvement across their entire ecosystem.
 
 ## Who we are
 

@@ -14,12 +14,16 @@ Canonical page: https://aero-strat.com/
 
 ## Vision and ecosystem
 
-AeroStrat is building one connected technology ecosystem for airline operations, on a single shared foundation: one crew list, one record and one login across every product.
+- **Vision:** To establish the definitive digital operating system for global airlines, unifying fragmented data into a single source of operational intelligence and continuous oversight.
+- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimize performance, elevate safety and drive continuous improvement across their entire ecosystem.
 
-- **Training (live):** AeroStrat EBT/CBTA and AeroStrat TMS, in use with airlines today.
-- **Safety (in development):** safety and oversight built on the same operational data.
-- **Fleet management (in development):** fleet data connected to crew and training records.
-- **Fleet operations (in development):** day-to-day operational tools on the same foundation.
+AeroStrat is building one connected technology ecosystem for airline operations on a single shared foundation: one crew list, one record and one login across every module. Training is live; the next domains follow on the same foundation.
+
+1. **Training (live):** AeroStrat EBT/CBTA for competency assessment and AeroStrat TMS for training management, on one pilot record.
+2. **Safety & Compliance (next):** occurrence reporting and audit findings tied back to the competency evidence behind them.
+3. **Flight Operations (next):** crew qualification, currency and rostering constraints in the same record as training.
+4. **Maintenance & Engineering (next):** technical training and authorisation tracking on the shared competency framework.
+5. **Network Planning (next):** capacity and crew readiness modelled against the training pipeline.
 
 ## Who we are
 
@@ -77,8 +81,8 @@ Book a live walkthrough on a sample of your own crew, records and check forms: h
 
 Canonical page: https://aero-strat.com/about
 
-- **Vision:** Unifying fragmented data into a single source of operational intelligence and continuous oversight.
-- **Mission:** Turning complex aviation data into connected intelligence that raises safety, performance and continuous improvement.
+- **Vision:** To establish the definitive digital operating system for global airlines, unifying fragmented data into a single source of operational intelligence and continuous oversight.
+- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimize performance, elevate safety and drive continuous improvement across their entire ecosystem.
 
 ## Who we are
 
