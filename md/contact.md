@@ -6,7 +6,7 @@ Book a walkthrough, send one of your check forms and see how it grades in AeroSt
 
 - **Email:** info@aero-strat.com
 - **Location:** Tallinn, Estonia
-- **LinkedIn:** https://www.linkedin.com/company/stratos-ida/
+- **LinkedIn:** https://www.linkedin.com/company/aero-strat/
 - **Contact form:** https://aero-strat.com/contact (full name, airline, role, email, product of interest, current EBT stage, message)
 
 ## What a first call covers

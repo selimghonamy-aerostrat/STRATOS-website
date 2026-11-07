@@ -2,7 +2,7 @@
 
 > Complete text of aero-strat.com plus the AeroStrat EBT/CBTA Platform Handbook, as plain Markdown. Short index: https://aero-strat.com/llms.txt
 
-Company: AeroStrat (Intelligence Driven Aviation) · Website: https://aero-strat.com · Email: info@aero-strat.com · LinkedIn: https://www.linkedin.com/company/stratos-ida/ · Based in Tallinn, Estonia
+Company: AeroStrat (Intelligence Driven Aviation) · Website: https://aero-strat.com · Email: info@aero-strat.com · LinkedIn: https://www.linkedin.com/company/aero-strat/ · Based in Tallinn, Estonia
 
 ---
 
@@ -437,7 +437,7 @@ Book a walkthrough, send one of your check forms and see how it grades in AeroSt
 
 - **Email:** info@aero-strat.com
 - **Location:** Tallinn, Estonia
-- **LinkedIn:** https://www.linkedin.com/company/stratos-ida/
+- **LinkedIn:** https://www.linkedin.com/company/aero-strat/
 - **Contact form:** https://aero-strat.com/contact (full name, airline, role, email, product of interest, current EBT stage, message)
 
 ## What a first call covers
