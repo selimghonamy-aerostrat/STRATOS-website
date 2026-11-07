@@ -1,6 +1,6 @@
 # AeroStrat: Intelligence Driven Aviation
 
-> AeroStrat is an aviation technology company based in Tallinn, Estonia. Its team brings 25+ years of experience in the aviation sector together with deep technology expertise, to build software for the way airlines operate. Two products for airline pilot training are live: AeroStrat EBT/CBTA and AeroStrat TMS.
+> AeroStrat (Intelligence Driven Aviation) is building the next generation of aviation technology: one connected ecosystem for airline operations, spanning training, safety, fleet management, fleet operations and more, on a single shared foundation set up to each airline's own manuals and authority. Its team pairs 25 years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live with airlines today: AeroStrat EBT/CBTA for evidence-based competency assessment and grading, and AeroStrat TMS for training planning, validity tracking and records. Based in Tallinn, Estonia.
 
 Canonical page: https://aero-strat.com/
 
