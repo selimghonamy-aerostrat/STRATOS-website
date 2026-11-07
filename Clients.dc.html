@@ -420,11 +420,11 @@ class Component extends DCLogic {
       { k: 'ENTRY', v: 'No competency data required to begin, the record starts from your existing paperwork.' },
       { k: 'OUTPUT', v: 'Signed evaluations, an audit trail, and the first fleet-level competency picture.' }
     ] },
-    { stage: 'STAGE 1', name: 'Mixed', desc: 'EBT running alongside the conventional programme. Instructor standardisation is supported by each instructor\u2019s average grade.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool. Migrated history means the clock starts with evidence already behind you.', facts: [
+    { stage: 'STAGE 2', name: 'Mixed EBT', desc: 'EBT running alongside the conventional programme. Instructor standardisation is supported by each instructor\u2019s average grade.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool. Migrated history means the clock starts with evidence already behind you.', facts: [
       { k: 'DURATION', v: 'Set by your authority and your programme.' },
       { k: 'OUTPUT', v: 'Each instructor\u2019s average grade, updated with every submission.' }
     ] },
-    { stage: 'STAGE 2', name: 'Baseline', desc: 'Recurrent training and assessment are fully dedicated to EBT, and licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour, recurrency tracked. The same system you started in, nothing to migrate, and the data Enhanced EBT demands already accumulating.', facts: [
+    { stage: 'STAGE 3', name: 'Baseline EBT', desc: 'Recurrent training and assessment are fully dedicated to EBT, and licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour, recurrency tracked. The same system you started in, nothing to migrate, and the data Enhanced EBT demands already accumulating.', facts: [
       { k: 'SUBMISSION', v: 'Fleet, cohort and instructor evidence exported for the authority on demand.' },
       { k: 'NEXT', v: 'The dataset Enhanced EBT requires is already accumulating in the same record.' }
     ] }
@@ -1056,8 +1056,8 @@ class Component extends DCLogic {
 
       stageCards: [
         { num: 'STAGE 0', name: 'Conventional', desc: 'Traditional recurrent training and checking, where most airlines still are.', with: 'Your manual becomes working forms, built by us, rule for rule. Historical gradings loaded at implementation. You keep the programme exactly as approved, and the competency record starts building underneath it.' },
-        { num: 'STAGE 1', name: 'Mixed', desc: 'EBT running alongside the conventional programme, both graded and recorded.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool.' },
-        { num: 'STAGE 2', name: 'Baseline', desc: 'Recurrent training and assessment fully dedicated to EBT; licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour. The same system you started in, nothing to migrate.' }
+        { num: 'STAGE 2', name: 'Mixed EBT', desc: 'EBT running alongside the conventional programme, both graded and recorded.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool.' },
+        { num: 'STAGE 3', name: 'Baseline EBT', desc: 'Recurrent training and assessment fully dedicated to EBT; licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour. The same system you started in, nothing to migrate.' }
       ],
 
       roleCards: [

@@ -308,21 +308,21 @@
       <div style="display:flex;flex-direction:column;gap:26px">
         <label style="display:flex;flex-direction:column;gap:10px">
           <span style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Full name</span>
-          <input type="text" className="aerostrat-field" placeholder="Your name">
+          <input type="text" name="cf-name" autocomplete="name" required aria-required="true" maxlength="120" className="aerostrat-field" placeholder="Your name">
         </label>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:26px">
         <label style="display:flex;flex-direction:column;gap:10px">
           <span style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Airline</span>
-          <input type="text" className="aerostrat-field" placeholder="Your airline">
+          <input type="text" name="cf-airline" autocomplete="organization" maxlength="160" className="aerostrat-field" placeholder="Your airline">
         </label>
         <label style="display:flex;flex-direction:column;gap:10px">
           <span style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Role</span>
-          <input type="text" className="aerostrat-field" placeholder="e.g. Training Director">
+          <input type="text" name="cf-role" autocomplete="organization-title" maxlength="120" className="aerostrat-field" placeholder="e.g. Training Director">
         </label>
         </div>
         <label style="display:flex;flex-direction:column;gap:10px">
           <span style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Email</span>
-          <input type="email" className="aerostrat-field" placeholder="name@airline.com">
+          <input type="email" name="cf-email" autocomplete="email" required aria-required="true" maxlength="200" className="aerostrat-field" placeholder="name@airline.com">
         </label>
         <label style="display:flex;flex-direction:column;gap:10px">
             <span style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Interested in</span>
@@ -342,10 +342,14 @@
         </label>
         <label style="display:flex;flex-direction:column;gap:10px">
           <span style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Message</span>
-          <textarea rows="5" className="aerostrat-field" style="resize:vertical" placeholder="Tell us about your fleet and how you run recurrent checks today"></textarea>
+          <textarea rows="5" name="cf-message" required aria-required="true" maxlength="5000" className="aerostrat-field" style="resize:vertical" placeholder="Tell us about your fleet and how you run recurrent checks today"></textarea>
         </label>
+        <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
+          <label>Leave this field empty<input type="text" name="cf-website" tabindex="-1" autocomplete="off"></label>
+        </div>
         <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
-          <button className="aerostrat-btn aerostrat-btn-primary">Send message</button>
+          <button type="button" onClick="{{ sendForm }}" aria-busy="{{ sendBusy }}" className="aerostrat-btn aerostrat-btn-primary">{{ sendLabel }}</button>
+          <p role="status" aria-live="polite" style="font:500 14px/1.6 'Inter',sans-serif;color:{{ formNoteColor }};margin:0;max-width:560px">{{ formNote }}</p>
         </div>
         <div style="border-top:1px solid rgba(0,52,140,0.16);padding-top:28px;max-width:560px">
           <div style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.14em;color:#00348C;text-transform:uppercase;margin-bottom:16px">What a first call covers</div>
@@ -465,11 +469,11 @@ class Component extends DCLogic {
       { k: 'ENTRY', v: 'No competency data required to begin, the record starts from your existing paperwork.' },
       { k: 'OUTPUT', v: 'Signed evaluations, an audit trail, and the first fleet-level competency picture.' }
     ] },
-    { stage: 'STAGE 1', name: 'Mixed', desc: 'EBT running alongside the conventional programme. Instructor standardisation is supported by each instructor\u2019s average grade.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool. Migrated history means the clock starts with evidence already behind you.', facts: [
+    { stage: 'STAGE 2', name: 'Mixed EBT', desc: 'EBT running alongside the conventional programme. Instructor standardisation is supported by each instructor\u2019s average grade.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool. Migrated history means the clock starts with evidence already behind you.', facts: [
       { k: 'DURATION', v: 'Set by your authority and your programme.' },
       { k: 'OUTPUT', v: 'Each instructor\u2019s average grade, updated with every submission.' }
     ] },
-    { stage: 'STAGE 2', name: 'Baseline', desc: 'Recurrent training and assessment are fully dedicated to EBT, and licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour, recurrency tracked. The same system you started in, nothing to migrate, and the data Enhanced EBT demands already accumulating.', facts: [
+    { stage: 'STAGE 3', name: 'Baseline EBT', desc: 'Recurrent training and assessment are fully dedicated to EBT, and licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour, recurrency tracked. The same system you started in, nothing to migrate, and the data Enhanced EBT demands already accumulating.', facts: [
       { k: 'SUBMISSION', v: 'Fleet, cohort and instructor evidence exported for the authority on demand.' },
       { k: 'NEXT', v: 'The dataset Enhanced EBT requires is already accumulating in the same record.' }
     ] }
@@ -506,8 +510,42 @@ class Component extends DCLogic {
     },
     stage: null,
     f1: false, f2: false, f3: false,
-    menuOpen: false
+    menuOpen: false,
+    formStatus: 'idle',
+    formMsg: ''
   };
+
+  async sendForm(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (this.state.formStatus === 'sending') return;
+    var get = function (n) { var el = document.querySelector('[name="cf-' + n + '"]'); return el ? el.value.trim() : ''; };
+    var data = {
+      name: get('name'), airline: get('airline'), role: get('role'), email: get('email'),
+      message: get('message'), website: get('website'),
+      product: this.state.product || '', stage: this.state.stage || ''
+    };
+    var missing = ['name', 'email', 'message'].filter(function (k) { return !data[k]; });
+    if (missing.length) {
+      var first = document.querySelector('[name="cf-' + missing[0] + '"]'); if (first) first.focus();
+      this.setState({ formStatus: 'error', formMsg: 'Please add your name, email and message.' });
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(data.email)) {
+      var em = document.querySelector('[name="cf-email"]'); if (em) em.focus();
+      this.setState({ formStatus: 'error', formMsg: 'Please check your email address.' });
+      return;
+    }
+    this.setState({ formStatus: 'sending', formMsg: '' });
+    try {
+      var r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      var out = await r.json().catch(function () { return {}; });
+      if (!r.ok || !out.ok) throw new Error(out.error || 'send_failed');
+      ['name', 'airline', 'role', 'email', 'message'].forEach(function (n) { var el = document.querySelector('[name="cf-' + n + '"]'); if (el) el.value = ''; });
+      this.setState({ formStatus: 'sent', formMsg: 'Thank you. Your message has been sent, and we will reply to you by email.', product: null, stage: null });
+    } catch (err) {
+      this.setState({ formStatus: 'error', formMsg: 'Sorry, your message could not be sent. Please email us at info@aero-strat.com.' });
+    }
+  }
 
   go(page, extra, e) {
     if (e && e.preventDefault) e.preventDefault();
@@ -727,6 +765,11 @@ class Component extends DCLogic {
     const belowTau = compRows.filter(c => c.below).map(c => c.name);
 
     return {
+      sendForm: (e) => this.sendForm(e),
+      sendLabel: s.formStatus === 'sending' ? 'Sending…' : 'Send message',
+      sendBusy: s.formStatus === 'sending' ? 'true' : 'false',
+      formNote: s.formMsg,
+      formNoteColor: s.formStatus === 'error' ? '#C2410C' : '#00348C',
       isHome: s.page === 'home',
       isAbout: s.page === 'about',
       isSolutions: s.page === 'solutions',
@@ -1107,8 +1150,8 @@ class Component extends DCLogic {
 
       stageCards: [
         { num: 'STAGE 0', name: 'Conventional', desc: 'Traditional recurrent training and checking, where most airlines still are.', with: 'Your manual becomes working forms, built by us, rule for rule. Historical gradings loaded at implementation. You keep the programme exactly as approved, and the competency record starts building underneath it.' },
-        { num: 'STAGE 1', name: 'Mixed', desc: 'EBT running alongside the conventional programme, both graded and recorded.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool.' },
-        { num: 'STAGE 2', name: 'Baseline', desc: 'Recurrent training and assessment fully dedicated to EBT; licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour. The same system you started in, nothing to migrate.' }
+        { num: 'STAGE 2', name: 'Mixed EBT', desc: 'EBT running alongside the conventional programme, both graded and recorded.', with: 'Both form types live in one system, each graded natively to the competency model. No parallel spreadsheet, no second tool.' },
+        { num: 'STAGE 3', name: 'Baseline EBT', desc: 'Recurrent training and assessment fully dedicated to EBT; licence revalidation runs through the EBT module.', with: 'Fleet and cohort evidence for the submission, every grade traceable to observed behaviour. The same system you started in, nothing to migrate.' }
       ],
 
       roleCards: [

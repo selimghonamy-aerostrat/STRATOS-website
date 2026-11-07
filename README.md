@@ -13,6 +13,7 @@ TMS.dc.html          TMS             → /tms
 Clients.dc.html      Clients         → /clients
 Contact.dc.html      Contact Us      → /contact
 
+api/contact.mjs      Contact form → email (Vercel function, sends through Resend)
 js/support.js        Page runtime (renders the <x-dc> templates; generated, do not edit)
 js/hero-video.js     Keeps the homepage background video playing on all browsers
 css/responsive.css   Phone/tablet fixes shared by every page (solid mobile menu, hero size, tap targets)
@@ -64,6 +65,14 @@ curl -X POST https://api.indexnow.org/IndexNow -H 'Content-Type: application/jso
 ```
 
 Google: submit `https://aero-strat.com/sitemap.xml` in Search Console.
+
+## Contact form
+
+The Contact page posts to `/api/contact`, which emails the enquiry through Resend (connected in Vercel → Integrations → Resend; the key is the `RESEND_API_KEY` environment variable). Reply-to is the visitor's address. A hidden field filters out spam bots.
+
+- Today messages go to `selimghonamy@aero-strat.com` from Resend's test sender, because aero-strat.com is not yet verified in Resend.
+- To send to `info@aero-strat.com`: add Resend's three DNS records at Hostinger (TXT `resend._domainkey`, CNAME `send`, CNAME `rsend`; exact values in the Resend dashboard), wait for "Verified", then set these in Vercel → Settings → Environment Variables (Production) and redeploy:
+  `CONTACT_TO=info@aero-strat.com` and `CONTACT_FROM=AeroStrat website <website@aero-strat.com>`
 
 ## EBT/CBTA handbook
 
