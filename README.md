@@ -18,14 +18,14 @@ js/hero-video.js     Keeps the homepage background video playing on all browsers
 css/responsive.css   Phone/tablet fixes shared by every page (solid mobile menu, hero size, tap targets)
 css/fonts.css        Open Sauce One, the AeroStrat brand typeface (files in fonts/)
 
-uploads/             Images, video, logos, handbook PDF
+uploads/             Images, video, logos
 uploads/brand/       Share images (og-image.png for the site, og-ebt-cbta.png, og-tms.png) and raster logo for structured data
 uploads/svg/         AeroStrat logos from the brand guidelines: horizontal / stacked, with or without
                      tagline, in white (for dark backgrounds) and navy (for light backgrounds)
 
 md/                  Markdown copy of each page for AI crawlers, served at /<page>.md
 llms.txt             Short site summary for AI assistants
-llms-full.txt        All pages + the full EBT/CBTA handbook text, for AI assistants
+llms-full.txt        All pages in one file, for AI assistants
 robots.txt           Allows search engines and AI crawlers
 sitemap.xml          Page list for Google/Bing
 <hex>.txt            IndexNow key for Bing; do not delete or rename
@@ -64,6 +64,10 @@ curl -X POST https://api.indexnow.org/IndexNow -H 'Content-Type: application/jso
 ```
 
 Google: submit `https://aero-strat.com/sitemap.xml` in Search Console.
+
+## EBT/CBTA handbook
+
+The old STRATOS-era handbook PDF was taken down on 2026-11-07 while a new one is written. Until then `vercel.json` sends `/uploads/AeroStrat_EBT_CBTA_Handbook.pdf` to `/ebt-cbta` (temporary redirect). When the new PDF is ready: remove that redirect, add the file to `uploads/`, link it again on the EBT/CBTA and Contact pages, and add its text to `llms-full.txt`.
 
 ## Publishing
 

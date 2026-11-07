@@ -68,5 +68,4 @@ AeroStrat is building one connected technology ecosystem for airline operations 
 
 ## Optional
 
-- [Full site content](https://aero-strat.com/llms-full.txt): every page plus the full EBT/CBTA handbook in one Markdown file.
-- [EBT/CBTA Platform Handbook (PDF)](https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf): every module, the grading engine and the status of each one.
+- [Full site content](https://aero-strat.com/llms-full.txt): every page in one Markdown file.

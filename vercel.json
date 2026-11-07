@@ -233,5 +233,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/uploads/AeroStrat_EBT_CBTA_Handbook.pdf",
+      "destination": "/ebt-cbta",
+      "permanent": false
+    }
   ]
 }

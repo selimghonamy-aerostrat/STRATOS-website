@@ -124,4 +124,4 @@ No. It does not deliver e-learning. It sits alongside the airline's LMS, and can
 **Which reports does it produce for audits?**
 Every submission creates a signed PDF and a permanent record in the pilot's history. Every edit after submission is logged in an append-only audit trail, and records export for IOSA and the airline's authority.
 
-Handbook (PDF): https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf · Contact: https://aero-strat.com/contact
+Contact: https://aero-strat.com/contact · info@aero-strat.com

@@ -13,7 +13,3 @@ Book a walkthrough, send one of your check forms and see how it grades in AeroSt
 
 - **For AeroStrat TMS:** your crew list, your current training records and the training rules in your OM-D.
 - **For AeroStrat EBT/CBTA:** your EBT stage and plans, your check forms, and what AeroStrat needs from you to set up: your forms and competency mapping, your standards, your instructor ranks, and the training managers who receive alerts.
-
-## Read first
-
-The AeroStrat EBT/CBTA Platform Handbook covers every module, the grading engine and the honest status of each one: https://aero-strat.com/uploads/AeroStrat_EBT_CBTA_Handbook.pdf
