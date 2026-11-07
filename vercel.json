@@ -1,56 +1,5 @@
 {
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "stratos-ida.com"
-        }
-      ],
-      "destination": "https://aero-strat.com/",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.stratos-ida.com"
-        }
-      ],
-      "destination": "https://aero-strat.com/",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "stratos-ida.com"
-        }
-      ],
-      "destination": "https://aero-strat.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.stratos-ida.com"
-        }
-      ],
-      "destination": "https://aero-strat.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/uploads/STRATOS_EBT_CBTA_Handbook.pdf",
-      "destination": "/uploads/AeroStrat_EBT_CBTA_Handbook.pdf",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/",
