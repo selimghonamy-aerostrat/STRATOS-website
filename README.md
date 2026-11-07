@@ -64,7 +64,7 @@ curl -X POST https://api.indexnow.org/IndexNow -H 'Content-Type: application/jso
   -d '{"host":"aero-strat.com","key":"0790cee3ef27844194c3e76ea620a11b","urlList":["https://aero-strat.com/"]}'
 ```
 
-Google: submit `https://aero-strat.com/sitemap.xml` in Search Console.
+Google: Search Console property `aero-strat.com` (Domain type, account selimghonamy@aero-strat.com), verified on 2026-11-07 by the `google-site-verification` TXT record at Hostinger (do not delete it). Sitemap `https://aero-strat.com/sitemap.xml` submitted the same day. After big page changes, use URL inspection → Request indexing.
 
 ## Contact form
 
