@@ -55,6 +55,16 @@ Page text lives in each `*.dc.html` file. SEO tags (title, description, canonica
 
 When page text changes, also update the matching file in `md/` and rebuild `llms-full.txt` so AI assistants see the same content.
 
+### Pre-rendered pages (re-run after every change)
+
+Each page contains a ready-drawn copy between `<!-- PRERENDER:START -->` and `<!-- PRERENDER:END -->`, so phones see the page about 1 s sooner instead of waiting for React to download. The live page replaces the copy as soon as it is drawn. **After any change to a page's text, layout or `css/`, rebuild the copies**, or the old version shows for about a second:
+
+```
+cd scripts && npm install && npm run prerender
+```
+
+It needs Google Chrome installed. Never edit inside the markers by hand; the script regenerates them, and removing the block restores the page exactly as it was.
+
 ## Search engines and AI assistants
 
 After publishing changed pages, notify Bing (and ChatGPT search / Copilot, which use Bing) through IndexNow:

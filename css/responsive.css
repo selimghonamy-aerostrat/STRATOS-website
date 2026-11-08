@@ -161,3 +161,6 @@
 .aerostrat-gloss-comps li{display:flex;align-items:baseline;gap:12px;font:500 14.5px/1.5 'Inter',sans-serif;color:#000}
 .aerostrat-gloss-comps li span{flex:none;width:42px;font:700 12px/1 'Open Sauce One',sans-serif;letter-spacing:0.06em;color:#00348C}
 @media (max-width:760px){.aerostrat-gloss-list{grid-template-columns:minmax(0,1fr)}.aerostrat-gloss-group + .aerostrat-gloss-group{margin-top:56px}}
+
+/* Pre-rendered pages (scripts/prerender.mjs): the copy fades in once; the live page that replaces it must not fade again */
+html.dc-pre #dc-root .aerostrat-page-enter{animation:none}

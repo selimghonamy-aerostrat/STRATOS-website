@@ -4,3 +4,4 @@
 # Local files, not part of the website
 *.code-workspace
 /AeroStrat*Brand*Guidelines*.pdf
+scripts/node_modules/
