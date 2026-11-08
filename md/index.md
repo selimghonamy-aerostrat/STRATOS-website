@@ -76,7 +76,7 @@ Safety & Compliance, Flight Operations, Maintenance & Engineering and Network Pl
 AeroStrat is built on ICAO, IATA and EASA guidance and is not tied to one regulator. Each airline is set up to its own manuals and national authority, including EASA and ECAA frameworks.
 
 **Who uses AeroStrat today?**
-Founding reference client AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+AeroStrat has been tested for more than 8 months in co-development with two regional airlines: 120+ pilots and 250+ cabin crew, with more than 14,000 grades recorded to date.
 
 **How can we see it?**
 Book a live walkthrough on a sample of your own crew, records and check forms at aero-strat.com/contact, or email info@aero-strat.com.

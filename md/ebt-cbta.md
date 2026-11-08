@@ -1,6 +1,6 @@
 # AeroStrat EBT/CBTA: EBT/CBTA assessment platform for airlines
 
-> From paper records to performance intelligence. AeroStrat EBT/CBTA grades every check against the ICAO nine-competency framework on the airline's own forms, and turns every submission into pilot, cohort and fleet analytics. Built on the ICAO, IATA and EASA method (also ECAA). Live, in daily production at AlMasria Universal Airlines.
+> From paper records to performance intelligence. AeroStrat EBT/CBTA grades every check against the ICAO nine-competency framework on the airline's own forms, and turns every submission into pilot, cohort and fleet analytics. Built on the ICAO, IATA and EASA method (also ECAA). Live, tested for more than 8 months in co-development with two regional airlines.
 
 Canonical page: https://aero-strat.com/ebt-cbta
 For: Training Directors, Heads of Training and TRE/TRI leads.
@@ -106,7 +106,7 @@ AeroStrat develops forms from the airline's training manual, with competency map
 ## Frequently asked questions
 
 **What is AeroStrat EBT/CBTA?**
-Evidence-based training and assessment software for airlines. It grades every check against the nine ICAO/IATA pilot competencies and all 73 observable behaviours, on forms built from the airline's own manual, and turns every submission into pilot, cohort and fleet analytics. It is live, in daily production at AlMasria Universal Airlines.
+Evidence-based training and assessment software for airlines. It grades every check against the nine ICAO/IATA pilot competencies and all 73 observable behaviours, on forms built from the airline's own manual, and turns every submission into pilot, cohort and fleet analytics. It has been tested for more than 8 months in co-development with two regional airlines.
 
 **How is a competency grade calculated?**
 Each grade is derived from observed behaviours by the IATA lowest-of-three method: how many observable behaviours, how often, and the TEM outcome. When the evidence is thin, AeroStrat shows "insufficient evidence" instead of a number.

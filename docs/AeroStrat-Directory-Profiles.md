@@ -35,7 +35,7 @@ Use the same facts everywhere. AI assistants and Google trust a company more whe
 >
 > Next on the same foundation: Safety & Compliance, Flight Operations, Maintenance & Engineering and Network Planning.
 >
-> Founding reference client: AlMasria Universal Airlines (120+ pilots, 250+ cabin crew, more than 14,000 grades recorded).
+> Tested for more than 8 months in co-development with two regional airlines (120+ pilots, 250+ cabin crew, more than 14,000 grades recorded).
 
 ---
 
@@ -92,7 +92,7 @@ List each product separately: **AeroStrat EBT/CBTA** and **AeroStrat TMS**.
 - **EBT/CBTA description**: `EBT/CBTA software for airline pilot training: grade every check against the ICAO nine competencies on your own forms, with signed evaluations and pilot, cohort and fleet analytics.`
 - **TMS description**: `Pilot training management system for airlines: licences, medicals, checks and courses, planning, recurrent training, records and audit in one platform, configured to your OM-D and authority.`
 - **Deployment**: Cloud, SaaS, Web
-- **Screenshots**: export from the live product. Ask the founding client for a first review once listed.
+- **Screenshots**: export from the live product. Ask a co-development airline for a first review once listed.
 
 ## 5. Google Business Profile and Bing Places
 

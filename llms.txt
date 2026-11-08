@@ -34,7 +34,7 @@ AeroStrat is building one connected technology ecosystem for airline operations 
 - The instructor always sets the final grade; any override needs a written reason, and AeroStrat never overwrites it. The airline keeps every regulatory obligation.
 - AeroStrat EBT/CBTA sits alongside an airline's LMS; it does not deliver e-learning.
 - Implementation: four stages, about five weeks from receiving the airline's manual, records and forms. The airline names one owner; AeroStrat does the setup.
-- Founding reference client: AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+- Tested for more than 8 months in co-development with two regional airlines: 120+ pilots and 250+ cabin crew, with more than 14,000 grades recorded to date.
 
 ## Frequently asked questions
 
@@ -54,7 +54,7 @@ AeroStrat is building one connected technology ecosystem for airline operations 
 
 **How is airline data protected?** Every airline's data is isolated from every other's, pilot and cabin-crew records are kept separate at the database level, access is role-based with every action logged, and data is exportable in full at any time.
 
-**Who uses AeroStrat today?** Founding reference client AlMasria Universal Airlines, with 120+ pilots and 250+ cabin crew and more than 14,000 grades recorded to date.
+**Who uses AeroStrat today?** AeroStrat has been tested for more than 8 months in co-development with two regional airlines: 120+ pilots and 250+ cabin crew, with more than 14,000 grades recorded to date.
 
 **How do I see it?** Book a walkthrough on your own check forms and crew data at https://aero-strat.com/contact or email info@aero-strat.com.
 
