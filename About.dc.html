@@ -1265,7 +1265,7 @@
               style="font:700 clamp(26px,3.4vw,42px)/1.12 'Open Sauce One',sans-serif;letter-spacing:-0.02em;color:#000;margin:0 0 36px;max-width:760px;text-wrap:pretty">
               Who we are.</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:1px">
-              <sc-for list="{{ companyFacts }}" as="cf" hint-placeholder-count="4">
+              <sc-for list="{{ companyFacts }}" as="cf" hint-placeholder-count="3">
                 <div style="background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:34px 30px">
                   <div
                     style="font:600 12px/1 'Open Sauce One',sans-serif;color:#00348C;letter-spacing:0.08em;margin-bottom:22px">
@@ -2111,8 +2111,7 @@ class Component extends DCLogic {
       companyFacts: [
         { k: 'EXPERIENCE', v: '25+ years of experience in the aviation sector', note: 'Flight operations, crew training, regulation and oversight, seen from inside the airline.' },
         { k: 'EXPERTISE', v: 'Deep technology', note: 'Software engineering, data and analytics, delivered as secure systems an airline can rely on every day.' },
-        { k: 'BASE', v: 'Tallinn, Estonia', note: 'An aviation technology company working with airlines and their authorities.' },
-        { k: 'IN PRODUCTION', v: 'AlMasria Universal Airlines', note: 'Founding reference client: 120+ pilots and 250+ cabin crew, with more than 14,000 grades recorded to date.' }
+        { k: 'BASE', v: 'Tallinn, Estonia', note: 'An aviation technology company working with airlines and their authorities.' }
       ],
 
       domains: [
