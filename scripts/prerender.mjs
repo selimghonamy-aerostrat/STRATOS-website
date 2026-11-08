@@ -4,8 +4,10 @@
 // <x-dc> template until React has downloaded from unpkg (about 1 s on phones).
 // This script opens each page in headless Chrome, takes the finished HTML and
 // styles, and saves them in the page between the PRERENDER markers. The browser
-// shows that copy at once; as soon as the runtime has drawn the live page, the
-// small inline script removes the copy in the same frame, so nothing flickers.
+// shows that copy at once. The runtime draws twice: first from the parsed DOM
+// (which has lost every className), then correctly after re-reading the file.
+// The inline script waits for the correct pass (main.aerostrat-page-enter) and
+// removes the copy in that same frame, so nothing flickers or jumps.
 // The template, the runtime and window.__resources are left untouched.
 //
 // RE-RUN AFTER EVERY CONTENT OR DESIGN CHANGE, or the old copy shows for ~1 s:
@@ -89,10 +91,12 @@ for (const file of pages) {
   }
 
   const handoff = `<script>(function(){var d=document,p=d.getElementById('dc-prerender');if(!p)return;d.documentElement.classList.add('dc-pre');` +
-    `var o=new MutationObserver(function(){var r=d.getElementById('dc-root');if(r&&r.firstElementChild){o.disconnect();p.remove();}});` +
-    `o.observe(d.body,{childList:true,subtree:true});})();</script>`;
-  const block = `${START}\n<div id="dc-prerender"><style>${snap.css}\n#dc-prerender,#dc-prerender>.sc-host{height:100%}</style>` +
-    `${snap.html}</div>\n${handoff}\n${END}\n`;
+    `var o=new MutationObserver(function(){var r=d.getElementById('dc-root');if(r&&r.querySelector('main.aerostrat-page-enter')){o.disconnect();p.remove();}});` +
+    `o.observe(d.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});})();</script>`;
+  // The copied styles stay after the handover: the runtime adds the same page
+  // styles a frame after the live page appears, and without them it would jump.
+  const block = `${START}\n<style id="dc-prerender-css">${snap.css}\n#dc-prerender,#dc-prerender>.sc-host{height:100%}</style>\n` +
+    `<div id="dc-prerender">${snap.html}</div>\n${handoff}\n${END}\n`;
 
   const src = strip(fs.readFileSync(path.join(ROOT, file), 'utf8'));
   const at = src.indexOf('<x-dc>');

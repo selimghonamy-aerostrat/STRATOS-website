@@ -164,3 +164,8 @@
 
 /* Pre-rendered pages (scripts/prerender.mjs): the copy fades in once; the live page that replaces it must not fade again */
 html.dc-pre #dc-root .aerostrat-page-enter{animation:none}
+/* Same fade as aerostrat-page-in, but from 1% opacity: Chrome ignores elements painted at 0%, so the copy would not count as the page being shown */
+#dc-prerender .aerostrat-page-enter{animation-name:aerostrat-page-in-pre}
+@keyframes aerostrat-page-in-pre{from{opacity:0.01;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+/* While the copy is on screen the live page stays out of layout; once the copy is removed it appears in place (no layout shift is recorded) */
+#dc-prerender ~ #dc-root{display:none}
