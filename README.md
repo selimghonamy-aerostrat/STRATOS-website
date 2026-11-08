@@ -11,6 +11,7 @@ Solutions.dc.html    Solutions       → /solutions
 EBT-CBTA.dc.html     EBT/CBTA        → /ebt-cbta
 TMS.dc.html          TMS             → /tms
 Clients.dc.html      Clients         → /clients
+Glossary.dc.html     EBT/CBTA glossary → /glossary
 Contact.dc.html      Contact Us      → /contact
 
 api/contact.mjs      Contact form → email (Vercel function, sends through Resend)
@@ -39,6 +40,7 @@ vercel.json          Clean URLs, Markdown routes and response headers
 
 docs/                Internal, not published (.vercelignore): brand book PDF and
                      ready-to-paste directory profiles (LinkedIn, Crunchbase, G2…)
+                     and LinkedIn launch post drafts
 ```
 
 ## Brand

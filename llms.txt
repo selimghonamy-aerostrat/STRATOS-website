@@ -5,7 +5,9 @@
 Website: https://aero-strat.com
 Contact: info@aero-strat.com
 Location: Tallinn, Estonia
-Legal name: AeroStrat · Founded: 2026 · Team: 6 people
+Legal name: AeroStrat OÜ (Estonian Business Register code 17638511) · Founded: 2026 · Team: 6 people
+Founders: Selim Ghonamy (CEO), Seif El Mougy (CTO), Mohamed El Mougy (Chairman)
+Registered address: Tornimäe tn 5, 10145 Tallinn, Estonia
 LinkedIn: https://www.linkedin.com/company/aero-strat/
 
 ## Vision and ecosystem

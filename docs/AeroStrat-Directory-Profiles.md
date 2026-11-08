@@ -14,9 +14,11 @@ Use the same facts everywhere. AI assistants and Google trust a company more whe
 | Location | Tallinn, Estonia |
 | Industry | Aviation software / airline technology (B2B SaaS) |
 | Logo | https://aero-strat.com/uploads/brand/aerostrat-logo.png (navy, light backgrounds). Square icon: https://aero-strat.com/apple-touch-icon.png |
-| Founded | 2026 |
+| Founded | 2026 (registered 2 November 2026) |
+| Founders | Selim Ghonamy (CEO), Seif El Mougy (CTO), Mohamed El Mougy (Chairman) |
+| Registered address | Tornimäe tn 5, 10145 Tallinn, Estonia |
 | Company size | 6 people (choose "2–10 employees") |
-| Legal name / registry code | AeroStrat · registry code **[fill in]** (Estonian Business Register) |
+| Legal name / registry code | AeroStrat OÜ · registry code 17638511 (Estonian Business Register: https://ariregister.rik.ee/eng/company/17638511) |
 
 **One-line description (up to 160 characters)**
 > Next-generation aviation technology: one connected ecosystem for airline training, safety, flight operations, maintenance and network planning.
@@ -47,7 +49,7 @@ Edit page → **Page info** and **Details**.
 - **Overview / About**: paste the long description above.
 - **Website**: `https://aero-strat.com`
 - **Industry**: Software Development (or "Airlines and Aviation")
-- **Company size**: **[fill in]**
+- **Company size**: 2–10 employees (team of 6)
 - **Headquarters**: Tallinn, Estonia
 - **Specialties** (add each one):
   `Evidence-Based Training (EBT)`, `CBTA`, `Training Management System`, `Pilot Training Software`, `Aviation Software`, `Airline Operations`, `Aviation Safety`, `Flight Operations`, `Maintenance & Engineering`, `Network Planning`
@@ -62,12 +64,12 @@ Edit page → **Page info** and **Details**.
 - **Full description**: the long description above
 - **Industries**: Aviation, Aerospace, Software, SaaS, Enterprise Software, EdTech (Training)
 - **Headquarters**: Tallinn, Harjumaa, Estonia
-- **Founded date**: 2026 · **Number of employees**: 1–10 (team of 6) · **Founders**: **[fill in]**
+- **Founded date**: 2026 · **Number of employees**: 1–10 (team of 6) · **Founders**: Selim Ghonamy (CEO), Seif El Mougy (CTO), Mohamed El Mougy (Chairman)
 - **Also known as**: STRATOS, STRATOS IDA (lets people searching the old name find you; leave it out if you prefer)
 
 ## 3. Wikidata (wikidata.org → Create a new Item)
 
-Wikidata only accepts companies that independent sources (press articles, registry entries) can verify. Create this after your rebrand press release or the registry entry exists, and cite it.
+Wikidata only accepts companies that independent sources (press articles, registry entries) can verify. The Estonian Business Register entry (https://ariregister.rik.ee/eng/company/17638511) now exists and can be cited as a reference on each statement. One independent article or press release on top of it makes the item much less likely to be deleted.
 
 - **Label (English)**: AeroStrat
 - **Description**: `aviation technology company in Tallinn, Estonia`
@@ -79,7 +81,12 @@ Wikidata only accepts companies that independent sources (press articles, regist
   - headquarters location (P159): Tallinn (Q1770)
   - official website (P856): https://aero-strat.com
   - LinkedIn company ID (P4264): `aero-strat`
-  - inception (P571): **[fill in founding date]**
+  - inception (P571): 2 November 2026
+  - legal form (P1454): osaühing (Estonian private limited company)
+  - Estonian business registry code: `17638511` (search "Business Registry code (Estonia)" in the property box)
+  - founded by (P112): Selim Ghonamy, Seif El Mougy, Mohamed El Mougy (only if each has their own item; otherwise skip)
+  - chief executive officer (P169): Selim Ghonamy (same rule)
+  - For every statement, add a reference: reference URL → the registry link above
   - logo image (P154): only if you upload the logo to Wikimedia Commons
 
 ## 4. G2 and Capterra (software directories)

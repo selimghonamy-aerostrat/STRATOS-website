@@ -2,7 +2,7 @@
 
 > Complete text of aero-strat.com, as plain Markdown. Short index: https://aero-strat.com/llms.txt
 
-Company: AeroStrat (Intelligence Driven Aviation) · Website: https://aero-strat.com · Email: info@aero-strat.com · LinkedIn: https://www.linkedin.com/company/aero-strat/ · Based in Tallinn, Estonia · Legal name: AeroStrat · Founded: 2026 · Team: 6 people
+Company: AeroStrat (Intelligence Driven Aviation) · Website: https://aero-strat.com · Email: info@aero-strat.com · LinkedIn: https://www.linkedin.com/company/aero-strat/ · Based in Tallinn, Estonia · Legal name: AeroStrat OÜ (Estonian Business Register code 17638511) · Registered address: Tornimäe tn 5, 10145 Tallinn, Estonia · Founded: 2026 · Team: 6 people · Founders: Selim Ghonamy (CEO), Seif El Mougy (CTO), Mohamed El Mougy (Chairman)
 
 ---
 
@@ -108,7 +108,7 @@ Canonical page: https://aero-strat.com/about
 
 - **Experience:** 25+ years of experience in the aviation sector. Flight operations, crew training, regulation and oversight, seen from inside the airline.
 - **Expertise:** Deep technology. Software engineering, data and analytics, delivered as secure systems an airline can rely on every day.
-- **Base:** Tallinn, Estonia. Founded in 2026, a team of six working with airlines and their authorities.
+- **Base:** Tallinn, Estonia. Founded in 2026 by Selim Ghonamy (CEO), Seif El Mougy (CTO) and Mohamed El Mougy (Chairman). A team of six working with airlines and their authorities.
 
 ## Products
 
@@ -348,6 +348,8 @@ AeroStrat develops forms from the airline's training manual, with competency map
 4. **Go-live:** grading, reporting and analytics run from the first submission.
 
 ## Frequently asked questions
+
+New to the terms? Read the [EBT and CBTA glossary](https://aero-strat.com/glossary).
 
 **What is AeroStrat EBT/CBTA?**
 Evidence-based training and assessment software for airlines. It grades every check against the nine ICAO/IATA pilot competencies and all 73 observable behaviours, on forms built from the airline's own manual, and turns every submission into pilot, cohort and fleet analytics. It has been tested for more than 8 months in co-development with two regional airlines.

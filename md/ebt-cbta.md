@@ -105,6 +105,8 @@ AeroStrat develops forms from the airline's training manual, with competency map
 
 ## Frequently asked questions
 
+New to the terms? Read the [EBT and CBTA glossary](https://aero-strat.com/glossary).
+
 **What is AeroStrat EBT/CBTA?**
 Evidence-based training and assessment software for airlines. It grades every check against the nine ICAO/IATA pilot competencies and all 73 observable behaviours, on forms built from the airline's own manual, and turns every submission into pilot, cohort and fleet analytics. It has been tested for more than 8 months in co-development with two regional airlines.
 

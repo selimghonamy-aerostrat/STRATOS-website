@@ -11,7 +11,7 @@ Canonical page: https://aero-strat.com/about
 
 - **Experience:** 25+ years of experience in the aviation sector. Flight operations, crew training, regulation and oversight, seen from inside the airline.
 - **Expertise:** Deep technology. Software engineering, data and analytics, delivered as secure systems an airline can rely on every day.
-- **Base:** Tallinn, Estonia. Founded in 2026, a team of six working with airlines and their authorities.
+- **Base:** Tallinn, Estonia. Founded in 2026 by Selim Ghonamy (CEO), Seif El Mougy (CTO) and Mohamed El Mougy (Chairman). A team of six working with airlines and their authorities.
 
 ## Products
 
