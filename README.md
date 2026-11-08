@@ -66,6 +66,8 @@ curl -X POST https://api.indexnow.org/IndexNow -H 'Content-Type: application/jso
 
 Google: Search Console property `aero-strat.com` (Domain type, account selimghonamy@aero-strat.com), verified on 2026-11-07 by the `google-site-verification` TXT record at Hostinger (do not delete it). Sitemap `https://aero-strat.com/sitemap.xml` submitted the same day. After big page changes, use URL inspection → Request indexing.
 
+Bing: Bing Webmaster Tools site `https://aero-strat.com/` (signed in with Google, selimghonamy@aero-strat.com), verified on 2026-11-08 by the `msvalidate.01` meta tag in `index.dc.html` (do not remove it). Sitemap submitted and all 7 pages sent through URL Submission. Bing also feeds ChatGPT search and Copilot; its "AI Performance" report shows when AeroStrat is cited in AI answers.
+
 ## Contact form
 
 The Contact page posts to `/api/contact`, which emails the enquiry through Resend (connected in Vercel → Integrations → Resend; the key is the `RESEND_API_KEY` environment variable). Reply-to is the visitor's address. A hidden field filters out spam bots.
