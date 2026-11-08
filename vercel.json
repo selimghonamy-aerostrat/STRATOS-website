@@ -232,6 +232,15 @@
           "value": "text/plain; charset=utf-8"
         }
       ]
+    },
+    {
+      "source": "/js/vendor/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ],
   "redirects": [
@@ -239,6 +248,41 @@
       "source": "/uploads/AeroStrat_EBT_CBTA_Handbook.pdf",
       "destination": "/ebt-cbta",
       "permanent": false
+    },
+    {
+      "source": "/index.dc.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/About.dc.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/Solutions.dc.html",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/EBT-CBTA.dc.html",
+      "destination": "/ebt-cbta",
+      "permanent": true
+    },
+    {
+      "source": "/TMS.dc.html",
+      "destination": "/tms",
+      "permanent": true
+    },
+    {
+      "source": "/Clients.dc.html",
+      "destination": "/clients",
+      "permanent": true
+    },
+    {
+      "source": "/Contact.dc.html",
+      "destination": "/contact",
+      "permanent": true
     }
   ]
 }

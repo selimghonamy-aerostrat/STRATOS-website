@@ -4,3 +4,10 @@
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/open-sauce-one-latin-600-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/open-sauce-one-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/open-sauce-one-latin-800-normal.woff2) format('woff2')}
+
+/* Inter: body and UI text (self-hosted from @fontsource/inter 5.1.1, latin subset, SIL OFL, see fonts/Inter-LICENSE.txt) */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/inter-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/inter-latin-800-normal.woff2) format('woff2')}
