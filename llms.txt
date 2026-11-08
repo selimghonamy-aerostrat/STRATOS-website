@@ -5,6 +5,7 @@
 Website: https://aero-strat.com
 Contact: info@aero-strat.com
 Location: Tallinn, Estonia
+Legal name: AeroStrat · Founded: 2026 · Team: 6 people
 LinkedIn: https://www.linkedin.com/company/aero-strat/
 
 ## Vision and ecosystem
@@ -63,7 +64,8 @@ AeroStrat is building one connected technology ecosystem for airline operations 
 - [Home](https://aero-strat.com/index.md): Company overview.
 - [About](https://aero-strat.com/about.md): Vision, mission, team experience and direction.
 - [Solutions](https://aero-strat.com/solutions.md): Both products and how they connect.
-- [Clients](https://aero-strat.com/clients.md): Airlines using AeroStrat.
+- [EBT and CBTA glossary](https://aero-strat.com/glossary.md): Plain-English definitions of EBT/CBTA terms: the nine pilot competencies, observable behaviours, TEM, EBT modules, Mixed and Baseline EBT, grading and training records.
+- [Clients](https://aero-strat.com/clients.md): Client stories, coming soon.
 - [Contact](https://aero-strat.com/contact.md): Book a walkthrough on your own check forms and crew data.
 
 ## Optional

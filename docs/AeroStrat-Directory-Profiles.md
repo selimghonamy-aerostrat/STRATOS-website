@@ -14,9 +14,9 @@ Use the same facts everywhere. AI assistants and Google trust a company more whe
 | Location | Tallinn, Estonia |
 | Industry | Aviation software / airline technology (B2B SaaS) |
 | Logo | https://aero-strat.com/uploads/brand/aerostrat-logo.png (navy, light backgrounds). Square icon: https://aero-strat.com/apple-touch-icon.png |
-| Founded | **[fill in]** |
-| Company size | **[fill in]** |
-| Legal name / registry code | **[fill in]** (Estonian Business Register) |
+| Founded | 2026 |
+| Company size | 6 people (choose "2–10 employees") |
+| Legal name / registry code | AeroStrat · registry code **[fill in]** (Estonian Business Register) |
 
 **One-line description (up to 160 characters)**
 > Next-generation aviation technology: one connected ecosystem for airline training, safety, flight operations, maintenance and network planning.
@@ -62,7 +62,7 @@ Edit page → **Page info** and **Details**.
 - **Full description**: the long description above
 - **Industries**: Aviation, Aerospace, Software, SaaS, Enterprise Software, EdTech (Training)
 - **Headquarters**: Tallinn, Harjumaa, Estonia
-- **Founded date / Number of employees / Founders**: **[fill in]**
+- **Founded date**: 2026 · **Number of employees**: 1–10 (team of 6) · **Founders**: **[fill in]**
 - **Also known as**: STRATOS, STRATOS IDA (lets people searching the old name find you; leave it out if you prefer)
 
 ## 3. Wikidata (wikidata.org → Create a new Item)

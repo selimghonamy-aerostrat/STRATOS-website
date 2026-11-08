@@ -30,6 +30,10 @@
       "destination": "/Contact.dc.html"
     },
     {
+      "source": "/glossary",
+      "destination": "/Glossary.dc.html"
+    },
+    {
       "source": "/index.md",
       "destination": "/md/index.md"
     },
@@ -56,6 +60,10 @@
     {
       "source": "/contact.md",
       "destination": "/md/contact.md"
+    },
+    {
+      "source": "/glossary.md",
+      "destination": "/md/glossary.md"
     },
     {
       "source": "/favicon.ico",
@@ -160,6 +168,19 @@
         {
           "key": "Link",
           "value": "<https://aero-strat.com/contact>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/glossary.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Link",
+          "value": "<https://aero-strat.com/glossary>; rel=\"canonical\""
         }
       ]
     },
@@ -273,6 +294,11 @@
     {
       "source": "/Contact.dc.html",
       "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/Glossary.dc.html",
+      "destination": "/glossary",
       "permanent": true
     }
   ]

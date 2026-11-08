@@ -140,3 +140,24 @@
 .aerostrat-faq-item > p{margin:0;padding:0 clamp(20px,2.6vw,32px) 26px;max-width:860px;font:400 15.5px/1.8 'Inter',sans-serif;color:#4A5361;text-wrap:pretty}
 .aerostrat-faq-item[open]{box-shadow:inset 3px 0 0 #3F9EE8}
 @media (prefers-reduced-motion:reduce){.aerostrat-faq-item > summary::after{transition:none}}
+
+/* Glossary page (/glossary): brand colours, light section like the FAQ */
+.aerostrat-gloss-jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.aerostrat-gloss-jump a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid rgba(180,180,180,0.45);border-radius:2px;font:600 13px/1 'Inter',sans-serif;color:#ECF0F3;text-decoration:none;transition:border-color .25s ease,color .25s ease,background .25s ease}
+.aerostrat-gloss-jump a:hover{border-color:#3F9EE8;color:#fff;background:rgba(0,52,140,0.45);text-decoration:none}
+.aerostrat-gloss-group{scroll-margin-top:130px}
+.aerostrat-gloss-group + .aerostrat-gloss-group{margin-top:80px}
+.aerostrat-gloss-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px}
+.aerostrat-gloss-term{background:#FFFFFF;outline:1px solid rgba(0,52,140,0.16);padding:clamp(22px,2.6vw,32px);scroll-margin-top:130px;display:flex;flex-direction:column;gap:12px}
+.aerostrat-gloss-term:target{box-shadow:inset 3px 0 0 #3F9EE8}
+.aerostrat-gloss-wide{grid-column:1 / -1}
+.aerostrat-gloss-term h3{margin:0;font:700 clamp(17px,1.7vw,20px)/1.3 'Open Sauce One',sans-serif;color:#000;text-wrap:pretty}
+.aerostrat-gloss-abbr{display:inline-block;margin-left:8px;vertical-align:2px;font:700 10.5px/1 'Inter',sans-serif;letter-spacing:0.1em;color:#00348C;border:1px solid rgba(0,52,140,0.4);padding:5px 7px;border-radius:2px}
+.aerostrat-gloss-term p{margin:0;max-width:760px;font:400 15.5px/1.8 'Inter',sans-serif;color:#4A5361;text-wrap:pretty}
+.aerostrat-gloss-term p a,.aerostrat-gloss-rel a{color:#00348C;text-decoration:underline;text-underline-offset:3px}
+.aerostrat-gloss-term p a:hover,.aerostrat-gloss-rel a:hover{color:#000}
+.aerostrat-gloss-rel{margin-top:auto;padding-top:6px;font:500 13px/1.6 'Inter',sans-serif;color:#4A5361}
+.aerostrat-gloss-comps{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px 28px}
+.aerostrat-gloss-comps li{display:flex;align-items:baseline;gap:12px;font:500 14.5px/1.5 'Inter',sans-serif;color:#000}
+.aerostrat-gloss-comps li span{flex:none;width:42px;font:700 12px/1 'Open Sauce One',sans-serif;letter-spacing:0.06em;color:#00348C}
+@media (max-width:760px){.aerostrat-gloss-list{grid-template-columns:minmax(0,1fr)}.aerostrat-gloss-group + .aerostrat-gloss-group{margin-top:56px}}
