@@ -133,9 +133,10 @@
 }
 .aerostrat-faq-item[open] > summary::after{transform:rotate(45deg)}
 .aerostrat-faq-item > summary:hover{background:rgba(63,158,232,0.08)}
+.aerostrat-faq-item > summary:hover h3{color:#00348C}
 .aerostrat-faq-item > summary:focus-visible{outline:2px solid #3F9EE8;outline-offset:-2px}
 .aerostrat-faq-item h3{margin:0;font:700 clamp(16px,1.6vw,19px)/1.35 'Open Sauce One',sans-serif;color:#000;text-wrap:pretty}
 .aerostrat-faq-item[open] h3{color:#00348C}
 .aerostrat-faq-item > p{margin:0;padding:0 clamp(20px,2.6vw,32px) 26px;max-width:860px;font:400 15.5px/1.8 'Inter',sans-serif;color:#4A5361;text-wrap:pretty}
-.aerostrat-faq-item[open]{box-shadow:inset 3px 0 0 #FF5A13}
+.aerostrat-faq-item[open]{box-shadow:inset 3px 0 0 #3F9EE8}
 @media (prefers-reduced-motion:reduce){.aerostrat-faq-item > summary::after{transition:none}}
