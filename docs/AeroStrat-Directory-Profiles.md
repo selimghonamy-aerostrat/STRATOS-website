@@ -10,6 +10,7 @@ Use the same facts everywhere. AI assistants and Google trust a company more whe
 | Tagline | Intelligence Driven Aviation |
 | Website | https://aero-strat.com |
 | Email | info@aero-strat.com |
+| Phone | +20 110 084 5426 |
 | LinkedIn | https://www.linkedin.com/company/aero-strat/ |
 | Location | Tallinn, Estonia |
 | Industry | Aviation software / airline technology (B2B SaaS) |
@@ -105,7 +106,8 @@ List each product separately: **AeroStrat EBT/CBTA** and **AeroStrat TMS**.
 
 - business.google.com → **Add business** → "AeroStrat" → category **Software company**
 - Choose **"No, I don't have a location customers visit"** if you have no public office. The profile then shows as a service-area business in Tallinn without a street address.
-- Website `https://aero-strat.com` · email/phone **[fill in phone]** · description: the short description above.
+- Website `https://aero-strat.com` · phone +20 110 084 5426 · description: the short description above.
+- **Status (2026-11-09):** profile created (Software company, service area, phone, website, description; registered address used only for verification, hidden from the public). **Waiting for the owner's video verification** in business.google.com.
 - Bing Places (bingplaces.com) can import the Google profile in one click.
 
 ## 6. Search engines (sign in with the Google account you will manage the site with)
