@@ -45,11 +45,12 @@ docs/                Internal, not published (.vercelignore): brand book PDF and
 
 ## Brand
 
-AeroStrat brand book: `docs/brand/AeroStrat_Brand_Guidelines_NEWVERSIOn.pdf` (issue 002.3, Nov. 2026).
+AeroStrat brand book: `docs/brand/AeroStrat_Brand_Guidelines_issue_002-3_Nov2026.pdf` (issue 002.3, Nov. 2026); working notes in `docs/brand/Brand_Assets.md`.
 
 - Colours: Deep Blue `#00348C` (brand, navigation), Coral Orange `#FF5A13` (logo swoosh, primary buttons, alerts), Sky Blue `#3F9EE8` (active states, metrics), Unbiased Grey `#B4B4B4`, Light Gray `#ECF0F3`, black.
-- Logo: the S icon (two aircraft in the stratosphere "S") beside the AeroStrat wordmark with the orange swoosh. Files in `uploads/svg/`: `aerostrat-lockup-tagline-*` (header and footer), `aerostrat-lockup-*` (no tagline), `aerostrat-lockup-stacked-*`, `aerostrat-icon-*`, and wordmark-only versions. `-white` for dark backgrounds, `-navy` for light ones.
-- Type: Open Sauce One for headings and marketing text, Inter for body and UI text.
+- Logo: the S icon (two aircraft in the stratosphere "S") beside the AeroStrat wordmark with the orange swoosh, and the ™ sign (not ®): superscript at the cap height after "Aviation" (or after "Strat" when there is no tagline). The logo PNG and the share images in `uploads/brand/` carry the ™ too. Files in `uploads/svg/`: `aerostrat-lockup-tagline-*` (header and footer), `aerostrat-lockup-*` (no tagline), `aerostrat-lockup-stacked-*`, `aerostrat-icon-*`, and wordmark-only versions. `-white` for dark backgrounds, `-navy` for light ones.
+- Type: Open Sauce One for all website text (the brand book's "non-UI" typeface for marketing). Inter is reserved for the AeroStrat platform UI, so the site no longer loads it.
+- Buttons: primary CTAs are Coral Orange with white text, sentence case, semi-bold.
 
 ## Editing content
 

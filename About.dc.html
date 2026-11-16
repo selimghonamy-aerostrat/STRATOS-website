@@ -37,7 +37,7 @@
   <link rel="preload" href="/fonts/open-sauce-one-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/fonts.css">
   <link rel="stylesheet" href="/css/responsive.css">
-  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/open-sauce-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="preload" href="/uploads/about-hero-bg.webp" as="image" type="image/webp" fetchpriority="high">
 <script src="/js/support.js"></script>
@@ -130,10 +130,10 @@ html { scroll-behavior: smooth; }
 .aerostrat-subnav { position: sticky; top: 104px; z-index: 90; background: rgba(0, 21, 56, 0.94); backdrop-filter: saturate(150%) blur(14px); border-top-width: medium; border-top-style: none; border-top-color: currentcolor; border-bottom: 1px solid rgba(180, 180, 180, 0.28); box-shadow: rgba(0, 6, 20, 0.35) 0px 10px 30px; }
 .aerostrat-subnav-inner { max-width: 1280px; margin: 0px auto; padding: 0px 32px; display: flex; gap: 0px; overflow-x: auto; scrollbar-width: none; }
 .aerostrat-subnav-inner::-webkit-scrollbar { display: none; }
-.aerostrat-subnav a { flex: 0 0 auto; padding: 16px 20px; font: 500 13px / 1 Inter, sans-serif; color: rgb(180, 180, 180); border-bottom: 2px solid transparent; text-decoration: none; white-space: nowrap; min-height: 48px; display: flex; align-items: center; transition: color 0.25s, border-color 0.25s; }
+.aerostrat-subnav a { flex: 0 0 auto; padding: 16px 20px; font: 500 13px / 1 "Open Sauce One", sans-serif; color: rgb(180, 180, 180); border-bottom: 2px solid transparent; text-decoration: none; white-space: nowrap; min-height: 48px; display: flex; align-items: center; transition: color 0.25s, border-color 0.25s; }
 .aerostrat-subnav a:hover { color: rgb(255, 255, 255); border-bottom-color: rgba(63, 158, 232, 0.6); text-decoration: none; }
 .aerostrat-tabrail { display: flex; gap: 0px; flex-wrap: wrap; border-bottom: 1px solid rgba(180, 180, 180, 0.28); }
-.aerostrat-tabrail button { background: transparent; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor transparent; border-image: none; color: rgb(180, 180, 180); font: 600 13.5px / 1 Inter, sans-serif; padding: 0px 20px; min-height: 48px; cursor: pointer; transition: color 0.25s, border-color 0.25s; }
+.aerostrat-tabrail button { background: transparent; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor transparent; border-image: none; color: rgb(180, 180, 180); font: 600 13.5px / 1 "Open Sauce One", sans-serif; padding: 0px 20px; min-height: 48px; cursor: pointer; transition: color 0.25s, border-color 0.25s; }
 .aerostrat-tabrail button:hover { color: rgb(255, 255, 255); }
 .aerostrat-tabrail button[aria-selected="true"] { color: rgb(255, 255, 255); border-bottom-color: rgb(63, 158, 232); }
 :focus-visible { outline: rgb(63, 158, 232) solid 2px; outline-offset: 2px; }
@@ -216,10 +216,10 @@ a.aerostrat-btn:hover, a.aerostrat-btn-primary:hover { text-decoration: none; }
 .aerostrat-tilt { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s, border-color 0.3s; transform-style: preserve-3d; will-change: transform; }
 .aerostrat-tilt:hover { border-color: rgb(63, 158, 232) !important; background: rgba(0, 52, 140, 0.62) !important; }
 .aerostrat-fade-bottom { position: absolute; left: 0px; right: 0px; bottom: 0px; height: 160px; background: linear-gradient(rgba(0, 21, 56, 0) 0%, rgb(0, 21, 56) 100%); pointer-events: none; }
-.aerostrat-btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; white-space: nowrap; background: transparent; border: 1px solid rgba(180, 180, 180, 0.6); color: rgb(255, 255, 255); padding: 15px 26px; font: 600 14px / 1 Inter, sans-serif; letter-spacing: 0.02em; cursor: pointer; min-height: 48px; transition: background 0.3s, border-color 0.3s, color 0.3s; }
+.aerostrat-btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; white-space: nowrap; background: transparent; border: 1px solid rgba(180, 180, 180, 0.6); color: rgb(255, 255, 255); padding: 15px 26px; font: 600 14px / 1 "Open Sauce One", sans-serif; letter-spacing: 0.02em; cursor: pointer; min-height: 48px; transition: background 0.3s, border-color 0.3s, color 0.3s; }
 .aerostrat-btn:hover { border-color: rgb(255, 255, 255); background: rgba(0, 52, 140, 0.55); }
-.aerostrat-btn-primary { background: rgb(255, 90, 19); border-color: rgb(255, 90, 19); color: rgb(0, 0, 0); }
-.aerostrat-btn-primary:hover { background: rgb(255, 90, 19); border-color: rgb(255, 90, 19); color: rgb(0, 0, 0); box-shadow: rgba(255, 90, 19, 0.3) 0px 8px 24px; }
+.aerostrat-btn-primary { background: rgb(255, 90, 19); border-color: rgb(255, 90, 19); color: rgb(255, 255, 255); }
+.aerostrat-btn-primary:hover { background: rgb(255, 90, 19); border-color: rgb(255, 90, 19); color: rgb(255, 255, 255); box-shadow: rgba(255, 90, 19, 0.3) 0px 8px 24px; }
 .aerostrat-btn-light { background: transparent; border-color: rgba(180, 180, 180, 0.6); color: rgb(255, 255, 255); }
 .aerostrat-nav-link { position: relative; display: inline-flex; align-items: center; height: 48px; line-height: 1; white-space: nowrap; }
 header[data-sticky] { background: transparent; border-bottom: 1px solid transparent; transition: background 0.45s, border-color 0.45s; top: 0px !important; }
@@ -230,7 +230,7 @@ header[data-sticky] { background: transparent; border-bottom: 1px solid transpar
 .aerostrat-disc { cursor: pointer; transition: background 0.4s, border-color 0.4s; }
 .aerostrat-disc:hover { border-color: rgb(63, 158, 232) !important; }
 .aerostrat-discbody { overflow: hidden; animation: 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running aerostrat-page-in; }
-.aerostrat-field { border: 1px solid rgba(180, 180, 180, 0.55); background: rgba(0, 52, 140, 0.4); border-radius: 2px; padding: 16px; font: 400 14.5px / 1.5 Inter, sans-serif; color: rgb(255, 255, 255); transition: border-color 0.25s, box-shadow 0.25s, background 0.25s; }
+.aerostrat-field { border: 1px solid rgba(180, 180, 180, 0.55); background: rgba(0, 52, 140, 0.4); border-radius: 2px; padding: 16px; font: 400 14.5px / 1.5 "Open Sauce One", sans-serif; color: rgb(255, 255, 255); transition: border-color 0.25s, box-shadow 0.25s, background 0.25s; }
 .aerostrat-field::placeholder { color: rgb(180, 180, 180); }
 .aerostrat-field:focus { border-color: rgb(0, 52, 140); background: rgba(0, 52, 140, 0.55); box-shadow: rgba(0, 52, 140, 0.6) 0px 0px 0px 3px; outline: none; }
 .aerostrat-mobile-cta { display: none; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; }
@@ -241,7 +241,7 @@ header[data-sticky] { background: transparent; border-bottom: 1px solid transpar
 .aerostrat-menu-btn span::before { top: -6px; }
 .aerostrat-menu-btn span::after { top: 6px; }
 .aerostrat-mobile-panel { display: flex; flex-direction: column; gap: 4px; padding: 14px 32px 28px; }
-.aerostrat-mobile-panel a { padding: 14px 4px; font: 600 16px / 1 Inter, sans-serif; color: rgb(255, 255, 255); border-bottom: 1px solid rgba(180, 180, 180, 0.24); min-height: 44px; display: flex; align-items: center; }
+.aerostrat-mobile-panel a { padding: 14px 4px; font: 600 16px / 1 "Open Sauce One", sans-serif; color: rgb(255, 255, 255); border-bottom: 1px solid rgba(180, 180, 180, 0.24); min-height: 44px; display: flex; align-items: center; }
 @media (max-width: 1020px) {
   .aerostrat-mock-split { grid-template-columns: minmax(0px, 1fr) !important; }
   .aerostrat-mock-compname { width: 150px !important; }
@@ -328,9 +328,9 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
 <div id="dc-prerender"><div class="sc-host" data-sc-name="About">
     
 
-    <div style="min-height: 100vh; background: rgb(0, 21, 56); color: rgb(255, 255, 255); font-family: Inter, sans-serif; overflow-x: clip; position: relative;">
+    <div style="min-height: 100vh; background: rgb(0, 21, 56); color: rgb(255, 255, 255); font-family: &quot;Open Sauce One&quot;, sans-serif; overflow-x: clip; position: relative;">
 
-      <a href="#main" class="scp0" style="position: absolute; left: -9999px; top: 0px; z-index: 200; background: rgb(255, 90, 19); color: rgb(0, 0, 0); font: 600 13px / 1 Inter, sans-serif; padding: 14px 20px;">Skip to content</a>
+      <a href="#main" class="scp0" style="position: absolute; left: -9999px; top: 0px; z-index: 200; background: rgb(255, 90, 19); color: rgb(255, 255, 255); font: 600 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 14px 20px;">Skip to content</a>
       <span data-scroll-sentinel="" aria-hidden="true" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></span>
       <div aria-hidden="true" class="aerostrat-runway">
         <div class="lane">
@@ -353,14 +353,14 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         <div style="max-width: 1280px; margin: 0px auto; padding: 0px 32px; height: 104px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
           <a href="/" aria-label="AeroStrat home" style="display: block; line-height: 0;"><img src="uploads/svg/aerostrat-lockup-tagline-white.svg" alt="AeroStrat" width="496" height="120" style="height: 50px; width: auto; max-width: 46vw; display: block;"></a>
           <nav class="aerostrat-nav-desk" style="display: flex; align-items: center; height: 48px; gap: 26px; white-space: nowrap; flex-shrink: 0;">
-            <a href="/" class="aerostrat-nav-link" style="font: 500 14px / 1 Inter, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Home</a>
-            <a href="/about" class="aerostrat-nav-link active" style="font: 600 14px / 1 Inter, sans-serif; color: rgb(255, 255, 255); opacity: 1; cursor: pointer;">About Us</a>
+            <a href="/" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Home</a>
+            <a href="/about" class="aerostrat-nav-link active" style="font: 600 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 1; cursor: pointer;">About Us</a>
             <div style="position: relative; display: flex; align-items: center; height: 48px;">
-              <a href="/solutions" aria-haspopup="true" aria-expanded="false" class="aerostrat-nav-link" style="font: 500 14px / 1 Inter, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Solutions<span aria-hidden="true" style="display: inline-block; margin-left: 7px; font-size: 9px; line-height: 1; opacity: 0.8;">▼</span></a>
+              <a href="/solutions" aria-haspopup="true" aria-expanded="false" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Solutions<span aria-hidden="true" style="display: inline-block; margin-left: 7px; font-size: 9px; line-height: 1; opacity: 0.8;">▼</span></a>
               
             </div>
-            <a href="/clients" class="aerostrat-nav-link" style="font: 500 14px / 1 Inter, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Clients</a>
-            <a href="/contact" class="aerostrat-nav-link" style="font: 500 14px / 1 Inter, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Contact Us</a>
+            <a href="/clients" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Clients</a>
+            <a href="/contact" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Contact Us</a>
             <a href="/contact" class="aerostrat-btn aerostrat-btn-primary" style="font-size: 14px;">Book a walkthrough</a>
           </nav>
           <button aria-label="Menu" class="aerostrat-menu-btn"><span></span></button>
@@ -378,7 +378,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
               ABOUT US</div>
             <h1 style="font: 700 clamp(34px, 5.6vw, 68px) / 1.06 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.025em; color: rgb(255, 255, 255); margin: 0px; max-width: 900px; text-wrap: pretty;">
               Aviation experience, built into technology.</h1>
-            <p style="font: 400 17.5px / 1.7 Inter, sans-serif; color: rgb(180, 180, 180); max-width: 660px; margin: 30px 0px 0px; text-wrap: pretty;">
+            <p style="font: 400 17.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180); max-width: 660px; margin: 30px 0px 0px; text-wrap: pretty;">
               AeroStrat is an aviation technology company based in Tallinn, Estonia. Our team pairs 25+ years of experience
               in the aviation sector with deep technology expertise. We are developing technology across the airline,
               and we started with training: AeroStrat EBT/CBTA and AeroStrat TMS are live today.</p>
@@ -416,7 +416,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                     <span class="sc-interp">EXPERIENCE</span></div>
                   <div style="font: 700 19px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin-bottom: 12px;"><span class="sc-interp">25+ years of experience in the aviation sector</span>
                   </div>
-                  <p style="font: 400 14px / 1.75 Inter, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">Flight operations, crew training, regulation and oversight, seen from inside the airline.</span></p>
+                  <p style="font: 400 14px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">Flight operations, crew training, regulation and oversight, seen from inside the airline.</span></p>
                 </div>
               
                 <div style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: 34px 30px;">
@@ -424,7 +424,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                     <span class="sc-interp">EXPERTISE</span></div>
                   <div style="font: 700 19px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin-bottom: 12px;"><span class="sc-interp">Deep technology</span>
                   </div>
-                  <p style="font: 400 14px / 1.75 Inter, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">Software engineering, data and analytics, delivered as secure systems an airline can rely on every day.</span></p>
+                  <p style="font: 400 14px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">Software engineering, data and analytics, delivered as secure systems an airline can rely on every day.</span></p>
                 </div>
               
                 <div style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: 34px 30px;">
@@ -432,7 +432,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                     <span class="sc-interp">BASE</span></div>
                   <div style="font: 700 19px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin-bottom: 12px;"><span class="sc-interp">Tallinn, Estonia</span>
                   </div>
-                  <p style="font: 400 14px / 1.75 Inter, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">Founded in 2026 by Selim Ghonamy (CEO), Seif El Mougy (CTO) and Mohamed El Mougy (Chairman). A team of six working with airlines and their authorities.</span></p>
+                  <p style="font: 400 14px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">Founded in 2026 by Selim Ghonamy (CEO), Seif El Mougy (CTO) and Mohamed El Mougy (Chairman). A team of six working with airlines and their authorities.</span></p>
                 </div>
               
             </div>
@@ -445,51 +445,51 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
               Our direction</div>
             <h2 style="font: 700 clamp(26px, 3.4vw, 42px) / 1.12 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.02em; color: rgb(255, 255, 255); margin: 0px 0px 20px; max-width: 760px; text-wrap: pretty;">
               One domain at a time, on one shared foundation.</h2>
-            <p style="font: 400 15.5px / 1.85 Inter, sans-serif; color: rgb(180, 180, 180); margin: 0px 0px 36px; max-width: 680px; text-wrap: pretty;">
+            <p style="font: 400 15.5px / 1.85 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180); margin: 0px 0px 36px; max-width: 680px; text-wrap: pretty;">
               An airline runs on connected disciplines. AeroStrat is building technology for each of them. Training is
               live; the next domains follow on the same foundation.</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 1px;">
               
                 <div style="position: relative; background: rgba(63, 158, 232, 0.22); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; min-height: 0px;">
                   <span style="position: absolute; top: 0px; left: 0px; right: 0px; height: 2px; background: rgb(63, 158, 232);"></span>
-                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">01</span></span><span style="font: 700 9.5px / 1 Inter, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(0, 21, 56); border: 1px solid rgb(63, 158, 232); background: rgb(63, 158, 232); padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Live</span></span></span>
+                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">01</span></span><span style="font: 700 9.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(0, 21, 56); border: 1px solid rgb(63, 158, 232); background: rgb(63, 158, 232); padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Live</span></span></span>
                   <span style="font: 700 17px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255);"><span class="sc-interp">Training</span></span>
-                  <span style="font: 400 13.5px / 1.7 Inter, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">AeroStrat EBT/CBTA for competency assessment and AeroStrat TMS for training management, on one pilot record.</span></span>
+                  <span style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">AeroStrat EBT/CBTA for competency assessment and AeroStrat TMS for training management, on one pilot record.</span></span>
                 </div>
               
                 <div style="position: relative; background: rgba(0, 52, 140, 0.3); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; min-height: 0px;">
                   <span style="position: absolute; top: 0px; left: 0px; right: 0px; height: 2px; background: transparent;"></span>
-                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">02</span></span><span style="font: 700 9.5px / 1 Inter, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
+                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">02</span></span><span style="font: 700 9.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
                   <span style="font: 700 17px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255);"><span class="sc-interp">Safety &amp; Compliance</span></span>
-                  <span style="font: 400 13.5px / 1.7 Inter, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Occurrence reporting and audit findings tied back to the competency evidence behind them.</span></span>
+                  <span style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Occurrence reporting and audit findings tied back to the competency evidence behind them.</span></span>
                 </div>
               
                 <div style="position: relative; background: rgba(0, 52, 140, 0.3); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; min-height: 0px;">
                   <span style="position: absolute; top: 0px; left: 0px; right: 0px; height: 2px; background: transparent;"></span>
-                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">03</span></span><span style="font: 700 9.5px / 1 Inter, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
+                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">03</span></span><span style="font: 700 9.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
                   <span style="font: 700 17px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255);"><span class="sc-interp">Flight Operations</span></span>
-                  <span style="font: 400 13.5px / 1.7 Inter, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Crew qualification, currency and rostering constraints in the same record as training.</span></span>
+                  <span style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Crew qualification, currency and rostering constraints in the same record as training.</span></span>
                 </div>
               
                 <div style="position: relative; background: rgba(0, 52, 140, 0.3); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; min-height: 0px;">
                   <span style="position: absolute; top: 0px; left: 0px; right: 0px; height: 2px; background: transparent;"></span>
-                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">04</span></span><span style="font: 700 9.5px / 1 Inter, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
+                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">04</span></span><span style="font: 700 9.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
                   <span style="font: 700 17px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255);"><span class="sc-interp">Maintenance &amp; Engineering</span></span>
-                  <span style="font: 400 13.5px / 1.7 Inter, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Technical training and authorisation tracking on the shared competency framework.</span></span>
+                  <span style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Technical training and authorisation tracking on the shared competency framework.</span></span>
                 </div>
               
                 <div style="position: relative; background: rgba(0, 52, 140, 0.3); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; min-height: 0px;">
                   <span style="position: absolute; top: 0px; left: 0px; right: 0px; height: 2px; background: transparent;"></span>
-                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">05</span></span><span style="font: 700 9.5px / 1 Inter, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
+                  <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">05</span></span><span style="font: 700 9.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(180, 180, 180); border: 1px solid rgba(180, 180, 180, 0.45); background: transparent; padding: 5px 8px; border-radius: 2px;"><span class="sc-interp">Next</span></span></span>
                   <span style="font: 700 17px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255);"><span class="sc-interp">Network Planning</span></span>
-                  <span style="font: 400 13.5px / 1.7 Inter, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Capacity and crew readiness modelled against the training pipeline.</span></span>
+                  <span style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><span class="sc-interp">Capacity and crew readiness modelled against the training pipeline.</span></span>
                 </div>
               
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 28px;">
-              <a href="/ebt-cbta" style="font: 600 14px / 1 Inter, sans-serif; color: rgb(63, 158, 232); display: inline-flex; gap: 8px;">AeroStrat EBT/CBTA
+              <a href="/ebt-cbta" style="font: 600 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(63, 158, 232); display: inline-flex; gap: 8px;">AeroStrat EBT/CBTA
                 <span>→</span></a>
-              <a href="/tms" style="font: 600 14px / 1 Inter, sans-serif; color: rgb(63, 158, 232); display: inline-flex; gap: 8px;">AeroStrat TMS
+              <a href="/tms" style="font: 600 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(63, 158, 232); display: inline-flex; gap: 8px;">AeroStrat TMS
                 <span>→</span></a>
             </div>
           </div>
@@ -503,20 +503,20 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
               <div class="aerostrat-card" style="background: rgb(255, 255, 255); border-width: 2px 1px 1px; border-style: solid; border-color: rgb(63, 158, 232) rgba(0, 52, 140, 0.16) rgba(0, 52, 140, 0.16); border-image: none; border-radius: 2px; padding: 32px 30px;">
                 <div style="font: 700 22px / 1.25 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.01em; color: rgb(0, 0, 0); margin-bottom: 20px;">
                   Connected Intelligence</div>
-                <p style="font: 400 15.5px / 1.75 Inter, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Elevating passive records into
+                <p style="font: 400 15.5px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Elevating passive records into
                   active, cross-departmental forecasting and risk assessment.</p>
               </div>
               <div class="aerostrat-card" style="background: rgb(255, 255, 255); border-width: 2px 1px 1px; border-style: solid; border-color: rgb(255, 255, 255) rgba(0, 52, 140, 0.16) rgba(0, 52, 140, 0.16); border-image: none; border-radius: 2px; padding: 32px 30px;">
                 <div style="font: 700 22px / 1.25 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.01em; color: rgb(0, 0, 0); margin-bottom: 20px;">
                   Architectural Scalability</div>
-                <p style="font: 400 15.5px / 1.75 Inter, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Deploying a unified
+                <p style="font: 400 15.5px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Deploying a unified
                   technological infrastructure designed to adapt and expand seamlessly alongside evolving global
                   aviation needs.</p>
               </div>
               <div class="aerostrat-card" style="background: rgb(255, 255, 255); border-width: 2px 1px 1px; border-style: solid; border-color: rgb(180, 180, 180) rgba(0, 52, 140, 0.16) rgba(0, 52, 140, 0.16); border-image: none; border-radius: 2px; padding: 32px 30px;">
                 <div style="font: 700 22px / 1.25 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.01em; color: rgb(0, 0, 0); margin-bottom: 20px;">
                   Operational Clarity</div>
-                <p style="font: 400 15.5px / 1.75 Inter, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Delivering complex industry
+                <p style="font: 400 15.5px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Delivering complex industry
                   data through intuitive, high-visibility interfaces that minimize administrative friction.</p>
               </div>
             </div>
@@ -533,7 +533,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   01</div>
                 <div style="font: 700 18px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); margin-bottom: 14px;">Absolute
                   Precision</div>
-                <p style="font: 400 14.5px / 1.8 Inter, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We treat data with the exact
+                <p style="font: 400 14.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We treat data with the exact
                   rigor required on the flight deck. Accuracy and structural integrity are non-negotiable.</p>
               </div>
               <div style="background: rgba(0, 52, 140, 0.45); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 32px 28px;">
@@ -541,7 +541,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   02</div>
                 <div style="font: 700 18px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); margin-bottom: 14px;">Architectural
                   Foresight</div>
-                <p style="font: 400 14.5px / 1.8 Inter, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We build for tomorrow's scale,
+                <p style="font: 400 14.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We build for tomorrow's scale,
                   every module and workflow engineered to integrate into a wider ecosystem.</p>
               </div>
               <div style="background: rgba(0, 52, 140, 0.45); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 32px 28px;">
@@ -549,7 +549,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   03</div>
                 <div style="font: 700 18px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); margin-bottom: 14px;">Actionable
                   Clarity</div>
-                <p style="font: 400 14.5px / 1.8 Inter, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We ruthlessly eliminate
+                <p style="font: 400 14.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We ruthlessly eliminate
                   cognitive load, distilling complex metrics into insights that accelerate decisions.</p>
               </div>
               <div style="background: rgba(0, 52, 140, 0.45); outline: rgba(180, 180, 180, 0.28) solid 1px; padding: 32px 28px;">
@@ -557,7 +557,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   04</div>
                 <div style="font: 700 18px / 1.3 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); margin-bottom: 14px;">Continuous
                   Integration</div>
-                <p style="font: 400 14.5px / 1.8 Inter, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We champion the feedback loop
+                <p style="font: 400 14.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180); margin: 0px;">We champion the feedback loop
                   between operational execution, data evaluation, and systemic improvement.</p>
               </div>
             </div>
@@ -574,11 +574,11 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                 Set up from your manuals.</h2>
             </div>
             <div style="display: flex; flex-direction: column; gap: 18px;">
-              <p style="font: 400 15.5px / 1.8 Inter, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 680px; text-wrap: pretty;">
+              <p style="font: 400 15.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 680px; text-wrap: pretty;">
                 AeroStrat staff onboard each airline from its own manuals. We build your check forms from your paper
                 forms, set your grading scale and document control, and configure the platform to your authority.
                 Building your forms is part of the implementation service, not a self-serve builder.</p>
-              <div style="border-top: 1px solid rgba(0, 52, 140, 0.16); padding-top: 16px; font: 500 14.5px / 1.6 Inter, sans-serif; color: rgb(0, 0, 0);">
+              <div style="border-top: 1px solid rgba(0, 52, 140, 0.16); padding-top: 16px; font: 500 14.5px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);">
                 Your forms stay as they are, whether they start on paper or in digital form. Support and maintenance.
               </div>
             </div>
@@ -593,36 +593,36 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 28px 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(180, 180, 180, 0.24);">
             <div>
               <img src="uploads/svg/aerostrat-lockup-tagline-white.svg" alt="AeroStrat" width="496" height="120" style="height: 40px; width: auto; margin-bottom: 12px; display: block;">
-              <p style="font: 600 14px / 1.6 Inter, sans-serif; color: rgb(255, 255, 255); max-width: 300px; margin: 0px;">AeroStrat ·
+              <p style="font: 600 14px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); max-width: 300px; margin: 0px;">AeroStrat ·
                 Intelligence Driven Aviation</p>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="font: 600 11.5px / 1 Inter, sans-serif; letter-spacing: 0.14em; color: rgb(63, 158, 232); text-transform: uppercase; margin-bottom: 4px;">
+              <div style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(63, 158, 232); text-transform: uppercase; margin-bottom: 4px;">
                 Company</div>
-              <a href="/" style="font: 400 14px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">Home</a>
-              <a href="/about" style="font: 400 14px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">About Us</a>
-              <a href="/clients" style="font: 400 14px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">Clients</a>
-              <a href="/contact" style="font: 400 14px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">Contact Us</a>
+              <a href="/" style="font: 400 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">Home</a>
+              <a href="/about" style="font: 400 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">About Us</a>
+              <a href="/clients" style="font: 400 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">Clients</a>
+              <a href="/contact" style="font: 400 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">Contact Us</a>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="font: 600 11.5px / 1 Inter, sans-serif; letter-spacing: 0.14em; color: rgb(63, 158, 232); text-transform: uppercase; margin-bottom: 4px;">
+              <div style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(63, 158, 232); text-transform: uppercase; margin-bottom: 4px;">
                 Solutions</div>
-              <a href="/ebt-cbta" style="font: 400 14px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">Training · EBT / CBTA</a>
-              <a href="/tms" style="font: 400 14px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">Training · TMS</a>
-          <a href="/glossary" style="font: 400 14px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">EBT/CBTA glossary</a>
+              <a href="/ebt-cbta" style="font: 400 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">Training · EBT / CBTA</a>
+              <a href="/tms" style="font: 400 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">Training · TMS</a>
+          <a href="/glossary" style="font: 400 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">EBT/CBTA glossary</a>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="font: 600 11.5px / 1 Inter, sans-serif; letter-spacing: 0.14em; color: rgb(63, 158, 232); text-transform: uppercase; margin-bottom: 4px;">
+              <div style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(63, 158, 232); text-transform: uppercase; margin-bottom: 4px;">
                 Contact</div>
-              <a href="mailto:info@aero-strat.com" style="font: 400 14px / 1.6 Inter, sans-serif; color: rgb(180, 180, 180);">info@aero-strat.com</a>
-              <span style="font: 400 14px / 1.6 Inter, sans-serif; color: rgb(180, 180, 180);">Tallinn, Estonia</span>
-              <a href="https://www.linkedin.com/company/aero-strat/" target="_blank" rel="noopener" aria-label="AeroStrat on LinkedIn" class="scp2" style="display: inline-flex; align-items: center; gap: 8px; font: 400 14px / 1.6 Inter, sans-serif; color: rgb(180, 180, 180);"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex: 0 0 auto;">
+              <a href="mailto:info@aero-strat.com" style="font: 400 14px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">info@aero-strat.com</a>
+              <span style="font: 400 14px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">Tallinn, Estonia</span>
+              <a href="https://www.linkedin.com/company/aero-strat/" target="_blank" rel="noopener" aria-label="AeroStrat on LinkedIn" class="scp2" style="display: inline-flex; align-items: center; gap: 8px; font: 400 14px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex: 0 0 auto;">
                   <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path>
                 </svg>LinkedIn</a>
             </div>
           </div>
           <div style="padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-            <span style="font: 400 13px / 1 Inter, sans-serif; color: rgb(180, 180, 180);">© 2026 AeroStrat · aero-strat.com</span>
+            <span style="font: 400 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">© 2026 AeroStrat · aero-strat.com</span>
           </div>
         </div>
       </footer>
@@ -900,7 +900,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         .aerostrat-subnav a {
           flex: none;
           padding: 16px 20px;
-          font: 500 13px/1 'Inter', sans-serif;
+          font: 500 13px/1 'Open Sauce One', sans-serif;
           color: #B4B4B4;
           border-bottom: 2px solid transparent;
           text-decoration: none;
@@ -929,7 +929,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           border: none;
           border-bottom: 2px solid transparent;
           color: #B4B4B4;
-          font: 600 13.5px/1 'Inter', sans-serif;
+          font: 600 13.5px/1 'Open Sauce One', sans-serif;
           padding: 0 20px;
           min-height: 48px;
           cursor: pointer;
@@ -1237,7 +1237,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           border: 1px solid rgba(180, 180, 180, 0.6);
           color: #fff;
           padding: 15px 26px;
-          font: 600 14px/1 'Inter', sans-serif;
+          font: 600 14px/1 'Open Sauce One', sans-serif;
           letter-spacing: 0.02em;
           cursor: pointer;
           min-height: 48px;
@@ -1252,13 +1252,13 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         .aerostrat-btn-primary {
           background: #FF5A13;
           border-color: #FF5A13;
-          color: #000
+          color: #fff
         }
 
         .aerostrat-btn-primary:hover {
           background: #FF5A13;
           border-color: #FF5A13;
-          color: #000;
+          color: #fff;
           box-shadow: 0 8px 24px rgba(255, 90, 19, 0.3)
         }
 
@@ -1332,7 +1332,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           background: rgba(0, 52, 140, 0.4);
           border-radius: 2px;
           padding: 16px;
-          font: 400 14.5px/1.5 'Inter', sans-serif;
+          font: 400 14.5px/1.5 'Open Sauce One', sans-serif;
           color: #fff;
           transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease
         }
@@ -1407,7 +1407,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
 
         .aerostrat-mobile-panel a {
           padding: 14px 4px;
-          font: 600 16px/1 'Inter', sans-serif;
+          font: 600 16px/1 'Open Sauce One', sans-serif;
           color: #fff;
           border-bottom: 1px solid rgba(180, 180, 180, 0.24);
           min-height: 44px;
@@ -1704,10 +1704,10 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
     </helmet>
 
     <div
-      style="min-height:100vh;background:#001538;color:#fff;font-family:'Inter',sans-serif;overflow-x:clip;position:relative">
+      style="min-height:100vh;background:#001538;color:#fff;font-family:'Open Sauce One',sans-serif;overflow-x:clip;position:relative">
 
       <a href="#main"
-        style="position:absolute;left:-9999px;top:0;z-index:200;background:#FF5A13;color:#000;font:600 13px/1 'Inter',sans-serif;padding:14px 20px"
+        style="position:absolute;left:-9999px;top:0;z-index:200;background:#FF5A13;color:#fff;font:600 13px/1 'Open Sauce One',sans-serif;padding:14px 20px"
         style-focus="left:12px;top:12px">Skip to content</a>
       <span data-scroll-sentinel="" aria-hidden="true"
         style="position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none"></span>
@@ -1758,26 +1758,26 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                     style-hover="background:rgba(0,52,140,0.6)">
                     <img src="/uploads/ebt-handbook-thumb.png" alt="" aria-hidden="true" width="44" height="58" style="width:44px;height:58px;object-fit:cover;border:1px solid rgba(180,180,180,0.4);border-radius:2px;display:block">
                     <span style="display:flex;flex-direction:column;gap:5px"><span
-                        style="font:600 14.5px/1.3 'Inter',sans-serif;color:#fff">Training · EBT / CBTA</span><span
-                        style="font:400 12.5px/1.5 'Inter',sans-serif;color:#B4B4B4">Competency assessment and training
+                        style="font:600 14.5px/1.3 'Open Sauce One',sans-serif;color:#fff">Training · EBT / CBTA</span><span
+                        style="font:400 12.5px/1.5 'Open Sauce One',sans-serif;color:#B4B4B4">Competency assessment and training
                         records for airline recurrent pilot training</span></span>
                     <span
-                      style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#3F9EE8;border:1px solid rgba(63,158,232,0.6);padding:5px 8px;border-radius:2px;white-space:nowrap">Live</span>
+                      style="font:700 9.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#3F9EE8;border:1px solid rgba(63,158,232,0.6);padding:5px 8px;border-radius:2px;white-space:nowrap">Live</span>
                   </a>
                   <a href="/tms"
                     style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:start;padding:14px;border-radius:2px;text-decoration:none"
                     style-hover="background:rgba(0,52,140,0.6)">
                     <img src="/uploads/tms-cover-thumb.png" alt="" aria-hidden="true" width="44" height="58" style="width:44px;height:58px;object-fit:cover;border:1px solid rgba(180,180,180,0.4);border-radius:2px;display:block">
                     <span style="display:flex;flex-direction:column;gap:5px"><span
-                        style="font:600 14.5px/1.3 'Inter',sans-serif;color:#fff">Training · TMS</span><span
-                        style="font:400 12.5px/1.5 'Inter',sans-serif;color:#B4B4B4">Validity, planning, recurrent
+                        style="font:600 14.5px/1.3 'Open Sauce One',sans-serif;color:#fff">Training · TMS</span><span
+                        style="font:400 12.5px/1.5 'Open Sauce One',sans-serif;color:#B4B4B4">Validity, planning, recurrent
                         training, records and audit in one system</span></span>
                     <span
-                      style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#3F9EE8;border:1px solid rgba(63,158,232,0.6);padding:5px 8px;border-radius:2px;white-space:nowrap">Live</span>
+                      style="font:700 9.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#3F9EE8;border:1px solid rgba(63,158,232,0.6);padding:5px 8px;border-radius:2px;white-space:nowrap">Live</span>
                   </a>
                   <div style="height:1px;background:rgba(180,180,180,0.26);margin:6px 4px"></div>
                   <a href="/solutions"
-                    style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;font:600 13px/1 'Inter',sans-serif;color:#3F9EE8;text-decoration:none;border-radius:2px"
+                    style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;font:600 13px/1 'Open Sauce One',sans-serif;color:#3F9EE8;text-decoration:none;border-radius:2px"
                     style-hover="background:rgba(0,52,140,0.6)">All solutions <span>→</span></a>
                 </div>
               </sc-if>
@@ -1818,7 +1818,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
               style="font:700 clamp(34px,5.6vw,68px)/1.06 'Open Sauce One',sans-serif;letter-spacing:-0.025em;color:#fff;margin:0;max-width:900px;text-wrap:pretty">
               Aviation experience, built into technology.</h1>
             <p
-              style="font:400 17.5px/1.7 'Inter',sans-serif;color:#B4B4B4;max-width:660px;margin:30px 0 0;text-wrap:pretty">
+              style="font:400 17.5px/1.7 'Open Sauce One',sans-serif;color:#B4B4B4;max-width:660px;margin:30px 0 0;text-wrap:pretty">
               AeroStrat is an aviation technology company based in Tallinn, Estonia. Our team pairs 25+ years of experience
               in the aviation sector with deep technology expertise. We are developing technology across the airline,
               and we started with training: AeroStrat EBT/CBTA and AeroStrat TMS are live today.</p>
@@ -1867,7 +1867,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                     {{ cf.k }}</div>
                   <div style="font:700 19px/1.3 'Open Sauce One',sans-serif;color:#000;margin-bottom:12px">{{ cf.v }}
                   </div>
-                  <p style="font:400 14px/1.75 'Inter',sans-serif;color:#4A5361;margin:0">{{ cf.note }}</p>
+                  <p style="font:400 14px/1.75 'Open Sauce One',sans-serif;color:#4A5361;margin:0">{{ cf.note }}</p>
                 </div>
               </sc-for>
             </div>
@@ -1883,7 +1883,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
               style="font:700 clamp(26px,3.4vw,42px)/1.12 'Open Sauce One',sans-serif;letter-spacing:-0.02em;color:#fff;margin:0 0 20px;max-width:760px;text-wrap:pretty">
               One domain at a time, on one shared foundation.</h2>
             <p
-              style="font:400 15.5px/1.85 'Inter',sans-serif;color:#B4B4B4;margin:0 0 36px;max-width:680px;text-wrap:pretty">
+              style="font:400 15.5px/1.85 'Open Sauce One',sans-serif;color:#B4B4B4;margin:0 0 36px;max-width:680px;text-wrap:pretty">
               An airline runs on connected disciplines. AeroStrat is building technology for each of them. Training is
               live; the next domains follow on the same foundation.</p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:1px">
@@ -1893,19 +1893,19 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   <span style="position:absolute;top:0;left:0;right:0;height:2px;background:{{ d.bar }}"></span>
                   <span style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span
                       style="font:600 12px/1 'Open Sauce One',sans-serif;color:#B4B4B4">{{ d.n }}</span><span
-                      style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:{{ d.tagFg }};border:1px solid {{ d.tagBd }};background:{{ d.tagBg }};padding:5px 8px;border-radius:2px">{{
+                      style="font:700 9.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:{{ d.tagFg }};border:1px solid {{ d.tagBd }};background:{{ d.tagBg }};padding:5px 8px;border-radius:2px">{{
                       d.tag }}</span></span>
                   <span style="font:700 17px/1.3 'Open Sauce One',sans-serif;color:#fff">{{ d.title }}</span>
-                  <span style="font:400 13.5px/1.7 'Inter',sans-serif;color:#B4B4B4">{{ d.desc }}</span>
+                  <span style="font:400 13.5px/1.7 'Open Sauce One',sans-serif;color:#B4B4B4">{{ d.desc }}</span>
                 </div>
               </sc-for>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:28px">
               <a href="/ebt-cbta"
-                style="font:600 14px/1 'Inter',sans-serif;color:#3F9EE8;display:inline-flex;gap:8px">AeroStrat EBT/CBTA
+                style="font:600 14px/1 'Open Sauce One',sans-serif;color:#3F9EE8;display:inline-flex;gap:8px">AeroStrat EBT/CBTA
                 <span>→</span></a>
               <a href="/tms"
-                style="font:600 14px/1 'Inter',sans-serif;color:#3F9EE8;display:inline-flex;gap:8px">AeroStrat TMS
+                style="font:600 14px/1 'Open Sauce One',sans-serif;color:#3F9EE8;display:inline-flex;gap:8px">AeroStrat TMS
                 <span>→</span></a>
             </div>
           </div>
@@ -1922,7 +1922,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                 <div
                   style="font:700 22px/1.25 'Open Sauce One',sans-serif;letter-spacing:-0.01em;color:#000;margin-bottom:20px">
                   Connected Intelligence</div>
-                <p style="font:400 15.5px/1.75 'Inter',sans-serif;color:#4A5361;margin:0">Elevating passive records into
+                <p style="font:400 15.5px/1.75 'Open Sauce One',sans-serif;color:#4A5361;margin:0">Elevating passive records into
                   active, cross-departmental forecasting and risk assessment.</p>
               </div>
               <div className="aerostrat-card"
@@ -1930,7 +1930,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                 <div
                   style="font:700 22px/1.25 'Open Sauce One',sans-serif;letter-spacing:-0.01em;color:#000;margin-bottom:20px">
                   Architectural Scalability</div>
-                <p style="font:400 15.5px/1.75 'Inter',sans-serif;color:#4A5361;margin:0">Deploying a unified
+                <p style="font:400 15.5px/1.75 'Open Sauce One',sans-serif;color:#4A5361;margin:0">Deploying a unified
                   technological infrastructure designed to adapt and expand seamlessly alongside evolving global
                   aviation needs.</p>
               </div>
@@ -1939,7 +1939,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                 <div
                   style="font:700 22px/1.25 'Open Sauce One',sans-serif;letter-spacing:-0.01em;color:#000;margin-bottom:20px">
                   Operational Clarity</div>
-                <p style="font:400 15.5px/1.75 'Inter',sans-serif;color:#4A5361;margin:0">Delivering complex industry
+                <p style="font:400 15.5px/1.75 'Open Sauce One',sans-serif;color:#4A5361;margin:0">Delivering complex industry
                   data through intuitive, high-visibility interfaces that minimize administrative friction.</p>
               </div>
             </div>
@@ -1960,7 +1960,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   01</div>
                 <div style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#fff;margin-bottom:14px">Absolute
                   Precision</div>
-                <p style="font:400 14.5px/1.8 'Inter',sans-serif;color:#B4B4B4;margin:0">We treat data with the exact
+                <p style="font:400 14.5px/1.8 'Open Sauce One',sans-serif;color:#B4B4B4;margin:0">We treat data with the exact
                   rigor required on the flight deck. Accuracy and structural integrity are non-negotiable.</p>
               </div>
               <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:32px 28px">
@@ -1969,7 +1969,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   02</div>
                 <div style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#fff;margin-bottom:14px">Architectural
                   Foresight</div>
-                <p style="font:400 14.5px/1.8 'Inter',sans-serif;color:#B4B4B4;margin:0">We build for tomorrow's scale,
+                <p style="font:400 14.5px/1.8 'Open Sauce One',sans-serif;color:#B4B4B4;margin:0">We build for tomorrow's scale,
                   every module and workflow engineered to integrate into a wider ecosystem.</p>
               </div>
               <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:32px 28px">
@@ -1978,7 +1978,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   03</div>
                 <div style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#fff;margin-bottom:14px">Actionable
                   Clarity</div>
-                <p style="font:400 14.5px/1.8 'Inter',sans-serif;color:#B4B4B4;margin:0">We ruthlessly eliminate
+                <p style="font:400 14.5px/1.8 'Open Sauce One',sans-serif;color:#B4B4B4;margin:0">We ruthlessly eliminate
                   cognitive load, distilling complex metrics into insights that accelerate decisions.</p>
               </div>
               <div style="background:rgba(0,52,140,0.45);outline:1px solid rgba(180,180,180,0.28);padding:32px 28px">
@@ -1987,7 +1987,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                   04</div>
                 <div style="font:700 18px/1.3 'Open Sauce One',sans-serif;color:#fff;margin-bottom:14px">Continuous
                   Integration</div>
-                <p style="font:400 14.5px/1.8 'Inter',sans-serif;color:#B4B4B4;margin:0">We champion the feedback loop
+                <p style="font:400 14.5px/1.8 'Open Sauce One',sans-serif;color:#B4B4B4;margin:0">We champion the feedback loop
                   between operational execution, data evaluation, and systemic improvement.</p>
               </div>
             </div>
@@ -2007,12 +2007,12 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                 Set up from your manuals.</h2>
             </div>
             <div style="display:flex;flex-direction:column;gap:18px">
-              <p style="font:400 15.5px/1.8 'Inter',sans-serif;color:#4A5361;margin:0;max-width:680px;text-wrap:pretty">
+              <p style="font:400 15.5px/1.8 'Open Sauce One',sans-serif;color:#4A5361;margin:0;max-width:680px;text-wrap:pretty">
                 AeroStrat staff onboard each airline from its own manuals. We build your check forms from your paper
                 forms, set your grading scale and document control, and configure the platform to your authority.
                 Building your forms is part of the implementation service, not a self-serve builder.</p>
               <div
-                style="border-top:1px solid rgba(0,52,140,0.16);padding-top:16px;font:500 14.5px/1.6 'Inter',sans-serif;color:#000">
+                style="border-top:1px solid rgba(0,52,140,0.16);padding-top:16px;font:500 14.5px/1.6 'Open Sauce One',sans-serif;color:#000">
                 Your forms stay as they are, whether they start on paper or in digital form. Support and maintenance.
               </div>
             </div>
@@ -2029,36 +2029,36 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             <div>
               <img src="uploads/svg/aerostrat-lockup-tagline-white.svg" alt="AeroStrat" width="496" height="120"
                 style="height:40px;width:auto;margin-bottom:12px;display:block">
-              <p style="font:600 14px/1.6 'Inter',sans-serif;color:#fff;max-width:300px;margin:0">AeroStrat ·
+              <p style="font:600 14px/1.6 'Open Sauce One',sans-serif;color:#fff;max-width:300px;margin:0">AeroStrat ·
                 Intelligence Driven Aviation</p>
             </div>
             <div style="display:flex;flex-direction:column;gap:10px">
               <div
-                style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">
+                style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">
                 Company</div>
-              <a href="/" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Home</a>
-              <a href="/about" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">About Us</a>
-              <a href="/clients" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Clients</a>
-              <a href="/contact" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Contact Us</a>
+              <a href="/" style="font:400 14px/1 'Open Sauce One',sans-serif;color:#B4B4B4">Home</a>
+              <a href="/about" style="font:400 14px/1 'Open Sauce One',sans-serif;color:#B4B4B4">About Us</a>
+              <a href="/clients" style="font:400 14px/1 'Open Sauce One',sans-serif;color:#B4B4B4">Clients</a>
+              <a href="/contact" style="font:400 14px/1 'Open Sauce One',sans-serif;color:#B4B4B4">Contact Us</a>
             </div>
             <div style="display:flex;flex-direction:column;gap:10px">
               <div
-                style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">
+                style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">
                 Solutions</div>
-              <a href="/ebt-cbta" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Training · EBT / CBTA</a>
-              <a href="/tms" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">Training · TMS</a>
-          <a href="/glossary" style="font:400 14px/1 'Inter',sans-serif;color:#B4B4B4">EBT/CBTA glossary</a>
+              <a href="/ebt-cbta" style="font:400 14px/1 'Open Sauce One',sans-serif;color:#B4B4B4">Training · EBT / CBTA</a>
+              <a href="/tms" style="font:400 14px/1 'Open Sauce One',sans-serif;color:#B4B4B4">Training · TMS</a>
+          <a href="/glossary" style="font:400 14px/1 'Open Sauce One',sans-serif;color:#B4B4B4">EBT/CBTA glossary</a>
             </div>
             <div style="display:flex;flex-direction:column;gap:10px">
               <div
-                style="font:600 11.5px/1 'Inter',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">
+                style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#3F9EE8;text-transform:uppercase;margin-bottom:4px">
                 Contact</div>
               <a href="mailto:info@aero-strat.com"
-                style="font:400 14px/1.6 'Inter',sans-serif;color:#B4B4B4">info@aero-strat.com</a>
-              <span style="font:400 14px/1.6 'Inter',sans-serif;color:#B4B4B4">Tallinn, Estonia</span>
+                style="font:400 14px/1.6 'Open Sauce One',sans-serif;color:#B4B4B4">info@aero-strat.com</a>
+              <span style="font:400 14px/1.6 'Open Sauce One',sans-serif;color:#B4B4B4">Tallinn, Estonia</span>
               <a href="https://www.linkedin.com/company/aero-strat/" target="_blank" rel="noopener"
                 aria-label="AeroStrat on LinkedIn"
-                style="display:inline-flex;align-items:center;gap:8px;font:400 14px/1.6 'Inter',sans-serif;color:#B4B4B4"
+                style="display:inline-flex;align-items:center;gap:8px;font:400 14px/1.6 'Open Sauce One',sans-serif;color:#B4B4B4"
                 style-hover="color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
                   aria-hidden="true" style="flex:none">
                   <path
@@ -2067,7 +2067,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             </div>
           </div>
           <div style="padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
-            <span style="font:400 13px/1 'Inter',sans-serif;color:#B4B4B4">© 2026 AeroStrat · aero-strat.com</span>
+            <span style="font:400 13px/1 'Open Sauce One',sans-serif;color:#B4B4B4">© 2026 AeroStrat · aero-strat.com</span>
           </div>
         </div>
       </footer>
@@ -2321,7 +2321,7 @@ class Component extends DCLogic {
     setTimeout(() => this._arm(), 0);
     const scrolled = s.scrolled;
     const linkStyle = (active) =>
-      `font:${active ? '600' : '500'} 14px/1 "Inter",sans-serif;color:#fff;opacity:${active ? 1 : 0.8};cursor:pointer`;
+      `font:${active ? '600' : '500'} 14px/1 "Open Sauce One",sans-serif;color:#fff;opacity:${active ? 1 : 0.8};cursor:pointer`;
     const navClass = (active) => `aerostrat-nav-link${active ? ' active' : ''}`;
 
     const homeSolutionCards = [
@@ -2352,7 +2352,7 @@ class Component extends DCLogic {
     const needleRot = { S1: -72, S2: -36, S3: 0, S4: 36, S5: 72 }[sel.code];
 
     const tabStyle = (active) =>
-      `font:600 13px/1 "Inter",sans-serif;padding:12px 18px;border-radius:2px;cursor:pointer;transition:all 0.3s ease;border:1px solid ${active ? '#3F9EE8' : 'rgba(180,180,180,0.45)'};background:${active ? 'rgba(63,158,232,0.16)' : 'transparent'};color:${active ? '#fff' : '#B4B4B4'}`;
+      `font:600 13px/1 "Open Sauce One",sans-serif;padding:12px 18px;border-radius:2px;cursor:pointer;transition:all 0.3s ease;border:1px solid ${active ? '#3F9EE8' : 'rgba(180,180,180,0.45)'};background:${active ? 'rgba(63,158,232,0.16)' : 'transparent'};color:${active ? '#fff' : '#B4B4B4'}`;
 
     const onTiltMove = (e) => {
       const el = e.currentTarget;
@@ -2547,9 +2547,9 @@ class Component extends DCLogic {
       submitNote: s.declared
         ? 'A signed PDF is generated and the record updates immediately.'
         : 'Sign the declaration to unlock submit.',
-      submitStyle: 'font:600 12.5px/1 \'Inter\',sans-serif;border:none;border-radius:2px;padding:11px 16px;'
+      submitStyle: 'font:600 12.5px/1 \'Open Sauce One\',sans-serif;border:none;border-radius:2px;padding:11px 16px;'
         + (s.declared
-          ? 'color:#000;background:#FF5A13;cursor:pointer'
+          ? 'color:#fff;background:#FF5A13;cursor:pointer'
           : 'color:#B4B4B4;background:rgba(0,52,140,0.55);cursor:not-allowed'),
       signSubmit: () => { if (s.declared) this.setState({ mockTab: 'grade', selPilot: 0, recTab: 1 }); },
 
@@ -2644,7 +2644,7 @@ class Component extends DCLogic {
       stageOptions: ['Paper / PDF forms', 'Spreadsheets', 'An existing ETR system', 'Starting EBT/CBTA'].map(label => ({
         label,
         onClick: () => this.setState({ stage: label }),
-        style: `font:500 13px/1 "Inter",sans-serif;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.25s ease;border:1px solid ${s.stage === label ? '#3F9EE8' : 'rgba(180,180,180,0.5)'};background:${s.stage === label ? 'rgba(63,158,232,0.16)' : 'rgba(0,52,140,0.45)'};color:${s.stage === label ? '#fff' : '#B4B4B4'}`
+        style: `font:500 13px/1 "Open Sauce One",sans-serif;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.25s ease;border:1px solid ${s.stage === label ? '#3F9EE8' : 'rgba(180,180,180,0.5)'};background:${s.stage === label ? 'rgba(63,158,232,0.16)' : 'rgba(0,52,140,0.45)'};color:${s.stage === label ? '#fff' : '#B4B4B4'}`
       })),
 
       probSlides: this.probDefs.map((p, i) => ({
