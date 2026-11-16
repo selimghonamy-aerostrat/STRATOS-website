@@ -7,7 +7,7 @@ Canonical page: https://aero-strat.com/
 ## Vision and ecosystem
 
 - **Vision:** To establish the definitive digital operating system for global airlines, unifying fragmented data into a single source of operational intelligence and continuous oversight.
-- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimize performance, elevate safety and drive continuous improvement across their entire ecosystem.
+- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimise performance, elevate safety and drive continuous improvement across their entire ecosystem.
 
 AeroStrat is building one connected technology ecosystem for airline operations on a single shared foundation: one crew list, one record and one login across every module. Training is live; the next domains follow on the same foundation.
 

@@ -5,7 +5,7 @@
 Canonical page: https://aero-strat.com/about
 
 - **Vision:** To establish the definitive digital operating system for global airlines, unifying fragmented data into a single source of operational intelligence and continuous oversight.
-- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimize performance, elevate safety and drive continuous improvement across their entire ecosystem.
+- **Mission:** To engineer intuitive, enterprise-grade technology that eliminates operational silos, transforming complex data into connected intelligence so airlines can optimise performance, elevate safety and drive continuous improvement across their entire ecosystem.
 
 ## Who we are
 
@@ -33,11 +33,11 @@ An airline runs on connected disciplines. AeroStrat is building technology for e
 
 - **Connected Intelligence:** elevating passive records into active, cross-departmental forecasting and risk assessment.
 - **Architectural Scalability:** a unified technological infrastructure designed to adapt and expand alongside evolving global aviation needs.
-- **Operational Clarity:** complex industry data delivered through intuitive, high-visibility interfaces that minimize administrative friction.
+- **Operational Clarity:** complex industry data delivered through intuitive, high-visibility interfaces that minimise administrative friction.
 
 ## Brand values
 
-1. **Absolute Precision:** data treated with the rigor required on the flight deck.
+1. **Absolute Precision:** data treated with the rigour required on the flight deck.
 2. **Architectural Foresight:** every module and workflow engineered to integrate into a wider ecosystem.
 3. **Actionable Clarity:** complex metrics distilled into insights that accelerate decisions.
 4. **Continuous Integration:** the feedback loop between operational execution, data evaluation and systemic improvement.
