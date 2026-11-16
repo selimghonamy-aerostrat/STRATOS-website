@@ -98,10 +98,12 @@ For pilots with two or more checks, a plain-language analysis and remediation su
 
 AeroStrat develops forms from the airline's training manual, with competency mapping, OBs and TEM, or digitises existing forms exactly as they are. Support and maintenance included.
 
-1. **Discovery:** the training manual and any existing evaluation forms, digital or paper.
-2. **Build:** each form developed from the manual, or existing forms digitised as they are.
-3. **Configure:** rosters loaded, instructor and Director accounts created, departments set.
-4. **Go-live:** grading, reporting and analytics run from the first submission.
+Four stages, about five weeks from receiving your manual and forms.
+
+1. **Discovery (week 1):** the training manual and any existing evaluation forms, digital or paper.
+2. **Build (weeks 2–3):** each form developed from the manual, or existing forms digitised as they are.
+3. **Configure (week 4):** rosters loaded, instructor and Director accounts created, departments set.
+4. **Go-live (week 5):** grading, reporting and analytics run from the first submission.
 
 ## Frequently asked questions
 

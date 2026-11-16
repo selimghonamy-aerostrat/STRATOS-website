@@ -80,7 +80,7 @@ For airlines subscribed to AeroStrat EBT/CBTA, both systems share one crew list,
 
 ## Implementation & migration: we move your records, you sign off
 
-From Excel, paper or a legacy TMS, AeroStrat does the full migration and implementation. The training department reviews and approves; it does not re-key records.
+From Excel, paper or a legacy TMS, AeroStrat does the full migration and implementation. The training department reviews and approves; it does not re-key records. Four stages, about five weeks: Discovery (week 1), Build (weeks 2–3), Configure (week 4), Go-live (week 5).
 
 - **We migrate:** Excel training sheets, paper records, legacy TMS data, crew master & rosters, training history, certificates & scans, licences & medicals, simulator & check records.
 - **We configure:** training rules from the Operations Manual; the recurrent programme (courses, phases, simulator cycle).
