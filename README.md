@@ -68,6 +68,12 @@ cd scripts && npm install && npm run prerender
 
 It needs Google Chrome installed. Never edit inside the markers by hand; the script regenerates them, and removing the block restores the page exactly as it was.
 
+The copy also includes every tab panel (the inactive ones `hidden`), so search engines and AI crawlers that do not run JavaScript read all tab text.
+
+### Page template inside a comment
+
+Each page's template sits inside `<x-dc><!--dc-template … dc-template--></x-dc>`, so crawlers never see raw `{{ }}` placeholders. Edit the template as usual, but **never type `--` inside it** (it would end the comment early); use plain HTML without `<!-- -->` notes. `js/support.js` carries a small marked patch (`unwrapDcTemplate`) that removes the comment before rendering; keep it if the runtime is ever regenerated. The script tag loads `/js/support.js?v=dc2`: bump the version whenever `support.js` changes.
+
 ## Search engines and AI assistants
 
 After publishing changed pages, notify Bing (and ChatGPT search / Copilot, which use Bing) through IndexNow:

@@ -56,9 +56,38 @@ for (const file of pages) {
   await page.waitForSelector('#dc-root > *', { timeout: 30000 });
   await new Promise((r) => setTimeout(r, 1500));
 
-  const snap = await page.evaluate(() => {
+  // Collect every tab panel, so crawlers that do not run JavaScript read all of them.
+  // Each tab is clicked in turn; the smallest subtree that changes is the panel.
+  const tabSets = await page.evaluate(() => [...document.querySelectorAll('#dc-root [role="tablist"]')].map((tl, i) => {
+    tl.setAttribute('data-pr-tl', i);
+    const tabs = [...tl.querySelectorAll('[role="tab"]')];
+    return { i, n: tabs.length, sel: Math.max(0, tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true')) };
+  }));
+  const tabStates = [];
+  for (const ts of tabSets) {
+    const states = [];
+    for (let j = 0; j < ts.n; j++) {
+      await page.evaluate((i, j) => document.querySelectorAll(`[data-pr-tl="${i}"] [role="tab"]`)[j].click(), ts.i, j);
+      await new Promise((r) => setTimeout(r, 450));
+      states.push(await page.evaluate((i) => {
+        const tl = document.querySelector(`[data-pr-tl="${i}"]`);
+        const sec = tl.closest('section') || tl.parentElement.parentElement;
+        const c = sec.cloneNode(true);
+        c.querySelector(`[data-pr-tl="${i}"]`).innerHTML = '';
+        c.querySelectorAll('[style]').forEach((el) => { el.style.removeProperty('transition-delay'); el.style.removeProperty('opacity'); el.style.removeProperty('transform'); });
+        c.querySelectorAll('.aerostrat-pop').forEach((el) => el.classList.remove('aerostrat-pop'));
+        return c.outerHTML;
+      }, ts.i));
+    }
+    await page.evaluate((i, j) => document.querySelectorAll(`[data-pr-tl="${i}"] [role="tab"]`)[j].click(), ts.i, ts.sel);
+    await new Promise((r) => setTimeout(r, 450));
+    tabStates.push({ ...ts, states });
+  }
+  await new Promise((r) => setTimeout(r, 600));
+
+  const snap = await page.evaluate((tabStates) => {
     // Styles the runtime added to <head> (page styles, atomics, hover rules)
-    const support = document.querySelector('script[src$="support.js"]');
+    const support = document.querySelector('script[src*="/js/support.js"]');
     const css = [];
     let after = false;
     for (const el of document.head.children) {
@@ -83,8 +112,35 @@ for (const file of pages) {
       el.classList.remove('aerostrat-pop'); if (!el.classList.length) el.removeAttribute('class');
       el.style.removeProperty('transition-delay'); if (!el.getAttribute('style')) el.removeAttribute('style');
     });
+    // Insert the inactive tab panels, hidden, next to the visible one
+    const parse = (h) => new DOMParser().parseFromString(`<body>${h}</body>`, 'text/html').body.firstElementChild;
+    for (const ts of tabStates) {
+      if (ts.states.length < 2) continue;
+      const docs = ts.states.map(parse);
+      let nodes = docs; const path = [];
+      for (;;) {
+        const kids = nodes.map((n) => [...n.children]);
+        if (kids.some((k) => k.length !== kids[0].length) || !kids[0].length) break;
+        const diff = kids[0].map((_, k) => kids.some((kk) => kk[k].outerHTML !== kids[0][k].outerHTML)).flatMap((d, k) => d ? [k] : []);
+        if (diff.length !== 1) break;
+        path.push(diff[0]); nodes = kids.map((k) => k[diff[0]]);
+      }
+      const tl = root.querySelector(`[data-pr-tl="${ts.i}"]`);
+      let target = tl && (tl.closest('section') || tl.parentElement.parentElement);
+      for (const k of path) target = target && target.children[k];
+      if (!target) continue;
+      nodes.forEach((n, j) => {
+        if (j === ts.sel) return;
+        const d = document.createElement('div');
+        d.hidden = true; d.setAttribute('data-tab-panel', j);
+        d.innerHTML = n.innerHTML;
+        d.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+        target.appendChild(d);
+      });
+    }
+    root.querySelectorAll('[data-pr-tl]').forEach((el) => el.removeAttribute('data-pr-tl'));
     return { css: css.join('\n'), html: root.innerHTML };
-  });
+  }, tabStates);
   if (errors.length || !snap.html || /<\/?x-dc/.test(snap.html)) {
     console.error(`✗ ${file}: ${errors.join(' | ') || 'empty or invalid snapshot'}`);
     failed = true; await page.close(); continue;

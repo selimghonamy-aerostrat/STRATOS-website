@@ -40,7 +40,7 @@
   <link rel="preload" href="/fonts/open-sauce-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="preload" href="/uploads/about-hero-bg.webp" as="image" type="image/webp" fetchpriority="high">
-<script src="/js/support.js"></script>
+<script src="/js/support.js?v=dc2"></script>
 </head>
 
 <body>
@@ -332,7 +332,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
 
       <a href="#main" class="scp0" style="position: absolute; left: -9999px; top: 0px; z-index: 200; background: rgb(255, 90, 19); color: rgb(255, 255, 255); font: 600 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 14px 20px;">Skip to content</a>
       <span data-scroll-sentinel="" aria-hidden="true" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></span>
-      <div aria-hidden="true" class="aerostrat-runway">
+      <div class="aerostrat-runway" aria-hidden="true">
         <div class="lane">
           <div class="edge t"></div>
           <div class="centre"></div>
@@ -348,7 +348,6 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           </svg></div>
       </div>
 
-      
       <header data-sticky="" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 100;">
         <div style="max-width: 1280px; margin: 0px auto; padding: 0px 32px; height: 104px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
           <a href="/" aria-label="AeroStrat home" style="display: block; line-height: 0;"><img src="uploads/svg/aerostrat-lockup-tagline-white.svg?v=tm2" alt="AeroStrat" width="496" height="120" style="height: 50px; width: auto; max-width: 46vw; display: block;"></a>
@@ -356,14 +355,14 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             <a href="/" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Home</a>
             <a href="/about" class="aerostrat-nav-link active" style="font: 600 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 1; cursor: pointer;">About Us</a>
             <div style="position: relative; display: flex; align-items: center; height: 48px;">
-              <a href="/solutions" aria-haspopup="true" aria-expanded="false" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Solutions<span aria-hidden="true" style="display: inline-block; margin-left: 7px; font-size: 9px; line-height: 1; opacity: 0.8;">▼</span></a>
+              <a href="/solutions" class="aerostrat-nav-link" aria-haspopup="true" aria-expanded="false" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Solutions<span aria-hidden="true" style="display: inline-block; margin-left: 7px; font-size: 9px; line-height: 1; opacity: 0.8;">▼</span></a>
               
             </div>
             <a href="/clients" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Clients</a>
             <a href="/contact" class="aerostrat-nav-link" style="font: 500 14px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(255, 255, 255); opacity: 0.8; cursor: pointer;">Contact Us</a>
             <a href="/contact" class="aerostrat-btn aerostrat-btn-primary" style="font-size: 14px;">Book a walkthrough</a>
           </nav>
-          <button aria-label="Menu" class="aerostrat-menu-btn"><span></span></button>
+          <button class="aerostrat-menu-btn" aria-label="Menu"><span></span></button>
         </div>
         
       </header>
@@ -638,7 +637,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
   </div></div>
 <script>(function(){var d=document,p=d.getElementById('dc-prerender');if(!p)return;d.documentElement.classList.add('dc-pre');var o=new MutationObserver(function(){var r=d.getElementById('dc-root');if(r&&r.querySelector('main.aerostrat-page-enter')){o.disconnect();p.remove();}});o.observe(d.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});})();</script>
 <!-- PRERENDER:END -->
-<x-dc>
+<x-dc><!--dc-template
     <helmet data-dc-atomics="">
       <style>
         * {
@@ -1729,7 +1728,6 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           </svg></div>
       </div>
 
-      <!-- HEADER -->
       <header data-sticky="" style="position:fixed;top:0;left:0;right:0;z-index:100">
         <div
           style="max-width:1280px;margin:0 auto;padding:0 32px;height:104px;display:flex;align-items:center;justify-content:space-between;gap:24px">
@@ -2081,7 +2079,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
 
     </div>
 
-  </x-dc>
+  dc-template--></x-dc>
   <script type="text/x-dc" data-dc-script
     data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
 class Component extends DCLogic {

@@ -21,6 +21,12 @@
   ));
 
   // src/parse.ts
+  // AeroStrat patch (not from dc-runtime): the template sits inside <!--dc-template … dc-template-->
+  // so crawlers that do not run JavaScript ignore it. Unwrap it before parsing.
+  function unwrapDcTemplate(t) {
+    const m = /^\s*<!--dc-template([\s\S]*)dc-template-->\s*$/.exec(t);
+    return m ? m[1] : t;
+  }
   function parseDcDocument(doc) {
     const dc = doc.querySelector("x-dc");
     if (!dc) return null;
@@ -29,7 +35,7 @@
       scriptEl?.getAttribute("data-props") ?? null
     );
     return {
-      template: dc.innerHTML,
+      template: unwrapDcTemplate(dc.innerHTML),
       js: scriptEl ? scriptEl.textContent || "" : "",
       props,
       preview
@@ -40,7 +46,7 @@
     if (!openMatch) return null;
     const close = src.lastIndexOf("</x-dc>");
     if (close === -1 || close < openMatch.index) return null;
-    const template = src.slice(openMatch.index + openMatch[0].length, close);
+    const template = unwrapDcTemplate(src.slice(openMatch.index + openMatch[0].length, close));
     const doc = new DOMParser().parseFromString(src, "text/html");
     const scriptEl = doc.querySelector("script[data-dc-script]");
     const { props, preview } = parseDataProps(
