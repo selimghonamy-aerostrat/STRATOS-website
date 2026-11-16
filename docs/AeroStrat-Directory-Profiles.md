@@ -16,7 +16,6 @@ Use the same facts everywhere. AI assistants and Google trust a company more whe
 | Industry | Aviation software / airline technology (B2B SaaS) |
 | Logo | https://aero-strat.com/uploads/brand/aerostrat-logo.png (navy, light backgrounds). Square icon: https://aero-strat.com/apple-touch-icon.png |
 | Founded | 2026 (registered 2 November 2026) |
-| Founders | Selim Ghonamy (CEO), Seif El Mougy (CTO), Mohamed El Mougy (Chairman) |
 | Registered address | Tornimäe tn 5, 10145 Tallinn, Estonia |
 | Company size | 6 people (choose "2–10 employees") |
 | Legal name / registry code | AeroStrat OÜ · registry code 17638511 (Estonian Business Register: https://ariregister.rik.ee/eng/company/17638511) |
@@ -65,7 +64,7 @@ Edit page → **Page info** and **Details**.
 - **Full description**: the long description above
 - **Industries**: Aviation, Aerospace, Software, SaaS, Enterprise Software, EdTech (Training)
 - **Headquarters**: Tallinn, Harjumaa, Estonia
-- **Founded date**: 2026 · **Number of employees**: 1–10 (team of 6) · **Founders**: Selim Ghonamy (CEO), Seif El Mougy (CTO), Mohamed El Mougy (Chairman)
+- **Founded date**: 2026 · **Number of employees**: 1–10 (team of 6)
 - **Also known as**: STRATOS, STRATOS IDA (lets people searching the old name find you; leave it out if you prefer)
 
 ## 3. Wikidata (wikidata.org → Create a new Item)
@@ -85,8 +84,6 @@ Wikidata only accepts companies that independent sources (press articles, regist
   - inception (P571): 2 November 2026
   - legal form (P1454): osaühing (Estonian private limited company)
   - Estonian business registry code: `17638511` (search "Business Registry code (Estonia)" in the property box)
-  - founded by (P112): Selim Ghonamy, Seif El Mougy, Mohamed El Mougy (only if each has their own item; otherwise skip)
-  - chief executive officer (P169): Selim Ghonamy (same rule)
   - For every statement, add a reference: reference URL → the registry link above
   - logo image (P154): only if you upload the logo to Wikimedia Commons
 

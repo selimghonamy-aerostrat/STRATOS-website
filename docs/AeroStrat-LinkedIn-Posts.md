@@ -22,7 +22,7 @@ We started with pilot training, where two products are already live:
 
 Both have been tested for more than 8 months in co-development with two regional airlines: 120+ pilots, 250+ cabin crew and over 14,000 grades recorded.
 
-Founded by Selim Ghonamy (CEO), Seif El Mougy (CTO) and Mohamed El Mougy (Chairman), with a team that pairs 25+ years in aviation with deep technology expertise.
+Our team pairs 25+ years in aviation with deep technology expertise.
 
 Intelligence Driven Aviation.
 https://aero-strat.com
