@@ -2,6 +2,8 @@
 
 > Plain-English definitions of the terms airline training departments use for evidence-based training (EBT) and competency-based training and assessment (CBTA), from the nine pilot competencies to Baseline EBT and training records.
 
+Last reviewed: November 2026.
+
 Canonical page: https://aero-strat.com/glossary
 
 ## Training approaches
