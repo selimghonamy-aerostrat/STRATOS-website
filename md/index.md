@@ -83,4 +83,4 @@ Book a live walkthrough on a sample of your own crew, records and check forms at
 
 ## Contact
 
-Book a live walkthrough on a sample of your own crew, records and check forms: https://aero-strat.com/contact · info@aero-strat.com
+Book a 30-minute walkthrough on a sample of your own crew, records and check forms: https://aero-strat.com/contact · info@aero-strat.com. We reply within one business day.

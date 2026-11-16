@@ -2,7 +2,7 @@
 
 Canonical page: https://aero-strat.com/contact
 
-Book a walkthrough, send one of your check forms and see how it grades in AeroStrat, or see AeroStrat TMS on a sample of your own crew and training data.
+Book a walkthrough, send one of your check forms and see how it grades in AeroStrat, or see AeroStrat TMS on a sample of your own crew and training data. A walkthrough takes 30 minutes, and we reply within one business day.
 
 - **Email:** info@aero-strat.com
 - **Location:** Tallinn, Estonia
