@@ -225,6 +225,7 @@ header[data-sticky] { background: transparent; border-bottom: 1px solid transpar
 .aerostrat-discbody { overflow: hidden; animation: 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running aerostrat-page-in; }
 .aerostrat-field { border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); border-radius: 2px; padding: 16px; font: 400 14.5px / 1.5 "Open Sauce One", sans-serif; color: rgb(0, 0, 0); transition: border-color 0.25s, box-shadow 0.25s, background 0.25s; }
 .aerostrat-field::placeholder { color: rgb(122, 132, 148); }
+.aerostrat-field[aria-invalid="true"] { border-color: rgb(255, 90, 19); box-shadow: rgba(255, 90, 19, 0.2) 0px 0px 0px 3px; }
 .aerostrat-field:focus { border-color: rgb(0, 52, 140); background: rgb(255, 255, 255); box-shadow: rgba(0, 52, 140, 0.18) 0px 0px 0px 3px; outline: none; }
 .aerostrat-mobile-cta { display: none; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; }
 .aerostrat-mobile-cta.is-hidden { transform: translateY(120%); opacity: 0; pointer-events: none; }
@@ -366,7 +367,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
       <div class="aerostrat-reveal" style="max-width: 1280px; margin: 0px auto; padding: 0px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 48px 72px;">
       <div style="display: flex; flex-direction: column; gap: 26px;">
         <label style="display: flex; flex-direction: column; gap: 10px;">
-          <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Full name</span>
+          <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Full name<span style="text-transform: none; letter-spacing: 0px; font-weight: 400;"> (required)</span></span>
           <input type="text" name="cf-name" autocomplete="name" aria-required="true" maxlength="120" class="aerostrat-field" placeholder="Your name">
         </label>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 26px;">
@@ -380,18 +381,18 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         </label>
         </div>
         <label style="display: flex; flex-direction: column; gap: 10px;">
-          <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Email</span>
+          <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Email<span style="text-transform: none; letter-spacing: 0px; font-weight: 400;"> (required)</span></span>
           <input type="email" name="cf-email" autocomplete="email" aria-required="true" maxlength="200" class="aerostrat-field" placeholder="name@airline.com">
         </label>
         <label style="display: flex; flex-direction: column; gap: 10px;">
             <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Interested in</span>
             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
               
-                <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">AeroStrat EBT/CBTA</span></button>
+                <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">AeroStrat EBT/CBTA</span></button>
               
-                <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">AeroStrat TMS</span></button>
+                <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">AeroStrat TMS</span></button>
               
-                <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Both</span></button>
+                <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Both</span></button>
               
             </div>
           </label>
@@ -399,20 +400,20 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Current EBT stage</span>
           <div style="display: flex; flex-wrap: wrap; gap: 10px;">
             
-              <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Conventional</span></button>
+              <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Conventional</span></button>
             
-              <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">EBT principles</span></button>
+              <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">EBT principles</span></button>
             
-              <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Mixed EBT</span></button>
+              <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Mixed EBT</span></button>
             
-              <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Baseline EBT</span></button>
+              <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Baseline EBT</span></button>
             
-              <button style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Not sure</span></button>
+              <button type="button" aria-pressed="false" style="font: 500 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 12px 16px; border-radius: 2px; cursor: pointer; transition: 0.25s; border: 1px solid rgba(0, 52, 140, 0.25); background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span class="sc-interp">Not sure</span></button>
             
           </div>
         </label>
         <label style="display: flex; flex-direction: column; gap: 10px;">
-          <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Message</span>
+          <span style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(74, 83, 97);">Message<span style="text-transform: none; letter-spacing: 0px; font-weight: 400;"> (required)</span></span>
           <textarea rows="5" name="cf-message" aria-required="true" maxlength="5000" class="aerostrat-field" placeholder="Tell us about your fleet and how you run recurrent checks today" style="resize: vertical;"></textarea>
         </label>
         <div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;">
@@ -421,6 +422,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
           <button type="button" aria-busy="false" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Send message</span></button>
           <p role="status" aria-live="polite" style="font: 500 14px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140); margin: 0px; max-width: 560px;"><span class="sc-interp"></span></p>
+          <p style="font: 400 13px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 560px;">We use your details only to answer your enquiry. See our <a href="/privacy" style="color: rgb(0, 52, 140); text-decoration: underline; text-underline-offset: 3px;">privacy notice</a>.</p>
         </div>
         <div style="border-top: 1px solid rgba(0, 52, 140, 0.16); padding-top: 28px; max-width: 560px;">
           <div style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(0, 52, 140); text-transform: uppercase; margin-bottom: 16px;">What a first call covers</div>
@@ -429,6 +431,12 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
       </div>
       <div style="display: flex; flex-direction: column; gap: 0px; background: rgb(255, 255, 255); border: 1px solid rgba(0, 52, 140, 0.16); border-radius: 2px; padding: clamp(28px, 4vw, 44px) clamp(22px, 3.4vw, 40px); position: relative; overflow: hidden; height: fit-content;">
         <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 2px; background: rgb(63, 158, 232);"></div>
+        <div style="margin-bottom: 28px;">
+          <div style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.16em; color: rgb(0, 52, 140); text-transform: uppercase; margin-bottom: 14px;">What happens next</div>
+          <div style="display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; padding: 14px 0px; border-top: 1px solid rgba(0, 52, 140, 0.12);"><span style="font: 700 13px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);">01</span><span style="font: 600 15px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);">You send the form</span><span></span><span style="font: 400 13.5px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97);">Tell us about your fleet, your stage and what you would like to see.</span></div>
+          <div style="display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; padding: 14px 0px; border-top: 1px solid rgba(0, 52, 140, 0.12);"><span style="font: 700 13px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);">02</span><span style="font: 600 15px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);">We reply within one business day</span><span></span><span style="font: 400 13.5px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97);">From info@aero-strat.com, with times for a call.</span></div>
+          <div style="display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; padding: 14px 0px; border-top: 1px solid rgba(0, 52, 140, 0.12);"><span style="font: 700 13px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);">03</span><span style="font: 600 15px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);">A 30-minute walkthrough on your data</span><span></span><span style="font: 400 13.5px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97);">On a sample of your own crew, records and check forms.</span></div>
+        </div>
         <div>
           <div style="font: 600 11.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.16em; color: rgb(0, 52, 140); text-transform: uppercase; margin-bottom: 14px;">Email</div>
           <a href="mailto:info@aero-strat.com" style="font: 500 16px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);">info@aero-strat.com</a>
@@ -467,7 +475,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         </div>
       </div>
       <div style="padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-        <span style="font: 400 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">© 2026 AeroStrat · aero-strat.com</span>
+        <span style="font: 400 13px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(180, 180, 180);">© 2026 AeroStrat OÜ · Registry code 17638511 · Tallinn, Estonia · <a href="/privacy" style="color: rgb(180, 180, 180); text-decoration: underline; text-underline-offset: 3px;">Privacy notice</a></span>
       </div>
     </div>
   </footer>
@@ -579,6 +587,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
   .aerostrat-discbody{overflow:hidden;animation:aerostrat-page-in 0.6s cubic-bezier(.16,1,.3,1) both}
   .aerostrat-field{border:1px solid rgba(0,52,140,0.25);background:#FFFFFF;border-radius:2px;padding:16px;font:400 14.5px/1.5 'Open Sauce One',sans-serif;color:#000;transition:border-color 0.25s ease,box-shadow 0.25s ease,background 0.25s ease}
   .aerostrat-field::placeholder{color:#7A8494}
+  .aerostrat-field[aria-invalid="true"]{border-color:#FF5A13;box-shadow:0 0 0 3px rgba(255,90,19,0.2)}
   .aerostrat-field:focus{border-color:#00348C;background:#FFFFFF;box-shadow:0 0 0 3px rgba(0,52,140,0.18);outline:none}
   .aerostrat-mobile-cta{display:none;transition:transform 0.35s cubic-bezier(.16,1,.3,1),opacity 0.3s ease}
   .aerostrat-mobile-cta.is-hidden{transform:translateY(120%);opacity:0;pointer-events:none}
@@ -746,7 +755,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
       <div className="aerostrat-reveal" style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:48px 72px">
       <div style="display:flex;flex-direction:column;gap:26px">
         <label style="display:flex;flex-direction:column;gap:10px">
-          <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Full name</span>
+          <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Full name<span style="text-transform:none;letter-spacing:0;font-weight:400"> (required)</span></span>
           <input type="text" name="cf-name" autocomplete="name" required aria-required="true" maxlength="120" className="aerostrat-field" placeholder="Your name">
         </label>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:26px">
@@ -760,14 +769,14 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         </label>
         </div>
         <label style="display:flex;flex-direction:column;gap:10px">
-          <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Email</span>
+          <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Email<span style="text-transform:none;letter-spacing:0;font-weight:400"> (required)</span></span>
           <input type="email" name="cf-email" autocomplete="email" required aria-required="true" maxlength="200" className="aerostrat-field" placeholder="name@airline.com">
         </label>
         <label style="display:flex;flex-direction:column;gap:10px">
             <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Interested in</span>
             <div style="display:flex;flex-wrap:wrap;gap:10px">
               <sc-for list="{{ productOptions }}" as="o" hint-placeholder-count="3">
-                <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
+                <button type="button" aria-pressed="{{ o.pressed }}" onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
               </sc-for>
             </div>
           </label>
@@ -775,12 +784,12 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Current EBT stage</span>
           <div style="display:flex;flex-wrap:wrap;gap:10px">
             <sc-for list="{{ stageOptions }}" as="o" hint-placeholder-count="5">
-              <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
+              <button type="button" aria-pressed="{{ o.pressed }}" onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
             </sc-for>
           </div>
         </label>
         <label style="display:flex;flex-direction:column;gap:10px">
-          <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Message</span>
+          <span style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.02em;text-transform:uppercase;color:#4A5361">Message<span style="text-transform:none;letter-spacing:0;font-weight:400"> (required)</span></span>
           <textarea rows="5" name="cf-message" required aria-required="true" maxlength="5000" className="aerostrat-field" style="resize:vertical" placeholder="Tell us about your fleet and how you run recurrent checks today"></textarea>
         </label>
         <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
@@ -789,6 +798,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
           <button type="button" onClick="{{ sendForm }}" aria-busy="{{ sendBusy }}" className="aerostrat-btn aerostrat-btn-primary">{{ sendLabel }}</button>
           <p role="status" aria-live="polite" style="font:500 14px/1.6 'Open Sauce One',sans-serif;color:{{ formNoteColor }};margin:0;max-width:560px">{{ formNote }}</p>
+          <p style="font:400 13px/1.6 'Open Sauce One',sans-serif;color:#4A5361;margin:0;max-width:560px">We use your details only to answer your enquiry. See our <a href="/privacy" style="color:#00348C;text-decoration:underline;text-underline-offset:3px">privacy notice</a>.</p>
         </div>
         <div style="border-top:1px solid rgba(0,52,140,0.16);padding-top:28px;max-width:560px">
           <div style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.14em;color:#00348C;text-transform:uppercase;margin-bottom:16px">What a first call covers</div>
@@ -797,6 +807,12 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
       </div>
       <div style="display:flex;flex-direction:column;gap:0;background:#FFFFFF;border:1px solid rgba(0,52,140,0.16);border-radius:2px;padding:clamp(28px,4vw,44px) clamp(22px,3.4vw,40px);position:relative;overflow:hidden;height:fit-content">
         <div style="position:absolute;top:0;left:0;width:100%;height:2px;background:#3F9EE8"></div>
+        <div style="margin-bottom:28px">
+          <div style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase;margin-bottom:14px">What happens next</div>
+          <div style="display:grid;grid-template-columns:28px 1fr;gap:4px 12px;padding:14px 0;border-top:1px solid rgba(0,52,140,0.12)"><span style="font:700 13px/1.5 'Open Sauce One',sans-serif;color:#00348C">01</span><span style="font:600 15px/1.5 'Open Sauce One',sans-serif;color:#000">You send the form</span><span></span><span style="font:400 13.5px/1.6 'Open Sauce One',sans-serif;color:#4A5361">Tell us about your fleet, your stage and what you would like to see.</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr;gap:4px 12px;padding:14px 0;border-top:1px solid rgba(0,52,140,0.12)"><span style="font:700 13px/1.5 'Open Sauce One',sans-serif;color:#00348C">02</span><span style="font:600 15px/1.5 'Open Sauce One',sans-serif;color:#000">We reply within one business day</span><span></span><span style="font:400 13.5px/1.6 'Open Sauce One',sans-serif;color:#4A5361">From info@aero-strat.com, with times for a call.</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr;gap:4px 12px;padding:14px 0;border-top:1px solid rgba(0,52,140,0.12)"><span style="font:700 13px/1.5 'Open Sauce One',sans-serif;color:#00348C">03</span><span style="font:600 15px/1.5 'Open Sauce One',sans-serif;color:#000">A 30-minute walkthrough on your data</span><span></span><span style="font:400 13.5px/1.6 'Open Sauce One',sans-serif;color:#4A5361">On a sample of your own crew, records and check forms.</span></div>
+        </div>
         <div>
           <div style="font:600 11.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.16em;color:#00348C;text-transform:uppercase;margin-bottom:14px">Email</div>
           <a href="mailto:info@aero-strat.com" style="font:500 16px/1.5 'Open Sauce One',sans-serif;color:#00348C">info@aero-strat.com</a>
@@ -835,7 +851,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
         </div>
       </div>
       <div style="padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
-        <span style="font:400 13px/1 'Open Sauce One',sans-serif;color:#B4B4B4">© 2026 AeroStrat · aero-strat.com</span>
+        <span style="font:400 13px/1.6 'Open Sauce One',sans-serif;color:#B4B4B4">© 2026 AeroStrat OÜ · Registry code 17638511 · Tallinn, Estonia · <a href="/privacy" style="color:#B4B4B4;text-decoration:underline;text-underline-offset:3px">Privacy notice</a></span>
       </div>
     </div>
   </footer>
@@ -947,7 +963,8 @@ class Component extends DCLogic {
       '2.1': 4, '2.2': 3, '2.3': 4, '2.4': 4, '2.5': 3, '2.6': 2, '2.7': 4, '2.8': 4,
       '3.1': 4, '3.2': 3, '3.3': 2, '3.4': 4
     },
-    stage: null,
+    stage: (function () { try { var v = new URLSearchParams(location.search).get('stage'); return { conventional: 'Conventional', principles: 'EBT principles', mixed: 'Mixed EBT', baseline: 'Baseline EBT' }[v] || null; } catch (e) { return null; } })(),
+    product: (function () { try { var v = new URLSearchParams(location.search).get('product'); return { ebt: 'AeroStrat EBT/CBTA', tms: 'AeroStrat TMS', both: 'Both' }[v] || null; } catch (e) { return null; } })(),
     f1: false, f2: false, f3: false,
     menuOpen: false,
     formStatus: 'idle',
@@ -964,13 +981,14 @@ class Component extends DCLogic {
       product: this.state.product || '', stage: this.state.stage || ''
     };
     var missing = ['name', 'email', 'message'].filter(function (k) { return !data[k]; });
+    ['name', 'email', 'message'].forEach(function (k) { var el = document.querySelector('[name="cf-' + k + '"]'); if (el) { if (missing.indexOf(k) >= 0) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); } });
     if (missing.length) {
       var first = document.querySelector('[name="cf-' + missing[0] + '"]'); if (first) first.focus();
       this.setState({ formStatus: 'error', formMsg: 'Please add your name, email and message.' });
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(data.email)) {
-      var em = document.querySelector('[name="cf-email"]'); if (em) em.focus();
+      var em = document.querySelector('[name="cf-email"]'); if (em) { em.setAttribute('aria-invalid', 'true'); em.focus(); }
       this.setState({ formStatus: 'error', formMsg: 'Please check your email address.' });
       return;
     }
@@ -1447,12 +1465,14 @@ class Component extends DCLogic {
 
       productOptions: ['AeroStrat EBT/CBTA', 'AeroStrat TMS', 'Both'].map(label => ({
         label,
+        pressed: s.product === label ? 'true' : 'false',
         onClick: () => this.setState({ product: label }),
         style: `font:500 13px/1 "Open Sauce One",sans-serif;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.25s ease;border:1px solid ${s.product === label ? '#00348C' : 'rgba(0,52,140,0.25)'};background:${s.product === label ? '#00348C' : '#FFFFFF'};color:${s.product === label ? '#FFFFFF' : '#000000'}`
       })),
 
       stageOptions: ['Conventional', 'EBT principles', 'Mixed EBT', 'Baseline EBT', 'Not sure'].map(label => ({
         label,
+        pressed: s.stage === label ? 'true' : 'false',
         onClick: () => this.setState({ stage: label }),
         style: `font:500 13px/1 "Open Sauce One",sans-serif;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.25s ease;border:1px solid ${s.stage === label ? '#00348C' : 'rgba(0,52,140,0.25)'};background:${s.stage === label ? '#00348C' : '#FFFFFF'};color:${s.stage === label ? '#FFFFFF' : '#000000'}`
       })),
