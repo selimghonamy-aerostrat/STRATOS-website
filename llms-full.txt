@@ -545,6 +545,10 @@ A single, role-related behaviour an instructor can see during a session and reco
 
 A model for describing how crews manage operational risk. Threats are events outside the crew's control that make the flight more complex, such as weather or a technical fault. Errors are crew actions or omissions that lead away from what was intended. An undesired aircraft state is a position, speed or configuration that reduces the safety margin. EBT scenarios are built and debriefed with TEM.
 
+### Multi-crew pilot licence (MPL)
+
+An ICAO pilot licence whose training is built on competency-based training and assessment from the first lesson. It prepares a cadet to fly as co-pilot of a multi-crew aeroplane and was the first licence to apply CBTA throughout.
+
 ## The EBT programme
 
 ### EBT module
@@ -570,6 +574,10 @@ In a programme run on EBT principles, the Day 1 proficiency check comes first an
 ### Flight simulation training device (FSTD)
 
 An approved simulator, such as a full flight simulator, used for pilot training and checking. EBT modules are flown in a qualified FSTD.
+
+### Type rating examiner and instructor (TRE / TRI)
+
+The type rating instructor (TRI) trains pilots on an aircraft type, in the simulator and the aircraft. The type rating examiner (TRE) is authorised by the authority to conduct proficiency checks and sign licence revalidations. In EBT both grade against the nine competencies, and an examiner is needed where a session also revalidates the licence.
 
 ## Implementation stages
 
@@ -626,6 +634,14 @@ The simulator checks of conventional recurrent training: the operator proficienc
 ### Line check
 
 A check flown on a normal revenue flight to confirm that a pilot operates to the airline's standards on the line.
+
+### IATA Operational Safety Audit (IOSA)
+
+IATA's audit of an airline's operational management and control systems, including flight crew training and its records. Registration is renewed every two years, and the auditors check that training is planned, completed and recorded as the airline's manuals require.
+
+### Egyptian Civil Aviation Authority (ECAA)
+
+The national aviation authority of Egypt, which approves the training programmes and licences of Egyptian operators. AeroStrat configures forms and validity rules to each airline's own authority, whether that is EASA, the ECAA or another national authority.
 
 ### Operations Manual Part D (OM-D)
 
