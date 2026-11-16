@@ -21,11 +21,11 @@ Filter by status, then record a renewal. The expiry is recalculated from the rul
 
 ## Validity control: the worst item sets the status
 
-Every licence, medical, check and course is scored against the airline's own rule. A pilot's overall status is their worst item, so one lapsed check flags the whole file. Status follows the airline's rules, for example: GREEN over 60 days · YELLOW 60 days or less · RED under 30 days · EXPIRED · MISSING.
+Every licence, medical, check and course is scored against the airline's own rule. A pilot's overall status is their worst item, so one lapsed check flags the whole file. Status follows the airline's rules, for example: Valid over 60 days · Warning 31–60 days · Critical 30 days or less · Expired · Missing.
 
 - Daily action list by fleet, status and item
 - Data-gap report for mandatory items with no record
-- Red and expired items feed the renewal plan and pilot notices automatically
+- Critical and expired items feed the renewal plan and pilot notices automatically
 
 ## Modules: one platform, every training workflow
 
@@ -94,7 +94,7 @@ Every record mapped to the pilot, every expiry recalculated, every document file
 A training management system for airline pilots. It puts validity control, renewal planning, recurrent training, digital pilot files and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority.
 
 **How does validity tracking work?**
-Every licence, medical, check and course is scored against the airline's own rule, and a pilot's overall status is their worst item, so one lapsed check flags the whole file. Five status levels are checked daily, for example green, yellow, red, expired and missing.
+Every licence, medical, check and course is scored against the airline's own rule, and a pilot's overall status is their worst item, so one lapsed check flags the whole file. Five status levels are checked daily, for example valid, warning, critical, expired and missing.
 
 **How are renewals planned?**
 Every renewal is placed by expiry and lead time on a 3-year plan by month, with the reason shown for each month. Overdue items are pulled into the first planning month automatically, and simulator groups are aligned to each pilot's check expiry.

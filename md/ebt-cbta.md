@@ -31,7 +31,7 @@ Whether an airline is starting EBT or already running it, AeroStrat supports the
 - **Stage 0, Conventional ("train, then check"):** native, live. Item by item: satisfactory / unsatisfactory or pass / fail per item, against flight tolerances, on the scale the authority's form uses. No competency framework needed; a task and manoeuvre list instead.
 - **Stage 1, EBT principles ("check, then train"):** native, live. A Day 1 proficiency check comes first; Day 2 training is planned from its findings, with ranked scenarios from the 329 in IATA's EBT workbook. The nine competencies are graded 1–5 as the airline's manual defines, with optional observable behaviours and TEM outcomes.
 - **Stage 2, Mixed EBT ("evidence-led"):** native for pilot assessment, live. Evaluation phase, manoeuvres validation and scenario-based training; the licence is still revalidated by check. Recommended grades from evidence, interim and final standards, alerts, policies and flags.
-- **Stage 3, Baseline EBT ("full EBT"):** partly roadmap. Same engine, cycles and modules: live. Equivalency tables and line-check intervals: on the roadmap.
+- **Stage 3, Baseline EBT ("full EBT"):** native, live. Full EBT on the same engine, cycles and modules. Equivalency tables (malfunction and approach) and line-check interval tracking are planned additions.
 - **Enhanced EBT:** needs flight-data integration (future plan).
 
 ## On submission: one click, four things happen automatically
@@ -82,15 +82,15 @@ Each instructor's average grade is updated with every submission and compared wi
 
 Submitting a form calculates the grades, generates a signed PDF, adds a permanent record and feeds live analytics at once. Every edit after submission is logged in an append-only audit trail. Below-standard alerts email the training managers. Records export for IOSA and the airline's authority.
 
-## AI coaching assistant
+## AI analysis
 
-For pilots with two or more checks, a plain-language coaching and remediation summary. Gated on history, just-culture framing, Director-only switch.
+For pilots with two or more checks, a plain-language analysis and remediation summary. Gated on history, just-culture framing, Director-only switch.
 
 ## Product status
 
-**Live:** own forms (simulator, remedial, line check, cabin crew) · grading engine (lowest-of-three, your scale) · reports & signatures (signed PDF, audit trail) · micro/macro/trend analytics · fleet dashboard (KPIs, risk ranking, TEM themes) · instructor comparison · AI coaching & fleet report (Director-gated) · trainee feedback (QR, no login) · currency & validity (3-year cycle expiry alerts).
+**Live:** own forms (simulator, remedial, line check, cabin crew) · grading engine (lowest-of-three, your scale) · reports & signatures (signed PDF, audit trail) · micro/macro/trend analytics · fleet dashboard (KPIs, risk ranking, TEM themes) · instructor comparison · AI analysis & fleet report (Director-gated) · trainee feedback (QR, no login) · currency & validity (3-year cycle expiry alerts).
 
-**Planned next:** malfunction and approach equivalency tables · baseline line-check intervals · instructor Mixed EBT.
+**Planned next:** equivalency tables (malfunction and approach) · line-check interval tracking · instructor Mixed EBT.
 
 **Future plan:** Enhanced EBT with flight-data integration · type rating, MPL and ab initio · pilot self-service · offline app.
 
@@ -117,7 +117,7 @@ Each grade is derived from observed behaviours by the IATA lowest-of-three metho
 The instructor. AeroStrat recommends a grade, applies the correct standard and raises policy flags. A different final grade needs a written reason, and AeroStrat never overwrites it.
 
 **Do we need to be running EBT already?**
-No. Conventional checking, EBT principles and Mixed EBT (for pilot assessment) are supported natively and live today. Baseline EBT runs on the same engine, with equivalency tables and line-check intervals on the roadmap. Each airline sets its own stage with a start date and moves up with the same records, pilots and history, and each check is graded under the stage in force on its date. Enhanced EBT, which needs flight data, is a future plan.
+No. Conventional checking, EBT principles, Mixed EBT (for pilot assessment) and Baseline EBT are supported natively and live today. Equivalency tables (malfunction and approach) and line-check interval tracking are planned additions. Each airline sets its own stage with a start date and moves up with the same records, pilots and history, and each check is graded under the stage in force on its date. Enhanced EBT, which needs flight data, is a future plan.
 
 **How does Day 2 planning work?**
 Open a pilot's Day 1 check and see which observable behaviours were demonstrated, then choose the competencies to develop. AeroStrat ranks scenarios from the 329 in IATA's EBT workbook by coverage, and records who chose what and when.

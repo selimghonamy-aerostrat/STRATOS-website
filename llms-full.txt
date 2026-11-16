@@ -8,7 +8,7 @@ Company: AeroStrat (Intelligence Driven Aviation) · Website: https://aero-strat
 
 # AeroStrat: Intelligence Driven Aviation
 
-> AeroStrat (Intelligence Driven Aviation) is building the next generation of aviation technology: one connected ecosystem for airline operations, spanning training, safety and compliance, flight operations, maintenance and engineering, and network planning, on a single shared foundation set up to each airline's own manuals and authority. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live with airlines today: AeroStrat EBT/CBTA for evidence-based competency assessment and grading, and AeroStrat TMS for training planning, validity tracking and records. Based in Tallinn, Estonia.
+> AeroStrat (Intelligence Driven Aviation) is building the next generation of aviation technology: one connected ecosystem for airline operations, spanning training, safety and compliance, flight operations, maintenance and engineering, and network planning, on a single shared foundation set up to each airline's own manuals and authority. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live, developed and tested with two regional airlines: AeroStrat EBT/CBTA for evidence-based competency assessment and grading, and AeroStrat TMS for training planning, validity tracking and records. Based in Tallinn, Estonia.
 
 Canonical page: https://aero-strat.com/
 
@@ -72,7 +72,7 @@ Built on ICAO, IATA and EASA guidance, set up to each airline's manuals and auth
 ## Frequently asked questions
 
 **What is AeroStrat?**
-AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia. It is building one connected software ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live with airlines today.
+AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia. It is building one connected software ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live, developed and tested with two regional airlines.
 
 **Which AeroStrat products are live today?**
 Two training products. AeroStrat EBT/CBTA grades every pilot check against the ICAO nine-competency framework on the airline's own forms. AeroStrat TMS keeps every pilot current with validity control, renewal planning, recurrent training, records and audit. Airlines can take one, or both on a single pilot record.
@@ -275,7 +275,7 @@ Whether an airline is starting EBT or already running it, AeroStrat supports the
 - **Stage 0, Conventional ("train, then check"):** native, live. Item by item: satisfactory / unsatisfactory or pass / fail per item, against flight tolerances, on the scale the authority's form uses. No competency framework needed; a task and manoeuvre list instead.
 - **Stage 1, EBT principles ("check, then train"):** native, live. A Day 1 proficiency check comes first; Day 2 training is planned from its findings, with ranked scenarios from the 329 in IATA's EBT workbook. The nine competencies are graded 1–5 as the airline's manual defines, with optional observable behaviours and TEM outcomes.
 - **Stage 2, Mixed EBT ("evidence-led"):** native for pilot assessment, live. Evaluation phase, manoeuvres validation and scenario-based training; the licence is still revalidated by check. Recommended grades from evidence, interim and final standards, alerts, policies and flags.
-- **Stage 3, Baseline EBT ("full EBT"):** partly roadmap. Same engine, cycles and modules: live. Equivalency tables and line-check intervals: on the roadmap.
+- **Stage 3, Baseline EBT ("full EBT"):** native, live. Full EBT on the same engine, cycles and modules. Equivalency tables (malfunction and approach) and line-check interval tracking are planned additions.
 - **Enhanced EBT:** needs flight-data integration (future plan).
 
 ## On submission: one click, four things happen automatically
@@ -326,15 +326,15 @@ Each instructor's average grade is updated with every submission and compared wi
 
 Submitting a form calculates the grades, generates a signed PDF, adds a permanent record and feeds live analytics at once. Every edit after submission is logged in an append-only audit trail. Below-standard alerts email the training managers. Records export for IOSA and the airline's authority.
 
-## AI coaching assistant
+## AI analysis
 
-For pilots with two or more checks, a plain-language coaching and remediation summary. Gated on history, just-culture framing, Director-only switch.
+For pilots with two or more checks, a plain-language analysis and remediation summary. Gated on history, just-culture framing, Director-only switch.
 
 ## Product status
 
-**Live:** own forms (simulator, remedial, line check, cabin crew) · grading engine (lowest-of-three, your scale) · reports & signatures (signed PDF, audit trail) · micro/macro/trend analytics · fleet dashboard (KPIs, risk ranking, TEM themes) · instructor comparison · AI coaching & fleet report (Director-gated) · trainee feedback (QR, no login) · currency & validity (3-year cycle expiry alerts).
+**Live:** own forms (simulator, remedial, line check, cabin crew) · grading engine (lowest-of-three, your scale) · reports & signatures (signed PDF, audit trail) · micro/macro/trend analytics · fleet dashboard (KPIs, risk ranking, TEM themes) · instructor comparison · AI analysis & fleet report (Director-gated) · trainee feedback (QR, no login) · currency & validity (3-year cycle expiry alerts).
 
-**Planned next:** malfunction and approach equivalency tables · baseline line-check intervals · instructor Mixed EBT.
+**Planned next:** equivalency tables (malfunction and approach) · line-check interval tracking · instructor Mixed EBT.
 
 **Future plan:** Enhanced EBT with flight-data integration · type rating, MPL and ab initio · pilot self-service · offline app.
 
@@ -361,7 +361,7 @@ Each grade is derived from observed behaviours by the IATA lowest-of-three metho
 The instructor. AeroStrat recommends a grade, applies the correct standard and raises policy flags. A different final grade needs a written reason, and AeroStrat never overwrites it.
 
 **Do we need to be running EBT already?**
-No. Conventional checking, EBT principles and Mixed EBT (for pilot assessment) are supported natively and live today. Baseline EBT runs on the same engine, with equivalency tables and line-check intervals on the roadmap. Each airline sets its own stage with a start date and moves up with the same records, pilots and history, and each check is graded under the stage in force on its date. Enhanced EBT, which needs flight data, is a future plan.
+No. Conventional checking, EBT principles, Mixed EBT (for pilot assessment) and Baseline EBT are supported natively and live today. Equivalency tables (malfunction and approach) and line-check interval tracking are planned additions. Each airline sets its own stage with a start date and moves up with the same records, pilots and history, and each check is graded under the stage in force on its date. Enhanced EBT, which needs flight data, is a future plan.
 
 **How does Day 2 planning work?**
 Open a pilot's Day 1 check and see which observable behaviours were demonstrated, then choose the competencies to develop. AeroStrat ranks scenarios from the 329 in IATA's EBT workbook by coverage, and records who chose what and when.
@@ -399,11 +399,11 @@ Filter by status, then record a renewal. The expiry is recalculated from the rul
 
 ## Validity control: the worst item sets the status
 
-Every licence, medical, check and course is scored against the airline's own rule. A pilot's overall status is their worst item, so one lapsed check flags the whole file. Status follows the airline's rules, for example: GREEN over 60 days · YELLOW 60 days or less · RED under 30 days · EXPIRED · MISSING.
+Every licence, medical, check and course is scored against the airline's own rule. A pilot's overall status is their worst item, so one lapsed check flags the whole file. Status follows the airline's rules, for example: Valid over 60 days · Warning 31–60 days · Critical 30 days or less · Expired · Missing.
 
 - Daily action list by fleet, status and item
 - Data-gap report for mandatory items with no record
-- Red and expired items feed the renewal plan and pilot notices automatically
+- Critical and expired items feed the renewal plan and pilot notices automatically
 
 ## Modules: one platform, every training workflow
 
@@ -472,7 +472,7 @@ Every record mapped to the pilot, every expiry recalculated, every document file
 A training management system for airline pilots. It puts validity control, renewal planning, recurrent training, digital pilot files and audit in one system, configured to the airline's Operations Manual (OM-D) and national authority.
 
 **How does validity tracking work?**
-Every licence, medical, check and course is scored against the airline's own rule, and a pilot's overall status is their worst item, so one lapsed check flags the whole file. Five status levels are checked daily, for example green, yellow, red, expired and missing.
+Every licence, medical, check and course is scored against the airline's own rule, and a pilot's overall status is their worst item, so one lapsed check flags the whole file. Five status levels are checked daily, for example valid, warning, critical, expired and missing.
 
 **How are renewals planned?**
 Every renewal is placed by expiry and lead time on a 3-year plan by month, with the reason shown for each month. Overdue items are pulled into the first planning month automatically, and simulator groups are aligned to each pilot's check expiry.
@@ -613,7 +613,7 @@ Software that plans and tracks crew training: who needs which check or course an
 
 ### Validity
 
-The period during which a licence, rating, medical, check or course stays valid. Once it expires, the crew member cannot operate until it is renewed. [AeroStrat TMS](https://aero-strat.com/tms) lists renewals by status: green, yellow, red, expired or missing.
+The period during which a licence, rating, medical, check or course stays valid. Once it expires, the crew member cannot operate until it is renewed. [AeroStrat TMS](https://aero-strat.com/tms) lists renewals by status: valid, warning, critical, expired or missing.
 
 ### Electronic training record (ETR)
 

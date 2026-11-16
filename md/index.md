@@ -1,6 +1,6 @@
 # AeroStrat: Intelligence Driven Aviation
 
-> AeroStrat (Intelligence Driven Aviation) is building the next generation of aviation technology: one connected ecosystem for airline operations, spanning training, safety and compliance, flight operations, maintenance and engineering, and network planning, on a single shared foundation set up to each airline's own manuals and authority. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live with airlines today: AeroStrat EBT/CBTA for evidence-based competency assessment and grading, and AeroStrat TMS for training planning, validity tracking and records. Based in Tallinn, Estonia.
+> AeroStrat (Intelligence Driven Aviation) is building the next generation of aviation technology: one connected ecosystem for airline operations, spanning training, safety and compliance, flight operations, maintenance and engineering, and network planning, on a single shared foundation set up to each airline's own manuals and authority. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live, developed and tested with two regional airlines: AeroStrat EBT/CBTA for evidence-based competency assessment and grading, and AeroStrat TMS for training planning, validity tracking and records. Based in Tallinn, Estonia.
 
 Canonical page: https://aero-strat.com/
 
@@ -64,7 +64,7 @@ Built on ICAO, IATA and EASA guidance, set up to each airline's manuals and auth
 ## Frequently asked questions
 
 **What is AeroStrat?**
-AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia. It is building one connected software ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live with airlines today.
+AeroStrat is a next-generation aviation technology company based in Tallinn, Estonia. It is building one connected software ecosystem for airline operations: training, safety and compliance, flight operations, maintenance and engineering, and network planning. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live, developed and tested with two regional airlines.
 
 **Which AeroStrat products are live today?**
 Two training products. AeroStrat EBT/CBTA grades every pilot check against the ICAO nine-competency framework on the airline's own forms. AeroStrat TMS keeps every pilot current with validity control, renewal planning, recurrent training, records and audit. Airlines can take one, or both on a single pilot record.

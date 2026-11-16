@@ -1,6 +1,6 @@
 # AeroStrat
 
-> AeroStrat (Intelligence Driven Aviation) is building the next generation of aviation technology: one connected ecosystem for airline operations, spanning training, safety and compliance, flight operations, maintenance and engineering, and network planning, on a single shared foundation set up to each airline's own manuals and authority. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live with airlines today: AeroStrat EBT/CBTA for evidence-based competency assessment and grading, and AeroStrat TMS for training planning, validity tracking and records. Based in Tallinn, Estonia.
+> AeroStrat (Intelligence Driven Aviation) is building the next generation of aviation technology: one connected ecosystem for airline operations, spanning training, safety and compliance, flight operations, maintenance and engineering, and network planning, on a single shared foundation set up to each airline's own manuals and authority. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live, developed and tested with two regional airlines: AeroStrat EBT/CBTA for evidence-based competency assessment and grading, and AeroStrat TMS for training planning, validity tracking and records. Based in Tallinn, Estonia.
 
 Website: https://aero-strat.com
 Contact: info@aero-strat.com
@@ -26,7 +26,7 @@ AeroStrat is building one connected technology ecosystem for airline operations 
 ## Products
 
 - [AeroStrat EBT/CBTA](https://aero-strat.com/ebt-cbta.md): Evidence-Based Training (EBT) and Competency-Based Training and Assessment (CBTA) platform for airline recurrent pilot training. Every check is graded against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method (also ECAA). Produces a signed PDF per evaluation, a permanent per-pilot history with a full edit audit trail, and analytics at three levels: pilot, cohort and fleet. For Training Directors, Heads of Training and TRE/TRI leads.
-- [AeroStrat TMS](https://aero-strat.com/tms.md): Training management system for airlines. Pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority. Gives a daily action list of renewals by status (green, yellow, red, expired, missing). For Directors of Training, Heads of Training and Crew Training Managers.
+- [AeroStrat TMS](https://aero-strat.com/tms.md): Training management system for airlines. Pilot validity (licences, medicals, checks and courses), planning, recurrent training, records and audit in one system, configured to the airline's Operations Manual (OM-D) and authority. Gives a daily action list of renewals by status (valid, warning, critical, expired, missing). For Directors of Training, Heads of Training and Crew Training Managers.
 - [How they work together](https://aero-strat.com/solutions.md): Airlines that take both products share one crew list, one pilot record and one login, so nothing is typed twice.
 
 ## Key facts
@@ -41,7 +41,7 @@ AeroStrat is building one connected technology ecosystem for airline operations 
 
 ## Frequently asked questions
 
-**What is AeroStrat?** A next-generation aviation technology company in Tallinn, Estonia, building one connected software ecosystem for airline operations. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live with airlines today.
+**What is AeroStrat?** A next-generation aviation technology company in Tallinn, Estonia, building one connected software ecosystem for airline operations. Its training products, AeroStrat EBT/CBTA and AeroStrat TMS, are live, developed and tested with two regional airlines.
 
 **What does AeroStrat EBT/CBTA do?** It grades every pilot check against the ICAO nine-competency framework on the airline's own forms and scoring rules, following the ICAO, IATA and EASA method, with a signed PDF per evaluation and analytics for the pilot, the cohort and the fleet.
 

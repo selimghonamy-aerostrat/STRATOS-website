@@ -112,7 +112,7 @@ Software that plans and tracks crew training: who needs which check or course an
 
 ### Validity
 
-The period during which a licence, rating, medical, check or course stays valid. Once it expires, the crew member cannot operate until it is renewed. [AeroStrat TMS](https://aero-strat.com/tms) lists renewals by status: green, yellow, red, expired or missing.
+The period during which a licence, rating, medical, check or course stays valid. Once it expires, the crew member cannot operate until it is renewed. [AeroStrat TMS](https://aero-strat.com/tms) lists renewals by status: valid, warning, critical, expired or missing.
 
 ### Electronic training record (ETR)
 
