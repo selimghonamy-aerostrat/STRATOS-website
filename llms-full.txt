@@ -210,6 +210,10 @@ Target timeline from receiving the airline's manual, records and forms. The airl
 
 The airline owns the programme and keeps every regulatory obligation; the instructor sets every final grade and AeroStrat never overwrites it. Authorities approve programmes, not software.
 
+**Who holds what:** the airline holds the approval and the programme · the authority approves the programme · AeroStrat provides the software, forms, configuration and support.
+
+**Your data:** each airline's data isolated · exportable in full at any time · role-based access, every action on the audit log · instructors set every final grade.
+
 ## Frequently asked questions
 
 **Can we start with one product?**
