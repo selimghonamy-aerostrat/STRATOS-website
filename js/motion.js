@@ -45,7 +45,7 @@
     prepare();
     observe();
     scrubSetup();
-    toneSetup();
+    countSetup();
     snavSetup();
     onScroll(); frame();
   }
@@ -198,18 +198,34 @@
       st.pins.forEach(function (p) { p.steps.forEach(function (s) { s.classList.add('is-active'); }); });
     }
   }
-  // count-up changes only the number; any child (the Coral "+") is kept
-  function count(el) {
-    if (el.__counted) return; el.__counted = true;
-    var to = +el.getAttribute('data-count'), node = el.firstChild, t0 = 0, dur = 1200;
-    if (!node || node.nodeType !== 3) return;
-    function f(t) {
-      if (!t0) t0 = t;
-      var p = clamp((t - t0) / dur, 0, 1), e = 1 - Math.pow(1 - p, 3);
-      node.textContent = Math.round(to * e).toLocaleString('en-GB');
-      if (p < 1) requestAnimationFrame(f);
-    }
-    requestAnimationFrame(f);
+  // Proof numbers: the final value is in the HTML (<data value="14000">14,000</data>), so crawlers, screen
+  // readers and no-JS visitors read it. Counts 0 -> final once, 1.4 s, ease-out, never above the final value.
+  function countSetup() {
+    var nums = [].slice.call(scope.querySelectorAll('.ds-stat-num data[value]'));
+    if (!nums.length) return;
+    nums.forEach(function (n) { n.style.minWidth = Math.ceil(n.getBoundingClientRect().width) + 'px'; });
+    if (!motion) return;
+    var groups = [];
+    nums.forEach(function (n) { var g = n.closest('.ds-stats') || n; if (groups.indexOf(g) < 0) groups.push(g); });
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting || en.target.__counted) return;
+        en.target.__counted = true; cio.unobserve(en.target);
+        var els = [].slice.call(en.target.querySelectorAll('.ds-stat-num data[value]'));
+        if (en.target.matches && en.target.matches('data[value]')) els = [en.target];
+        var t0 = 0;
+        (function step(t) {
+          if (!t0) t0 = t;
+          var p = clamp((t - t0) / 1400, 0, 1), e = 1 - Math.pow(1 - p, 3);
+          els.forEach(function (n) { var to = +n.getAttribute('value'); n.textContent = Math.min(to, Math.round(to * e)).toLocaleString('en-GB'); });
+          if (p < 1) requestAnimationFrame(step);
+        })(performance.now());
+      });
+    }, { threshold: 0.4 });
+    groups.forEach(function (g) {
+      // start from 0 only if the group is still below the fold (never re-run, never flash on the first screen)
+      if (g.getBoundingClientRect().top > W.innerHeight) { g.querySelectorAll('.ds-stat-num data[value]').forEach(function (n) { n.textContent = '0'; }); cio.observe(g); }
+    });
   }
 
   /* ---------- hero: the video plays from load; scrolling lifts it like a take-off ---------- */
@@ -244,37 +260,6 @@
     if (s.lift) { s.lift.style.transform = p ? 'translate3d(0,' + (-40 * p).toFixed(1) + 'px,0)' : ''; s.lift.style.opacity = p ? (1 - 0.4 * p).toFixed(3) : ''; }
   }
 
-  /* ---------- blended canvas: the section on the middle line sets the tone ---------- */
-  var toneIo = null;
-  function toneOf(el) {
-    var t = el.getAttribute('data-tone'); if (t) return t;
-    var c = el.classList;
-    if (c.contains('on-light')) return 'light';
-    if (c.contains('on-deep') || c.contains('ds-band')) return 'deep';
-    return 'navy';
-  }
-  function toneSetup() {
-    if (toneIo) toneIo.disconnect();
-    var canvas = scope.querySelector('.as-canvas'); if (!canvas || !('IntersectionObserver' in W)) return;
-    var secs = [].slice.call(main.children).reduce(function (a, el) { return a.concat(el.tagName === 'DIV' && el.querySelector(':scope > section') ? [].slice.call(el.querySelectorAll(':scope > section')) : [el]); }, []);
-    if (reduce) canvas.style.transition = 'none';
-    // every section takes the canvas tone, so text is always readable while the colour changes;
-    // photo-led sections (heroes, the statement band) stay dark
-    var foot = scope.querySelector('footer');
-    var themed = secs.concat(foot ? [foot] : []).filter(function (el) { return !/(^|\s)(ds-phero|hm-hero|hm-sband|nf|ds-snav)(\s|$)/.test(el.className || ''); });
-    secs.concat(themed).forEach(function (el) { if (!el.hasAttribute('data-tone')) el.setAttribute('data-tone', toneOf(el)); });
-    var apply = function (tone) {
-      canvas.setAttribute('data-tone', tone);
-      themed.forEach(function (el) { el.classList.remove('on-light', 'on-navy', 'on-deep'); el.classList.add('on-' + tone); });
-    };
-    toneIo = new IntersectionObserver(function (es) {
-      es.forEach(function (en) { if (en.isIntersecting) apply(en.target.getAttribute('data-tone') || toneOf(en.target)); });
-    }, { rootMargin: '-50% 0px -50% 0px' });
-    secs.forEach(function (el) { if (!el.classList.contains('ds-snav')) toneIo.observe(el); });
-    html.classList.add('tone-ready');
-    st.orbs = [].slice.call(canvas.querySelectorAll('.as-orb'));
-  }
-
   /* ---------- section navigation on long pages ---------- */
   function snavSetup() {
     var nav = scope.querySelector('.ds-snav');
@@ -283,6 +268,17 @@
     var links = [].slice.call(nav.querySelectorAll('a[href^="#"]'));
     var sel = nav.querySelector('select');
     if (sel && !sel.__ds) { sel.__ds = true; sel.addEventListener('change', function () { var t = d.getElementById(sel.value); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }); }
+    links.forEach(function (a) {
+      if (a.__ds) return; a.__ds = true;
+      a.addEventListener('click', function (e) {
+        var t = d.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
+        e.preventDefault(); t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+        // sections below render lazily (content-visibility) and can change height mid-scroll: land exactly
+        var fix = function () { W.removeEventListener('scrollend', fix); var off = t.getBoundingClientRect().top - (s0.nav.getBoundingClientRect().bottom + 8); if (Math.abs(off) > 12) t.scrollIntoView({ behavior: 'auto' }); };
+        var s0 = st.snav; if ('onscrollend' in W) W.addEventListener('scrollend', fix); else setTimeout(fix, 900);
+        if (history.replaceState) history.replaceState(null, '', '#' + t.id);
+      });
+    });
     st.snav = { nav: nav, links: links, sel: sel, cur: null };
   }
   function snavFrame() {
@@ -311,7 +307,6 @@
     st.lastY = y;
     if (!scope) return;
     scrubFrame(vh);
-    if (motion && st.orbs) st.orbs.forEach(function (o, i) { o.style.transform = 'translate3d(0,' + (Math.sin(y / 1400 + i * 2) * 0.15 * vh).toFixed(1) + 'px,0)'; });
     snavFrame();
     if (motion) st.fills.forEach(function (f) {
       var r = f.el.getBoundingClientRect();
