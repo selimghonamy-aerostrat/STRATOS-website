@@ -368,7 +368,7 @@ html.ds-motion .ds-arc-under path{stroke-dasharray:1;stroke-dashoffset:1;animati
 .ds-divider path{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round;opacity:0.9}
 
 /* ---- SectionNav: sticky in-page navigation under the header ---- */
-.ds-snav{position:sticky;top:calc(var(--hdr) + 10px);z-index:90;background:rgba(0,21,56,0.86);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,0.06)}
+.ds-snav{position:sticky;top:calc(var(--hdr) + 10px);transition:top 200ms var(--ease);z-index:90;background:rgba(0,21,56,0.86);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,0.06)}
 .ds-snav-in{max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding-inline:var(--gut);display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;
   -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 48px),transparent);mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 48px),transparent)}
 .ds-snav-in::-webkit-scrollbar{display:none}
@@ -445,7 +445,8 @@ html body header.ds-header{position:fixed;top:0;left:0;right:0;z-index:120;backg
 header.ds-header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,21,56,0.92),rgba(0,21,56,0.85));-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,0.06);opacity:0;transition:opacity 200ms var(--ease);pointer-events:none}
 header.ds-header.is-solid::before{opacity:1}
 html body header.ds-header .ds-hbar{position:relative;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding:10px var(--gut) 0 !important;height:calc(var(--hdr) + 10px) !important;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:height 200ms var(--ease)}
-header.ds-header.is-solid{--hdr:64px}
+/* the solid header is 64px: everything sticky under it (section nav, glossary bar, menu) follows */
+html.ds-solid{--hdr:64px}
 html body header.ds-header .ds-logo img{height:44px !important;width:auto;max-width:52vw;display:block;transition:height 200ms var(--ease)}
 html body header.ds-header.is-solid .ds-logo img{height:40px !important}
 .ds-nav{display:flex;align-items:center;gap:28px;height:48px;white-space:nowrap}
@@ -1022,7 +1023,9 @@ html.rv-ready [data-draw].is-in{stroke-dashoffset:0}
     st.ticking = false;
     var y = W.scrollY || html.scrollTop, vh = W.innerHeight;
     runway(clamp(y / Math.max(1, html.scrollHeight - vh), 0, 1));
-    if (hdr) hdr.classList.toggle('is-solid', y > 24 || html.classList.contains('ds-sheet-open'));
+    var solid = y > 24 || html.classList.contains('ds-sheet-open');
+    if (hdr) hdr.classList.toggle('is-solid', solid);
+    html.classList.toggle('ds-solid', solid);
     st.lastY = y;
     if (!scope) return;
     scrubFrame(vh);

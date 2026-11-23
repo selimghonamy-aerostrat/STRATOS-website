@@ -288,7 +288,9 @@
     st.ticking = false;
     var y = W.scrollY || html.scrollTop, vh = W.innerHeight;
     runway(clamp(y / Math.max(1, html.scrollHeight - vh), 0, 1));
-    if (hdr) hdr.classList.toggle('is-solid', y > 24 || html.classList.contains('ds-sheet-open'));
+    var solid = y > 24 || html.classList.contains('ds-sheet-open');
+    if (hdr) hdr.classList.toggle('is-solid', solid);
+    html.classList.toggle('ds-solid', solid);
     st.lastY = y;
     if (!scope) return;
     scrubFrame(vh);
