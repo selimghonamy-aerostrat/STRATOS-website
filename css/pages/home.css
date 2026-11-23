@@ -5,7 +5,7 @@
 .hm-track.is-scrub{height:170vh}
 .hm-hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;background:var(--as-navy)}
 .hm-track.is-scrub .hm-hero{position:sticky;top:0;height:100vh;height:100svh;min-height:0}
-.hm-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hm-hero-poster,.hm-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* the hero fades into Deep Blue at the bottom */
 .hm-hero-shade{position:absolute;inset:0;background:
   linear-gradient(90deg,rgba(0,21,56,0.78) 0%,rgba(0,21,56,0.42) 52%,rgba(0,21,56,0.08) 100%),
