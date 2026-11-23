@@ -1,0 +1,68 @@
+/* Glossary page (/glossary). Uses the tokens and components in css/ds.css. Inlined by scripts/sync-shared.py.
+   css/responsive.css still carries the old .aerostrat-gloss-* boxed rules: they are overridden here. */
+
+/* ---- PageHero (no photo): navy to Deep Blue with the S pattern ---- */
+.gl-hero .ds-h1{max-width:14ch}
+.gl-reviewed{margin:16px 0 0;font:400 14px/1.5 var(--font);color:var(--grey)}
+html body .gl-jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+html body .gl-jump a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid rgba(255,255,255,0.22);border-radius:22px;background:transparent;font:500 15px/1.2 var(--font);color:#fff;text-decoration:none;transition:border-color var(--t1) var(--ease),background-color var(--t1) var(--ease)}
+html body .gl-jump a:hover,html body .gl-jump a:focus-visible{border-color:var(--sky);background:rgba(63,158,232,0.10);color:#fff;text-decoration:none}
+
+/* ---- Sticky search + A to Z bar (light) ---- */
+html body main > section.gl-terms.ds-sec{padding-top:0 !important}
+.gl-bar{position:sticky;top:calc(var(--hdr) + 10px);z-index:80;background:rgba(236,240,243,0.92);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--hair)}
+.gl-bar-in{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 32px;padding-top:16px;padding-bottom:12px}
+.gl-search{display:flex;flex-direction:column;gap:8px;flex:0 1 320px;min-width:240px}
+.gl-terms .ds-input{width:100%;min-height:48px;padding:12px 16px;background:#fff;border-color:rgba(0,21,56,0.16);color:#000}
+.gl-terms .ds-input::placeholder{color:rgba(0,0,0,0.5)}
+.gl-terms .ds-input:focus{border-color:var(--sky);box-shadow:0 0 0 2px var(--sky)}
+.gl-az{display:flex;flex-wrap:nowrap;align-items:center;gap:0;flex:1 1 0;min-width:0;overflow-x:auto;scrollbar-width:none;padding-right:24px;
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent)}
+.gl-az::-webkit-scrollbar{display:none}
+.gl-az a,.gl-az span{position:relative;flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:44px;font:600 16px/1 var(--font);text-decoration:none}
+.gl-az a{color:var(--deep)}
+.gl-az a::after{content:'';position:absolute;left:9px;right:9px;bottom:8px;height:2px;border-radius:1px;background:var(--coral);transform:scaleX(0);transition:transform var(--t1) var(--ease)}
+.gl-az a:hover{color:var(--deep);text-decoration:none}
+.gl-az a:hover::after,.gl-az a:focus-visible::after{transform:scaleX(1)}
+.gl-az span{color:var(--as-grey);font-weight:500}
+.gl-status{flex:1 0 100%;margin:0;font:500 14px/1.4 var(--font);color:var(--fg-2)}
+.gl-status:empty{display:none}
+
+/* ---- Term groups: borderless definition lists on hairlines ---- */
+.gl-body{padding-top:clamp(56px,7vw,104px)}
+.gl-terms [id]{scroll-margin-top:104px}
+html body .aerostrat-gloss-group{scroll-margin-top:104px}
+html body .aerostrat-gloss-group + .aerostrat-gloss-group{margin-top:clamp(72px,9vw,128px)}
+.gl-h2{max-width:22ch;margin-bottom:clamp(32px,4vw,56px)}
+html body .aerostrat-gloss-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(32px,4vw,64px)}
+html body .aerostrat-gloss-term{background:transparent;outline:0;box-shadow:none;border-top:1px solid var(--hair);padding:28px 0 36px;display:flex;flex-direction:column;gap:14px;transition:border-color var(--t2) var(--ease)}
+html body .aerostrat-gloss-term:hover{border-top-color:var(--hair-hi)}
+html body .aerostrat-gloss-term:target{box-shadow:none;border-top:2px solid var(--coral);padding-top:27px}
+html body .aerostrat-gloss-term h3{margin:0;font:600 clamp(20px,1.7vw,24px)/1.3 var(--font);letter-spacing:-0.01em;color:var(--deep);text-wrap:pretty}
+html body .aerostrat-gloss-abbr.ds-pill{display:inline-flex;margin-left:10px;vertical-align:3px;height:24px;padding:0 10px;font:600 12.5px/1 var(--font);letter-spacing:0;text-transform:none;border-radius:12px}
+html body .aerostrat-gloss-term p{margin:0;max-width:68ch;font:400 17px/1.65 var(--font);color:var(--fg-2)}
+html body .aerostrat-gloss-term p a,html body .aerostrat-gloss-rel a{color:var(--deep);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+html body .aerostrat-gloss-term p a:hover,html body .aerostrat-gloss-rel a:hover{color:var(--deep);text-decoration-color:var(--coral)}
+html body .aerostrat-gloss-rel{margin-top:auto;padding-top:4px;font:500 15px/1.6 var(--font);color:var(--fg-3)}
+
+/* ---- The nine competencies: a three-column hairline table ---- */
+html body .aerostrat-gloss-comps{list-style:none;margin:6px 0 4px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,3vw,48px);border-bottom:1px solid var(--hair)}
+html body .aerostrat-gloss-comps li{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-top:1px solid var(--hair);font:500 16px/1.45 var(--font);color:#000}
+html body .aerostrat-gloss-comps li span{flex:none;width:44px;font:700 14px/1.45 var(--font);letter-spacing:0.02em;font-variant-numeric:tabular-nums;color:var(--deep)}
+
+@media (max-width:1100px){html body .aerostrat-gloss-comps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  html body .aerostrat-gloss-list{grid-template-columns:minmax(0,1fr)}
+  html body .aerostrat-gloss-comps{grid-template-columns:minmax(0,1fr)}
+  .gl-bar-in{gap:8px;padding-top:10px;padding-bottom:6px}
+  .gl-search{flex:1 1 100%}
+  .gl-search .ds-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .gl-terms .ds-input{min-height:44px}
+  .gl-az{flex:1 1 100%;margin:0 calc(-1 * var(--gut));padding:0 var(--gut)}
+  .gl-az a,.gl-az span{flex:none;min-width:36px}
+  .gl-terms [id],html body .aerostrat-gloss-group{scroll-margin-top:118px}
+}
+
+/* ---- ClosingCTA extras ---- */
+.gl-close-k{justify-content:center;margin-bottom:24px}
+.gl-close-note{margin:24px 0 0;font:400 15px/1.6 var(--font);color:var(--fg-2);max-width:58ch}
