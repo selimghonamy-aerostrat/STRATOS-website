@@ -76,6 +76,10 @@
     {
       "source": "/favicon.ico",
       "destination": "/favicon-96.png"
+    },
+    {
+      "source": "/styleguide",
+      "destination": "/styleguide.html"
     }
   ],
   "headers": [
@@ -277,6 +281,15 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/styleguide(.html)?",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     }
