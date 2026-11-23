@@ -1,28 +1,7 @@
 /* Phone and tablet refinements, shared by every page. Desktop (>1020px) is unchanged. */
 
 @media (max-width:1020px){
-  /* Solid header bar on phones and tablets, never see-through */
-  header[data-sticky],
-  .aerostrat-scrolled header[data-sticky]{
-    background:#001538 !important;
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-    animation:none !important;
-    border-bottom:1px solid rgba(180,180,180,0.26) !important;
-  }
-
-  /* Solid, scrollable menu panel */
-  header .aerostrat-mobile-panel{
-    height:auto !important;
-    background:#001538 !important;
-    max-height:calc(100vh - 104px);
-    max-height:calc(100dvh - 104px);
-    overflow-y:auto;
-    overscroll-behavior:contain;
-    box-shadow:0 24px 48px rgba(0,0,0,0.5);
-  }
-  header .aerostrat-mobile-panel a{min-height:48px}
-  .aerostrat-menu-btn{width:48px !important;height:48px !important}
+  /* The header (frosted on scroll, full-screen menu) is styled in css/ds.css */
 
   /* Homepage hero: full screen with the content centred, no empty band */
   .aerostrat-hero .aerostrat-hero-inner{
@@ -42,11 +21,6 @@
 }
 
 @media (max-width:640px){
-  header .aerostrat-mobile-panel{
-    max-height:calc(100vh - 88px);
-    max-height:calc(100dvh - 88px);
-    padding:14px 20px 28px !important;
-  }
   .aerostrat-hero .aerostrat-hero-inner{padding-top:112px !important;padding-bottom:56px !important}
   /* Text spans the full width here, so even out the video overlay to keep it readable */
   .aerostrat-hero > video + div{background:linear-gradient(180deg,rgba(0,21,56,0.55) 0%,rgba(0,21,56,0.5) 60%,#001538 100%) !important}
@@ -173,3 +147,191 @@ html.dc-pre #dc-root .aerostrat-page-enter{animation:none}
 #book{scroll-margin-top:120px}
 .aerostrat-book-frame{height:700px}
 @media (max-width:720px){.aerostrat-book-frame{height:1000px}}
+
+/* AeroStrat design system v3 (feat/uiux-v3). Shared by every page.
+   Tokens, type, borderless layout, graphic language, motion, header.
+   Page templates live inside an HTML comment, so they can't contain the comment terminator:
+   every custom property is defined and used here, never inline in a template. */
+
+:root{
+  --canvas:#000B1F; --canvas-2:#001538; --deep:#00348C; --sky:#3F9EE8; --coral:#FF5A13;
+  --grey:#B4B4B4; --light:#ECF0F3;
+  --ease:cubic-bezier(0.2,0.7,0.2,1); --t1:180ms; --t2:420ms; --t3:800ms;
+  --gut:32px; --max:1280px; --max-wide:1440px;
+  /* theme (dark first); html[data-theme="light"] swaps these as light sections pass */
+  --bg:var(--canvas); --fg:#FFFFFF; --fg-2:#B4B4B4; --tone2:rgba(255,255,255,0.55);
+  --hair:rgba(255,255,255,0.08); --hair-hi:rgba(63,158,232,0.7); --eyebrow:#3F9EE8; --accent:#3F9EE8;
+  --decor:1; --hdr:104px;
+}
+html[data-theme="light"]{
+  --bg:#ECF0F3; --fg:#000B1F; --fg-2:#4A5361;
+  /* Unbiased Grey on Light Gray is 1.8:1; this grey keeps the brand look and passes AA for large text (3.7:1) */
+  --tone2:#737A84;
+  --hair:rgba(0,21,56,0.10); --hair-hi:rgba(0,52,140,0.55); --eyebrow:#00348C; --accent:#00348C; --decor:0;
+}
+
+/* ---- Canvas ---- */
+html{background:var(--bg);transition:background-color 600ms var(--ease)}
+html body{background:var(--bg);color:var(--fg);transition:background-color 600ms var(--ease),color 600ms var(--ease)}
+.ds-page{min-height:100vh;color:var(--fg);font-family:'Open Sauce One',sans-serif;overflow-x:clip;position:relative;background:transparent;transition:color 600ms var(--ease)}
+/* film grain over the dark canvas, so long gradients never band */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:150;opacity:calc(0.035 * var(--decor));transition:opacity 600ms var(--ease);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---- Layout ---- */
+.ds-sec{position:relative;padding:clamp(88px,11vw,180px) 0;isolation:isolate}
+.ds-sec.tight{padding:clamp(64px,7vw,112px) 0}
+/* long vertical blend between dark sections: starts and ends in the canvas colour */
+.ds-blend{background:linear-gradient(to bottom,var(--canvas) 0%,var(--canvas-2) 50%,var(--canvas) 100%)}
+html[data-theme="light"] .ds-blend{background:transparent}
+.ds-wrap{position:relative;z-index:1;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding:0 var(--gut)}
+.ds-wrap.wide{max-width:calc(var(--max-wide) + 2 * var(--gut))}
+.ds-split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px 64px;align-items:end;margin-bottom:clamp(48px,6vw,96px)}
+@media (max-width:900px){.ds-split{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){:root{--gut:20px}}
+
+/* ---- Type (D1) ---- */
+.ds-display{font:700 clamp(48px,7.4vw,104px)/0.98 'Open Sauce One',sans-serif;letter-spacing:-0.03em;margin:0;text-wrap:balance}
+.ds-h2{font:700 clamp(38px,5.2vw,72px)/1.02 'Open Sauce One',sans-serif;letter-spacing:-0.02em;margin:0;text-wrap:balance;color:var(--fg);transition:color 600ms var(--ease)}
+.ds-h3{font:600 clamp(22px,2vw,28px)/1.2 'Open Sauce One',sans-serif;letter-spacing:-0.01em;margin:0;text-wrap:balance}
+.ds-lead{font:400 clamp(17px,1.35vw,19px)/1.6 'Open Sauce One',sans-serif;color:var(--fg-2);max-width:62ch;margin:0;text-wrap:pretty;transition:color 600ms var(--ease)}
+.ds-body{font:400 17px/1.6 'Open Sauce One',sans-serif;color:var(--fg-2);max-width:62ch;margin:0;text-wrap:pretty}
+.tone-2{color:var(--tone2);transition:color 600ms var(--ease)}
+/* eyebrow: unchanged look (14px semibold, sentence case, orange arc before it) */
+.ds-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 22px;font:600 14px/1.3 'Open Sauce One',sans-serif;color:var(--eyebrow);transition:color 600ms var(--ease)}
+.ds-eyebrow svg{flex:none;display:block}
+.ds-eyebrow path{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round}
+/* HUD readout labels (D7) */
+.ds-hud{font:500 12px/1.3 'Open Sauce One',sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0.04em;color:var(--grey)}
+.ds-hud b{font-weight:600;color:#fff}
+.ds-sample{font:600 10.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.06em;color:var(--grey);opacity:0.85}
+
+/* ---- Borderless rows, stats, links (D4) ---- */
+.ds-rows{list-style:none;margin:0;padding:0}
+.ds-row{position:relative;display:flex;gap:16px;align-items:baseline;padding:18px 0 18px 22px;border-top:1px solid var(--hair);font:500 16px/1.55 'Open Sauce One',sans-serif;color:var(--fg);transition:border-color var(--t2) var(--ease),color 600ms var(--ease)}
+.ds-row::before{content:'';position:absolute;left:0;top:27px;width:6px;height:6px;border-radius:1.5px;background:var(--sky)}
+.ds-row:hover{border-top-color:var(--hair-hi)}
+.ds-stat-num{display:block;font:700 clamp(56px,7.4vw,104px)/0.95 'Open Sauce One',sans-serif;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:var(--fg);transition:color 600ms var(--ease)}
+.ds-stat-cap{display:block;margin-top:14px;font:500 15px/1.5 'Open Sauce One',sans-serif;color:var(--fg-2);max-width:32ch}
+.ds-link{position:relative;display:inline-flex;align-items:center;gap:10px;min-height:44px;font:600 15px/1 'Open Sauce One',sans-serif;color:var(--fg);text-decoration:none !important}
+.ds-link::after{content:'';position:absolute;left:0;right:22px;bottom:8px;height:1.5px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform var(--t2) var(--ease)}
+.ds-link:hover{color:var(--fg)}
+.ds-link:hover::after,.ds-link:focus-visible::after{transform:scaleX(1)}
+.ds-link .arr,.aerostrat-btn .arr{display:inline-block;transition:transform var(--t1) var(--ease)}
+.ds-link:hover .arr,.aerostrat-btn:hover .arr{transform:translateX(3px)}
+/* buttons: primary stays solid Coral (8px radius); secondary becomes a text link */
+html body .aerostrat-btn{border-radius:8px}
+html body .aerostrat-btn-primary{background:var(--coral);border-color:var(--coral);color:#fff;transition:background-color var(--t1) var(--ease)}
+html body .aerostrat-btn-primary:hover{background:#F0550F;border-color:#F0550F;box-shadow:none}
+.ds-glass{background:rgba(255,255,255,0.03);border-radius:20px;-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
+
+/* ---- Graphic language (D7) ---- */
+.ds-decor{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:var(--decor);transition:opacity 600ms var(--ease)}
+.ds-orb{position:absolute;border-radius:50%;width:min(70vw,900px);aspect-ratio:1;animation:ds-drift 46s var(--ease) infinite alternate}
+.ds-orb.deep{background:radial-gradient(closest-side,rgba(0,52,140,0.55),rgba(0,52,140,0) 72%)}
+.ds-orb.sky{background:radial-gradient(closest-side,rgba(63,158,232,0.26),rgba(63,158,232,0) 72%);animation-duration:58s}
+.ds-orb.coral{background:radial-gradient(closest-side,rgba(255,90,19,0.13),rgba(255,90,19,0) 72%);animation-duration:38s}
+@keyframes ds-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(6%,4%,0)}}
+.ds-gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 45%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 50% 45%,#000 20%,transparent 75%)}
+.ds-arcline{fill:none;stroke-width:1.5;stroke-linecap:round}
+.ds-photo{filter:saturate(0.7)}
+.ds-fade-edges{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%)}
+
+/* ---- Header (D6) ---- */
+.ds-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:140;pointer-events:none}
+.ds-progress span{display:block;height:100%;background:var(--sky);transform-origin:left;transform:scaleX(0)}
+html body header.ds-header{position:fixed;top:0;left:0;right:0;z-index:120;background:transparent !important;border:0 !important;animation:none !important;
+  -webkit-backdrop-filter:none !important;backdrop-filter:none !important;transition:transform var(--t2) var(--ease)}
+header.ds-header::before{content:'';position:absolute;inset:0;background:rgba(0,21,56,0.72);-webkit-backdrop-filter:saturate(150%) blur(18px);backdrop-filter:saturate(150%) blur(18px);opacity:0;transition:opacity var(--t2) var(--ease);pointer-events:none}
+header.ds-header.is-solid::before{opacity:1}
+header.ds-header.is-hidden{transform:translateY(-100%)}
+html body header.ds-header .ds-hbar{position:relative;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding:0 var(--gut) !important;height:var(--hdr) !important;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:height var(--t2) var(--ease)}
+header.ds-header.is-solid{--hdr:72px}
+html body header.ds-header .ds-logo img{height:50px !important;width:auto;max-width:46vw;display:block;transition:height var(--t2) var(--ease)}
+html body header.ds-header.is-solid .ds-logo img{height:40px !important}
+.ds-nav{display:flex;align-items:center;gap:28px;height:48px;white-space:nowrap}
+.ds-nav .aerostrat-nav-link{font:500 14px/1 'Open Sauce One',sans-serif;color:#fff;opacity:0.82;text-decoration:none}
+.ds-nav .aerostrat-nav-link.active,.ds-nav .aerostrat-nav-link:hover{opacity:1;color:#fff;text-decoration:none}
+.ds-nav .aerostrat-nav-link.active{font-weight:600}
+.ds-nav .aerostrat-btn{font-size:14px;min-height:44px;padding:12px 20px}
+.ds-mwrap{position:relative;display:flex;align-items:center;height:48px;gap:2px}
+.ds-mtog{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:0;background:transparent;color:#fff;cursor:pointer;border-radius:6px;opacity:0.82}
+.ds-mtog svg{transition:transform var(--t2) var(--ease)}
+.ds-mwrap.is-open .ds-mtog svg{transform:rotate(180deg)}
+.ds-mega{position:absolute;top:calc(100% + 14px);left:50%;width:600px;padding:22px;border-radius:20px;background:rgba(0,21,56,0.9);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,0.7);opacity:0;visibility:hidden;transform:translate(-50%,-6px);transition:opacity var(--t1) var(--ease),transform var(--t2) var(--ease),visibility 0s linear var(--t2);white-space:normal}
+.ds-mwrap.is-open .ds-mega{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity var(--t1) var(--ease),transform var(--t2) var(--ease)}
+.ds-mega::before{content:'';position:absolute;left:0;right:0;top:-16px;height:16px}
+.ds-mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ds-mcard{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:14px;text-decoration:none !important;transition:background-color var(--t1) var(--ease)}
+.ds-mcard:hover,.ds-mcard:focus-visible{background:rgba(63,158,232,0.10)}
+.ds-mcard-t{display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1.3 'Open Sauce One',sans-serif;color:#fff}
+.ds-mcard-d{font:400 13px/1.5 'Open Sauce One',sans-serif;color:var(--grey)}
+.ds-badge{display:inline-flex;align-items:center;gap:6px;font:600 10.5px/1 'Open Sauce One',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--sky)}
+.ds-badge::before{content:'';width:6px;height:6px;border-radius:1.5px;background:currentColor}
+.ds-badge.next{color:var(--grey)}
+.ds-mega-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;padding:14px 16px 0;border-top:1px solid rgba(255,255,255,0.08)}
+.ds-mega-foot a{font:600 13.5px/1 'Open Sauce One',sans-serif;color:#fff;text-decoration:none}
+.ds-mega-foot a:hover{color:var(--sky)}
+.ds-mega-next{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;padding:0 16px}
+.ds-mega-next span{display:inline-flex;align-items:center;gap:8px;font:500 12.5px/1.4 'Open Sauce One',sans-serif;color:rgba(255,255,255,0.55)}
+html body header.ds-header .ds-menu{display:none;width:48px;height:48px;border:0;border-radius:8px;background:rgba(255,255,255,0.06);align-items:center;justify-content:center;cursor:pointer;flex:none}
+.ds-menu span,.ds-menu span::before,.ds-menu span::after{display:block;width:18px;height:1.5px;background:#fff;position:relative;transition:transform var(--t2) var(--ease),opacity var(--t1)}
+.ds-menu span::before,.ds-menu span::after{content:'';position:absolute;left:0}
+.ds-menu span::before{top:-6px}.ds-menu span::after{top:6px}
+.ds-menu[aria-expanded="true"] span{background:transparent}
+.ds-menu[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.ds-menu[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.ds-sheet{position:fixed;inset:0;z-index:-1;display:flex;flex-direction:column;padding:calc(var(--hdr) + 24px) var(--gut) 0;background:#001538;opacity:0;visibility:hidden;transition:opacity var(--t2) var(--ease),visibility 0s linear var(--t2);overflow-y:auto;overscroll-behavior:contain}
+.ds-sheet.is-open{opacity:1;visibility:visible;transition:opacity var(--t2) var(--ease)}
+.ds-sheet a.big{display:flex;align-items:center;min-height:56px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);font:600 clamp(24px,6.4vw,34px)/1.1 'Open Sauce One',sans-serif;letter-spacing:-0.01em;color:#fff;text-decoration:none}
+.ds-sheet a.sub{display:flex;align-items:center;min-height:48px;padding-left:18px;border-bottom:1px solid rgba(255,255,255,0.08);font:500 17px/1.2 'Open Sauce One',sans-serif;color:rgba(255,255,255,0.75);text-decoration:none}
+.ds-sheet-cta{position:sticky;bottom:0;margin-top:auto;padding:20px 0 calc(20px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,rgba(0,21,56,0),#001538 30%)}
+.ds-sheet-cta .aerostrat-btn{width:100%;min-height:56px;font-size:16px}
+@media (max-width:1020px){
+  html body header.ds-header .aerostrat-nav-desk{display:none !important}
+  html body header.ds-header .ds-menu{display:flex}
+  :root{--hdr:88px} header.ds-header.is-solid{--hdr:64px}
+  html body header.ds-header .ds-logo img{height:48px !important}
+  html body header.ds-header.is-solid .ds-logo img{height:38px !important}
+}
+html.ds-sheet-open{overflow:hidden}
+html.ds-sheet-open header.ds-header{transform:none}
+html.ds-sheet-open header.ds-header::before{opacity:0}
+.ds-hidden-old{display:none !important}
+
+/* ---- Footer and "Up next": borderless on the canvas ---- */
+html body footer{background:transparent !important;border-top:1px solid var(--hair) !important;position:relative;z-index:1}
+html body footer > div > div:first-child{border-bottom-color:rgba(255,255,255,0.08) !important}
+html[data-theme="light"] body footer{color:#fff}
+
+/* ---- Motion (D5, D8) ----
+   html.ds-motion is set by js/motion.js only when motion is allowed, so without
+   JavaScript, in the pre-rendered copy and with reduced motion, everything is shown at once. */
+html.ds-motion [data-rv]{opacity:0;transform:translate3d(0,12px,0);transition:opacity var(--t3) var(--ease),transform var(--t3) var(--ease);transition-delay:calc(var(--i,0) * 60ms)}
+html.ds-motion [data-rv].is-in{opacity:1;transform:none}
+html.ds-motion [data-lm]:not(.is-split){opacity:0}
+html.ds-motion [data-lm] .ds-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:0.08em;margin-bottom:-0.08em}
+html.ds-motion [data-lm] .ds-w > span{display:inline-block;transform:translate3d(0,105%,0);transition:transform 900ms var(--ease);transition-delay:calc(var(--l,0) * 90ms + 60ms)}
+html.ds-motion [data-lm].is-in .ds-w > span{transform:none}
+/* statement fill (S3): one variable per paragraph, each word reads its own index */
+[data-fill] .ds-fw{opacity:clamp(0.25,calc(var(--f,99) - var(--k,0)),1);transition:opacity 120ms linear}
+/* light sweep on dark headlines, once */
+html.ds-motion .ds-sweep{background:linear-gradient(100deg,var(--fg) 0%,var(--fg) 40%,#9fd0ff 50%,var(--fg) 60%,var(--fg) 100%) 100% 0/260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+html.ds-motion .ds-sweep.is-in{animation:ds-sweep 1.6s var(--ease) 0.5s both}
+@keyframes ds-sweep{from{background-position:100% 0}to{background-position:0 0}}
+/* wiped images (clip-path), parallax */
+html.ds-motion [data-wipe]{clip-path:inset(0 0 100% 0);transition:clip-path 1100ms var(--ease)}
+html.ds-motion [data-wipe].is-in{clip-path:inset(0 0 0 0)}
+[data-px]{will-change:transform}
+/* arcs that draw themselves */
+html.ds-motion [data-draw]{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1600ms var(--ease)}
+html.ds-motion [data-draw].is-in,html.ds-motion .is-in [data-draw]{stroke-dashoffset:0}
+
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  .ds-orb,.ds-marquee-track{animation:none !important}
+  html,html body,.ds-page{transition:none}
+  header.ds-header,header.ds-header::before,.ds-mega,.ds-sheet{transition:none !important}
+}
