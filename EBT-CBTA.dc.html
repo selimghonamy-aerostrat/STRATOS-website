@@ -592,6 +592,140 @@ html.rv-ready [data-draw].is-in{stroke-dashoffset:0}
   .ds-path::after,.ds-path:first-child::after{left:0;right:0}
   .ds-path-a{right:0}
 }
+
+/* =====================================================================================
+   v3.3 · the AeroStrat look (overrides the v3.2 layer above; one shared source)
+   ===================================================================================== */
+
+/* ---- Blended canvas: one fixed background; sections have no colour of their own ---- */
+@property --c1{syntax:'<color>';inherits:false;initial-value:#001538}
+@property --c2{syntax:'<color>';inherits:false;initial-value:#001538}
+html body{background:transparent}
+.as-canvas{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;--c1:#001538;--c2:#00204F;
+  background:linear-gradient(in oklch 180deg,var(--c1),var(--c2));transition:--c1 600ms var(--ease),--c2 600ms var(--ease)}
+.as-canvas[data-tone="deep"]{--c1:#00348C;--c2:#002A72}
+/* light: Light Gray with a Deep Blue haze at the top, so dark to light passes through blue, never grey */
+.as-canvas[data-tone="light"]{--c1:#DCE4F0;--c2:#ECF0F3}
+.as-orb{position:absolute;width:52vw;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(63,158,232,0.11),rgba(63,158,232,0) 72%);will-change:transform}
+.as-orb.a{left:-14vw;top:-8vh}
+.as-orb.b{right:-16vw;top:46vh}
+.as-canvas[data-tone="light"] .as-orb{opacity:0.5}
+html body .on-navy,html body .on-deep,html body .on-light,html body .ds-band,html body .ds-phero,html body .ds-footer,html body .hm-hero,html body .hm-sband{background:transparent}
+html body .ds-blend{background:none}
+/* the space between two sections of different tone is where the canvas changes colour */
+html body main .on-light + :is(.on-navy,.on-deep,.ds-band,.ds-close),html body main :is(.on-navy,.on-deep,.ds-band,.ds-phero,.ds-close) + .on-light{margin-top:18vh}
+html body main .on-navy + :is(.on-deep,.ds-band),html body main :is(.on-deep,.ds-band) + .on-navy{margin-top:10vh}
+.ds-phero::after{background:linear-gradient(180deg,rgba(0,21,56,0.3) 0%,rgba(0,21,56,0) 30%,rgba(0,21,56,0) 70%,rgba(0,21,56,0) 100%),linear-gradient(90deg,var(--as-navy) 0%,rgba(0,21,56,0.55) 45%,rgba(0,21,56,0) 100%)}
+.ds-phero-img{-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,0.35) 30%,#000 70%),linear-gradient(180deg,#000 60%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,0.35) 30%,#000 70%),linear-gradient(180deg,#000 60%,transparent);mask-composite:intersect}
+.on-deep{--eyebrow:#FFFFFF}
+
+/* ---- Topic label: the orange logo arc drawn above its right part ---- */
+.ds-eyebrow{position:relative;display:inline-flex;align-items:center;gap:12px;padding-top:18px;margin:0 0 22px;font:600 clamp(17px,1.35vw,20px)/1.25 var(--font);color:var(--fg)}
+.ds-eyebrow > svg:first-child{display:none}
+.ds-eyebrow::before{content:'';position:absolute;top:0;right:0;width:62%;height:8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 1.2 Q 50 7.4 100 0.6 L 100 1.8 Q 50 10.6 0 2.4 Z' fill='%23FF5A13'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
+.ds-close .ds-eyebrow{align-self:center}
+
+/* ---- Headlines: Bold over Regular, same colour, two lines ---- */
+.tone-2{display:block;font-weight:400}
+.ds-h1,.ds-display{letter-spacing:-0.03em}
+
+/* ---- One faint S per section (no tiled wallpaper) ---- */
+.ds-pattern::before{background:url(/uploads/svg/aerostrat-icon-white.svg) no-repeat 90% 50%/auto min(52vh,560px);opacity:0.06;-webkit-mask-image:none;mask-image:none}
+.on-light.ds-pattern::before,.on-light .ds-pattern::before{background-image:url(/uploads/svg/aerostrat-icon-navy.svg);opacity:0.05}
+.ds-close.ds-pattern::before{background-position:92% 50%;-webkit-mask-image:none;mask-image:none}
+
+/* ---- Hairlines fade at both ends ---- */
+:root{--hair-f:rgba(255,255,255,0.16)}
+.on-light{--hair-f:rgba(0,52,140,0.14)}
+.ds-hl > li,.ds-hl > div,.ds-row,.ds-dom,.ds-stats > div,.ds-faq .aerostrat-faq-item,.ds-footer-grid,.ds-footer,.ds-split + .ds-hl{border-image:linear-gradient(90deg,transparent,var(--hair-f) 15%,var(--hair-f) 85%,transparent) 1}
+.ds-faq.aerostrat-faq-list,.ds-faq{border-bottom:0}
+header.ds-header::before{border-bottom:0;box-shadow:none}
+.ds-snav{border-bottom:0}
+
+/* ---- Status: dot + word (no outlines, no fills) ---- */
+html body .ds-pill{height:auto;padding:0;border:0;border-radius:0;background:none;gap:8px;font:600 14px/1.3 var(--font);color:var(--fg)}
+html body .ds-pill::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:currentColor}
+html body .ds-pill.live,html body .ds-pill.here{color:var(--coral);background:none}
+html body .ds-pill.next{color:var(--sky)}
+html body .on-light .ds-pill.next{color:var(--deep)}
+html body .ds-pill.sample{font:500 13px/1.3 var(--font);color:var(--grey)}
+html body .on-light .ds-pill.sample{color:rgba(0,0,0,0.55)}
+html body .ds-pill.sample::before{display:none}
+.ds-mega-next .ds-pill{height:auto;padding:0;font-size:12.5px}
+
+/* ---- Feathered panels: surfaces melt into the canvas instead of ending in an edge ---- */
+html body .ds-glass{border:0;border-radius:28px;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(63,158,232,0.08),transparent 70%),rgba(255,255,255,0.04);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);mask-composite:intersect}
+html body .on-light .ds-glass{background:rgba(0,52,140,0.04)}
+.ds-glass-pad{padding:clamp(28px,3.4vw,48px)}
+
+/* ---- Icons on a soft glow, no tile ---- */
+html body .ds-plate{border-radius:50%;background:radial-gradient(circle,rgba(63,158,232,0.25),rgba(63,158,232,0) 70%)}
+html body .ds-plate svg{stroke:var(--sky);stroke-width:1.75}
+html body .on-light .ds-plate{background:radial-gradient(circle,rgba(0,52,140,0.14),rgba(0,52,140,0) 70%)}
+html body .on-light .ds-plate svg{stroke:var(--deep)}
+html body .ds-plate.live{background:radial-gradient(circle,rgba(255,90,19,0.28),rgba(255,90,19,0) 70%)}
+html body .ds-plate.live svg{stroke:var(--coral)}
+.as-ic{display:block;width:100%;height:100%}
+
+/* ---- Form fields: underline, labels above; choice chips are text options with a dot ---- */
+html body .ds-input{min-height:48px;border:0;border-bottom:1px solid rgba(255,255,255,0.22);border-radius:0;background:transparent;padding:12px 0;box-shadow:none}
+html body .on-light .ds-input{border-bottom-color:rgba(0,52,140,0.25);color:var(--deep)}
+html body .ds-input:focus{border-bottom:2px solid var(--sky);box-shadow:none;padding-bottom:11px}
+html body textarea.ds-input{min-height:120px}
+html body .ds-toggle{border:0;border-radius:0;background:none;padding:0 6px 0 0;gap:10px;min-height:44px;font-weight:500}
+html body .ds-toggle::before{content:'';flex:none;width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1.5px currentColor;opacity:0.7}
+html body .ds-toggle[aria-pressed="true"]{background:none;color:#fff}
+html body .ds-toggle[aria-pressed="true"]::before{background:var(--coral);box-shadow:none;opacity:1}
+
+/* ---- Text links in Coral or white with the arrow ---- */
+.ds-link .arr{color:var(--coral)}
+
+/* ---- Reveals: never hidden; a short fade-up from 40%, below the fold only ---- */
+html.rv-ready .rv-wait{opacity:0.4;transform:translate3d(0,10px,0)}
+html.rv-ready [data-rv]{transition:opacity 400ms var(--ease),transform 400ms var(--ease);transition-delay:calc(var(--i,0) * 40ms)}
+html.rv-ready [data-lm].rv-wait .ds-w > span{transform:none}
+
+/* ---- Flight path with waypoints (domains row; also the pattern for stages and timelines) ---- */
+.ds-route{position:relative;padding-top:8px}
+.ds-route-path{position:absolute;left:0;right:0;top:96px;width:100%;height:56px;overflow:visible;pointer-events:none}
+.ds-route-path path{fill:none;stroke:var(--sky);stroke-width:2.5;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:0.7}
+.on-light .ds-route-path path{stroke:var(--deep);opacity:0.45}
+html body .ds-domains{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
+html body .ds-dom{border:0;border-image:none;padding-top:0;align-items:center;text-align:center;gap:8px}
+.ds-dom:nth-child(1),.ds-dom:nth-child(5){--y:44px}
+.ds-dom:nth-child(2),.ds-dom:nth-child(4){--y:12px}
+.ds-dom:nth-child(3){--y:0px}
+.ds-dom .ds-plate{width:64px;height:64px;margin:0 0 6px;transform:translateY(var(--y,0))}
+.ds-dom .ds-plate svg{width:44px;height:44px}
+.ds-wp{display:block;width:14px;height:14px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 6px rgba(63,158,232,0.18);transform:translateY(var(--y,0));margin-bottom:14px}
+.ds-dom.live .ds-wp{background:var(--coral);box-shadow:0 0 0 6px rgba(255,90,19,0.22)}
+.on-light .ds-wp{background:var(--deep);box-shadow:0 0 0 6px rgba(0,52,140,0.12)}
+.on-light .ds-dom.live .ds-wp{background:var(--coral)}
+.ds-dom .ds-pill,.ds-dom-t,.ds-dom-l,.ds-dom-link{transform:translateY(var(--y,0))}
+html body .ds-dom-t{font:600 19px/1.25 var(--font);margin:6px 0 0}
+html body .ds-dom-l{margin:0;font:400 15px/1.5 var(--font);color:var(--fg-2)}
+.ds-dom-u,.ds-dom-d{display:none}
+@media (max-width:900px){
+  .ds-route-path{display:none}
+  html body .ds-domains{display:flex;flex-direction:column;gap:0;padding-left:28px;position:relative}
+  html body .ds-domains::before{content:'';position:absolute;left:6px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,transparent,var(--sky) 8%,var(--sky) 92%,transparent);opacity:0.6}
+  html body .ds-dom{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-areas:"ic pill" "ic t" "ic l" "ic a";align-items:start;text-align:left;gap:4px 16px;padding:18px 0;position:relative}
+  .ds-dom .ds-plate,.ds-dom .ds-pill,.ds-dom-t,.ds-dom-l,.ds-dom-link,.ds-wp{transform:none}
+  .ds-dom .ds-plate{grid-area:ic;width:44px;height:44px;margin:0}
+  .ds-dom .ds-plate svg{width:32px;height:32px}
+  .ds-wp{position:absolute;left:-28px;top:32px;margin:0;width:12px;height:12px}
+  .ds-dom .ds-pill{grid-area:pill}.ds-dom-t{grid-area:t}.ds-dom-l{grid-area:l}.ds-dom-link{grid-area:a}
+}
+
+/* before js/motion.js takes over (and without JavaScript) light sections keep their own Light Gray */
+html:not(.tone-ready) body .on-light{background:var(--as-light)}
+html:not(.tone-ready) body .on-deep,html:not(.tone-ready) body .ds-band{background:var(--as-deep-blue)}
+/* v3.3: shorter pages */
+.ds-sec{padding:clamp(64px,7.5vw,108px) 0}
+html body main > section.ds-sec.ds-sec{padding-top:clamp(64px,7.5vw,108px) !important;padding-bottom:clamp(64px,7.5vw,108px) !important}
 </style>
 <style id="page-css">
 /* EBT/CBTA page. Uses the tokens and components in css/ds.css. Inlined by scripts/sync-shared.py. */
@@ -874,6 +1008,7 @@ html body .eb-submit{min-height:44px;padding:10px 22px;font:600 14px/1 var(--fon
     prepare();
     observe();
     scrubSetup();
+    toneSetup();
     snavSetup();
     onScroll(); frame();
   }
@@ -969,7 +1104,6 @@ html body .eb-submit{min-height:44px;padding:10px 22px;font:600 14px/1 var(--fon
         if (revealed[el.__k]) { el.classList.add('is-in'); el.classList.remove('rv-wait'); if (el.hasAttribute('data-count')) el.__counted = true; return; }
         if (!below) { el.classList.add('is-in'); revealed[el.__k] = 1; return; }
         el.classList.add('rv-wait');
-        if (el.hasAttribute('data-lm') && !el.querySelector('.ds-w')) { words(el, 'ds-w'); lines(el); }
       });
     }
     st.fills = [].map.call(scope.querySelectorAll('[data-fill]'), function (el) {
@@ -1016,7 +1150,6 @@ html body .eb-submit{min-height:44px;padding:10px 22px;font:600 14px/1 var(--fon
         es.forEach(function (en) {
           if (!en.isIntersecting) return;
           var el = en.target; el.classList.add('is-in'); revealed[el.__k] = 1; io.unobserve(el);
-          if (el.hasAttribute('data-count')) count(el);
         });
       }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
       scope.querySelectorAll(REV).forEach(function (el) { if (!el.classList.contains('is-in') || (el.hasAttribute('data-count') && !el.__counted)) io.observe(el); });
@@ -1042,49 +1175,67 @@ html body .eb-submit{min-height:44px;padding:10px 22px;font:600 14px/1 var(--fon
     requestAnimationFrame(f);
   }
 
-  /* ---------- hero: the airliner takes off as you scroll (video scrub) ---------- */
+  /* ---------- hero: the video plays from load; scrolling lifts it like a take-off ---------- */
   function scrubSetup() {
-    var track = scope.querySelector('[data-scrub]');
+    var hero = scope.querySelector('[data-hero]');
     st.scrub = null;
-    if (!track) return;
-    var v = track.querySelector('video');
-    var ok = motion && !saveData && v && v.canPlayType && v.canPlayType('video/mp4') !== '';
-    track.classList.toggle('is-scrub', !!ok);
-    if (!ok) return;
-    st.scrub = { track: track, v: v, inner: track.querySelector('[data-scrub-fade]'), cur: 0, target: 0, raf: 0, attached: false };
-    // the video loads only on the live page, after the page has loaded or on the first scroll
-    var attach = function () {
-      var s = st.scrub; if (!s || s.attached || !live() || !s.v.isConnected) return;
-      s.attached = true;
-      s.v.muted = true; s.v.playsInline = true; s.v.preload = 'auto';
+    if (!hero) return;
+    var v = hero.querySelector('video'), lift = hero.querySelector('[data-hero-lift]'), fade = hero.querySelector('[data-hero-fade]');
+    st.scrub = { hero: hero, v: v, lift: lift, fade: fade, vis: true };
+    if (!v || !motion || saveData) return;           // reduced motion / Save-Data: the poster only
+    var start = function () {
+      var s = st.scrub; if (!s || !live() || !s.v.isConnected || s.v.__src) return;
+      s.v.__src = true;
+      s.v.muted = true; s.v.playsInline = true; s.v.loop = true;
       s.v.src = W.innerWidth < 760 ? s.v.getAttribute('data-src-sm') : s.v.getAttribute('data-src');
-      s.v.load();
-      var p = s.v.play(); if (p && p.then) p.then(function () { s.v.pause(); scrubTick(); }).catch(function () {});
+      var p = s.v.play(); if (p && p.catch) p.catch(function () {});
+      // pause only when the hero is completely off-screen, resume when it returns
+      new IntersectionObserver(function (es) {
+        var on = es[0].isIntersecting; s.vis = on;
+        if (on) { var q = s.v.play(); if (q && q.catch) q.catch(function () {}); } else s.v.pause();
+      }).observe(s.hero);
     };
-    if (d.readyState === 'complete') setTimeout(attach, 200); else W.addEventListener('load', function () { setTimeout(attach, 200); }, { once: true });
-    W.addEventListener('scroll', attach, { once: true, passive: true });
-  }
-  function scrubTick() {
-    var s = st.scrub; if (!s) return;
-    s.raf = 0;
-    var dur = s.v.duration || 9;
-    s.cur += (s.target - s.cur) * 0.12;
-    if (Math.abs(s.target - s.cur) < 0.0005) s.cur = s.target;
-    var t = s.cur * (dur - 0.05);
-    if (s.attached && s.v.readyState >= 1 && !s.v.seeking && Math.abs(s.v.currentTime - t) > 1 / 30) { try { s.v.currentTime = t; } catch (e) {} }
-    if (s.cur !== s.target) s.raf = requestAnimationFrame(scrubTick);
+    if (live()) start();
   }
   function scrubFrame(vh) {
-    var s = st.scrub; if (!s) return;
-    var r = s.track.getBoundingClientRect(), total = Math.max(1, s.track.offsetHeight - vh);
-    var p = clamp(-r.top / total, 0, 1);
-    s.target = p;
-    if (!s.raf) s.raf = requestAnimationFrame(scrubTick);
-    if (s.inner) {
-      var k = clamp((p - 0.55) / 0.3, 0, 1);
-      s.inner.style.transform = k ? 'translate3d(0,' + (-40 * k).toFixed(1) + 'px,0)' : '';
-      s.inner.style.opacity = k ? (1 - 0.85 * k).toFixed(3) : '';
-    }
+    var s = st.scrub; if (!s || !motion) return;
+    var r = s.hero.getBoundingClientRect();
+    if (r.bottom < 0) return;
+    var p = clamp(-r.top / Math.max(1, r.height), 0, 1);
+    if (s.v) s.v.style.transform = p ? 'translate3d(0,' + (-8 * p).toFixed(2) + '%,0) scale(' + (1 + 0.12 * p).toFixed(4) + ')' : '';
+    if (s.fade) s.fade.style.opacity = p.toFixed(3);
+    if (s.lift) { s.lift.style.transform = p ? 'translate3d(0,' + (-40 * p).toFixed(1) + 'px,0)' : ''; s.lift.style.opacity = p ? (1 - 0.4 * p).toFixed(3) : ''; }
+  }
+
+  /* ---------- blended canvas: the section on the middle line sets the tone ---------- */
+  var toneIo = null;
+  function toneOf(el) {
+    var t = el.getAttribute('data-tone'); if (t) return t;
+    var c = el.classList;
+    if (c.contains('on-light')) return 'light';
+    if (c.contains('on-deep') || c.contains('ds-band')) return 'deep';
+    return 'navy';
+  }
+  function toneSetup() {
+    if (toneIo) toneIo.disconnect();
+    var canvas = scope.querySelector('.as-canvas'); if (!canvas || !('IntersectionObserver' in W)) return;
+    var secs = [].slice.call(main.children).reduce(function (a, el) { return a.concat(el.tagName === 'DIV' && el.querySelector(':scope > section') ? [].slice.call(el.querySelectorAll(':scope > section')) : [el]); }, []);
+    if (reduce) canvas.style.transition = 'none';
+    // every section takes the canvas tone, so text is always readable while the colour changes;
+    // photo-led sections (heroes, the statement band) stay dark
+    var foot = scope.querySelector('footer');
+    var themed = secs.concat(foot ? [foot] : []).filter(function (el) { return !/(^|\s)(ds-phero|hm-hero|hm-sband|nf)(\s|$)/.test(el.className || ''); });
+    themed.forEach(function (el) { if (!el.hasAttribute('data-tone')) el.setAttribute('data-tone', toneOf(el)); });
+    var apply = function (tone) {
+      canvas.setAttribute('data-tone', tone);
+      themed.forEach(function (el) { el.classList.remove('on-light', 'on-navy', 'on-deep'); el.classList.add('on-' + tone); });
+    };
+    toneIo = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) apply(en.target.getAttribute('data-tone') || toneOf(en.target)); });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    secs.forEach(function (el) { toneIo.observe(el); });
+    html.classList.add('tone-ready');
+    st.orbs = [].slice.call(canvas.querySelectorAll('.as-orb'));
   }
 
   /* ---------- section navigation on long pages ---------- */
@@ -1123,6 +1274,7 @@ html body .eb-submit{min-height:44px;padding:10px 22px;font:600 14px/1 var(--fon
     st.lastY = y;
     if (!scope) return;
     scrubFrame(vh);
+    if (motion && st.orbs) st.orbs.forEach(function (o, i) { o.style.transform = 'translate3d(0,' + (Math.sin(y / 1400 + i * 2) * 0.15 * vh).toFixed(1) + 'px,0)'; });
     snavFrame();
     if (motion) st.fills.forEach(function (f) {
       var r = f.el.getBoundingClientRect();
@@ -2000,6 +2152,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
 
   <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:200;background:#FF5A13;color:#fff;font:600 13px/1 'Open Sauce One',sans-serif;padding:14px 20px" style-focus="left:12px;top:12px">Skip to content</a>
   <span data-scroll-sentinel="" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none"></span>
+  <div className="as-canvas" aria-hidden="true" data-tone="navy"><i className="as-orb a"></i><i className="as-orb b"></i></div>
   <div className="ds-runway" aria-hidden="true">
     <div className="lane">
       <div className="edge t"></div>

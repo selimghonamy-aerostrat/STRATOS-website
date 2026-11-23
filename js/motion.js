@@ -45,6 +45,7 @@
     prepare();
     observe();
     scrubSetup();
+    toneSetup();
     snavSetup();
     onScroll(); frame();
   }
@@ -140,7 +141,6 @@
         if (revealed[el.__k]) { el.classList.add('is-in'); el.classList.remove('rv-wait'); if (el.hasAttribute('data-count')) el.__counted = true; return; }
         if (!below) { el.classList.add('is-in'); revealed[el.__k] = 1; return; }
         el.classList.add('rv-wait');
-        if (el.hasAttribute('data-lm') && !el.querySelector('.ds-w')) { words(el, 'ds-w'); lines(el); }
       });
     }
     st.fills = [].map.call(scope.querySelectorAll('[data-fill]'), function (el) {
@@ -187,7 +187,6 @@
         es.forEach(function (en) {
           if (!en.isIntersecting) return;
           var el = en.target; el.classList.add('is-in'); revealed[el.__k] = 1; io.unobserve(el);
-          if (el.hasAttribute('data-count')) count(el);
         });
       }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
       scope.querySelectorAll(REV).forEach(function (el) { if (!el.classList.contains('is-in') || (el.hasAttribute('data-count') && !el.__counted)) io.observe(el); });
@@ -213,49 +212,67 @@
     requestAnimationFrame(f);
   }
 
-  /* ---------- hero: the airliner takes off as you scroll (video scrub) ---------- */
+  /* ---------- hero: the video plays from load; scrolling lifts it like a take-off ---------- */
   function scrubSetup() {
-    var track = scope.querySelector('[data-scrub]');
+    var hero = scope.querySelector('[data-hero]');
     st.scrub = null;
-    if (!track) return;
-    var v = track.querySelector('video');
-    var ok = motion && !saveData && v && v.canPlayType && v.canPlayType('video/mp4') !== '';
-    track.classList.toggle('is-scrub', !!ok);
-    if (!ok) return;
-    st.scrub = { track: track, v: v, inner: track.querySelector('[data-scrub-fade]'), cur: 0, target: 0, raf: 0, attached: false };
-    // the video loads only on the live page, after the page has loaded or on the first scroll
-    var attach = function () {
-      var s = st.scrub; if (!s || s.attached || !live() || !s.v.isConnected) return;
-      s.attached = true;
-      s.v.muted = true; s.v.playsInline = true; s.v.preload = 'auto';
+    if (!hero) return;
+    var v = hero.querySelector('video'), lift = hero.querySelector('[data-hero-lift]'), fade = hero.querySelector('[data-hero-fade]');
+    st.scrub = { hero: hero, v: v, lift: lift, fade: fade, vis: true };
+    if (!v || !motion || saveData) return;           // reduced motion / Save-Data: the poster only
+    var start = function () {
+      var s = st.scrub; if (!s || !live() || !s.v.isConnected || s.v.__src) return;
+      s.v.__src = true;
+      s.v.muted = true; s.v.playsInline = true; s.v.loop = true;
       s.v.src = W.innerWidth < 760 ? s.v.getAttribute('data-src-sm') : s.v.getAttribute('data-src');
-      s.v.load();
-      var p = s.v.play(); if (p && p.then) p.then(function () { s.v.pause(); scrubTick(); }).catch(function () {});
+      var p = s.v.play(); if (p && p.catch) p.catch(function () {});
+      // pause only when the hero is completely off-screen, resume when it returns
+      new IntersectionObserver(function (es) {
+        var on = es[0].isIntersecting; s.vis = on;
+        if (on) { var q = s.v.play(); if (q && q.catch) q.catch(function () {}); } else s.v.pause();
+      }).observe(s.hero);
     };
-    if (d.readyState === 'complete') setTimeout(attach, 200); else W.addEventListener('load', function () { setTimeout(attach, 200); }, { once: true });
-    W.addEventListener('scroll', attach, { once: true, passive: true });
-  }
-  function scrubTick() {
-    var s = st.scrub; if (!s) return;
-    s.raf = 0;
-    var dur = s.v.duration || 9;
-    s.cur += (s.target - s.cur) * 0.12;
-    if (Math.abs(s.target - s.cur) < 0.0005) s.cur = s.target;
-    var t = s.cur * (dur - 0.05);
-    if (s.attached && s.v.readyState >= 1 && !s.v.seeking && Math.abs(s.v.currentTime - t) > 1 / 30) { try { s.v.currentTime = t; } catch (e) {} }
-    if (s.cur !== s.target) s.raf = requestAnimationFrame(scrubTick);
+    if (live()) start();
   }
   function scrubFrame(vh) {
-    var s = st.scrub; if (!s) return;
-    var r = s.track.getBoundingClientRect(), total = Math.max(1, s.track.offsetHeight - vh);
-    var p = clamp(-r.top / total, 0, 1);
-    s.target = p;
-    if (!s.raf) s.raf = requestAnimationFrame(scrubTick);
-    if (s.inner) {
-      var k = clamp((p - 0.55) / 0.3, 0, 1);
-      s.inner.style.transform = k ? 'translate3d(0,' + (-40 * k).toFixed(1) + 'px,0)' : '';
-      s.inner.style.opacity = k ? (1 - 0.85 * k).toFixed(3) : '';
-    }
+    var s = st.scrub; if (!s || !motion) return;
+    var r = s.hero.getBoundingClientRect();
+    if (r.bottom < 0) return;
+    var p = clamp(-r.top / Math.max(1, r.height), 0, 1);
+    if (s.v) s.v.style.transform = p ? 'translate3d(0,' + (-8 * p).toFixed(2) + '%,0) scale(' + (1 + 0.12 * p).toFixed(4) + ')' : '';
+    if (s.fade) s.fade.style.opacity = p.toFixed(3);
+    if (s.lift) { s.lift.style.transform = p ? 'translate3d(0,' + (-40 * p).toFixed(1) + 'px,0)' : ''; s.lift.style.opacity = p ? (1 - 0.4 * p).toFixed(3) : ''; }
+  }
+
+  /* ---------- blended canvas: the section on the middle line sets the tone ---------- */
+  var toneIo = null;
+  function toneOf(el) {
+    var t = el.getAttribute('data-tone'); if (t) return t;
+    var c = el.classList;
+    if (c.contains('on-light')) return 'light';
+    if (c.contains('on-deep') || c.contains('ds-band')) return 'deep';
+    return 'navy';
+  }
+  function toneSetup() {
+    if (toneIo) toneIo.disconnect();
+    var canvas = scope.querySelector('.as-canvas'); if (!canvas || !('IntersectionObserver' in W)) return;
+    var secs = [].slice.call(main.children).reduce(function (a, el) { return a.concat(el.tagName === 'DIV' && el.querySelector(':scope > section') ? [].slice.call(el.querySelectorAll(':scope > section')) : [el]); }, []);
+    if (reduce) canvas.style.transition = 'none';
+    // every section takes the canvas tone, so text is always readable while the colour changes;
+    // photo-led sections (heroes, the statement band) stay dark
+    var foot = scope.querySelector('footer');
+    var themed = secs.concat(foot ? [foot] : []).filter(function (el) { return !/(^|\s)(ds-phero|hm-hero|hm-sband|nf)(\s|$)/.test(el.className || ''); });
+    themed.forEach(function (el) { if (!el.hasAttribute('data-tone')) el.setAttribute('data-tone', toneOf(el)); });
+    var apply = function (tone) {
+      canvas.setAttribute('data-tone', tone);
+      themed.forEach(function (el) { el.classList.remove('on-light', 'on-navy', 'on-deep'); el.classList.add('on-' + tone); });
+    };
+    toneIo = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) apply(en.target.getAttribute('data-tone') || toneOf(en.target)); });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    secs.forEach(function (el) { toneIo.observe(el); });
+    html.classList.add('tone-ready');
+    st.orbs = [].slice.call(canvas.querySelectorAll('.as-orb'));
   }
 
   /* ---------- section navigation on long pages ---------- */
@@ -294,6 +311,7 @@
     st.lastY = y;
     if (!scope) return;
     scrubFrame(vh);
+    if (motion && st.orbs) st.orbs.forEach(function (o, i) { o.style.transform = 'translate3d(0,' + (Math.sin(y / 1400 + i * 2) * 0.15 * vh).toFixed(1) + 'px,0)'; });
     snavFrame();
     if (motion) st.fills.forEach(function (f) {
       var r = f.el.getBoundingClientRect();
