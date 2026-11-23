@@ -157,3 +157,9 @@ html body .hm-hero .hm-hero-inner{padding-top:calc(var(--hdr) + 10px + 6vh) !imp
 .hm-story .ds-split{margin-bottom:clamp(24px,3vw,40px)}
 .hm-faq .aerostrat-faq-item > summary{padding:18px 0}
 .hm-sband{min-height:50vh}
+
+/* v3.4: statement band without a photo, text clear of the transition band; pinned story starts under its heading */
+html body main > section.hm-sband.hm-sband{padding:240px 0 120px !important;min-height:0}
+.hm-sband-shade{display:none}
+.hm-pin.is-pinned .hm-pin-stage{justify-content:flex-start;padding-top:calc(var(--hdr) + 10px + 48px)}
+.hm-story .ds-split{margin-bottom:24px}

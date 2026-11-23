@@ -69,3 +69,9 @@ html body main > section.ds-sec.ds-sec:not(.ds-phero){padding-top:clamp(46px,4.2
   .sol-vis text{font-size:17px}
   .sol-vis text.n,.sol-vis text.d{display:none}
 }
+
+/* v3.4: the two products as equal brand panels with three lines each */
+.sol-prod.ds-panel{display:flex;flex-direction:column;align-items:flex-start;height:100%}
+.sol-prod-rows{margin:8px 0 20px;align-self:stretch}
+.sol-prod-rows .ds-row{font-size:15.5px;border-image:none;border-top:1px solid rgba(255,255,255,0.08)}
+.sol-prod.ds-panel .ds-link{margin-top:auto}
