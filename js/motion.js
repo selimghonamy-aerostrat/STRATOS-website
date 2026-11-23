@@ -25,9 +25,12 @@
   function activeMain() {
     var pre = d.getElementById('dc-prerender');
     if (pre) return pre.querySelector('main');
-    return d.querySelector('#dc-root main.aerostrat-page-enter') || d.querySelector('#dc-root main');
+    var m = d.querySelector('#dc-root main.aerostrat-page-enter') || d.querySelector('#dc-root main');
+    // static pages (privacy, sub-processors, 404) have no React root
+    return m || (!d.querySelector('x-dc') ? d.querySelector('main') : null);
   }
-  function live() { return !!(main && main.closest('#dc-root') && !d.getElementById('dc-prerender')); }
+  var isStatic = function () { return !d.querySelector('x-dc'); };
+  function live() { return !!(main && (isStatic() || (main.closest('#dc-root') && !d.getElementById('dc-prerender')))); }
   function check() {
     var m = activeMain();
     if (m && m !== main && m.isConnected) bind(m);
@@ -384,7 +387,7 @@
     if (pending) return; pending = true;
     requestAnimationFrame(function () {
       pending = false; check();
-      if (live() && main.classList.contains('aerostrat-page-enter')) mo.disconnect();
+      if (live() && (isStatic() || main.classList.contains('aerostrat-page-enter'))) mo.disconnect();
     });
   });
   mo.observe(d.documentElement, { childList: true, subtree: true });

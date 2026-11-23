@@ -42,10 +42,6 @@
    Section rhythm: 40px on a 390px phone, growing with the screen to 56px on tablets.
    Selectors are more specific than the per-page rules so this file sets the scale. */
 @media (max-width:1020px){
-  main > section:not(.aerostrat-hero):not(.aerostrat-hero-alt){
-    padding-top:clamp(40px,8vw,56px) !important;
-    padding-bottom:clamp(40px,8vw,56px) !important;
-  }
   /* No trailing margin on the last block of a section, so gaps stay even */
   main > section > .aerostrat-reveal > :last-child{margin-bottom:0 !important}
 

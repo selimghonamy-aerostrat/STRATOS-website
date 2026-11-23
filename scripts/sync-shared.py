@@ -60,3 +60,24 @@ for path in sorted(glob.glob(os.path.join(ROOT, '*.dc.html'))):
     block = '<!-- MOTION:START (inlined from js/motion.js by scripts/sync-shared.py, do not edit) -->\n<script>\n' + JS + '</script>\n<!-- MOTION:END -->\n'
     s = re.sub(r'<!-- MOTION:START[\s\S]*?<!-- MOTION:END -->\n', lambda m: block, s, count=1)
     open(path, 'w').write(s); print('✓', name)
+
+
+# ---- Static pages (no React): the same header, footer, CSS and JS, filled between SHARED markers ----
+STATIC = ['privacy.html', 'legal/subprocessors.html', '404.html']
+ACTIVE = {'privacy.html': None, 'legal/subprocessors.html': None, '404.html': None}
+def to_html(tpl):
+    t = tpl.replace('className=', 'class=')
+    t = re.sub(r'\{\{ navClass_\w+ \}\}', 'aerostrat-nav-link', t)
+    t = t.replace('src="uploads/', 'src="/uploads/')
+    return t
+def fill(s, key, content):
+    return re.sub(r'<!-- SHARED:' + key + r' -->[\s\S]*?<!-- /SHARED:' + key + ' -->', lambda m: '<!-- SHARED:' + key + ' -->\n' + content + '\n<!-- /SHARED:' + key + ' -->', s, count=1)
+for rel in STATIC:
+    if ONLY and rel not in ONLY: continue
+    path = os.path.join(ROOT, rel); s = open(path).read()
+    if '<!-- SHARED:HEADER' not in s: continue
+    s = fill(s, 'CSS', '<style id="site-css">\n' + SITE_CSS + '\n</style>')
+    s = fill(s, 'HEADER', to_html(HEADER))
+    s = fill(s, 'FOOTER', to_html(FOOTER))
+    s = fill(s, 'JS', '<script>\n' + JS + '</script>')
+    open(path, 'w').write(s); print('✓', rel)
