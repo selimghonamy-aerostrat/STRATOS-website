@@ -1,0 +1,16 @@
+/* /clients (v3.2): page-only rules on top of css/ds.css */
+
+/* ---- Hero ---- */
+.cl-hero .ds-phero-img{object-position:center 40%}
+
+/* ---- Coming soon: borderless, on light ---- */
+.cl-soon-in{display:flex;flex-direction:column;align-items:flex-start;gap:24px;max-width:880px}
+.cl-soon-in .ds-actions{margin-top:12px}
+
+/* ---- Section heads without a lead ---- */
+.cl-head{margin-bottom:clamp(40px,5vw,72px)}
+
+/* ---- Proof numbers: Deep Blue brand band, as on the home page ---- */
+.cl-proof .ds-stat-num{color:#fff}
+.cl-proof-cap{margin:28px 0 0;font:500 18px/1.5 var(--font);color:rgba(255,255,255,0.86)}
+.cl-hero{padding-bottom:clamp(88px,11vw,160px) !important}
