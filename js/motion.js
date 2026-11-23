@@ -262,7 +262,7 @@
     // photo-led sections (heroes, the statement band) stay dark
     var foot = scope.querySelector('footer');
     var themed = secs.concat(foot ? [foot] : []).filter(function (el) { return !/(^|\s)(ds-phero|hm-hero|hm-sband|nf)(\s|$)/.test(el.className || ''); });
-    themed.forEach(function (el) { if (!el.hasAttribute('data-tone')) el.setAttribute('data-tone', toneOf(el)); });
+    secs.concat(themed).forEach(function (el) { if (!el.hasAttribute('data-tone')) el.setAttribute('data-tone', toneOf(el)); });
     var apply = function (tone) {
       canvas.setAttribute('data-tone', tone);
       themed.forEach(function (el) { el.classList.remove('on-light', 'on-navy', 'on-deep'); el.classList.add('on-' + tone); });

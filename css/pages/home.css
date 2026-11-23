@@ -156,3 +156,4 @@ html body .hm-hero .hm-hero-inner{padding-top:calc(var(--hdr) + 10px + 6vh) !imp
 .hm-who-mark{display:none}
 .hm-story .ds-split{margin-bottom:clamp(24px,3vw,40px)}
 .hm-faq .aerostrat-faq-item > summary{padding:18px 0}
+.hm-sband{min-height:50vh}
