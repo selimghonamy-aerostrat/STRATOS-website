@@ -108,7 +108,7 @@ for (const file of pages) {
       el.removeAttribute('data-observed'); el.removeAttribute('data-rev-idx');
     });
     // The scroll airplane starts at the left edge; the live page moves it
-    root.querySelectorAll('.aerostrat-runway .ship,.aerostrat-runway .laid,.aerostrat-runway .wake').forEach((el) => el.removeAttribute('style'));
+    root.querySelectorAll('.aerostrat-runway .ship,.aerostrat-runway .laid,.aerostrat-runway .wake,.ds-runway .ship,.ds-runway .laid,.ds-runway .wake').forEach((el) => el.removeAttribute('style'));
     // Reveal-animation helpers the live page adds itself; dropping them keeps runs identical
     root.querySelectorAll('.aerostrat-pop').forEach((el) => {
       el.classList.remove('aerostrat-pop'); if (!el.classList.length) el.removeAttribute('class');

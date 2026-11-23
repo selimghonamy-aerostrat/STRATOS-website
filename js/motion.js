@@ -1,9 +1,10 @@
-// AeroStrat motion and header (feat/uiux-v3). Native JS only: IntersectionObserver,
-// requestAnimationFrame, sticky positioning. Runs on the pre-rendered copy first and
-// re-binds when the live page (#dc-root) replaces it, carrying over what was revealed.
-// With prefers-reduced-motion nothing moves and everything is shown at once; the header,
-// menu and theme still work. scripts/prerender.mjs sets window.__dcPrerender so the
-// snapshot is taken with everything visible.
+// AeroStrat motion and header (feat/uiux-v3, v3.2). Native JS only: IntersectionObserver,
+// requestAnimationFrame, sticky positioning. Inlined into every page by scripts/sync-shared.py.
+// Runs on the pre-rendered copy first and re-binds when the live page (#dc-root) replaces it.
+// Rule: nothing above the fold is ever hidden. Elements are visible by default; only those that
+// start below the fold get .rv-wait and reveal as they come in (at 85% of the viewport).
+// prefers-reduced-motion: nothing moves, nothing is hidden, the hero shows the poster only.
+// scripts/prerender.mjs sets window.__dcPrerender so the snapshot is taken untouched.
 (function () {
   'use strict';
   if (window.__dsMotion) return; window.__dsMotion = true;
@@ -11,12 +12,14 @@
   var reduce = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var snapshot = !!W.__dcPrerender;
   var motion = !reduce && !snapshot && 'IntersectionObserver' in W;
+  var saveData = !!(navigator.connection && navigator.connection.saveData);
   if (motion) html.classList.add('ds-motion');
 
-  var revealed = {};            // keys of elements already shown, kept across the handover
-  var main = null, scope = null, io = null, themeIo = null, stepIo = null;
-  var st = { y: 0, lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], counts: [] };
+  var revealed = {};
+  var main = null, scope = null, io = null, stepIo = null;
+  var st = { lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], scrub: null, snav: null };
   var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var REV = '[data-rv],[data-lm],[data-draw],[data-count]';
 
   /* ---------- binding ---------- */
   function activeMain() {
@@ -24,20 +27,23 @@
     if (pre) return pre.querySelector('main');
     return d.querySelector('#dc-root main.aerostrat-page-enter') || d.querySelector('#dc-root main');
   }
+  function live() { return !!(main && main.closest('#dc-root') && !d.getElementById('dc-prerender')); }
   function check() {
     var m = activeMain();
     if (m && m !== main && m.isConnected) bind(m);
   }
   function bind(m) {
-    if (io) io.disconnect(); if (themeIo) themeIo.disconnect(); if (stepIo) stepIo.disconnect();
+    if (io) io.disconnect(); if (stepIo) stepIo.disconnect();
     main = m; scope = m.parentNode;
     header();
     prepare();
     observe();
+    scrubSetup();
+    snavSetup();
     onScroll(); frame();
   }
 
-  /* ---------- header (D6) ---------- */
+  /* ---------- header: always visible; solid after 24px ---------- */
   var hdr = null, mega = null, megaT = null, sheetBtn = null, sheet = null, megaTimer = 0;
   function header() {
     hdr = scope.querySelector('header.ds-header');
@@ -72,7 +78,6 @@
       });
       sheet.addEventListener('click', function (e) { if (e.target.closest('a')) setSheet(false); });
     }
-    hdr.addEventListener('focusin', function () { hdr.classList.remove('is-hidden'); });
   }
   function setMega(on) {
     if (!mega) return;
@@ -91,7 +96,6 @@
 
   /* ---------- preparing elements ---------- */
   function words(el, cls) {
-    // wrap each word (text nodes only, nested spans kept) for line masks and the word fill
     var out = [];
     (function walk(n) {
       [].slice.call(n.childNodes).forEach(function (c) {
@@ -115,14 +119,24 @@
     ws.forEach(function (w) { var t = w.offsetTop; if (top === null || t > top + 4) { l++; top = t; } w.style.setProperty('--l', l); });
   }
   function prepare() {
-    var n = 0;
-    scope.querySelectorAll('[data-rv],[data-lm],.ds-sweep,[data-draw],[data-count]').forEach(function (el) { el.__k = 'k' + (n++); });
-    // stagger siblings that reveal together
+    var n = 0, vh = W.innerHeight, first = !st.bound; st.bound = true;
+    scope.querySelectorAll(REV).forEach(function (el) { el.__k = 'k' + (n++); });
     scope.querySelectorAll('[data-rv]').forEach(function (el) {
       var sibs = [].filter.call(el.parentNode.children, function (c) { return c.hasAttribute('data-rv'); });
       el.style.setProperty('--i', Math.min(sibs.indexOf(el), 6));
     });
-    if (motion) scope.querySelectorAll('[data-lm]').forEach(function (el) { if (!el.querySelector('.ds-w')) words(el, 'ds-w'); lines(el); el.classList.add('is-split'); });
+    if (motion) {
+      html.classList.add('rv-ready');
+      scope.querySelectorAll(REV).forEach(function (el) {
+        var below = el.getBoundingClientRect().top > vh * 0.92;
+        // first screen: always visible; after the handover, keep what was already shown
+        if (first && !below) revealed[el.__k] = 1;
+        if (revealed[el.__k]) { el.classList.add('is-in'); el.classList.remove('rv-wait'); if (el.hasAttribute('data-count')) el.__counted = true; return; }
+        if (!below) { el.classList.add('is-in'); revealed[el.__k] = 1; return; }
+        el.classList.add('rv-wait');
+        if (el.hasAttribute('data-lm') && !el.querySelector('.ds-w')) { words(el, 'ds-w'); lines(el); }
+      });
+    }
     st.fills = [].map.call(scope.querySelectorAll('[data-fill]'), function (el) {
       var ws = el.querySelectorAll('.ds-fw'); if (!ws.length) ws = words(el, 'ds-fw');
       [].forEach.call(ws, function (w, i) { w.style.setProperty('--k', i); });
@@ -148,18 +162,6 @@
       return { el: p, steps: steps, bars: bars, cur: -1 };
     });
     pinMode();
-    // carry over the handover: anything already shown stays shown, without replaying
-    var instant = [], vh0 = W.innerHeight, first = !st.bound; st.bound = true;
-    scope.querySelectorAll('[data-rv],[data-lm],.ds-sweep,[data-draw],[data-count]').forEach(function (el) {
-      if (first && motion && el.getBoundingClientRect().top < vh0 && W.scrollY < 10 && !el.hasAttribute('data-count')) revealed[el.__k] = 1;
-      if (!motion || revealed[el.__k]) { el.classList.add('is-in'); instant.push(el); if (el.hasAttribute('data-count')) el.__counted = true; }
-    });
-    if (instant.length && motion) {
-      instant.forEach(function (el) { el.style.transition = 'none'; el.querySelectorAll('.ds-w > span').forEach(function (s) { s.style.transition = 'none'; }); });
-      requestAnimationFrame(function () { requestAnimationFrame(function () {
-        instant.forEach(function (el) { el.style.transition = ''; el.querySelectorAll('.ds-w > span').forEach(function (s) { s.style.transition = ''; }); });
-      }); });
-    }
     particles();
   }
   function pinMode() {
@@ -170,7 +172,7 @@
       p.cur = -1;
     });
   }
-  W.addEventListener('resize', function () { pinMode(); if (scope) scope.querySelectorAll('[data-lm]').forEach(function (el) { if (motion) lines(el); }); onScroll(); });
+  W.addEventListener('resize', function () { pinMode(); if (scope && motion) scope.querySelectorAll('[data-lm].rv-wait').forEach(lines); onScroll(); });
 
   /* ---------- observers ---------- */
   function observe() {
@@ -181,59 +183,119 @@
           var el = en.target; el.classList.add('is-in'); revealed[el.__k] = 1; io.unobserve(el);
           if (el.hasAttribute('data-count')) count(el);
         });
-      }, { threshold: 0, rootMargin: '0px 0px 12% 0px' });
-      scope.querySelectorAll('[data-rv],[data-lm],.ds-sweep,[data-draw],[data-count]').forEach(function (el) { if (!el.classList.contains('is-in')) io.observe(el); });
-      // unpinned product story: each step plays when it comes into view
+      }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+      scope.querySelectorAll(REV).forEach(function (el) { if (!el.classList.contains('is-in') || (el.hasAttribute('data-count') && !el.__counted)) io.observe(el); });
       stepIo = new IntersectionObserver(function (es) {
         es.forEach(function (en) { if (en.isIntersecting) en.target.classList.add('is-active'); });
-      }, { threshold: 0.35 });
+      }, { threshold: 0.3 });
       st.pins.forEach(function (p) { if (!p.el.classList.contains('is-pinned')) p.steps.forEach(function (s) { stepIo.observe(s); }); });
     } else {
       st.pins.forEach(function (p) { p.steps.forEach(function (s) { s.classList.add('is-active'); }); });
     }
-    // dark to light: the section on the middle line of the screen sets the page theme (D3)
-    var themed = scope.querySelectorAll('[data-theme]');
-    if (themed.length && 'IntersectionObserver' in W) {
-      themeIo = new IntersectionObserver(function (es) {
-        es.forEach(function (en) { if (en.isIntersecting) html.setAttribute('data-theme', en.target.getAttribute('data-theme')); });
-      }, { rootMargin: '-50% 0px -50% 0px' });
-      themed.forEach(function (s) { themeIo.observe(s); });
-    }
   }
+  // count-up changes only the number; any child (the Coral "+") is kept
   function count(el) {
     if (el.__counted) return; el.__counted = true;
-    var to = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', t0 = 0, dur = 1400;
+    var to = +el.getAttribute('data-count'), node = el.firstChild, t0 = 0, dur = 1200;
+    if (!node || node.nodeType !== 3) return;
     function f(t) {
       if (!t0) t0 = t;
       var p = clamp((t - t0) / dur, 0, 1), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(to * e).toLocaleString('en-GB') + suf;
+      node.textContent = Math.round(to * e).toLocaleString('en-GB');
       if (p < 1) requestAnimationFrame(f);
     }
     requestAnimationFrame(f);
+  }
+
+  /* ---------- hero: the airliner takes off as you scroll (video scrub) ---------- */
+  function scrubSetup() {
+    var track = scope.querySelector('[data-scrub]');
+    st.scrub = null;
+    if (!track) return;
+    var v = track.querySelector('video');
+    var ok = motion && !saveData && v && v.canPlayType && v.canPlayType('video/mp4') !== '';
+    track.classList.toggle('is-scrub', !!ok);
+    if (!ok) return;
+    st.scrub = { track: track, v: v, inner: track.querySelector('[data-scrub-fade]'), cur: 0, target: 0, raf: 0, attached: false };
+    // the video loads only on the live page, after the page has loaded or on the first scroll
+    var attach = function () {
+      var s = st.scrub; if (!s || s.attached || !live() || !s.v.isConnected) return;
+      s.attached = true;
+      s.v.muted = true; s.v.playsInline = true; s.v.preload = 'auto';
+      s.v.src = W.innerWidth < 760 ? s.v.getAttribute('data-src-sm') : s.v.getAttribute('data-src');
+      s.v.load();
+      var p = s.v.play(); if (p && p.then) p.then(function () { s.v.pause(); scrubTick(); }).catch(function () {});
+    };
+    if (d.readyState === 'complete') setTimeout(attach, 200); else W.addEventListener('load', function () { setTimeout(attach, 200); }, { once: true });
+    W.addEventListener('scroll', attach, { once: true, passive: true });
+  }
+  function scrubTick() {
+    var s = st.scrub; if (!s) return;
+    s.raf = 0;
+    var dur = s.v.duration || 9;
+    s.cur += (s.target - s.cur) * 0.12;
+    if (Math.abs(s.target - s.cur) < 0.0005) s.cur = s.target;
+    var t = s.cur * (dur - 0.05);
+    if (s.attached && s.v.readyState >= 1 && !s.v.seeking && Math.abs(s.v.currentTime - t) > 1 / 30) { try { s.v.currentTime = t; } catch (e) {} }
+    if (s.cur !== s.target) s.raf = requestAnimationFrame(scrubTick);
+  }
+  function scrubFrame(vh) {
+    var s = st.scrub; if (!s) return;
+    var r = s.track.getBoundingClientRect(), total = Math.max(1, s.track.offsetHeight - vh);
+    var p = clamp(-r.top / total, 0, 1);
+    s.target = p;
+    if (!s.raf) s.raf = requestAnimationFrame(scrubTick);
+    if (s.inner) {
+      var k = clamp((p - 0.55) / 0.3, 0, 1);
+      s.inner.style.transform = k ? 'translate3d(0,' + (-40 * k).toFixed(1) + 'px,0)' : '';
+      s.inner.style.opacity = k ? (1 - 0.85 * k).toFixed(3) : '';
+    }
+  }
+
+  /* ---------- section navigation on long pages ---------- */
+  function snavSetup() {
+    var nav = scope.querySelector('.ds-snav');
+    st.snav = null;
+    if (!nav) return;
+    var links = [].slice.call(nav.querySelectorAll('a[href^="#"]'));
+    var sel = nav.querySelector('select');
+    if (sel && !sel.__ds) { sel.__ds = true; sel.addEventListener('change', function () { var t = d.getElementById(sel.value); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }); }
+    st.snav = { nav: nav, links: links, sel: sel, cur: null };
+  }
+  function snavFrame() {
+    var s = st.snav; if (!s) return;
+    var line = s.nav.getBoundingClientRect().bottom + 24, active = null;
+    s.links.forEach(function (a) { var t = d.getElementById(a.getAttribute('href').slice(1)); if (t && t.getBoundingClientRect().top <= line) active = a; });
+    if (active === s.cur) return;
+    s.cur = active;
+    s.links.forEach(function (a) { if (a === active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    if (active && active.scrollIntoView && s.nav.querySelector('.ds-snav-in')) {
+      var box = s.nav.querySelector('.ds-snav-in'), ar = active.getBoundingClientRect(), br = box.getBoundingClientRect();
+      if (ar.left < br.left || ar.right > br.right - 40) box.scrollLeft += ar.left - br.left - 40;
+    }
+    if (s.sel && active) s.sel.value = active.getAttribute('href').slice(1);
   }
 
   /* ---------- scroll-driven work (transform, opacity and clip only) ---------- */
   function onScroll() { if (!st.ticking) { st.ticking = true; requestAnimationFrame(frame); } }
   function frame() {
     st.ticking = false;
-    var y = W.scrollY || html.scrollTop, vh = W.innerHeight, dy = y - st.lastY;
+    var y = W.scrollY || html.scrollTop, vh = W.innerHeight;
     runway(clamp(y / Math.max(1, html.scrollHeight - vh), 0, 1));
-    if (hdr) {
-      hdr.classList.toggle('is-solid', y > 80);
-    }
+    if (hdr) hdr.classList.toggle('is-solid', y > 24 || html.classList.contains('ds-sheet-open'));
     st.lastY = y;
     if (!scope) return;
-    st.fills.forEach(function (f) {
-      if (!motion) return;
+    scrubFrame(vh);
+    snavFrame();
+    if (motion) st.fills.forEach(function (f) {
       var r = f.el.getBoundingClientRect();
       var p = clamp((vh * 0.88 - r.top) / (r.height + vh * 0.38), 0, 1);
       f.el.style.setProperty('--f', (p * (f.n + 1.5)).toFixed(2));
     });
-    st.expands.forEach(function (el) {
-      if (!motion) return;
+    if (motion) st.expands.forEach(function (el) {
       var r = el.getBoundingClientRect();
       var p = clamp((vh - r.top) / (vh * 0.75), 0, 1);
-      el.style.clipPath = 'inset(0 ' + (8 * (1 - p)).toFixed(2) + '% round ' + (16 * (1 - p)).toFixed(1) + 'px)';
+      el.style.clipPath = 'inset(0 ' + (6 * (1 - p)).toFixed(2) + '% round ' + (16 * (1 - p)).toFixed(1) + 'px)';
     });
     st.pxs.forEach(function (el) {
       var r = el.parentNode.getBoundingClientRect();
@@ -245,9 +307,7 @@
       if (!p.el.classList.contains('is-pinned')) return;
       var r = p.el.getBoundingClientRect(), total = Math.max(1, p.el.offsetHeight - vh);
       var pr = clamp(-r.top / total, 0, 1), cur = Math.min(2, Math.floor(pr * 3));
-      p.bars.forEach(function (b, i) {
-        b.querySelector('b').style.transform = 'scaleX(' + clamp(pr * 3 - i, 0, 1).toFixed(3) + ')';
-      });
+      p.bars.forEach(function (b, i) { b.querySelector('b').style.transform = 'scaleX(' + clamp(pr * 3 - i, 0, 1).toFixed(3) + ')'; });
       if (cur !== p.cur) {
         p.cur = cur;
         p.steps.forEach(function (s, i) {
@@ -259,7 +319,9 @@
     });
   }
   W.addEventListener('scroll', onScroll, { passive: true });
+  W.addEventListener('resize', onScroll, { passive: true });
 
+  /* ---------- runway bar: the aircraft rolls along and takes off at the end of the page ---------- */
   var rw = { cur: null, target: 0, raf: 0 };
   function runway(pct) {
     rw.target = pct;
@@ -267,7 +329,7 @@
   }
   function runwayStep() {
     rw.raf = 0;
-    var r = scope && scope.querySelector('.aerostrat-runway[data-ds-runway]');
+    var r = scope && scope.querySelector('.ds-runway');
     if (!r) return;
     var ship = r.querySelector('.ship'), laid = r.querySelector('.laid'), wake = r.querySelector('.wake');
     var pct = rw.target, cur = rw.cur == null || reduce ? pct : rw.cur + (pct - rw.cur) * 0.2;
@@ -288,24 +350,23 @@
     var cv = scope.querySelector('.hm-particles');
     if (!cv || cv.__ds) return; cv.__ds = true;
     var ctx = cv.getContext('2d'); if (!ctx) return;
-    var N = 64, pts = [], w = 0, h = 0, dpr = Math.min(2, W.devicePixelRatio || 1), t0 = 0, running = false, done = false;
+    var N = 56, pts = [], w = 0, h = 0, dpr = Math.min(2, W.devicePixelRatio || 1), t0 = 0, running = false, done = false;
     function size() { var r = cv.getBoundingClientRect(); w = r.width; h = r.height; cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-    function target(i) { // a quadratic flight path across the band
+    function target(i) {
       var t = i / (N - 1), x0 = w * 0.08, x1 = w * 0.92, cx = w * 0.5, y0 = h * 0.86, cy = h * 0.18;
       return { x: (1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * cx + t * t * x1, y: (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * cy + t * t * y0 };
     }
     function seed() { pts = []; for (var i = 0; i < N; i++) pts.push({ x: Math.random() * w, y: Math.random() * h, s: 3 + Math.random() * 4, c: i % 9 === 4 ? 'rgba(255,90,19,' : 'rgba(63,158,232,', a: 0.25 + Math.random() * 0.35 }); }
-    function sq(x, y, s, col) { var r = 2; ctx.fillStyle = col; ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x - s / 2, y - s / 2, s, s, r); else ctx.rect(x - s / 2, y - s / 2, s, s); ctx.fill(); }
+    function sq(x, y, s, col) { ctx.fillStyle = col; ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x - s / 2, y - s / 2, s, s, 2); else ctx.rect(x - s / 2, y - s / 2, s, s); ctx.fill(); }
     function draw(k) {
       ctx.clearRect(0, 0, w, h);
       pts.forEach(function (p, i) {
         var tg = target(i), e = 1 - Math.pow(1 - k, 3);
-        var x = p.x + (tg.x - p.x) * e, y = p.y + (tg.y - p.y) * e;
-        sq(x, y, p.s * (1 - 0.35 * e), p.c + (p.a + 0.3 * e).toFixed(2) + ')');
+        sq(p.x + (tg.x - p.x) * e, p.y + (tg.y - p.y) * e, p.s * (1 - 0.35 * e), p.c + (p.a + 0.3 * e).toFixed(2) + ')');
       });
     }
     function loop(t) {
-      if (!t0) t0 = t; var k = clamp((t - t0) / 4200, 0, 1); draw(k);
+      if (!t0) t0 = t; var k = clamp((t - t0) / 3600, 0, 1); draw(k);
       if (k < 1) requestAnimationFrame(loop); else { running = false; done = true; }
     }
     size(); seed();
@@ -323,7 +384,7 @@
     if (pending) return; pending = true;
     requestAnimationFrame(function () {
       pending = false; check();
-      if (main && !d.getElementById('dc-prerender') && main.closest('#dc-root') && main.classList.contains('aerostrat-page-enter')) mo.disconnect();
+      if (live() && main.classList.contains('aerostrat-page-enter')) mo.disconnect();
     });
   });
   mo.observe(d.documentElement, { childList: true, subtree: true });
