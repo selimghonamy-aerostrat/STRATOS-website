@@ -169,3 +169,7 @@ html.dc-pre #dc-root .aerostrat-page-enter{animation:none}
 @keyframes aerostrat-page-in-pre{from{opacity:0.01;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 /* While the copy is on screen the live page stays out of layout; once the copy is removed it appears in place (no layout shift is recorded) */
 #dc-prerender ~ #dc-root{display:none}
+/* /contact#book: booking section clears the fixed header; Google's page stacks calendar and times on small screens */
+#book{scroll-margin-top:120px}
+.aerostrat-book-frame{height:700px}
+@media (max-width:720px){.aerostrat-book-frame{height:1000px}}
