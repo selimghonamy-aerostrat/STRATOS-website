@@ -1,10 +1,10 @@
 # One shared source for every page. Run after any change to css/, js/motion.js or scripts/partials/:
-#   python3 scripts/sync-shared.py && (cd scripts && npm run prerender)
+#   python3 scripts/sync-shared.py [Page.dc.html ...] && (cd scripts && node prerender.mjs [Page.dc.html ...])
 # - header (with the runway bar) and footer come from scripts/partials/
 # - css/fonts.css + css/responsive.css + css/ds.css are inlined as <style id="site-css"> (no render-blocking request)
 # - css/pages/<page>.css is inlined as <style id="page-css"> when it exists
 # - js/motion.js is inlined between the MOTION markers
-import glob, os, re
+import glob, os, re, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 rd = lambda p: open(os.path.join(ROOT, p)).read()
 HEADER, FOOTER = rd('scripts/partials/header.html').rstrip('\n'), rd('scripts/partials/footer.html').rstrip('\n')
@@ -44,7 +44,9 @@ def set_block(s, tag_open, content, anchor):
     if pat.search(s): return pat.sub(lambda m: block, s, count=1)
     return s.replace(anchor, block + anchor, 1)
 
+ONLY = set(sys.argv[1:])  # optional: sync only these files, e.g. Solutions.dc.html
 for path in sorted(glob.glob(os.path.join(ROOT, '*.dc.html'))):
+    if ONLY and os.path.basename(path) not in ONLY: continue
     name = os.path.basename(path); s = open(path).read()
     a = s.index('<x-dc><!--dc-template'); b = s.index('dc-template--></x-dc>')
     s = s[:a] + sync_template(s[a:b]) + s[b:]
