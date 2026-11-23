@@ -1,13 +1,14 @@
-/* /about (v3.2): page-only rules on top of css/ds.css */
+/* /about (v3.3): page-only rules on top of css/ds.css */
 
-/* ---- Hero ---- */
+/* ---- Hero: 88vh, content centred vertically ---- */
+.ab-hero{min-height:88vh;display:flex;align-items:center}
 .ab-hero .ds-phero-img{object-position:right 55%}
-.ab-hero .ds-h1{max-width:14ch}
+.ab-hero .ds-h1{max-width:none}
+.ab-hero .ds-lead{max-width:44ch}
 
-/* ---- Vision and mission: Deep Blue brand band, two statements ---- */
-.ab-vm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px clamp(48px,7vw,112px)}
-.ab-vm-col{border-top:1px solid var(--hair);padding-top:28px}
-.ab-vm-s{margin:0;font:300 clamp(23px,2.1vw,30px)/1.38 var(--font);letter-spacing:-0.012em;color:#fff;text-wrap:pretty}
+/* ---- Vision and mission: two statements on Deep Blue ---- */
+.ab-vm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px clamp(48px,7vw,112px);position:relative;z-index:1}
+.ab-vm-s{margin:0;font:300 clamp(23px,2.1vw,30px)/1.38 var(--font);letter-spacing:-0.012em;color:var(--fg);text-wrap:pretty}
 .ab-vm-s b{font-weight:700}
 @media (max-width:820px){.ab-vm-grid{grid-template-columns:minmax(0,1fr)}}
 
@@ -18,22 +19,16 @@
 .ab-pillars .ds-plate svg{width:44%;height:44%}
 .ab-pillar-t{margin-top:16px;font:600 18px/1.35 var(--font);color:var(--fg)}
 
-/* ---- Our direction ---- */
-.ab-dir-links{margin-top:clamp(36px,4vw,56px)}
-.ab-dir-links .ds-link{color:var(--sky)}
-
 /* ---- Section heads without a lead ---- */
-.ab-head{margin-bottom:clamp(40px,5vw,72px)}
+.ab-head{margin-bottom:clamp(28px,3vw,40px)}
+.ab-who .ds-split,.ab-dir .ds-split{margin-bottom:clamp(32px,3.4vw,48px)}
 
-/* ---- Brand values: large light words on hairlines ---- */
-.ab-vals{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--hair)}
-.ab-vals > li{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:12px clamp(32px,5vw,80px);align-items:baseline;padding:clamp(28px,3vw,40px) 0;border-top:1px solid var(--hair);transition:border-color var(--t2) var(--ease)}
-.ab-vals > li:hover{border-top-color:var(--hair-hi)}
-.ab-val-w{margin:0;font:300 clamp(32px,4vw,56px)/1.08 var(--font);letter-spacing:-0.025em;color:#fff;text-wrap:balance}
-.ab-val-d{margin:0;font:600 clamp(17px,1.35vw,19px)/1.5 var(--font);color:rgba(255,255,255,0.86);max-width:52ch;text-wrap:pretty}
-@media (max-width:820px){.ab-vals > li{grid-template-columns:minmax(0,1fr)}}
+/* ---- Values and pillars: one fading-hairline list ---- */
+.ab-vals .ds-plate.sm{margin-bottom:4px}
+/* the values headline runs on one line on wide screens (bold, then regular) */
+@media (min-width:1200px){.ab-val .ds-h2 .tone-2{display:inline}}
+@media (max-width:1100px){html body .ab-vals.c4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){html body .ab-vals.c4{grid-template-columns:minmax(0,1fr)}}
 
-/* ---- Closing CTA: "Set up from your manuals." ---- */
-.ab-close .ab-close-eb{justify-content:center;margin-bottom:18px}
-.ab-close .ds-lead{margin-bottom:20px}
-.ab-close-note{margin:0 auto 36px;max-width:58ch;font:600 16px/1.6 var(--font);color:#fff}
+/* ---- Our direction: the headline on two lines ---- */
+@media (min-width:901px){.ab-dir .ds-split{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}}

@@ -1,160 +1,77 @@
-/* /solutions page styles (v3.2). Shared components live in css/ds.css; this file only adds the page's own layouts. */
+/* /solutions page styles (v3.3). Shared components live in css/ds.css; this file only adds the page's own layouts. */
 
 /* ---- Hero ---- */
+.sol-hero{min-height:88vh;display:flex;align-items:center}
+.sol-hero > .ds-wrap{width:100%}
+/* the overlay fades out with the photo, so the hero melts into the canvas instead of ending in an edge */
+.sol-hero::after{-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
 .sol-hero .ds-h1{max-width:none}
-.sol-h1 .tone-2{display:block}
-.sol-hero .sol-hero-lead{max-width:64ch}
-.sol-paths{margin-top:clamp(40px,5vw,64px)}
+.sol-hero .sol-hero-lead{max-width:44ch;margin:24px 0 32px}
+.sol-hero .ds-link{color:#fff}
 
-/* ---- Domains row ---- */
-.sol-head{margin-bottom:clamp(36px,4vw,56px)}
-.sol-head .ds-h2{max-width:20ch}
+/* ---- Two products: two large statements side by side ---- */
+.sol-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px clamp(48px,7vw,120px);margin-top:clamp(24px,3vw,40px)}
+.sol-prod{display:flex;flex-direction:column;align-items:flex-start;gap:0;scroll-margin-top:120px}
+.sol-prod .ds-plate{width:64px;height:64px;margin:0 0 14px -8px}
+.sol-prod .ds-plate svg{width:44px;height:44px}
+.sol-prod-n{margin:0;font:600 clamp(19px,1.5vw,22px)/1.3 var(--font);color:var(--accent)}
+.sol-prod-h{margin:12px 0 0;font:700 clamp(32px,3.4vw,50px)/1.08 var(--font);letter-spacing:-0.025em;color:var(--fg);text-wrap:balance}
+.sol-prod-p{margin:18px 0 18px;max-width:40ch;color:var(--fg-2)}
 
-/* ---- Product sections: text one side, mock-up the other ---- */
-.sol-prod + .sol-prod{border-top:1px solid rgba(255,255,255,0.06)}
-.sol-prod-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,72px);align-items:center}
-.sol-prod-rev .sol-prod-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
-.sol-prod-rev .sol-prod-copy{order:2}
-.sol-prod-rev .sol-mock{order:1}
-.sol-prod-h{font-size:clamp(34px,3.6vw,52px)}
-.sol-prod-p{margin-top:18px}
-.sol-prod-rows{margin-top:22px;border-bottom:1px solid var(--hair)}
-.sol-prod-rows .ds-row{padding-top:11px;padding-bottom:11px}
-.sol-prod-rows .ds-row::before{top:20px}
-.sol-num{font-weight:700;color:var(--sky);margin-right:4px}
-.sol-prod-link{margin-top:14px}
-
-/* the mock-up (Inter inside) */
-.sol-mock{padding:clamp(18px,1.6vw,22px);min-width:0;box-shadow:0 40px 80px -40px rgba(0,0,0,0.6)}
-.sol-tabs{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.sol-tab{display:inline-flex;align-items:center;min-height:36px;padding:0 11px;border-radius:18px;border:1px solid rgba(255,255,255,0.14);background:transparent;color:rgba(255,255,255,0.78);font:500 12.5px/1.2 var(--font-ui);cursor:pointer;transition:background-color var(--t1) var(--ease),border-color var(--t1) var(--ease),color var(--t1) var(--ease)}
-.sol-tab:hover{color:#fff;border-color:rgba(63,158,232,0.7)}
-.sol-tab[aria-selected="true"]{background:var(--sky);border-color:var(--sky);color:var(--as-navy);font-weight:600}
-.sol-panel{display:flex;flex-direction:column;gap:7px;padding-top:14px;outline-offset:4px}
-.sol-spec-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.sol-spec{font:600 12.5px/1.3 var(--font-ui);color:var(--sky)}
-.sol-mtitle{margin:0;font:600 21px/1.25 var(--font-ui);letter-spacing:-0.01em;color:#fff}
-.sol-mlead{margin:0;font:400 14px/1.6 var(--font-ui);color:rgba(255,255,255,0.78);text-wrap:pretty}
-.sol-pbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 20px;align-items:start;margin-top:4px}
-.sol-points{list-style:none;margin:0;padding:0}
-.sol-points li{position:relative;padding:8px 0 8px 16px;border-top:1px solid rgba(255,255,255,0.08);font:400 13px/1.5 var(--font-ui);color:#fff}
-.sol-points li::before{content:'';position:absolute;left:0;top:16px;width:5px;height:5px;border-radius:1.5px;background:var(--sky)}
-.sol-sample{border-radius:10px;background:rgba(0,21,56,0.55);border:1px solid rgba(255,255,255,0.06);padding:10px 14px 6px}
-.sol-sample-h{font:600 12px/1.3 var(--font-ui);color:var(--grey);padding-bottom:6px}
-.sol-srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:6px 0;border-top:1px solid rgba(255,255,255,0.06);font:400 12.5px/1.35 var(--font-ui)}
-.sol-sab{display:flex;flex-direction:column;gap:2px;min-width:0}
-.sol-sa{color:#fff;font-weight:500}
-.sol-sb{color:rgba(255,255,255,0.6);font-size:12px}
-.sol-chip{justify-self:end;display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:11px;font:600 11.5px/1 var(--font-ui);white-space:nowrap;color:#fff;background:rgba(0,52,140,0.6)}
-.sol-chip.exp{background:var(--coral)}
-.sol-chip.red{background:rgba(255,90,19,0.45)}
-.sol-chip.warn{background:rgba(255,90,19,0.2);color:#fff}
-.sol-chip.ok{background:rgba(63,158,232,0.22)}
-.sol-chip.miss{background:rgba(180,180,180,0.22);color:rgba(255,255,255,0.78)}
-.sol-chip.info{background:rgba(0,52,140,0.7)}
-
-/* ---- Together: the shared "one pilot record" picture (same as home), on light ---- */
-.sol-tog-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+/* ---- Together: the shared "one pilot record" picture (data visual) ---- */
+.sol-tog-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
+.sol-tog-lead{margin-top:20px;max-width:40ch}
 .sol-vis svg{display:block;width:100%;height:auto;overflow:visible}
-.sol-vis text{font-size:12px;font-weight:500;fill:rgba(0,0,0,0.6)}
-.sol-vis text.k{font-weight:600;fill:var(--deep)}
-.sol-vis text.n{font-weight:600;fill:#000}
-.sol-vis .sol-sample-t{font-size:11px;font-weight:600;fill:rgba(0,0,0,0.55)}
-.sol-v3 .axis{stroke:rgba(0,21,56,0.18);stroke-width:1}
+.sol-vis text{font-size:12px;font-weight:500;fill:var(--fg-2)}
+.sol-vis text.k{font-weight:600;fill:var(--accent)}
+.sol-vis text.n{font-weight:600;fill:var(--fg)}
+.sol-vis .sol-sample-t{font-size:11px;font-weight:600;fill:var(--fg-2)}
+.sol-v3 .axis{stroke:rgba(63,158,232,0.3);stroke-width:1}
 .sol-mini-a .f{fill:var(--sky)}
 .sol-mini-a .c{fill:var(--coral)}
 .sol-mini-b .v{fill:rgba(63,158,232,0.5)}
 .sol-mini-b .w{fill:rgba(255,90,19,0.4)}
 .sol-mini-b .x{fill:var(--coral)}
-.sol-record rect{fill:#fff;stroke:rgba(0,52,140,0.35)}
-.sol-record rect.px{fill:var(--coral);stroke:none}
-.sol-record text{fill:var(--deep);font-weight:600;font-size:12.5px}
+.sol-record rect{fill:rgba(63,158,232,0.12);stroke:none}
+.sol-record rect.px{fill:var(--coral)}
+.sol-record text{fill:var(--fg);font-weight:600;font-size:12.5px}
 .sol-v3-arc{fill:none;stroke-width:1.5}
-/* the journey through both products */
-.sol-journey{min-width:0}
-.sol-jsteps > li::before{box-shadow:0 0 0 5px #fff;background:rgba(0,52,140,0.35);transition:background-color var(--t1) var(--ease)}
-.sol-jsteps > li.is-done::before{background:var(--deep)}
-.sol-jsteps > li.is-on::before{background:var(--coral)}
-.sol-jtab,.sol-itab{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;width:100%;min-height:44px;padding:0;border:0;background:none;cursor:pointer;color:inherit;font:inherit}
-.sol-jtab .ds-steps-t,.sol-itab .ds-steps-t{transition:color var(--t1) var(--ease)}
-.sol-jsteps .ds-steps-t{font-size:16px;color:rgba(0,0,0,0.6)}
-.sol-jsteps .is-on .ds-steps-t,.sol-jtab:hover .ds-steps-t{color:var(--deep)}
-.sol-jsteps .is-on .ds-steps-k{color:var(--coral)}
-.sol-jpanel{display:flex;flex-direction:column;gap:12px;margin-top:28px;padding-top:24px;border-top:1px solid var(--hair);outline-offset:4px}
-.sol-jlabel,.sol-ilabel{margin:8px 0 0;font:600 13px/1.3 var(--font);color:var(--accent)}
-.sol-jrows .ds-row{padding-top:11px;padding-bottom:11px;font-size:15px}
-.sol-jrows .ds-row::before{top:19px}
-.sol-jnav{display:flex;gap:8px;margin-top:8px}
-.sol-jbtn{width:48px;height:44px;border-radius:10px;border:1px solid rgba(0,52,140,0.3);background:transparent;color:var(--deep);font:500 18px/1 var(--font);cursor:pointer;transition:background-color var(--t1) var(--ease),color var(--t1) var(--ease)}
-.sol-jbtn:hover{background:var(--deep);color:#fff}
 
-/* ---- Architecture band: borderless two-column table on hairlines ---- */
-.sol-dm{border-bottom:1px solid var(--hair)}
-.sol-dm-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr) 24px;gap:24px;padding:0 0 14px;font:600 14px/1.3 var(--font);color:rgba(255,255,255,0.7)}
-.sol-dm-item{border-top:1px solid var(--hair);transition:border-color var(--t2) var(--ease)}
-.sol-dm-item.is-open,.sol-dm-item:hover{border-top-color:rgba(255,255,255,0.5)}
-.sol-dm-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr) 24px;gap:24px;align-items:center;width:100%;min-height:60px;padding:16px 0;border:0;background:none;text-align:left;cursor:pointer;color:#fff;font:inherit}
-.sol-dm-name{font:600 clamp(17px,1.5vw,20px)/1.3 var(--font);color:#fff}
-.sol-dm-w{font:400 16px/1.5 var(--font);color:rgba(255,255,255,0.86)}
-.sol-dm-x{position:relative;width:16px;height:16px;justify-self:end}
-.sol-dm-x::before,.sol-dm-x::after{content:'';position:absolute;left:0;top:7px;width:16px;height:2px;background:var(--coral);transition:transform var(--t2) var(--ease)}
-.sol-dm-x::after{transform:rotate(90deg)}
-.sol-dm-item.is-open .sol-dm-x::after{transform:rotate(0deg)}
-.sol-dm-detail{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr) 24px;gap:8px 24px;padding:0 0 22px}
-.sol-dm-desc{grid-column:1 / 2;margin:0;font:400 15.5px/1.6 var(--font);color:rgba(255,255,255,0.86)}
-.sol-dm-r{grid-column:2 / 3;margin:0;font:400 15.5px/1.6 var(--font);color:rgba(255,255,255,0.86)}
-.sol-dm-r span{display:block;font:600 13px/1.3 var(--font);color:#fff;margin-bottom:4px}
-.sol-arch-note{margin:32px 0 0;max-width:72ch;font:400 16px/1.6 var(--font);color:rgba(255,255,255,0.86)}
+/* ---- Section rhythm: shorter padding on this page; heading left, content right ---- */
+html body main > section.ds-sec.ds-sec:not(.ds-phero){padding-top:clamp(46px,4.2vw,62px) !important;padding-bottom:clamp(46px,4.2vw,62px) !important}
+.sol-cols{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(40px,6vw,96px);align-items:start}
+.sol-col-lead{margin-top:20px;max-width:40ch}
+@media (min-width:901px){.sol-faq .sol-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 
-/* ---- Roles ---- */
-.sol-role-list > li{gap:8px}
-.sol-role-list .ds-plate{margin-bottom:8px}
-.sol-role-h{margin:14px 0 0;font:600 13px/1.3 var(--font);color:var(--deep)}
-.sol-role-l{list-style:none;margin:0;padding:0}
-.sol-role-l li{padding:8px 0;border-top:1px solid var(--hair);font:400 15px/1.5 var(--font);color:var(--fg-2)}
+/* ---- Who it is for: fading hairline list ---- */
+.sol-role-list > li{flex-direction:row;align-items:center;gap:20px;padding:16px 0}
+.sol-role-list .ds-plate{flex:none;margin:0}
+.sol-role-list .ds-hl-d{margin-top:2px;font-size:16px}
 
-/* ---- Implementation ---- */
-.sol-isteps > li::before{transition:background-color var(--t1) var(--ease)}
-.sol-isteps > li:not(.is-on):not(.is-done)::before{background:rgba(63,158,232,0.35)}
-.sol-isteps > li.is-on::before{background:var(--coral)}
-.sol-isteps .ds-steps-t{color:rgba(255,255,255,0.72)}
-.sol-isteps .is-on .ds-steps-t,.sol-itab:hover .ds-steps-t{color:#fff}
-.sol-ipanel{margin-top:36px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px clamp(24px,3vw,48px);outline-offset:4px}
-.sol-ipanel .ds-rows{margin-top:12px}
-.sol-ipanel .ds-row{font-size:15px;padding-top:11px;padding-bottom:11px}
-.sol-ipanel .ds-row::before{top:19px}
-.sol-iout-t{margin:12px 0 0;padding-top:14px;border-top:1px solid var(--hair-hi);font:600 clamp(19px,1.6vw,22px)/1.35 var(--font);color:#fff}
-.sol-who{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 64px;align-items:end;margin-top:clamp(64px,7vw,104px);margin-bottom:32px}
-.sol-who-h{font-size:clamp(26px,2.6vw,38px);line-height:1.12}
-.sol-data{margin-top:clamp(40px,5vw,64px)}
+/* ---- Four stages: flight path ---- */
+.sol-impl .ds-split{margin-bottom:clamp(32px,3.5vw,48px)}
 
 /* ---- Closing ---- */
-.sol-close-note{margin:20px 0 0;font:400 14px/1.6 var(--font);color:rgba(255,255,255,0.78)}
+.sol-close-note{margin:20px 0 0;font:400 14px/1.6 var(--font);color:var(--fg-2)}
 
 /* ---- Responsive ---- */
 @media (max-width:1100px){
-  .sol-tab{min-height:44px}
-  .sol-prod-grid,.sol-prod-rev .sol-prod-grid{grid-template-columns:minmax(0,1fr)}
-  .sol-prod-rev .sol-prod-copy,.sol-prod-rev .sol-mock{order:0}
-  .sol-prod-copy{max-width:680px}
   .sol-tog-grid{grid-template-columns:minmax(0,1fr)}
   .sol-vis{max-width:640px}
-  .sol-role-list.ds-hl.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .sol-two{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:900px){
-  .sol-who{grid-template-columns:minmax(0,1fr)}
-  .sol-ipanel{grid-template-columns:minmax(0,1fr)}
+  .sol-cols{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
-  .sol-role-list.ds-hl.c4{grid-template-columns:minmax(0,1fr)}
-  .sol-pbody{grid-template-columns:minmax(0,1fr)}
-  .sol-dm-head{display:none}
-  .sol-dm-row{grid-template-columns:minmax(0,1fr) 20px;gap:6px 16px}
-  .sol-dm-name{grid-column:1}
-  .sol-dm-w{grid-column:1;grid-row:2;font-size:15px}
-  .sol-dm-x{grid-column:2;grid-row:1 / 3}
-  .sol-dm-detail{grid-template-columns:minmax(0,1fr)}
-  .sol-dm-desc,.sol-dm-r{grid-column:1}
   .sol-vis text{font-size:17px}
   .sol-vis text.n,.sol-vis text.d{display:none}
 }
+
+/* v3.4: the two products as equal brand panels with three lines each */
+.sol-prod.ds-panel{display:flex;flex-direction:column;align-items:flex-start;height:100%}
+.sol-prod-rows{margin:8px 0 20px;align-self:stretch}
+.sol-prod-rows .ds-row{font-size:15.5px;border-image:none;border-top:1px solid rgba(255,255,255,0.08)}
+.sol-prod.ds-panel .ds-link{margin-top:auto}
