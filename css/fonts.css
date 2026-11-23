@@ -1,12 +1,6 @@
-/* Open Sauce One: AeroStrat brand typeface for all marketing type (self-hosted, latin subset, SIL OFL).
-   Inter: reserved by the brand guidelines for platform UI, so only used inside product mock-ups. */
-@font-face{font-family:'Open Sauce One';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/open-sauce-one-latin-300-normal.woff2) format('woff2')}
+/* Open Sauce One: AeroStrat brand typeface (self-hosted, latin subset, SIL OFL) */
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/open-sauce-one-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/open-sauce-one-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/open-sauce-one-latin-600-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/open-sauce-one-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/open-sauce-one-latin-800-normal.woff2) format('woff2')}
-/* Size-matched Arial so the swap to Open Sauce One causes no layout shift (metrics from the font files) */
-@font-face{font-family:'Open Sauce Fallback';src:local('Arial'),local('ArialMT'),local('Helvetica');size-adjust:112%;ascent-override:89.3%;descent-override:21.2%;line-gap-override:0%}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-latin-600-normal.woff2) format('woff2')}
