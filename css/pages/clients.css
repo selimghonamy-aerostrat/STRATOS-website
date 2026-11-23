@@ -1,0 +1,15 @@
+/* /clients (v3.3): page-only rules on top of css/ds.css */
+
+/* ---- Hero: 88vh, content centred vertically ---- */
+.cl-hero{min-height:88vh;display:flex;align-items:center}
+.cl-hero .ds-phero-img{object-position:center 40%}
+.cl-hero .ds-h1{max-width:none}
+.cl-hero .ds-lead{max-width:44ch}
+
+/* ---- Section heads ---- */
+.cl-head{margin-bottom:clamp(36px,4.5vw,64px);position:relative;z-index:1}
+.cl-head .ds-pill{margin-bottom:18px}
+.cl-head .ds-lead{margin-top:20px;max-width:46ch}
+
+/* ---- Client stories are coming: the co-development numbers ---- */
+.cl-proof-cap{margin:28px 0 0;font:500 18px/1.5 var(--font);color:var(--fg-2)}

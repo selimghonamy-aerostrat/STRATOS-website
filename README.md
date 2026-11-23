@@ -15,10 +15,15 @@ Glossary.dc.html     EBT/CBTA glossary → /glossary
 Contact.dc.html      Contact Us      → /contact
 
 api/contact.mjs      Contact form → email (Vercel function, sends through Resend)
-js/support.js        Page runtime (renders the <x-dc> templates; generated, do not edit)
+js/support.js        Page runtime (renders the <x-dc> templates; generated, do not edit). Loads React 18.3.1 from /vendor/
+js/motion.js         Header, menu, reveals, runway bar, hero take-off scrub, section nav (inlined into every page)
+vendor/              React and ReactDOM 18.3.1 UMD (same files and SRI hashes as unpkg)
 js/hero-video.js     Keeps the homepage background video playing on all browsers
-css/responsive.css   Phone/tablet fixes shared by every page (solid mobile menu, hero size, tap targets)
-css/fonts.css        Open Sauce One, the AeroStrat brand typeface (files in fonts/)
+css/ds.css           Design system: brand tokens, type scale and every shared component (single source)
+css/pages/*.css      Styles for one page each
+css/responsive.css   Older shared rules (FAQ, glossary, booking, pre-render hand-over)
+css/fonts.css        Open Sauce One (marketing type, 300-800) and Inter 500/600 (product mock-ups only)
+scripts/partials/    Shared header (with the runway bar), footer and domains row
 
 uploads/             Images, video, logos
 uploads/brand/       Share images (og-image.png for the site, og-ebt-cbta.png, og-tms.png) and raster logo for structured data
@@ -58,6 +63,15 @@ Page text lives in each `*.dc.html` file. SEO tags (title, description, canonica
 
 When page text changes, also update the matching file in `md/` and rebuild `llms-full.txt` so AI assistants see the same content.
 
+### Shared source (run after changing css/, js/motion.js or scripts/partials/)
+
+```
+python3 scripts/sync-shared.py            # or name pages: python3 scripts/sync-shared.py TMS.dc.html
+cd scripts && node prerender.mjs          # or: node prerender.mjs TMS.dc.html
+```
+
+`sync-shared.py` copies the header, footer and domains row from `scripts/partials/` into every page, and inlines `css/fonts.css` + `css/responsive.css` + `css/ds.css` (`<style id="site-css">`), `css/pages/<page>.css` (`<style id="page-css">`) and `js/motion.js` (MOTION markers), so no stylesheet or script request delays the first paint. The privacy, sub-processors and 404 pages are filled the same way between `SHARED` markers. Never type the text `<x-dc` in CSS or JS: `support.js` finds the template by its first occurrence (the sync script refuses it).
+
 ### Pre-rendered pages (re-run after every change)
 
 Each page contains a ready-drawn copy between `<!-- PRERENDER:START -->` and `<!-- PRERENDER:END -->`, so phones see the page about 1 s sooner instead of waiting for React to download. The live page replaces the copy as soon as it is drawn. **After any change to a page's text, layout or `css/`, rebuild the copies**, or the old version shows for about a second:
@@ -72,7 +86,7 @@ The copy also includes every tab panel (the inactive ones `hidden`), so search e
 
 ### Page template inside a comment
 
-Each page's template sits inside `<x-dc><!--dc-template … dc-template--></x-dc>`, so crawlers never see raw `{{ }}` placeholders. Edit the template as usual, but **never type `--` inside it** (it would end the comment early); use plain HTML without `<!-- -->` notes. `js/support.js` carries a small marked patch (`unwrapDcTemplate`) that removes the comment before rendering; keep it if the runtime is ever regenerated. The script tag loads `/js/support.js?v=dc2`: bump the version whenever `support.js` changes.
+Each page's template sits inside `<x-dc><!--dc-template … dc-template--></x-dc>`, so crawlers never see raw `{{ }}` placeholders. Edit the template as usual, but **never type the comment terminator (two hyphens followed by `>`) inside it** (it would end the comment early); use plain HTML without `<!-- -->` notes. `js/support.js` carries a small marked patch (`unwrapDcTemplate`) that removes the comment before rendering; keep it if the runtime is ever regenerated. The script tag loads `/js/support.js?v=dc3` with `defer`: bump the version whenever `support.js` changes.
 
 ## Search engines and AI assistants
 

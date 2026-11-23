@@ -1,28 +1,7 @@
 /* Phone and tablet refinements, shared by every page. Desktop (>1020px) is unchanged. */
 
 @media (max-width:1020px){
-  /* Solid header bar on phones and tablets, never see-through */
-  header[data-sticky],
-  .aerostrat-scrolled header[data-sticky]{
-    background:#001538 !important;
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-    animation:none !important;
-    border-bottom:1px solid rgba(180,180,180,0.26) !important;
-  }
-
-  /* Solid, scrollable menu panel */
-  header .aerostrat-mobile-panel{
-    height:auto !important;
-    background:#001538 !important;
-    max-height:calc(100vh - 104px);
-    max-height:calc(100dvh - 104px);
-    overflow-y:auto;
-    overscroll-behavior:contain;
-    box-shadow:0 24px 48px rgba(0,0,0,0.5);
-  }
-  header .aerostrat-mobile-panel a{min-height:48px}
-  .aerostrat-menu-btn{width:48px !important;height:48px !important}
+  /* The header (frosted on scroll, full-screen menu) is styled in css/ds.css */
 
   /* Homepage hero: full screen with the content centred, no empty band */
   .aerostrat-hero .aerostrat-hero-inner{
@@ -42,11 +21,6 @@
 }
 
 @media (max-width:640px){
-  header .aerostrat-mobile-panel{
-    max-height:calc(100vh - 88px);
-    max-height:calc(100dvh - 88px);
-    padding:14px 20px 28px !important;
-  }
   .aerostrat-hero .aerostrat-hero-inner{padding-top:112px !important;padding-bottom:56px !important}
   /* Text spans the full width here, so even out the video overlay to keep it readable */
   .aerostrat-hero > video + div{background:linear-gradient(180deg,rgba(0,21,56,0.55) 0%,rgba(0,21,56,0.5) 60%,#001538 100%) !important}
@@ -68,10 +42,6 @@
    Section rhythm: 40px on a 390px phone, growing with the screen to 56px on tablets.
    Selectors are more specific than the per-page rules so this file sets the scale. */
 @media (max-width:1020px){
-  main > section:not(.aerostrat-hero):not(.aerostrat-hero-alt){
-    padding-top:clamp(40px,8vw,56px) !important;
-    padding-bottom:clamp(40px,8vw,56px) !important;
-  }
   /* No trailing margin on the last block of a section, so gaps stay even */
   main > section > .aerostrat-reveal > :last-child{margin-bottom:0 !important}
 

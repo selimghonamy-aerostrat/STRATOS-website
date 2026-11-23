@@ -76,6 +76,10 @@
     {
       "source": "/favicon.ico",
       "destination": "/favicon-96.png"
+    },
+    {
+      "source": "/styleguide",
+      "destination": "/styleguide.html"
     }
   ],
   "headers": [
@@ -240,7 +244,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=604800, stale-while-revalidate=86400"
+          "value": "public, max-age=2592000, stale-while-revalidate=31536000"
         }
       ]
     },
@@ -259,6 +263,33 @@
         {
           "key": "Content-Type",
           "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/uploads/svg/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/vendor/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/styleguide(.html)?",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     }
@@ -307,6 +338,11 @@
     {
       "source": "/Glossary.dc.html",
       "destination": "/glossary",
+      "permanent": true
+    },
+    {
+      "source": "/subprocessors",
+      "destination": "/legal/subprocessors",
       "permanent": true
     }
   ]
