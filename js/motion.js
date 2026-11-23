@@ -261,7 +261,7 @@
     // every section takes the canvas tone, so text is always readable while the colour changes;
     // photo-led sections (heroes, the statement band) stay dark
     var foot = scope.querySelector('footer');
-    var themed = secs.concat(foot ? [foot] : []).filter(function (el) { return !/(^|\s)(ds-phero|hm-hero|hm-sband|nf)(\s|$)/.test(el.className || ''); });
+    var themed = secs.concat(foot ? [foot] : []).filter(function (el) { return !/(^|\s)(ds-phero|hm-hero|hm-sband|nf|ds-snav)(\s|$)/.test(el.className || ''); });
     secs.concat(themed).forEach(function (el) { if (!el.hasAttribute('data-tone')) el.setAttribute('data-tone', toneOf(el)); });
     var apply = function (tone) {
       canvas.setAttribute('data-tone', tone);
@@ -270,7 +270,7 @@
     toneIo = new IntersectionObserver(function (es) {
       es.forEach(function (en) { if (en.isIntersecting) apply(en.target.getAttribute('data-tone') || toneOf(en.target)); });
     }, { rootMargin: '-50% 0px -50% 0px' });
-    secs.forEach(function (el) { toneIo.observe(el); });
+    secs.forEach(function (el) { if (!el.classList.contains('ds-snav')) toneIo.observe(el); });
     html.classList.add('tone-ready');
     st.orbs = [].slice.call(canvas.querySelectorAll('.as-orb'));
   }
