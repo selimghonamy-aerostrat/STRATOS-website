@@ -46,6 +46,3 @@ An airline runs on connected disciplines. AeroStrat is building technology for e
 
 AeroStrat staff onboard each airline from its own manuals. AeroStrat builds the airline's check forms from its paper forms, sets its grading scale and document control, and configures the platform to its authority. Building forms is part of the implementation service, not a self-serve builder. Forms stay as they are, whether they start on paper or in digital form. Support and maintenance are included.
 
-## AeroStrat in 100 words
-
-AeroStrat is an aviation technology company based in Tallinn, Estonia, building the digital operating system for airlines: one connected ecosystem for training, safety and compliance, flight operations, maintenance and engineering, and network planning, on one shared foundation. Its team pairs 25+ years of experience in the aviation sector with deep technology expertise. AeroStrat started with pilot training, where two products are live: AeroStrat EBT/CBTA grades every check against the ICAO nine-competency framework on the airline's own forms, and AeroStrat TMS keeps validity, planning, records and audit in one system. Both were developed and tested with two regional airlines.
