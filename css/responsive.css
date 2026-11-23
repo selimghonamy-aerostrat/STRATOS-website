@@ -154,51 +154,49 @@ html.dc-pre #dc-root .aerostrat-page-enter{animation:none}
    every custom property is defined and used here, never inline in a template. */
 
 :root{
-  --canvas:#000B1F; --canvas-2:#001538; --deep:#00348C; --sky:#3F9EE8; --coral:#FF5A13;
+  --canvas:#001538; --canvas-2:#002A6E; --deep:#00348C; --sky:#3F9EE8; --coral:#FF5A13;
   --grey:#B4B4B4; --light:#ECF0F3;
-  --ease:cubic-bezier(0.2,0.7,0.2,1); --t1:180ms; --t2:420ms; --t3:800ms;
+  --ease:cubic-bezier(0.2,0.7,0.2,1); --t1:180ms; --t2:420ms; --t3:560ms;
   --gut:32px; --max:1280px; --max-wide:1440px;
   /* theme (dark first); html[data-theme="light"] swaps these as light sections pass */
-  --bg:var(--canvas); --fg:#FFFFFF; --fg-2:#B4B4B4; --tone2:rgba(255,255,255,0.55);
+  --bg:var(--canvas); --fg:#FFFFFF; --fg-2:#C9CED6; --tone2:rgba(255,255,255,0.6);
   --hair:rgba(255,255,255,0.08); --hair-hi:rgba(63,158,232,0.7); --eyebrow:#3F9EE8; --accent:#3F9EE8;
   --decor:1; --hdr:104px;
 }
 html[data-theme="light"]{
-  --bg:#ECF0F3; --fg:#000B1F; --fg-2:#4A5361;
-  /* Unbiased Grey on Light Gray is 1.8:1; this grey keeps the brand look and passes AA for large text (3.7:1) */
-  --tone2:#737A84;
+  --bg:#ECF0F3; --fg:#00348C; --fg-2:#4A5361;
+  /* second half of two-part headings: Deep Blue at 60% (brand shade), 3.5:1 on Light Gray, AA for large text */
+  --tone2:#6685BA;
   --hair:rgba(0,21,56,0.10); --hair-hi:rgba(0,52,140,0.55); --eyebrow:#00348C; --accent:#00348C; --decor:0;
 }
 
 /* ---- Canvas ---- */
 html{background:var(--bg);transition:background-color 600ms var(--ease)}
-html body{background:var(--bg);color:var(--fg);transition:background-color 600ms var(--ease),color 600ms var(--ease)}
-.ds-page{min-height:100vh;color:var(--fg);font-family:'Open Sauce One',sans-serif;overflow-x:clip;position:relative;background:transparent;transition:color 600ms var(--ease)}
-/* film grain over the dark canvas, so long gradients never band */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:150;opacity:calc(0.035 * var(--decor));transition:opacity 600ms var(--ease);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+html body{background:var(--bg);color:var(--fg);transition:background-color 500ms var(--ease)}
+.ds-page{min-height:100vh;color:var(--fg);font-family:'Open Sauce One',sans-serif;overflow-x:clip;position:relative;background:transparent}
 
 /* ---- Layout ---- */
-.ds-sec{position:relative;padding:clamp(88px,11vw,180px) 0;isolation:isolate}
+.ds-sec{position:relative;padding:clamp(80px,9vw,140px) 0;isolation:isolate}
 .ds-sec.tight{padding:clamp(64px,7vw,112px) 0}
 /* long vertical blend between dark sections: starts and ends in the canvas colour */
 .ds-blend{background:linear-gradient(to bottom,var(--canvas) 0%,var(--canvas-2) 50%,var(--canvas) 100%)}
 html[data-theme="light"] .ds-blend{background:transparent}
 .ds-wrap{position:relative;z-index:1;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding:0 var(--gut)}
 .ds-wrap.wide{max-width:calc(var(--max-wide) + 2 * var(--gut))}
-.ds-split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px 64px;align-items:end;margin-bottom:clamp(48px,6vw,96px)}
-@media (max-width:900px){.ds-split{grid-template-columns:minmax(0,1fr)}}
+.ds-split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 64px;align-items:start;margin-bottom:clamp(48px,5vw,80px)}
+.ds-split > .ds-lead{padding-top:44px}
+@media (max-width:900px){.ds-split{grid-template-columns:minmax(0,1fr)}.ds-split > .ds-lead{padding-top:0}}
 @media (max-width:640px){:root{--gut:20px}}
 
 /* ---- Type (D1) ---- */
-.ds-display{font:700 clamp(48px,7.4vw,104px)/0.98 'Open Sauce One',sans-serif;letter-spacing:-0.03em;margin:0;text-wrap:balance}
-.ds-h2{font:700 clamp(38px,5.2vw,72px)/1.02 'Open Sauce One',sans-serif;letter-spacing:-0.02em;margin:0;text-wrap:balance;color:var(--fg);transition:color 600ms var(--ease)}
+.ds-display{font:700 clamp(42px,6vw,88px)/1.02 'Open Sauce One',sans-serif;letter-spacing:-0.025em;margin:0;text-wrap:balance}
+.ds-h2{font:600 clamp(32px,4.2vw,58px)/1.08 'Open Sauce One',sans-serif;letter-spacing:-0.015em;margin:0;text-wrap:balance;color:var(--fg)}
 .ds-h3{font:600 clamp(22px,2vw,28px)/1.2 'Open Sauce One',sans-serif;letter-spacing:-0.01em;margin:0;text-wrap:balance}
-.ds-lead{font:400 clamp(17px,1.35vw,19px)/1.6 'Open Sauce One',sans-serif;color:var(--fg-2);max-width:62ch;margin:0;text-wrap:pretty;transition:color 600ms var(--ease)}
+.ds-lead{font:400 clamp(17px,1.35vw,19px)/1.6 'Open Sauce One',sans-serif;color:var(--fg-2);max-width:62ch;margin:0;text-wrap:pretty}
 .ds-body{font:400 17px/1.6 'Open Sauce One',sans-serif;color:var(--fg-2);max-width:62ch;margin:0;text-wrap:pretty}
-.tone-2{color:var(--tone2);transition:color 600ms var(--ease)}
+.tone-2{color:var(--tone2)}
 /* eyebrow: unchanged look (14px semibold, sentence case, orange arc before it) */
-.ds-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 22px;font:600 14px/1.3 'Open Sauce One',sans-serif;color:var(--eyebrow);transition:color 600ms var(--ease)}
+.ds-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 22px;font:600 14px/1.3 'Open Sauce One',sans-serif;color:var(--eyebrow)}
 .ds-eyebrow svg{flex:none;display:block}
 .ds-eyebrow path{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round}
 /* HUD readout labels (D7) */
@@ -208,10 +206,10 @@ html[data-theme="light"] .ds-blend{background:transparent}
 
 /* ---- Borderless rows, stats, links (D4) ---- */
 .ds-rows{list-style:none;margin:0;padding:0}
-.ds-row{position:relative;display:flex;gap:16px;align-items:baseline;padding:18px 0 18px 22px;border-top:1px solid var(--hair);font:500 16px/1.55 'Open Sauce One',sans-serif;color:var(--fg);transition:border-color var(--t2) var(--ease),color 600ms var(--ease)}
+.ds-row{position:relative;display:flex;gap:16px;align-items:baseline;padding:18px 0 18px 22px;border-top:1px solid var(--hair);font:500 16px/1.55 'Open Sauce One',sans-serif;color:var(--fg);transition:border-color var(--t2) var(--ease)}
 .ds-row::before{content:'';position:absolute;left:0;top:27px;width:6px;height:6px;border-radius:1.5px;background:var(--sky)}
 .ds-row:hover{border-top-color:var(--hair-hi)}
-.ds-stat-num{display:block;font:700 clamp(56px,7.4vw,104px)/0.95 'Open Sauce One',sans-serif;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:var(--fg);transition:color 600ms var(--ease)}
+.ds-stat-num{display:block;font:700 clamp(44px,5.2vw,76px)/1 'Open Sauce One',sans-serif;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;color:var(--fg)}
 .ds-stat-cap{display:block;margin-top:14px;font:500 15px/1.5 'Open Sauce One',sans-serif;color:var(--fg-2);max-width:32ch}
 .ds-link{position:relative;display:inline-flex;align-items:center;gap:10px;min-height:44px;font:600 15px/1 'Open Sauce One',sans-serif;color:var(--fg);text-decoration:none !important}
 .ds-link::after{content:'';position:absolute;left:0;right:22px;bottom:8px;height:1.5px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform var(--t2) var(--ease)}
@@ -226,11 +224,11 @@ html body .aerostrat-btn-primary:hover{background:#F0550F;border-color:#F0550F;b
 .ds-glass{background:rgba(255,255,255,0.03);border-radius:20px;-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
 
 /* ---- Graphic language (D7) ---- */
-.ds-decor{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:var(--decor);transition:opacity 600ms var(--ease)}
-.ds-orb{position:absolute;border-radius:50%;width:min(70vw,900px);aspect-ratio:1;animation:ds-drift 46s var(--ease) infinite alternate}
+.ds-decor{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:var(--decor);transition:opacity 600ms var(--ease);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%)}
+.ds-orb{position:absolute;border-radius:50%;width:min(70vw,900px);aspect-ratio:1}
 .ds-orb.deep{background:radial-gradient(closest-side,rgba(0,52,140,0.55),rgba(0,52,140,0) 72%)}
-.ds-orb.sky{background:radial-gradient(closest-side,rgba(63,158,232,0.26),rgba(63,158,232,0) 72%);animation-duration:58s}
-.ds-orb.coral{background:radial-gradient(closest-side,rgba(255,90,19,0.13),rgba(255,90,19,0) 72%);animation-duration:38s}
+.ds-orb.sky{background:radial-gradient(closest-side,rgba(63,158,232,0.26),rgba(63,158,232,0) 72%)}
+.ds-orb.coral{background:radial-gradient(closest-side,rgba(255,90,19,0.13),rgba(255,90,19,0) 72%)}
 @keyframes ds-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(6%,4%,0)}}
 .ds-gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:64px 64px;
   -webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 45%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 50% 45%,#000 20%,transparent 75%)}
@@ -239,13 +237,10 @@ html body .aerostrat-btn-primary:hover{background:#F0550F;border-color:#F0550F;b
 .ds-fade-edges{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%)}
 
 /* ---- Header (D6) ---- */
-.ds-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:140;pointer-events:none}
-.ds-progress span{display:block;height:100%;background:var(--sky);transform-origin:left;transform:scaleX(0)}
 html body header.ds-header{position:fixed;top:0;left:0;right:0;z-index:120;background:transparent !important;border:0 !important;animation:none !important;
   -webkit-backdrop-filter:none !important;backdrop-filter:none !important;transition:transform var(--t2) var(--ease)}
 header.ds-header::before{content:'';position:absolute;inset:0;background:rgba(0,21,56,0.72);-webkit-backdrop-filter:saturate(150%) blur(18px);backdrop-filter:saturate(150%) blur(18px);opacity:0;transition:opacity var(--t2) var(--ease);pointer-events:none}
 header.ds-header.is-solid::before{opacity:1}
-header.ds-header.is-hidden{transform:translateY(-100%)}
 html body header.ds-header .ds-hbar{position:relative;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding:0 var(--gut) !important;height:var(--hdr) !important;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:height var(--t2) var(--ease)}
 header.ds-header.is-solid{--hdr:72px}
 html body header.ds-header .ds-logo img{height:50px !important;width:auto;max-width:46vw;display:block;transition:height var(--t2) var(--ease)}
@@ -301,6 +296,28 @@ html.ds-sheet-open header.ds-header{transform:none}
 html.ds-sheet-open header.ds-header::before{opacity:0}
 .ds-hidden-old{display:none !important}
 
+html body .aerostrat-page-enter{animation-duration:0.45s}
+#dc-prerender .aerostrat-page-enter{animation-duration:0.45s}
+
+/* ---- Runway progress bar with the aircraft that takes off at the end of the page ---- */
+.aerostrat-runway{position:fixed;top:0;left:0;right:0;height:10px;z-index:130;pointer-events:none;background:transparent}
+.aerostrat-runway .lane{position:absolute;inset:0;background:#141619;border-bottom:1px solid rgba(0,0,0,0.6)}
+.aerostrat-runway .edge{position:absolute;left:0;right:0;height:1px;background:rgba(236,240,243,0.4)}
+.aerostrat-runway .edge.t{top:0}
+.aerostrat-runway .edge.b{bottom:0}
+.aerostrat-runway .centre{position:absolute;top:50%;left:0;right:0;height:1px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,rgba(236,240,243,0.85) 0 12px,transparent 12px 26px)}
+.aerostrat-runway .thresh{position:absolute;top:2px;bottom:2px;left:0;width:34px;background:repeating-linear-gradient(90deg,rgba(236,240,243,0.7) 0 2px,transparent 2px 5px)}
+.aerostrat-runway .touchdown{position:absolute;top:2px;bottom:2px;right:0;width:26px;background:repeating-linear-gradient(90deg,rgba(63,158,232,0.6) 0 2px,transparent 2px 6px)}
+.aerostrat-runway .laid{position:absolute;top:0;bottom:0;left:0;width:0;background:linear-gradient(90deg,rgba(63,158,232,0.06) 0%,rgba(63,158,232,0.28) 70%,rgba(63,158,232,0.55) 100%);mix-blend-mode:screen}
+.aerostrat-runway .laid::after{content:'';position:absolute;top:0;bottom:0;right:0;width:2px;background:#3F9EE8;box-shadow:0 0 8px 1px rgba(63,158,232,0.75)}
+.aerostrat-runway .ship{position:absolute;top:0;height:10px;left:0;width:20px;display:flex;align-items:center;justify-content:center;overflow:visible;transform-origin:50% 50%;will-change:left,transform}
+.aerostrat-runway .ship svg{filter:drop-shadow(0 0 5px rgba(63,158,232,0.55))}
+.aerostrat-runway .wake{position:absolute;top:4px;height:1px;left:0;width:0;background:linear-gradient(270deg,rgba(63,158,232,0.85),transparent);opacity:0}
+.aerostrat-runway[data-ds-runway] .laid{width:100%;transform-origin:left;transform:scaleX(0)}
+.aerostrat-runway[data-ds-runway] .laid::after{display:none}
+.aerostrat-runway[data-ds-runway] .wake{width:66px;transform-origin:left}
+.aerostrat-runway[data-ds-runway] .ship{will-change:transform}
+
 /* ---- Footer and "Up next": borderless on the canvas ---- */
 html body footer{background:transparent !important;border-top:1px solid var(--hair) !important;position:relative;z-index:1}
 html body footer > div > div:first-child{border-bottom-color:rgba(255,255,255,0.08) !important}
@@ -309,11 +326,11 @@ html[data-theme="light"] body footer{color:#fff}
 /* ---- Motion (D5, D8) ----
    html.ds-motion is set by js/motion.js only when motion is allowed, so without
    JavaScript, in the pre-rendered copy and with reduced motion, everything is shown at once. */
-html.ds-motion [data-rv]{opacity:0;transform:translate3d(0,12px,0);transition:opacity var(--t3) var(--ease),transform var(--t3) var(--ease);transition-delay:calc(var(--i,0) * 60ms)}
+html.ds-motion [data-rv]{opacity:0;transform:translate3d(0,12px,0);transition:opacity var(--t3) var(--ease),transform var(--t3) var(--ease);transition-delay:calc(var(--i,0) * 50ms)}
 html.ds-motion [data-rv].is-in{opacity:1;transform:none}
 html.ds-motion [data-lm]:not(.is-split){opacity:0}
 html.ds-motion [data-lm] .ds-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:0.08em;margin-bottom:-0.08em}
-html.ds-motion [data-lm] .ds-w > span{display:inline-block;transform:translate3d(0,105%,0);transition:transform 900ms var(--ease);transition-delay:calc(var(--l,0) * 90ms + 60ms)}
+html.ds-motion [data-lm] .ds-w > span{display:inline-block;transform:translate3d(0,105%,0);transition:transform 650ms var(--ease);transition-delay:calc(var(--l,0) * 70ms)}
 html.ds-motion [data-lm].is-in .ds-w > span{transform:none}
 /* statement fill (S3): one variable per paragraph, each word reads its own index */
 [data-fill] .ds-fw{opacity:clamp(0.25,calc(var(--f,99) - var(--k,0)),1);transition:opacity 120ms linear}

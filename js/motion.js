@@ -149,8 +149,9 @@
     });
     pinMode();
     // carry over the handover: anything already shown stays shown, without replaying
-    var instant = [];
+    var instant = [], vh0 = W.innerHeight, first = !st.bound; st.bound = true;
     scope.querySelectorAll('[data-rv],[data-lm],.ds-sweep,[data-draw],[data-count]').forEach(function (el) {
+      if (first && motion && el.getBoundingClientRect().top < vh0 && W.scrollY < 10 && !el.hasAttribute('data-count')) revealed[el.__k] = 1;
       if (!motion || revealed[el.__k]) { el.classList.add('is-in'); instant.push(el); if (el.hasAttribute('data-count')) el.__counted = true; }
     });
     if (instant.length && motion) {
@@ -180,7 +181,7 @@
           var el = en.target; el.classList.add('is-in'); revealed[el.__k] = 1; io.unobserve(el);
           if (el.hasAttribute('data-count')) count(el);
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px 12% 0px' });
       scope.querySelectorAll('[data-rv],[data-lm],.ds-sweep,[data-draw],[data-count]').forEach(function (el) { if (!el.classList.contains('is-in')) io.observe(el); });
       // unpinned product story: each step plays when it comes into view
       stepIo = new IntersectionObserver(function (es) {
@@ -216,13 +217,9 @@
   function frame() {
     st.ticking = false;
     var y = W.scrollY || html.scrollTop, vh = W.innerHeight, dy = y - st.lastY;
-    var bar = scope && scope.querySelector('.ds-progress span');
-    if (bar) bar.style.transform = 'scaleX(' + clamp(y / Math.max(1, html.scrollHeight - vh), 0, 1).toFixed(4) + ')';
+    runway(clamp(y / Math.max(1, html.scrollHeight - vh), 0, 1));
     if (hdr) {
       hdr.classList.toggle('is-solid', y > 80);
-      var busy = hdr.contains(d.activeElement) || (mega && mega.classList.contains('is-open')) || html.classList.contains('ds-sheet-open');
-      if (y < 160 || busy || dy < -4) hdr.classList.remove('is-hidden');
-      else if (dy > 6) { hdr.classList.add('is-hidden'); if (mega) setMega(false); }
     }
     st.lastY = y;
     if (!scope) return;
@@ -263,6 +260,29 @@
   }
   W.addEventListener('scroll', onScroll, { passive: true });
 
+  var rw = { cur: null, target: 0, raf: 0 };
+  function runway(pct) {
+    rw.target = pct;
+    if (!rw.raf) rw.raf = requestAnimationFrame(runwayStep);
+  }
+  function runwayStep() {
+    rw.raf = 0;
+    var r = scope && scope.querySelector('.aerostrat-runway[data-ds-runway]');
+    if (!r) return;
+    var ship = r.querySelector('.ship'), laid = r.querySelector('.laid'), wake = r.querySelector('.wake');
+    var pct = rw.target, cur = rw.cur == null || reduce ? pct : rw.cur + (pct - rw.cur) * 0.2;
+    if (Math.abs(pct - cur) < 0.0004) cur = pct;
+    rw.cur = cur;
+    var laneW = r.clientWidth || W.innerWidth, lift = clamp((cur - 0.7) / 0.24, 0, 1);
+    var shipX = 2 + cur * Math.max(0, laneW - 24), tailX = shipX + 4, wakeW = Math.min(tailX, 26 + lift * 40);
+    ship.style.transform = 'translate3d(' + shipX.toFixed(1) + 'px,' + (lift * -3).toFixed(2) + 'px,0) rotate(' + (lift * -24).toFixed(2) + 'deg) scale(' + (1 - lift * 0.3).toFixed(3) + ')';
+    ship.style.opacity = (1 - lift * 0.55).toFixed(3);
+    laid.style.transform = 'scaleX(' + (Math.max(0, tailX) / laneW).toFixed(4) + ')';
+    wake.style.transform = 'translate3d(' + Math.max(0, tailX - wakeW).toFixed(1) + 'px,0,0) scaleX(' + (wakeW / 66).toFixed(3) + ')';
+    wake.style.opacity = lift.toFixed(3);
+    if (cur !== pct) rw.raf = requestAnimationFrame(runwayStep);
+  }
+
   /* ---------- closing CTA: rounded-square particles settle into a flight-path arc ---------- */
   function particles() {
     var cv = scope.querySelector('.hm-particles');
@@ -299,9 +319,13 @@
 
   /* ---------- start ---------- */
   var pending = false;
-  new MutationObserver(function () {
+  var mo = new MutationObserver(function () {
     if (pending) return; pending = true;
-    requestAnimationFrame(function () { pending = false; check(); });
-  }).observe(d.documentElement, { childList: true, subtree: true });
+    requestAnimationFrame(function () {
+      pending = false; check();
+      if (main && !d.getElementById('dc-prerender') && main.closest('#dc-root') && main.classList.contains('aerostrat-page-enter')) mo.disconnect();
+    });
+  });
+  mo.observe(d.documentElement, { childList: true, subtree: true });
   check();
 })();

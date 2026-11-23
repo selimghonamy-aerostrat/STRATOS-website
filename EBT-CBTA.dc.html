@@ -191,8 +191,9 @@
     });
     pinMode();
     // carry over the handover: anything already shown stays shown, without replaying
-    var instant = [];
+    var instant = [], vh0 = W.innerHeight, first = !st.bound; st.bound = true;
     scope.querySelectorAll('[data-rv],[data-lm],.ds-sweep,[data-draw],[data-count]').forEach(function (el) {
+      if (first && motion && el.getBoundingClientRect().top < vh0 && W.scrollY < 10 && !el.hasAttribute('data-count')) revealed[el.__k] = 1;
       if (!motion || revealed[el.__k]) { el.classList.add('is-in'); instant.push(el); if (el.hasAttribute('data-count')) el.__counted = true; }
     });
     if (instant.length && motion) {
@@ -222,7 +223,7 @@
           var el = en.target; el.classList.add('is-in'); revealed[el.__k] = 1; io.unobserve(el);
           if (el.hasAttribute('data-count')) count(el);
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px 12% 0px' });
       scope.querySelectorAll('[data-rv],[data-lm],.ds-sweep,[data-draw],[data-count]').forEach(function (el) { if (!el.classList.contains('is-in')) io.observe(el); });
       // unpinned product story: each step plays when it comes into view
       stepIo = new IntersectionObserver(function (es) {
@@ -258,13 +259,9 @@
   function frame() {
     st.ticking = false;
     var y = W.scrollY || html.scrollTop, vh = W.innerHeight, dy = y - st.lastY;
-    var bar = scope && scope.querySelector('.ds-progress span');
-    if (bar) bar.style.transform = 'scaleX(' + clamp(y / Math.max(1, html.scrollHeight - vh), 0, 1).toFixed(4) + ')';
+    runway(clamp(y / Math.max(1, html.scrollHeight - vh), 0, 1));
     if (hdr) {
       hdr.classList.toggle('is-solid', y > 80);
-      var busy = hdr.contains(d.activeElement) || (mega && mega.classList.contains('is-open')) || html.classList.contains('ds-sheet-open');
-      if (y < 160 || busy || dy < -4) hdr.classList.remove('is-hidden');
-      else if (dy > 6) { hdr.classList.add('is-hidden'); if (mega) setMega(false); }
     }
     st.lastY = y;
     if (!scope) return;
@@ -305,6 +302,29 @@
   }
   W.addEventListener('scroll', onScroll, { passive: true });
 
+  var rw = { cur: null, target: 0, raf: 0 };
+  function runway(pct) {
+    rw.target = pct;
+    if (!rw.raf) rw.raf = requestAnimationFrame(runwayStep);
+  }
+  function runwayStep() {
+    rw.raf = 0;
+    var r = scope && scope.querySelector('.aerostrat-runway[data-ds-runway]');
+    if (!r) return;
+    var ship = r.querySelector('.ship'), laid = r.querySelector('.laid'), wake = r.querySelector('.wake');
+    var pct = rw.target, cur = rw.cur == null || reduce ? pct : rw.cur + (pct - rw.cur) * 0.2;
+    if (Math.abs(pct - cur) < 0.0004) cur = pct;
+    rw.cur = cur;
+    var laneW = r.clientWidth || W.innerWidth, lift = clamp((cur - 0.7) / 0.24, 0, 1);
+    var shipX = 2 + cur * Math.max(0, laneW - 24), tailX = shipX + 4, wakeW = Math.min(tailX, 26 + lift * 40);
+    ship.style.transform = 'translate3d(' + shipX.toFixed(1) + 'px,' + (lift * -3).toFixed(2) + 'px,0) rotate(' + (lift * -24).toFixed(2) + 'deg) scale(' + (1 - lift * 0.3).toFixed(3) + ')';
+    ship.style.opacity = (1 - lift * 0.55).toFixed(3);
+    laid.style.transform = 'scaleX(' + (Math.max(0, tailX) / laneW).toFixed(4) + ')';
+    wake.style.transform = 'translate3d(' + Math.max(0, tailX - wakeW).toFixed(1) + 'px,0,0) scaleX(' + (wakeW / 66).toFixed(3) + ')';
+    wake.style.opacity = lift.toFixed(3);
+    if (cur !== pct) rw.raf = requestAnimationFrame(runwayStep);
+  }
+
   /* ---------- closing CTA: rounded-square particles settle into a flight-path arc ---------- */
   function particles() {
     var cv = scope.querySelector('.hm-particles');
@@ -341,10 +361,14 @@
 
   /* ---------- start ---------- */
   var pending = false;
-  new MutationObserver(function () {
+  var mo = new MutationObserver(function () {
     if (pending) return; pending = true;
-    requestAnimationFrame(function () { pending = false; check(); });
-  }).observe(d.documentElement, { childList: true, subtree: true });
+    requestAnimationFrame(function () {
+      pending = false; check();
+      if (main && !d.getElementById('dc-prerender') && main.closest('#dc-root') && main.classList.contains('aerostrat-page-enter')) mo.disconnect();
+    });
+  });
+  mo.observe(d.documentElement, { childList: true, subtree: true });
   check();
 })();
 </script>
@@ -659,7 +683,18 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
 
   <a href="#main" class="scp0" style="position: absolute; left: -9999px; top: 0px; z-index: 200; background: rgb(255, 90, 19); color: rgb(255, 255, 255); font: 600 13px / 1 &quot;Open Sauce One&quot;, sans-serif; padding: 14px 20px;">Skip to content</a>
   <span data-scroll-sentinel="" aria-hidden="true" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></span>
-  <div class="ds-progress" aria-hidden="true"><span style="transform: scaleX(0);"></span></div>
+  <div class="aerostrat-runway" aria-hidden="true">
+    <div class="lane">
+      <div class="edge t"></div>
+      <div class="centre"></div>
+      <div class="laid"></div>
+      <div class="thresh"></div>
+      <div class="touchdown"></div>
+      <div class="edge b"></div>
+    </div>
+    <div class="wake"></div>
+    <div class="ship"><svg width="14" height="15" viewBox="0 0 40 32" fill="#3F9EE8" style="transform: rotate(90deg); overflow: visible;"><path d="M20 0 L23 9 L36 20 L36 23 L23 19 L21 30 L26 32.5 L20 31.5 L14 32.5 L19 30 L17 19 L4 23 L4 20 L17 9 Z"></path></svg></div>
+  </div>
 
   <header data-sticky="" class="ds-header">
     <div class="ds-hbar">
@@ -749,11 +784,11 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             <p style="font: 400 17px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin: 0px; max-width: 640px; text-wrap: pretty;"><span class="sc-interp">Grades sit on paper forms and spreadsheets, cut off from the competency framework. Every cohort review and audit response is assembled by hand, and a lost file is a gap in a pilot's record.</span></p>
             <div style="display: flex; align-items: center; gap: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: rgb(255, 90, 19); flex: 0 0 auto;"></span><span style="font: 600 14.5px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Result: trends surface too late.</span></span></div>
           <div hidden="" data-tab-panel="1">
-            <p data-dc-tpl="123" style="font: 400 17px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin: 0px; max-width: 640px; text-wrap: pretty;"><span class="sc-interp">Designed to store training records, with competencies added later. Instructors still work out competency grades by hand, so consistency depends on the individual, not the system.</span></p>
-            <div data-dc-tpl="124" style="display: flex; align-items: center; gap: 12px;"><span data-dc-tpl="125" style="width: 8px; height: 8px; border-radius: 50%; background: rgb(255, 90, 19); flex: 0 0 auto;"></span><span data-dc-tpl="126" style="font: 600 14.5px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Result: instructor variance unseen.</span></span></div>
+            <p data-dc-tpl="133" style="font: 400 17px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin: 0px; max-width: 640px; text-wrap: pretty;"><span class="sc-interp">Designed to store training records, with competencies added later. Instructors still work out competency grades by hand, so consistency depends on the individual, not the system.</span></p>
+            <div data-dc-tpl="134" style="display: flex; align-items: center; gap: 12px;"><span data-dc-tpl="135" style="width: 8px; height: 8px; border-radius: 50%; background: rgb(255, 90, 19); flex: 0 0 auto;"></span><span data-dc-tpl="136" style="font: 600 14.5px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Result: instructor variance unseen.</span></span></div>
           </div><div hidden="" data-tab-panel="2">
-            <p data-dc-tpl="123" style="font: 400 17px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin: 0px; max-width: 640px; text-wrap: pretty;"><span class="sc-interp">Built for the methodology, but analysis usually stops at the individual pilot. Cohort trends, fleet risk and instructor standardisation stay manual, and fixed templates make airlines adapt to the tool.</span></p>
-            <div data-dc-tpl="124" style="display: flex; align-items: center; gap: 12px;"><span data-dc-tpl="125" style="width: 8px; height: 8px; border-radius: 50%; background: rgb(255, 90, 19); flex: 0 0 auto;"></span><span data-dc-tpl="126" style="font: 600 14.5px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Result: insight stays manual.</span></span></div>
+            <p data-dc-tpl="133" style="font: 400 17px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin: 0px; max-width: 640px; text-wrap: pretty;"><span class="sc-interp">Built for the methodology, but analysis usually stops at the individual pilot. Cohort trends, fleet risk and instructor standardisation stay manual, and fixed templates make airlines adapt to the tool.</span></p>
+            <div data-dc-tpl="134" style="display: flex; align-items: center; gap: 12px;"><span data-dc-tpl="135" style="width: 8px; height: 8px; border-radius: 50%; background: rgb(255, 90, 19); flex: 0 0 auto;"></span><span data-dc-tpl="136" style="font: 600 14.5px / 1.5 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Result: insight stays manual.</span></span></div>
           </div></div>
         </div>
         <p style="font: 400 15px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 28px 0px 0px; max-width: 820px;">EBT/CBTA expects grades derived from observed behaviour, trends tracked across the whole pilot population, and proof that every instructor grades to one standard.</p>
@@ -829,55 +864,55 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           <a href="/contact?product=ebt&amp;stage=principles#book" data-cta="book-walkthrough" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Book a walkthrough for your EBT principles programme</span></a>
         </div>
       <div hidden="" data-tab-panel="0">
-        <div data-dc-tpl="163" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px 72px; align-items: end; margin-bottom: 40px;">
-          <div data-dc-tpl="164">
-            <div data-dc-tpl="165" style="display: flex; align-items: center; gap: 10px; font: 600 14px / 1.3 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0px; color: rgb(0, 52, 140); margin-bottom: 18px;"><span data-dc-tpl="166" style="flex: 0 0 auto; display: inline-flex;"><svg data-dc-tpl="167" aria-hidden="true" width="22" height="8" viewBox="0 0 22 8" style="flex: 0 0 auto; display: block;"><path data-dc-tpl="168" d="M1.5 6.5Q11 0.5 20.5 6.5" style="fill: none; stroke: rgb(255, 90, 19); stroke-width: 2; stroke-linecap: round;"></path></svg></span>The transition</div>
-            <h2 data-dc-tpl="169" style="font: 700 clamp(26px, 3.2vw, 40px) / 1.12 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.02em; color: rgb(0, 0, 0); margin: 0px; text-wrap: pretty;">Native to the transition.</h2>
+        <div data-dc-tpl="173" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px 72px; align-items: end; margin-bottom: 40px;">
+          <div data-dc-tpl="174">
+            <div data-dc-tpl="175" style="display: flex; align-items: center; gap: 10px; font: 600 14px / 1.3 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0px; color: rgb(0, 52, 140); margin-bottom: 18px;"><span data-dc-tpl="176" style="flex: 0 0 auto; display: inline-flex;"><svg data-dc-tpl="177" aria-hidden="true" width="22" height="8" viewBox="0 0 22 8" style="flex: 0 0 auto; display: block;"><path data-dc-tpl="178" d="M1.5 6.5Q11 0.5 20.5 6.5" style="fill: none; stroke: rgb(255, 90, 19); stroke-width: 2; stroke-linecap: round;"></path></svg></span>The transition</div>
+            <h2 data-dc-tpl="179" style="font: 700 clamp(26px, 3.2vw, 40px) / 1.12 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.02em; color: rgb(0, 0, 0); margin: 0px; text-wrap: pretty;">Native to the transition.</h2>
           </div>
-          <p data-dc-tpl="170" style="font: 400 15.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 540px; text-wrap: pretty;">Whether you are starting EBT or already running it, AeroStrat supports your programme at its current stage and carries it to the next, on one platform. Select your stage.</p>
+          <p data-dc-tpl="180" style="font: 400 15.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 540px; text-wrap: pretty;">Whether you are starting EBT or already running it, AeroStrat supports your programme at its current stage and carries it to the next, on one platform. Select your stage.</p>
         </div>
-        <div data-dc-tpl="171" role="tablist" aria-label="EBT stages" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0px; margin-bottom: 24px;"></div>
-        <div data-dc-tpl="182" role="tabpanel" class="" aria-labelledby="aerostrat-tl-2-tab-0" tabindex="0" style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: clamp(26px, 3.2vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px 56px; align-items: start;">
-          <div data-dc-tpl="183" style="display: flex; flex-direction: column; gap: 12px;"><span data-dc-tpl="184" style="align-self: flex-start; font: 700 10px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255, 255, 255); background: rgb(0, 52, 140); padding: 6px 9px; border-radius: 2px;"><span class="sc-interp">Native · Live</span></span><span data-dc-tpl="185" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Conventional</span>: <span class="sc-interp">Train, then check</span></span></div>
-          <p data-dc-tpl="186" style="font: 400 15px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; text-wrap: pretty;"><span class="sc-interp">Item by item: Satisfactory / Unsatisfactory or pass / fail per item, against flight tolerances. The grading scale is whatever the authority's form uses. No competency framework needed; a task and manoeuvre list instead.</span></p>
+        <div data-dc-tpl="181" role="tablist" aria-label="EBT stages" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0px; margin-bottom: 24px;"></div>
+        <div data-dc-tpl="192" role="tabpanel" class="" aria-labelledby="aerostrat-tl-2-tab-0" tabindex="0" style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: clamp(26px, 3.2vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px 56px; align-items: start;">
+          <div data-dc-tpl="193" style="display: flex; flex-direction: column; gap: 12px;"><span data-dc-tpl="194" style="align-self: flex-start; font: 700 10px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255, 255, 255); background: rgb(0, 52, 140); padding: 6px 9px; border-radius: 2px;"><span class="sc-interp">Native · Live</span></span><span data-dc-tpl="195" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Conventional</span>: <span class="sc-interp">Train, then check</span></span></div>
+          <p data-dc-tpl="196" style="font: 400 15px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; text-wrap: pretty;"><span class="sc-interp">Item by item: Satisfactory / Unsatisfactory or pass / fail per item, against flight tolerances. The grading scale is whatever the authority's form uses. No competency framework needed; a task and manoeuvre list instead.</span></p>
         </div>
-        <div data-dc-tpl="187" class="" style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin-top: 20px;">
-          <p data-dc-tpl="188" style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Each check is graded under the stage in force on its date.</p>
-          <a data-dc-tpl="189" href="/contact?product=ebt&amp;stage=conventional#book" data-cta="book-walkthrough" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Book a walkthrough for your Conventional programme</span></a>
+        <div data-dc-tpl="197" class="" style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin-top: 20px;">
+          <p data-dc-tpl="198" style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Each check is graded under the stage in force on its date.</p>
+          <a data-dc-tpl="199" href="/contact?product=ebt&amp;stage=conventional#book" data-cta="book-walkthrough" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Book a walkthrough for your Conventional programme</span></a>
         </div>
       </div><div hidden="" data-tab-panel="2">
-        <div data-dc-tpl="163" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px 72px; align-items: end; margin-bottom: 40px;">
-          <div data-dc-tpl="164">
-            <div data-dc-tpl="165" style="display: flex; align-items: center; gap: 10px; font: 600 14px / 1.3 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0px; color: rgb(0, 52, 140); margin-bottom: 18px;"><span data-dc-tpl="166" style="flex: 0 0 auto; display: inline-flex;"><svg data-dc-tpl="167" aria-hidden="true" width="22" height="8" viewBox="0 0 22 8" style="flex: 0 0 auto; display: block;"><path data-dc-tpl="168" d="M1.5 6.5Q11 0.5 20.5 6.5" style="fill: none; stroke: rgb(255, 90, 19); stroke-width: 2; stroke-linecap: round;"></path></svg></span>The transition</div>
-            <h2 data-dc-tpl="169" style="font: 700 clamp(26px, 3.2vw, 40px) / 1.12 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.02em; color: rgb(0, 0, 0); margin: 0px; text-wrap: pretty;">Native to the transition.</h2>
+        <div data-dc-tpl="173" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px 72px; align-items: end; margin-bottom: 40px;">
+          <div data-dc-tpl="174">
+            <div data-dc-tpl="175" style="display: flex; align-items: center; gap: 10px; font: 600 14px / 1.3 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0px; color: rgb(0, 52, 140); margin-bottom: 18px;"><span data-dc-tpl="176" style="flex: 0 0 auto; display: inline-flex;"><svg data-dc-tpl="177" aria-hidden="true" width="22" height="8" viewBox="0 0 22 8" style="flex: 0 0 auto; display: block;"><path data-dc-tpl="178" d="M1.5 6.5Q11 0.5 20.5 6.5" style="fill: none; stroke: rgb(255, 90, 19); stroke-width: 2; stroke-linecap: round;"></path></svg></span>The transition</div>
+            <h2 data-dc-tpl="179" style="font: 700 clamp(26px, 3.2vw, 40px) / 1.12 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.02em; color: rgb(0, 0, 0); margin: 0px; text-wrap: pretty;">Native to the transition.</h2>
           </div>
-          <p data-dc-tpl="170" style="font: 400 15.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 540px; text-wrap: pretty;">Whether you are starting EBT or already running it, AeroStrat supports your programme at its current stage and carries it to the next, on one platform. Select your stage.</p>
+          <p data-dc-tpl="180" style="font: 400 15.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 540px; text-wrap: pretty;">Whether you are starting EBT or already running it, AeroStrat supports your programme at its current stage and carries it to the next, on one platform. Select your stage.</p>
         </div>
-        <div data-dc-tpl="171" role="tablist" aria-label="EBT stages" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0px; margin-bottom: 24px;"></div>
-        <div data-dc-tpl="182" role="tabpanel" class="" aria-labelledby="aerostrat-tl-2-tab-2" tabindex="0" style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: clamp(26px, 3.2vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px 56px; align-items: start;">
-          <div data-dc-tpl="183" style="display: flex; flex-direction: column; gap: 12px;"><span data-dc-tpl="184" style="align-self: flex-start; font: 700 10px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255, 255, 255); background: rgb(0, 52, 140); padding: 6px 9px; border-radius: 2px;"><span class="sc-interp">Native for pilot assessment · Live</span></span><span data-dc-tpl="185" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Mixed EBT</span>: <span class="sc-interp">Evidence-led</span></span></div>
-          <p data-dc-tpl="186" style="font: 400 15px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; text-wrap: pretty;"><span class="sc-interp">Evaluation phase, manoeuvres validation and scenario-based training; the licence is still revalidated by check. Recommended grades from evidence, interim and final standards, alerts, policies and flags.</span></p>
+        <div data-dc-tpl="181" role="tablist" aria-label="EBT stages" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0px; margin-bottom: 24px;"></div>
+        <div data-dc-tpl="192" role="tabpanel" class="" aria-labelledby="aerostrat-tl-2-tab-2" tabindex="0" style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: clamp(26px, 3.2vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px 56px; align-items: start;">
+          <div data-dc-tpl="193" style="display: flex; flex-direction: column; gap: 12px;"><span data-dc-tpl="194" style="align-self: flex-start; font: 700 10px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255, 255, 255); background: rgb(0, 52, 140); padding: 6px 9px; border-radius: 2px;"><span class="sc-interp">Native for pilot assessment · Live</span></span><span data-dc-tpl="195" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Mixed EBT</span>: <span class="sc-interp">Evidence-led</span></span></div>
+          <p data-dc-tpl="196" style="font: 400 15px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; text-wrap: pretty;"><span class="sc-interp">Evaluation phase, manoeuvres validation and scenario-based training; the licence is still revalidated by check. Recommended grades from evidence, interim and final standards, alerts, policies and flags.</span></p>
         </div>
-        <div data-dc-tpl="187" class="" style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin-top: 20px;">
-          <p data-dc-tpl="188" style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Each check is graded under the stage in force on its date.</p>
-          <a data-dc-tpl="189" href="/contact?product=ebt&amp;stage=mixed#book" data-cta="book-walkthrough" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Book a walkthrough for your Mixed EBT programme</span></a>
+        <div data-dc-tpl="197" class="" style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin-top: 20px;">
+          <p data-dc-tpl="198" style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Each check is graded under the stage in force on its date.</p>
+          <a data-dc-tpl="199" href="/contact?product=ebt&amp;stage=mixed#book" data-cta="book-walkthrough" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Book a walkthrough for your Mixed EBT programme</span></a>
         </div>
       </div><div hidden="" data-tab-panel="3">
-        <div data-dc-tpl="163" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px 72px; align-items: end; margin-bottom: 40px;">
-          <div data-dc-tpl="164">
-            <div data-dc-tpl="165" style="display: flex; align-items: center; gap: 10px; font: 600 14px / 1.3 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0px; color: rgb(0, 52, 140); margin-bottom: 18px;"><span data-dc-tpl="166" style="flex: 0 0 auto; display: inline-flex;"><svg data-dc-tpl="167" aria-hidden="true" width="22" height="8" viewBox="0 0 22 8" style="flex: 0 0 auto; display: block;"><path data-dc-tpl="168" d="M1.5 6.5Q11 0.5 20.5 6.5" style="fill: none; stroke: rgb(255, 90, 19); stroke-width: 2; stroke-linecap: round;"></path></svg></span>The transition</div>
-            <h2 data-dc-tpl="169" style="font: 700 clamp(26px, 3.2vw, 40px) / 1.12 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.02em; color: rgb(0, 0, 0); margin: 0px; text-wrap: pretty;">Native to the transition.</h2>
+        <div data-dc-tpl="173" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px 72px; align-items: end; margin-bottom: 40px;">
+          <div data-dc-tpl="174">
+            <div data-dc-tpl="175" style="display: flex; align-items: center; gap: 10px; font: 600 14px / 1.3 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0px; color: rgb(0, 52, 140); margin-bottom: 18px;"><span data-dc-tpl="176" style="flex: 0 0 auto; display: inline-flex;"><svg data-dc-tpl="177" aria-hidden="true" width="22" height="8" viewBox="0 0 22 8" style="flex: 0 0 auto; display: block;"><path data-dc-tpl="178" d="M1.5 6.5Q11 0.5 20.5 6.5" style="fill: none; stroke: rgb(255, 90, 19); stroke-width: 2; stroke-linecap: round;"></path></svg></span>The transition</div>
+            <h2 data-dc-tpl="179" style="font: 700 clamp(26px, 3.2vw, 40px) / 1.12 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: -0.02em; color: rgb(0, 0, 0); margin: 0px; text-wrap: pretty;">Native to the transition.</h2>
           </div>
-          <p data-dc-tpl="170" style="font: 400 15.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 540px; text-wrap: pretty;">Whether you are starting EBT or already running it, AeroStrat supports your programme at its current stage and carries it to the next, on one platform. Select your stage.</p>
+          <p data-dc-tpl="180" style="font: 400 15.5px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; max-width: 540px; text-wrap: pretty;">Whether you are starting EBT or already running it, AeroStrat supports your programme at its current stage and carries it to the next, on one platform. Select your stage.</p>
         </div>
-        <div data-dc-tpl="171" role="tablist" aria-label="EBT stages" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0px; margin-bottom: 24px;"></div>
-        <div data-dc-tpl="182" role="tabpanel" class="" aria-labelledby="aerostrat-tl-2-tab-3" tabindex="0" style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: clamp(26px, 3.2vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px 56px; align-items: start;">
-          <div data-dc-tpl="183" style="display: flex; flex-direction: column; gap: 12px;"><span data-dc-tpl="184" style="align-self: flex-start; font: 700 10px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255, 255, 255); background: rgb(0, 52, 140); padding: 6px 9px; border-radius: 2px;"><span class="sc-interp">Native · Live</span></span><span data-dc-tpl="185" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Baseline EBT</span>: <span class="sc-interp">Full EBT</span></span></div>
-          <p data-dc-tpl="186" style="font: 400 15px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; text-wrap: pretty;"><span class="sc-interp">Full EBT on the same engine, cycles and modules, live today. Equivalency tables (malfunction and approach) and line-check interval tracking are planned additions.</span></p>
+        <div data-dc-tpl="181" role="tablist" aria-label="EBT stages" class="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0px; margin-bottom: 24px;"></div>
+        <div data-dc-tpl="192" role="tabpanel" class="" aria-labelledby="aerostrat-tl-2-tab-3" tabindex="0" style="background: rgb(255, 255, 255); outline: rgba(0, 52, 140, 0.16) solid 1px; padding: clamp(26px, 3.2vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px 56px; align-items: start;">
+          <div data-dc-tpl="193" style="display: flex; flex-direction: column; gap: 12px;"><span data-dc-tpl="194" style="align-self: flex-start; font: 700 10px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255, 255, 255); background: rgb(0, 52, 140); padding: 6px 9px; border-radius: 2px;"><span class="sc-interp">Native · Live</span></span><span data-dc-tpl="195" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">Baseline EBT</span>: <span class="sc-interp">Full EBT</span></span></div>
+          <p data-dc-tpl="196" style="font: 400 15px / 1.8 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px; text-wrap: pretty;"><span class="sc-interp">Full EBT on the same engine, cycles and modules, live today. Equivalency tables (malfunction and approach) and line-check interval tracking are planned additions.</span></p>
         </div>
-        <div data-dc-tpl="187" class="" style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin-top: 20px;">
-          <p data-dc-tpl="188" style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Each check is graded under the stage in force on its date.</p>
-          <a data-dc-tpl="189" href="/contact?product=ebt&amp;stage=baseline#book" data-cta="book-walkthrough" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Book a walkthrough for your Baseline EBT programme</span></a>
+        <div data-dc-tpl="197" class="" style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin-top: 20px;">
+          <p data-dc-tpl="198" style="font: 400 13.5px / 1.7 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;">Each check is graded under the stage in force on its date.</p>
+          <a data-dc-tpl="199" href="/contact?product=ebt&amp;stage=baseline#book" data-cta="book-walkthrough" class="aerostrat-btn aerostrat-btn-primary"><span class="sc-interp">Book a walkthrough for your Baseline EBT programme</span></a>
         </div>
       </div></div>
     </section>
@@ -1015,34 +1050,34 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             
           </div>
         <div hidden="" data-tab-panel="0">
-          <div data-dc-tpl="252" style="display: flex; flex-direction: column; gap: 12px;">
-            <span data-dc-tpl="253" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;"><span data-dc-tpl="254" style="align-self: flex-start; font: 600 10.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(74, 83, 97); background: rgb(236, 240, 243); padding: 5px 8px; border-radius: 2px;">Sample data</span><button data-dc-tpl="255" type="button" data-enlarge-open="" style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140); background: rgb(255, 255, 255); border: 1px solid rgba(0, 52, 140, 0.3); padding: 7px 10px; border-radius: 2px; cursor: pointer;">Enlarge</button></span>
-            <span data-dc-tpl="256" style="font: 600 11px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(0, 52, 140); text-transform: uppercase;"><span class="sc-interp">Altitude 01 · Micro</span></span>
-            <span data-dc-tpl="257" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">The single evaluation</span></span>
-            <p data-dc-tpl="258" style="font: 400 14.5px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">A close, granular look: category by category, behaviour by behaviour. Numeric or categorical, detected automatically.</span></p>
+          <div data-dc-tpl="262" style="display: flex; flex-direction: column; gap: 12px;">
+            <span data-dc-tpl="263" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;"><span data-dc-tpl="264" style="align-self: flex-start; font: 600 10.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(74, 83, 97); background: rgb(236, 240, 243); padding: 5px 8px; border-radius: 2px;">Sample data</span><button data-dc-tpl="265" type="button" data-enlarge-open="" style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140); background: rgb(255, 255, 255); border: 1px solid rgba(0, 52, 140, 0.3); padding: 7px 10px; border-radius: 2px; cursor: pointer;">Enlarge</button></span>
+            <span data-dc-tpl="266" style="font: 600 11px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(0, 52, 140); text-transform: uppercase;"><span class="sc-interp">Altitude 01 · Micro</span></span>
+            <span data-dc-tpl="267" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">The single evaluation</span></span>
+            <p data-dc-tpl="268" style="font: 400 14.5px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">A close, granular look: category by category, behaviour by behaviour. Numeric or categorical, detected automatically.</span></p>
           </div>
-          <div data-dc-tpl="259" style="min-width: 0px;">
+          <div data-dc-tpl="269" style="min-width: 0px;">
             
-              <div data-dc-tpl="261" style="display: flex; flex-direction: column; gap: 8px;">
-                <span data-dc-tpl="262" style="font: 600 12px / 1.4 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin-bottom: 6px;">Capt. Mike · Sim check · Sep 2026</span>
+              <div data-dc-tpl="271" style="display: flex; flex-direction: column; gap: 8px;">
+                <span data-dc-tpl="272" style="font: 600 12px / 1.4 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin-bottom: 6px;">Capt. Mike · Sim check · Sep 2026</span>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">KNO</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">KNO</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">PRO</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 60%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">3</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">PRO</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 60%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">3</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">COM</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 100%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">5</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">COM</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 100%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">5</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">FPA</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 20%; background: rgb(255, 90, 19);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">1</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">FPA</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 20%; background: rgb(255, 90, 19);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">1</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">FPM</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">FPM</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">LTW</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 60%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">3</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">LTW</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 60%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">3</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">PSD</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">PSD</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">SAW</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">SAW</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 80%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">4</span></span></div>
                 
-                  <div data-dc-tpl="264" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="265" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">WLM</span></span><span data-dc-tpl="266" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="267" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 100%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="268" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">5</span></span></div>
+                  <div data-dc-tpl="274" style="display: grid; grid-template-columns: 44px minmax(0px, 1fr) 28px; gap: 12px; align-items: center;"><span data-dc-tpl="275" style="font: 700 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140);"><span class="sc-interp">WLM</span></span><span data-dc-tpl="276" style="height: 10px; background: rgb(236, 240, 243); position: relative; display: block;"><span data-dc-tpl="277" style="position: absolute; left: 0px; top: 0px; bottom: 0px; width: 100%; background: rgb(0, 52, 140);"></span></span><span data-dc-tpl="278" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); text-align: right;"><span class="sc-interp">5</span></span></div>
                 
               </div>
             
@@ -1050,23 +1085,23 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             
           </div>
         </div><div hidden="" data-tab-panel="2">
-          <div data-dc-tpl="252" style="display: flex; flex-direction: column; gap: 12px;">
-            <span data-dc-tpl="253" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;"><span data-dc-tpl="254" style="align-self: flex-start; font: 600 10.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(74, 83, 97); background: rgb(236, 240, 243); padding: 5px 8px; border-radius: 2px;">Sample data</span><button data-dc-tpl="255" type="button" data-enlarge-open="" style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140); background: rgb(255, 255, 255); border: 1px solid rgba(0, 52, 140, 0.3); padding: 7px 10px; border-radius: 2px; cursor: pointer;">Enlarge</button></span>
-            <span data-dc-tpl="256" style="font: 600 11px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(0, 52, 140); text-transform: uppercase;"><span class="sc-interp">Altitude 03 · Trend</span></span>
-            <span data-dc-tpl="257" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">The pilot, over time</span></span>
-            <p data-dc-tpl="258" style="font: 400 14.5px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">A chronological view of one pilot's history: improving, plateauing or slipping.</span></p>
+          <div data-dc-tpl="262" style="display: flex; flex-direction: column; gap: 12px;">
+            <span data-dc-tpl="263" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;"><span data-dc-tpl="264" style="align-self: flex-start; font: 600 10.5px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(74, 83, 97); background: rgb(236, 240, 243); padding: 5px 8px; border-radius: 2px;">Sample data</span><button data-dc-tpl="265" type="button" data-enlarge-open="" style="font: 600 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 52, 140); background: rgb(255, 255, 255); border: 1px solid rgba(0, 52, 140, 0.3); padding: 7px 10px; border-radius: 2px; cursor: pointer;">Enlarge</button></span>
+            <span data-dc-tpl="266" style="font: 600 11px / 1 &quot;Open Sauce One&quot;, sans-serif; letter-spacing: 0.14em; color: rgb(0, 52, 140); text-transform: uppercase;"><span class="sc-interp">Altitude 03 · Trend</span></span>
+            <span data-dc-tpl="267" style="font: 700 clamp(20px, 2.2vw, 26px) / 1.25 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">The pilot, over time</span></span>
+            <p data-dc-tpl="268" style="font: 400 14.5px / 1.75 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); margin: 0px;"><span class="sc-interp">A chronological view of one pilot's history: improving, plateauing or slipping.</span></p>
           </div>
-          <div data-dc-tpl="259" style="min-width: 0px;">
+          <div data-dc-tpl="269" style="min-width: 0px;">
             
             
             
-              <div data-dc-tpl="279" style="display: flex; flex-direction: column; gap: 14px;">
-                <span data-dc-tpl="280" style="font: 600 12px / 1.4 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97);">Capt. Chris · Situation awareness (SAW) · last five line checks</span>
-                <div data-dc-tpl="281" style="display: grid; grid-template-columns: repeat(5, minmax(0px, 1fr)); gap: 12px; align-items: end; height: 180px; border-bottom: 1px solid rgba(0, 52, 140, 0.2);">
-                  <div data-dc-tpl="283" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="284" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">5</span></span><span data-dc-tpl="285" style="width: 100%; max-width: 56px; height: 100%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="283" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="284" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">4</span></span><span data-dc-tpl="285" style="width: 100%; max-width: 56px; height: 80%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="283" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="284" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">4</span></span><span data-dc-tpl="285" style="width: 100%; max-width: 56px; height: 80%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="283" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="284" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">3</span></span><span data-dc-tpl="285" style="width: 100%; max-width: 56px; height: 60%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="283" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="284" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">2</span></span><span data-dc-tpl="285" style="width: 100%; max-width: 56px; height: 40%; background: rgb(255, 90, 19); display: block;"></span></div>
+              <div data-dc-tpl="289" style="display: flex; flex-direction: column; gap: 14px;">
+                <span data-dc-tpl="290" style="font: 600 12px / 1.4 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97);">Capt. Chris · Situation awareness (SAW) · last five line checks</span>
+                <div data-dc-tpl="291" style="display: grid; grid-template-columns: repeat(5, minmax(0px, 1fr)); gap: 12px; align-items: end; height: 180px; border-bottom: 1px solid rgba(0, 52, 140, 0.2);">
+                  <div data-dc-tpl="293" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="294" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">5</span></span><span data-dc-tpl="295" style="width: 100%; max-width: 56px; height: 100%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="293" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="294" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">4</span></span><span data-dc-tpl="295" style="width: 100%; max-width: 56px; height: 80%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="293" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="294" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">4</span></span><span data-dc-tpl="295" style="width: 100%; max-width: 56px; height: 80%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="293" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="294" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">3</span></span><span data-dc-tpl="295" style="width: 100%; max-width: 56px; height: 60%; background: rgb(0, 52, 140); display: block;"></span></div><div data-dc-tpl="293" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%;"><span data-dc-tpl="294" style="font: 700 13px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0);"><span class="sc-interp">2</span></span><span data-dc-tpl="295" style="width: 100%; max-width: 56px; height: 40%; background: rgb(255, 90, 19); display: block;"></span></div>
                 </div>
-                <div data-dc-tpl="286" style="display: grid; grid-template-columns: repeat(5, minmax(0px, 1fr)); gap: 12px;"><span data-dc-tpl="288" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q3 25</span></span><span data-dc-tpl="288" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q4 25</span></span><span data-dc-tpl="288" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q1 26</span></span><span data-dc-tpl="288" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q2 26</span></span><span data-dc-tpl="288" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q3 26</span></span></div>
-                <p data-dc-tpl="289" style="font: 500 13.5px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin: 0px;">Slipping below standard, visible long before any single report makes it obvious.</p>
+                <div data-dc-tpl="296" style="display: grid; grid-template-columns: repeat(5, minmax(0px, 1fr)); gap: 12px;"><span data-dc-tpl="298" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q3 25</span></span><span data-dc-tpl="298" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q4 25</span></span><span data-dc-tpl="298" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q1 26</span></span><span data-dc-tpl="298" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q2 26</span></span><span data-dc-tpl="298" style="font: 500 12px / 1 &quot;Open Sauce One&quot;, sans-serif; color: rgb(74, 83, 97); text-align: center;"><span class="sc-interp">Q3 26</span></span></div>
+                <p data-dc-tpl="299" style="font: 500 13.5px / 1.6 &quot;Open Sauce One&quot;, sans-serif; color: rgb(0, 0, 0); margin: 0px;">Slipping below standard, visible long before any single report makes it obvious.</p>
               </div>
             
           </div>
@@ -1489,7 +1524,18 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
 
   <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:200;background:#FF5A13;color:#fff;font:600 13px/1 'Open Sauce One',sans-serif;padding:14px 20px" style-focus="left:12px;top:12px">Skip to content</a>
   <span data-scroll-sentinel="" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none"></span>
-  <div className="ds-progress" aria-hidden="true"><span></span></div>
+  <div className="aerostrat-runway" aria-hidden="true">
+    <div className="lane">
+      <div className="edge t"></div>
+      <div className="centre"></div>
+      <div className="laid"></div>
+      <div className="thresh"></div>
+      <div className="touchdown"></div>
+      <div className="edge b"></div>
+    </div>
+    <div className="wake"></div>
+    <div className="ship"><svg width="14" height="15" viewBox="0 0 40 32" style="transform:rotate(90deg);overflow:visible" fill="#3F9EE8"><path d="M20 0 L23 9 L36 20 L36 23 L23 19 L21 30 L26 32.5 L20 31.5 L14 32.5 L19 30 L17 19 L4 23 L4 20 L17 9 Z"></path></svg></div>
+  </div>
 
   <header data-sticky="" className="ds-header">
     <div className="ds-hbar">
