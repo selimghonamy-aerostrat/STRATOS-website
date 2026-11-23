@@ -15,7 +15,8 @@
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   if (motion) html.classList.add('ds-motion');
 
-  var STATIC = !d.querySelector('script[src*="/js/support.js"]');
+  // React pages carry the runtime loader (js/support.js starts after the load event, so the pre-rendered page paints first)
+  var STATIC = !d.querySelector('script[data-dc-runtime],script[src*="/js/support.js"]');
   var revealed = {};
   var main = null, scope = null, io = null, stepIo = null;
   var st = { lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], scrub: null, snav: null };
