@@ -1,19 +1,14 @@
-/* Contact page (/contact). Uses the tokens and components in css/ds.css (v3.3 layer). Inlined by scripts/sync-shared.py. */
+/* Contact page (/contact). Uses the tokens and components in css/ds.css. Inlined by scripts/sync-shared.py. */
 
-/* ---- Hero: topic label, two-line headline, one sentence, one text link ---- */
-.ct-hero{min-height:88vh;display:flex;align-items:center}
-.ct-hero > .ds-wrap{width:100%}
-.ct-hero::after{-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
-.ct .ds-phero .ct-h1{max-width:22ch}
+.ct-h1{max-width:14ch}
 .ct .ds-phero .ds-link{color:#fff}
 
-/* ---- Booking: the calendar sits in a feathered panel ---- */
+/* ---- Booking: GlassPanel on Deep Blue ---- */
 html body #book{scroll-margin-top:0}
 .ct-bookcard{position:relative;overflow:hidden}
 .ct-bookrow{display:flex;flex-wrap:wrap;gap:28px 48px;align-items:center;justify-content:space-between}
-.ct-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px}
-html body .ct-facts .ds-pill.next{color:var(--fg);font-size:16px}
-html body .ct-facts .ds-pill.next::before{background:var(--sky)}
+.ct-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.on-deep .ct-facts .ds-pill.next{border-color:rgba(255,255,255,0.55);color:#fff;height:34px;padding:0 15px;border-radius:17px;font-size:14px}
 .ct-bookgo{display:flex;flex-direction:column;gap:12px;align-items:flex-start;max-width:42ch}
 .ct-note{font:400 14px/1.6 var(--font);color:var(--fg-2);margin:0}
 .ct-note a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
@@ -21,43 +16,40 @@ html body .ct-facts .ds-pill.next::before{background:var(--sky)}
 .ct-bookcard:has(.ct-frame){padding:clamp(10px,1.2vw,16px)}
 .ct-frame{display:block;width:100%;border:0;border-radius:16px;background:#fff}
 .ct-newtab{margin:16px 0 0}
-.ct-newtab .ds-link{color:var(--fg)}
+.on-deep .ct-newtab .ds-link{color:#fff}
 
-/* ---- Short form beside the three waypoints ---- */
-.ct-h2{margin-bottom:clamp(32px,4vw,56px)}
-.ct-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px clamp(48px,6vw,96px);align-items:start}
-.ct-form{display:flex;flex-direction:column;gap:28px;position:relative;margin:0}
-.ct-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px}
+/* ---- Form: GlassPanel on navy ---- */
+.ct-msg .ds-split{margin-bottom:clamp(32px,4vw,56px)}
+.ct-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px clamp(40px,5vw,80px);align-items:start}
+.ct-form{display:flex;flex-direction:column;gap:24px;position:relative;margin:0}
+.ct-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .ct-form .ds-input{width:100%}
 .ct-chips{border:0;margin:0;padding:0;min-width:0}
-.ct-chips legend{padding:0;margin-bottom:4px}
-.ct-chiprow{display:flex;flex-wrap:wrap;gap:0 24px}
-.ct-form .ds-toggle{color:var(--fg-2)}
-.ct-form .ds-toggle:hover{color:var(--fg)}
-.ct-form .ds-toggle[aria-pressed="true"]{color:var(--fg)}
-.ct-err{margin:0;font:500 14px/1.4 var(--font);color:var(--fg);display:flex;align-items:center;gap:8px}
+.ct-chips legend{padding:0;margin-bottom:12px}
+.ct-chiprow{display:flex;flex-wrap:wrap;gap:10px}
+.ct-form .ds-toggle:hover{border-color:rgba(255,255,255,0.5)}
+.ct-form .ds-toggle[aria-pressed="true"]:hover{border-color:var(--coral)}
+.ct-err{margin:0;font:500 14px/1.4 var(--font);color:#fff;display:flex;align-items:center;gap:8px}
 .ct-err:not(.is-on){display:none}
-.ct-err::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.ct-err::before{content:'';flex:none;width:8px;height:8px;border-radius:2px;background:var(--coral)}
 .ct-send{display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding-top:4px}
-.ct-status{margin:0;font:500 15px/1.5 var(--font);color:var(--fg);display:flex;align-items:baseline;gap:10px}
+.ct-status{margin:0;font:500 15px/1.5 var(--font);color:var(--fg)}
 .ct-status:not(.is-error):not(.is-sent){display:none}
-.ct-status::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;transform:translateY(-1px)}
-.ct-status.is-error::before{background:var(--coral)}
-.ct-status.is-sent::before{background:var(--sky);box-shadow:0 0 0 5px rgba(63,158,232,0.2)}
+.ct-status.is-error{padding-left:16px;border-left:2px solid var(--coral)}
+.ct-status.is-sent{padding:14px 16px 14px 44px;border-radius:10px;background:rgba(63,158,232,0.12);border:1px solid rgba(63,158,232,0.5);position:relative}
+.ct-status.is-sent::before{content:'';position:absolute;left:16px;top:18px;width:14px;height:8px;border-left:2px solid var(--sky);border-bottom:2px solid var(--sky);transform:rotate(-45deg)}
+.ct-aside{display:flex;flex-direction:column;gap:16px;border-top:1px solid var(--hair);padding-top:24px}
+.ct-aside a{color:var(--sky);text-decoration:underline dotted;text-underline-offset:3px}
+.ct-aside abbr{text-decoration:none}
 
-/* What happens next: three waypoints on a vertical flight path */
-.ct-aside{display:flex;flex-direction:column;gap:32px;padding-top:clamp(28px,3.4vw,48px)}
-html body .ct-steps{grid-auto-flow:row;gap:36px 0;padding-left:34px}
-html body .ct-steps::before{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,transparent,var(--sky) 8%,var(--sky) 92%,transparent)}
-html body .ct-steps > li{padding-top:0}
-html body .ct-steps > li::before{left:-34px;top:4px}
-.ct-steps .ds-steps-t{font-size:18px}
-.ct-steps .ds-steps-d a{color:var(--fg);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--coral);overflow-wrap:anywhere}
+/* ---- What happens next (light) ---- */
+.ct-next .ds-eyebrow{margin-bottom:clamp(32px,4vw,48px)}
+.ct-mail{margin-top:clamp(56px,6vw,88px);padding-top:28px;border-top:1px solid var(--hair);display:flex;flex-direction:column;gap:10px}
+.ct-mail-k{font:600 14px/1.3 var(--font);color:var(--fg-3)}
+.ct-mail-a{align-self:flex-start;font:700 clamp(30px,4.6vw,64px)/1.08 var(--font);letter-spacing:-0.025em;color:var(--deep);text-decoration:none;background:linear-gradient(var(--coral),var(--coral)) left bottom/0 2px no-repeat;display:inline-block;min-height:44px;padding:4px 0 8px;overflow-wrap:anywhere;transition:background-size var(--t2) var(--ease)}
+.ct-mail-a:hover,.ct-mail-a:focus-visible{color:var(--deep);text-decoration:none;background-size:100% 2px}
 
-@media (max-width:900px){
-  .ct-grid{grid-template-columns:minmax(0,1fr)}
-  .ct-aside{padding-top:0}
-}
+@media (max-width:900px){.ct-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){
   .ct-two{grid-template-columns:minmax(0,1fr)}
   .ct-bookgo .aerostrat-btn{width:100%}

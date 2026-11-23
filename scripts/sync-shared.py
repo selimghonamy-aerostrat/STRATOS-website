@@ -25,8 +25,6 @@ def balanced_div(s, i):
 
 def sync_template(t):
     # runway bar (old class or new) + header
-    if '<div className="as-canvas"' in t:
-        r = t.index('<div className="as-canvas"'); t = t[:t.rfind('\n', 0, r) + 1] + t[balanced_div(t, r):].lstrip(' \n')
     for cls in ('<div className="ds-runway"', '<div className="aerostrat-runway"'):
         if cls in t:
             r = t.index(cls); t = t[:t.rfind('\n', 0, r) + 1] + t[balanced_div(t, r):].lstrip(' \n'); break
@@ -35,14 +33,10 @@ def sync_template(t):
     f = t.index('<footer'); fe = t.index('</footer>', f) + len('</footer>')
     t = t[:t.rfind('\n', 0, f) + 1] + FOOTER + t[fe:]
     # the domains row is identical wherever it is used (home, /solutions, /about)
-    i = t.find('<div className="ds-route">')
+    i = t.find('<ul className="ds-domains">')
     if i >= 0:
-        t = t[:t.rfind('\n', 0, i) + 1] + DOMAINS + t[balanced_div(t, i):]
-    else:
-        i = t.find('<ul className="ds-domains">')
-        if i >= 0:
-            e = t.index('</ul>', i) + 5
-            t = t[:t.rfind('\n', 0, i) + 1] + DOMAINS + t[e:]
+        e = t.index('</ul>', i) + 5
+        t = t[:t.rfind('\n', 0, i) + 1] + DOMAINS + t[e:]
     assert '-->' not in t[len('<x-dc><!--dc-template'):]
     return t
 

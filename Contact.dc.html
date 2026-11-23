@@ -42,7 +42,7 @@
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/open-sauce-one-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce One';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/open-sauce-one-latin-800-normal.woff2) format('woff2')}
 /* Size-matched Arial so the swap to Open Sauce One causes no layout shift (metrics from the font files) */
-@font-face{font-family:'Open Sauce Fallback';src:local('Arial'),local('ArialMT'),local('Helvetica');size-adjust:112%;ascent-override:89.3%;descent-override:21.2%;line-gap-override:0%}
+@font-face{font-family:'Open Sauce Fallback';src:local('Arial'),local('ArialMT'),local('Helvetica');size-adjust:108.6%;ascent-override:92.1%;descent-override:21.8%;line-gap-override:0%}
 @font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-latin-600-normal.woff2) format('woff2')}
 /* Phone and tablet refinements, shared by every page. Desktop (>1020px) is unchanged. */
@@ -591,257 +591,19 @@ html.rv-ready [data-draw].is-in{stroke-dashoffset:0}
   .ds-path::after,.ds-path:first-child::after{left:0;right:0}
   .ds-path-a{right:0}
 }
-
-/* =====================================================================================
-   v3.3 · the AeroStrat look (overrides the v3.2 layer above; one shared source)
-   ===================================================================================== */
-
-/* ---- Topic label: the orange logo arc drawn above its right part ---- */
-.ds-eyebrow{position:relative;display:inline-flex;align-items:center;gap:12px;padding-top:18px;margin:0 0 22px;font:600 clamp(17px,1.35vw,20px)/1.25 var(--font);color:var(--fg)}
-.ds-eyebrow > svg:first-child{display:none}
-.ds-eyebrow::before{content:'';position:absolute;top:0;right:0;width:62%;height:8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 1.2 Q 50 7.4 100 0.6 L 100 1.8 Q 50 10.6 0 2.4 Z' fill='%23FF5A13'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
-.ds-close .ds-eyebrow{align-self:center}
-
-/* ---- Headlines: Bold over Regular, same colour, two lines ---- */
-.tone-2{display:block;font-weight:400}
-.ds-h1,.ds-display{letter-spacing:-0.03em}
-
-/* ---- One faint S per section (no tiled wallpaper) ---- */
-.ds-pattern::before{background:url(/uploads/svg/aerostrat-icon-white.svg) no-repeat 90% 50%/auto min(52vh,560px);opacity:0.06;-webkit-mask-image:none;mask-image:none}
-.on-light.ds-pattern::before,.on-light .ds-pattern::before{background-image:url(/uploads/svg/aerostrat-icon-navy.svg);opacity:0.05}
-.ds-close.ds-pattern::before{background-position:92% 50%;-webkit-mask-image:none;mask-image:none}
-
-/* ---- Hairlines fade at both ends ---- */
-:root{--hair-f:rgba(255,255,255,0.16)}
-.on-light{--hair-f:rgba(0,52,140,0.14)}
-.ds-hl > li,.ds-hl > div,.ds-row,.ds-dom,.ds-stats > div,.ds-faq .aerostrat-faq-item,.ds-footer-grid,.ds-footer,.ds-split + .ds-hl{border-image:linear-gradient(90deg,transparent,var(--hair-f) 15%,var(--hair-f) 85%,transparent) 1}
-.ds-faq.aerostrat-faq-list,.ds-faq{border-bottom:0}
-header.ds-header::before{border-bottom:0;box-shadow:none}
-.ds-snav{border-bottom:0}
-
-/* ---- Status: dot + word (no outlines, no fills) ---- */
-html body .ds-pill{height:auto;padding:0;border:0;border-radius:0;background:none;gap:8px;font:600 14px/1.3 var(--font);color:var(--fg)}
-html body .ds-pill::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:currentColor}
-html body .ds-pill.live,html body .ds-pill.here{color:var(--coral);background:none}
-html body .ds-pill.next{color:var(--sky)}
-html body .on-light .ds-pill.next{color:var(--deep)}
-html body .ds-pill.sample{font:500 13px/1.3 var(--font);color:var(--grey)}
-html body .on-light .ds-pill.sample{color:rgba(0,0,0,0.55)}
-html body .ds-pill.sample::before{display:none}
-.ds-mega-next .ds-pill{height:auto;padding:0;font-size:12.5px}
-
-/* ---- Feathered panels: surfaces melt into the canvas instead of ending in an edge ---- */
-html body .ds-glass{border:0;border-radius:28px;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
-  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(63,158,232,0.08),transparent 70%),rgba(255,255,255,0.04);
-  -webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);-webkit-mask-composite:source-in;
-  mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);mask-composite:intersect}
-html body .on-light .ds-glass{background:rgba(0,52,140,0.04)}
-.ds-glass-pad{padding:clamp(28px,3.4vw,48px)}
-
-/* ---- Icons on a soft glow, no tile ---- */
-html body .ds-plate{border-radius:50%;background:radial-gradient(circle,rgba(63,158,232,0.25),rgba(63,158,232,0) 70%)}
-html body .ds-plate svg{stroke:var(--sky);stroke-width:1.75}
-html body .on-light .ds-plate{background:radial-gradient(circle,rgba(0,52,140,0.14),rgba(0,52,140,0) 70%)}
-html body .on-light .ds-plate svg{stroke:var(--deep)}
-html body .ds-plate.live{background:radial-gradient(circle,rgba(255,90,19,0.28),rgba(255,90,19,0) 70%)}
-html body .ds-plate.live svg{stroke:var(--coral)}
-.as-ic{display:block;width:100%;height:100%}
-
-/* ---- Form fields: underline, labels above; choice chips are text options with a dot ---- */
-html body .ds-input{min-height:48px;border:0;border-bottom:1px solid rgba(255,255,255,0.22);border-radius:0;background:transparent;padding:12px 0;box-shadow:none}
-html body .on-light .ds-input{border-bottom-color:rgba(0,52,140,0.25);color:var(--deep)}
-html body .ds-input:focus{border-bottom:2px solid var(--sky);box-shadow:none;padding-bottom:11px}
-html body textarea.ds-input{min-height:120px}
-html body .ds-toggle{border:0;border-radius:0;background:none;padding:0 6px 0 0;gap:10px;min-height:44px;font-weight:500}
-html body .ds-toggle::before{content:'';flex:none;width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1.5px currentColor;opacity:0.7}
-html body .ds-toggle[aria-pressed="true"]{background:none;color:#fff}
-html body .ds-toggle[aria-pressed="true"]::before{background:var(--coral);box-shadow:none;opacity:1}
-
-/* ---- Text links in Coral or white with the arrow ---- */
-.ds-link .arr{color:var(--coral)}
-
-/* ---- Reveals: never hidden; a short fade-up from 40%, below the fold only ---- */
-html.rv-ready .rv-wait{opacity:0.4;transform:translate3d(0,10px,0)}
-html.rv-ready [data-rv]{transition:opacity 400ms var(--ease),transform 400ms var(--ease);transition-delay:calc(var(--i,0) * 40ms)}
-html.rv-ready [data-lm].rv-wait .ds-w > span{transform:none}
-
-/* ---- Flight path with waypoints (domains row; also the pattern for stages and timelines) ---- */
-.ds-route{position:relative;padding-top:8px}
-.ds-route-path{position:absolute;left:0;right:0;top:96px;width:100%;height:56px;overflow:visible;pointer-events:none}
-.ds-route-path path{fill:none;stroke:var(--sky);stroke-width:2.5;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:0.7}
-.on-light .ds-route-path path{stroke:var(--deep);opacity:0.45}
-html body .ds-domains{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
-html body .ds-dom{border:0;border-image:none;padding-top:0;align-items:center;text-align:center;gap:8px}
-.ds-dom:nth-child(1),.ds-dom:nth-child(5){--y:44px}
-.ds-dom:nth-child(2),.ds-dom:nth-child(4){--y:12px}
-.ds-dom:nth-child(3){--y:0px}
-.ds-dom .ds-plate{width:64px;height:64px;margin:0 0 6px;transform:translateY(var(--y,0))}
-.ds-dom .ds-plate svg{width:44px;height:44px}
-.ds-wp{display:block;width:14px;height:14px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 6px rgba(63,158,232,0.18);transform:translateY(var(--y,0));margin-bottom:14px}
-.ds-dom.live .ds-wp{background:var(--coral);box-shadow:0 0 0 6px rgba(255,90,19,0.22)}
-.on-light .ds-wp{background:var(--deep);box-shadow:0 0 0 6px rgba(0,52,140,0.12)}
-.on-light .ds-dom.live .ds-wp{background:var(--coral)}
-.ds-dom .ds-pill,.ds-dom-t,.ds-dom-l,.ds-dom-link{transform:translateY(var(--y,0))}
-html body .ds-dom-t{font:600 19px/1.25 var(--font);margin:6px 0 0}
-html body .ds-dom-l{margin:0;font:400 15px/1.5 var(--font);color:var(--fg-2)}
-.ds-dom-u,.ds-dom-d{display:none}
-@media (max-width:900px){
-  .ds-route-path{display:none}
-  html body .ds-domains{display:flex;flex-direction:column;gap:0;padding-left:28px;position:relative}
-  html body .ds-domains::before{content:'';position:absolute;left:6px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,transparent,var(--sky) 8%,var(--sky) 92%,transparent);opacity:0.6}
-  html body .ds-dom{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-areas:"ic pill" "ic t" "ic l" "ic a";align-items:start;text-align:left;gap:4px 16px;padding:18px 0;position:relative}
-  .ds-dom .ds-plate,.ds-dom .ds-pill,.ds-dom-t,.ds-dom-l,.ds-dom-link,.ds-wp{transform:none}
-  .ds-dom .ds-plate{grid-area:ic;width:44px;height:44px;margin:0}
-  .ds-dom .ds-plate svg{width:32px;height:32px}
-  .ds-wp{position:absolute;left:-28px;top:32px;margin:0;width:12px;height:12px}
-  .ds-dom .ds-pill{grid-area:pill}.ds-dom-t{grid-area:t}.ds-dom-l{grid-area:l}.ds-dom-link{grid-area:a}
-}
-
-/* v3.3: shorter pages */
-.ds-sec{padding:clamp(64px,7.5vw,108px) 0}
-html body main > section.ds-sec.ds-sec{padding-top:clamp(64px,7.5vw,108px) !important;padding-bottom:clamp(64px,7.5vw,108px) !important}
-/* steps and timelines as a flight path: waypoints on a line that fades at both ends; the current point is Coral */
-html body .ds-steps::before{height:2px;background:linear-gradient(90deg,transparent,var(--sky) 6%,var(--sky) 94%,transparent);opacity:0.7}
-html body .ds-steps > li::before{width:14px;height:14px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 6px rgba(63,158,232,0.18)}
-html body .on-light .ds-steps > li::before{background:var(--deep);box-shadow:0 0 0 6px rgba(0,52,140,0.12)}
-html body .ds-steps > li.is-current::before,html body .ds-steps > li[aria-current]::before{background:var(--coral);box-shadow:0 0 0 6px rgba(255,90,19,0.22)}
-@media (max-width:820px){html body .ds-steps::before{width:2px;height:auto;background:linear-gradient(180deg,transparent,var(--sky) 6%,var(--sky) 94%,transparent)}}
-/* no 1px borders anywhere: dividers become spacing or fading hairlines */
-html body .ds-next-a,html body .ds-path{border-left:0}
-html body .ds-paths{border-top:1px solid;border-image:linear-gradient(90deg,transparent,var(--hair-f) 15%,var(--hair-f) 85%,transparent) 1}
-html body .ds-mega{border:0}
-html body .ds-mega-foot{border-top:1px solid;border-image:linear-gradient(90deg,transparent,rgba(255,255,255,0.16) 15%,rgba(255,255,255,0.16) 85%,transparent) 1}
-@media (max-width:820px){html body .ds-path,html body .ds-next-a{border-top:1px solid;border-image:linear-gradient(90deg,transparent,var(--hair-f) 15%,var(--hair-f) 85%,transparent) 1}}
-/* page heroes: content keeps the container width; the photo overlay fades out at the bottom (no edge) */
-html body .ds-phero > .ds-wrap{width:100%}
-html body .ds-phero::after{-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
-
-/* the sticky section nav keeps its own navy bar whatever the canvas tone */
-html body .ds-snav{background:rgba(0,21,56,0.86)}
-html body .on-light .ds-steps::before{background:linear-gradient(90deg,transparent,var(--deep) 6%,var(--deep) 94%,transparent);opacity:0.45}
-@media (max-width:820px){html body .on-light .ds-steps::before{background:linear-gradient(180deg,transparent,var(--deep) 6%,var(--deep) 94%,transparent)}}
-html body .aerostrat-btn{border:0}
-
-
-/* =====================================================================================
-   v3.4 · static tones with designed transition bands, brand panels, smooth scrolling
-   ===================================================================================== */
-
-/* ---- Scrolling: no smooth scroll on html (only the section nav scrolls smoothly, from js) ---- */
-html,html body{scroll-behavior:auto !important}
-
-/* ---- Tones: every top-level section owns its background and text colours; nothing recolours while scrolling ---- */
-main > [data-tone]{--tone-bg:var(--as-navy);--band:none;--band-h:200px;position:relative;background:var(--band) 0 0/100% var(--band-h) no-repeat,var(--tone-bg)}
-main > [data-tone="navy"]{--tone-bg:#001538}
-main > [data-tone="deep"]{--tone-bg:#00348C}
-main > [data-tone="light"]{--tone-bg:#ECF0F3}
-main > [data-tone="white"]{--tone-bg:#FFFFFF}
-html body main > .on-navy,html body main > .on-deep,html body main > .on-light,html body main > .ds-band{background:var(--band) 0 0/100% var(--band-h) no-repeat,var(--tone-bg)}
-html body main > .ds-phero{background:var(--as-navy)}
-.on-light{--fg:#00348C;--fg-2:rgba(0,21,56,0.72);--fg-3:rgba(0,21,56,0.6)}
-html body .ds-footer{background:var(--as-navy)}
-html body .hm-hero{background:var(--as-navy)}
-.ds-snav{--band:none}
-@media (max-width:760px){main > [data-tone]{--band-h:140px}}
-/* the band belongs to the lower section and sits inside its top padding: no text ever sits on it.
-   Navy and light never meet directly: those bands route through Deep Blue. */
-main > [data-tone="navy"] + [data-tone="deep"],main > [data-tone="navy"] + .ds-snav + [data-tone="deep"]{--band:linear-gradient(180deg,#001538,#00348C)}
-main > [data-tone="deep"] + [data-tone="navy"]{--band:linear-gradient(180deg,#00348C,#001538)}
-main > [data-tone="deep"] + [data-tone="light"]{--band:linear-gradient(180deg,#00348C 0%,#2F5FA8 30%,#A9C4E4 70%,#ECF0F3 100%)}
-main > [data-tone="light"] + [data-tone="deep"]{--band:linear-gradient(180deg,#ECF0F3 0%,#A9C4E4 30%,#2F5FA8 70%,#00348C 100%)}
-main > [data-tone="navy"] + [data-tone="light"],main > [data-tone="navy"] + .ds-snav + [data-tone="light"]{--band:linear-gradient(180deg,#001538 0%,#00348C 30%,#2F5FA8 52%,#A9C4E4 76%,#ECF0F3 100%)}
-main > [data-tone="light"] + [data-tone="navy"]{--band:linear-gradient(180deg,#ECF0F3 0%,#A9C4E4 24%,#2F5FA8 48%,#00348C 70%,#001538 100%)}
-html body main > :is([data-tone="navy"] + [data-tone="deep"],[data-tone="deep"] + [data-tone="navy"],[data-tone="deep"] + [data-tone="light"],[data-tone="light"] + [data-tone="deep"],[data-tone="navy"] + [data-tone="light"],[data-tone="light"] + [data-tone="navy"],.ds-snav + [data-tone="light"],.ds-snav + [data-tone="deep"]).ds-sec.ds-sec.ds-sec{padding-top:calc(var(--band-h) + 40px) !important}
-/* the footer follows the closing CTA: deep to navy */
-main:has(> [data-tone="deep"]:last-child) + footer.ds-footer,main + footer.ds-footer{background:linear-gradient(180deg,#00348C,#001538) 0 0/100% 160px no-repeat,#001538}
-
-/* ---- Depth without lag: static glows only, no masks or filters on scrolling content ---- */
-.ds-decor{-webkit-mask-image:none;mask-image:none}
-.ds-orb{animation:none}
-
-/* ---- Sections below the first screen render lazily ---- */
-main > [data-tone]:not(:first-child):not(.hm-story):not(:has(.hm-pin)){content-visibility:auto;contain-intrinsic-size:auto 900px}
-
-/* ---- BrandPanel (dark tones) ---- */
-html body :is(.ds-glass,.ds-panel,.ds-hl > li,.ds-hl > div,.ds-dom,.ds-stats > div,.ds-path,.ds-steps > li,.ds-faq){position:relative;border-radius:20px;padding:32px;
-  background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.10);border-image:none;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 24px 48px -28px rgba(0,0,0,0.55);-webkit-mask-image:none;mask-image:none;-webkit-backdrop-filter:none;backdrop-filter:none}
-/* ---- BrandPanel (light tones) ---- */
-html body .on-light :is(.ds-glass,.ds-panel,.ds-hl > li,.ds-hl > div,.ds-dom,.ds-stats > div,.ds-path,.ds-steps > li,.ds-faq){background:#FFFFFF;border-color:rgba(0,52,140,0.10);box-shadow:inset 0 1px 0 #FFFFFF,0 20px 40px -28px rgba(0,21,56,0.28)}
-@media (max-width:640px){html body :is(.ds-glass,.ds-panel,.ds-hl > li,.ds-hl > div,.ds-dom,.ds-stats > div,.ds-path,.ds-steps > li,.ds-faq){padding:24px}}
-/* panel groups: equal heights, 24px gutters */
-html body .ds-hl,html body .ds-stats,html body .ds-domains,html body .ds-paths{gap:24px;border:0;border-image:none}
-html body .ds-paths{display:grid}
-html body .ds-steps{gap:24px}
-/* hover: pointer devices only */
-@media (hover:hover){html body :is(.ds-hl > li,.ds-dom,.ds-path,.ds-panel){transition:transform 180ms var(--ease),border-color 180ms var(--ease)}
-  html body :is(.ds-hl > li,.ds-dom,.ds-path,.ds-panel):hover{transform:translateY(-2px);border-color:rgba(63,158,232,0.35)}}
-/* highlight panel: a 2px Coral logo arc along its top edge (one per group) */
-html body :is(.ds-dom.live,.ds-steps > li.is-current,.ds-hl > li.is-hl,.ds-glass.is-hl,.ds-panel.is-hl)::after{content:'';position:absolute;left:24px;top:-3px;width:40%;height:6px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 1.2 Q 50 7.4 100 0.6 L 100 1.8 Q 50 10.6 0 2.4 Z' fill='%23FF5A13'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
-/* icons inside panels: 36px, top-left, no tile, Sky Blue (Coral only for the live item) */
-html body :is(.ds-hl > li,.ds-dom,.ds-panel,.ds-glass) .ds-plate{width:40px;height:40px;border-radius:0;background:none;justify-content:flex-start;margin:0 0 16px}
-html body :is(.ds-hl > li,.ds-dom,.ds-panel,.ds-glass) .ds-plate svg{width:36px;height:36px}
-html body .ds-plate.sm svg{width:32px;height:32px}
-
-/* ---- Domains row: five panels (Training is the highlight); a swipe list on phones ---- */
-html body .ds-route-path,html body .ds-wp{display:none}
-html body .ds-dom{align-items:flex-start;text-align:left;gap:8px}
-html body .ds-dom .ds-plate,html body .ds-dom .ds-pill,html body .ds-dom-t,html body .ds-dom-l,html body .ds-dom-link{transform:none}
-html body .ds-domains{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:0}
-html body .ds-domains::before{display:none}
-@media (max-width:1100px){html body .ds-domains{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:760px){html body .ds-domains{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:0 calc(-1 * var(--gut));padding:0 var(--gut) 12px;scrollbar-width:none}
-  html body .ds-domains::-webkit-scrollbar{display:none}
-  html body .ds-dom{display:flex;flex:0 0 78%;scroll-snap-align:start;padding:24px}}
-
-/* ---- Steps keep their waypoint dots inside the panels ---- */
-html body .ds-steps::before{display:none}
-html body .ds-steps > li{padding-top:52px}
-html body .ds-steps > li::before{left:32px;top:28px}
-@media (max-width:820px){html body .ds-steps{padding-left:0;gap:16px}html body .ds-steps > li::before{left:24px;top:24px}html body .ds-steps > li{padding-top:48px}}
-
-/* ---- FAQ: one panel containing the accordion ---- */
-html body .ds-faq{padding:8px 32px}
-html body .ds-faq .aerostrat-faq-item{border-image:none;border-top:1px solid rgba(255,255,255,0.08)}
-html body .on-light .ds-faq .aerostrat-faq-item{border-top-color:rgba(0,52,140,0.10)}
-html body .ds-faq .aerostrat-faq-item:first-child{border-top:0}
-
-/* ---- Proof numbers ---- */
-.ds-stat-num data{font-variant-numeric:tabular-nums;display:inline-block;text-align:left}
-html body .ds-stats .ds-stat-num{font-size:clamp(56px,6vw,88px)}
-html body .ds-stats .ds-stat-cap{font-size:18px}
-
-/* ---- Section padding ---- */
-.ds-sec{padding:clamp(72px,8vw,120px) 0}
-html body main > section.ds-sec.ds-sec{padding-top:clamp(72px,8vw,120px) !important;padding-bottom:clamp(72px,8vw,120px) !important}
-
-/* ---- Footer: one faint S ---- */
-.ds-footer{position:relative;overflow:hidden}
-.ds-footer::after{content:'';position:absolute;right:4%;top:50%;width:200px;height:300px;transform:translateY(-50%);background:url(/uploads/svg/aerostrat-icon-white.svg) center/contain no-repeat;opacity:0.05;pointer-events:none}
-
-html body .ds-footer{border-top:0;border-image:none}
-/* sections sit on fractional pixel positions: overlap by 1px so no seam of the page background shows between them */
-html body main > [data-tone] + [data-tone],html body main > [data-tone] + .ds-snav + [data-tone]{margin-top:-1px}
-html body main + footer.ds-footer{margin-top:-1px}
 </style>
 <style id="page-css">
-/* Contact page (/contact). Uses the tokens and components in css/ds.css (v3.3 layer). Inlined by scripts/sync-shared.py. */
+/* Contact page (/contact). Uses the tokens and components in css/ds.css. Inlined by scripts/sync-shared.py. */
 
-/* ---- Hero: topic label, two-line headline, one sentence, one text link ---- */
-.ct-hero{min-height:88vh;display:flex;align-items:center}
-.ct-hero > .ds-wrap{width:100%}
-.ct-hero::after{-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
-.ct .ds-phero .ct-h1{max-width:22ch}
+.ct-h1{max-width:14ch}
 .ct .ds-phero .ds-link{color:#fff}
 
-/* ---- Booking: the calendar sits in a feathered panel ---- */
+/* ---- Booking: GlassPanel on Deep Blue ---- */
 html body #book{scroll-margin-top:0}
 .ct-bookcard{position:relative;overflow:hidden}
 .ct-bookrow{display:flex;flex-wrap:wrap;gap:28px 48px;align-items:center;justify-content:space-between}
-.ct-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px}
-html body .ct-facts .ds-pill.next{color:var(--fg);font-size:16px}
-html body .ct-facts .ds-pill.next::before{background:var(--sky)}
+.ct-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.on-deep .ct-facts .ds-pill.next{border-color:rgba(255,255,255,0.55);color:#fff;height:34px;padding:0 15px;border-radius:17px;font-size:14px}
 .ct-bookgo{display:flex;flex-direction:column;gap:12px;align-items:flex-start;max-width:42ch}
 .ct-note{font:400 14px/1.6 var(--font);color:var(--fg-2);margin:0}
 .ct-note a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
@@ -849,50 +611,47 @@ html body .ct-facts .ds-pill.next::before{background:var(--sky)}
 .ct-bookcard:has(.ct-frame){padding:clamp(10px,1.2vw,16px)}
 .ct-frame{display:block;width:100%;border:0;border-radius:16px;background:#fff}
 .ct-newtab{margin:16px 0 0}
-.ct-newtab .ds-link{color:var(--fg)}
+.on-deep .ct-newtab .ds-link{color:#fff}
 
-/* ---- Short form beside the three waypoints ---- */
-.ct-h2{margin-bottom:clamp(32px,4vw,56px)}
-.ct-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px clamp(48px,6vw,96px);align-items:start}
-.ct-form{display:flex;flex-direction:column;gap:28px;position:relative;margin:0}
-.ct-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px}
+/* ---- Form: GlassPanel on navy ---- */
+.ct-msg .ds-split{margin-bottom:clamp(32px,4vw,56px)}
+.ct-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px clamp(40px,5vw,80px);align-items:start}
+.ct-form{display:flex;flex-direction:column;gap:24px;position:relative;margin:0}
+.ct-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .ct-form .ds-input{width:100%}
 .ct-chips{border:0;margin:0;padding:0;min-width:0}
-.ct-chips legend{padding:0;margin-bottom:4px}
-.ct-chiprow{display:flex;flex-wrap:wrap;gap:0 24px}
-.ct-form .ds-toggle{color:var(--fg-2)}
-.ct-form .ds-toggle:hover{color:var(--fg)}
-.ct-form .ds-toggle[aria-pressed="true"]{color:var(--fg)}
-.ct-err{margin:0;font:500 14px/1.4 var(--font);color:var(--fg);display:flex;align-items:center;gap:8px}
+.ct-chips legend{padding:0;margin-bottom:12px}
+.ct-chiprow{display:flex;flex-wrap:wrap;gap:10px}
+.ct-form .ds-toggle:hover{border-color:rgba(255,255,255,0.5)}
+.ct-form .ds-toggle[aria-pressed="true"]:hover{border-color:var(--coral)}
+.ct-err{margin:0;font:500 14px/1.4 var(--font);color:#fff;display:flex;align-items:center;gap:8px}
 .ct-err:not(.is-on){display:none}
-.ct-err::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.ct-err::before{content:'';flex:none;width:8px;height:8px;border-radius:2px;background:var(--coral)}
 .ct-send{display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding-top:4px}
-.ct-status{margin:0;font:500 15px/1.5 var(--font);color:var(--fg);display:flex;align-items:baseline;gap:10px}
+.ct-status{margin:0;font:500 15px/1.5 var(--font);color:var(--fg)}
 .ct-status:not(.is-error):not(.is-sent){display:none}
-.ct-status::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;transform:translateY(-1px)}
-.ct-status.is-error::before{background:var(--coral)}
-.ct-status.is-sent::before{background:var(--sky);box-shadow:0 0 0 5px rgba(63,158,232,0.2)}
+.ct-status.is-error{padding-left:16px;border-left:2px solid var(--coral)}
+.ct-status.is-sent{padding:14px 16px 14px 44px;border-radius:10px;background:rgba(63,158,232,0.12);border:1px solid rgba(63,158,232,0.5);position:relative}
+.ct-status.is-sent::before{content:'';position:absolute;left:16px;top:18px;width:14px;height:8px;border-left:2px solid var(--sky);border-bottom:2px solid var(--sky);transform:rotate(-45deg)}
+.ct-aside{display:flex;flex-direction:column;gap:16px;border-top:1px solid var(--hair);padding-top:24px}
+.ct-aside a{color:var(--sky);text-decoration:underline dotted;text-underline-offset:3px}
+.ct-aside abbr{text-decoration:none}
 
-/* What happens next: three waypoints on a vertical flight path */
-.ct-aside{display:flex;flex-direction:column;gap:32px;padding-top:clamp(28px,3.4vw,48px)}
-html body .ct-steps{grid-auto-flow:row;gap:36px 0;padding-left:34px}
-html body .ct-steps::before{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,transparent,var(--sky) 8%,var(--sky) 92%,transparent)}
-html body .ct-steps > li{padding-top:0}
-html body .ct-steps > li::before{left:-34px;top:4px}
-.ct-steps .ds-steps-t{font-size:18px}
-.ct-steps .ds-steps-d a{color:var(--fg);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--coral);overflow-wrap:anywhere}
+/* ---- What happens next (light) ---- */
+.ct-next .ds-eyebrow{margin-bottom:clamp(32px,4vw,48px)}
+.ct-mail{margin-top:clamp(56px,6vw,88px);padding-top:28px;border-top:1px solid var(--hair);display:flex;flex-direction:column;gap:10px}
+.ct-mail-k{font:600 14px/1.3 var(--font);color:var(--fg-3)}
+.ct-mail-a{align-self:flex-start;font:700 clamp(30px,4.6vw,64px)/1.08 var(--font);letter-spacing:-0.025em;color:var(--deep);text-decoration:none;background:linear-gradient(var(--coral),var(--coral)) left bottom/0 2px no-repeat;display:inline-block;min-height:44px;padding:4px 0 8px;overflow-wrap:anywhere;transition:background-size var(--t2) var(--ease)}
+.ct-mail-a:hover,.ct-mail-a:focus-visible{color:var(--deep);text-decoration:none;background-size:100% 2px}
 
-@media (max-width:900px){
-  .ct-grid{grid-template-columns:minmax(0,1fr)}
-  .ct-aside{padding-top:0}
-}
+@media (max-width:900px){.ct-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){
   .ct-two{grid-template-columns:minmax(0,1fr)}
   .ct-bookgo .aerostrat-btn{width:100%}
   .ct-send .aerostrat-btn{width:100%}
 }
 </style>
-<script data-dc-runtime="/js/support.js?v=dc3">(function(){function go(){var s=document.createElement("script");s.src="/js/support.js?v=dc3";document.head.appendChild(s)}if(document.readyState==="complete")go();else addEventListener("load",go)})()</script>
+<script src="/js/support.js?v=dc3" defer></script>
 <script src="/js/a11y.js" defer></script>
 <!-- MOTION:START (inlined from js/motion.js by scripts/sync-shared.py, do not edit) -->
 <script>
@@ -913,8 +672,7 @@ html body .ct-steps > li::before{left:-34px;top:4px}
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   if (motion) html.classList.add('ds-motion');
 
-  // React pages carry the runtime loader (js/support.js starts after the load event, so the pre-rendered page paints first)
-  var STATIC = !d.querySelector('script[data-dc-runtime],script[src*="/js/support.js"]');
+  var STATIC = !d.querySelector('script[src*="/js/support.js"]');
   var revealed = {};
   var main = null, scope = null, io = null, stepIo = null;
   var st = { lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], scrub: null, snav: null };
@@ -944,7 +702,6 @@ html body .ct-steps > li::before{left:-34px;top:4px}
     prepare();
     observe();
     scrubSetup();
-    countSetup();
     snavSetup();
     onScroll(); frame();
   }
@@ -1040,6 +797,7 @@ html body .ct-steps > li::before{left:-34px;top:4px}
         if (revealed[el.__k]) { el.classList.add('is-in'); el.classList.remove('rv-wait'); if (el.hasAttribute('data-count')) el.__counted = true; return; }
         if (!below) { el.classList.add('is-in'); revealed[el.__k] = 1; return; }
         el.classList.add('rv-wait');
+        if (el.hasAttribute('data-lm') && !el.querySelector('.ds-w')) { words(el, 'ds-w'); lines(el); }
       });
     }
     st.fills = [].map.call(scope.querySelectorAll('[data-fill]'), function (el) {
@@ -1086,6 +844,7 @@ html body .ct-steps > li::before{left:-34px;top:4px}
         es.forEach(function (en) {
           if (!en.isIntersecting) return;
           var el = en.target; el.classList.add('is-in'); revealed[el.__k] = 1; io.unobserve(el);
+          if (el.hasAttribute('data-count')) count(el);
         });
       }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
       scope.querySelectorAll(REV).forEach(function (el) { if (!el.classList.contains('is-in') || (el.hasAttribute('data-count') && !el.__counted)) io.observe(el); });
@@ -1097,66 +856,63 @@ html body .ct-steps > li::before{left:-34px;top:4px}
       st.pins.forEach(function (p) { p.steps.forEach(function (s) { s.classList.add('is-active'); }); });
     }
   }
-  // Proof numbers: the final value is in the HTML (<data value="14000">14,000</data>), so crawlers, screen
-  // readers and no-JS visitors read it. Counts 0 -> final once, 1.4 s, ease-out, never above the final value.
-  function countSetup() {
-    var nums = [].slice.call(scope.querySelectorAll('.ds-stat-num data[value]'));
-    if (!nums.length) return;
-    nums.forEach(function (n) { n.style.minWidth = Math.ceil(n.getBoundingClientRect().width) + 'px'; });
-    if (!motion) return;
-    var groups = [];
-    nums.forEach(function (n) { var g = n.closest('.ds-stats') || n; if (groups.indexOf(g) < 0) groups.push(g); });
-    var cio = new IntersectionObserver(function (es) {
-      es.forEach(function (en) {
-        if (!en.isIntersecting || en.target.__counted) return;
-        en.target.__counted = true; cio.unobserve(en.target);
-        var els = [].slice.call(en.target.querySelectorAll('.ds-stat-num data[value]'));
-        if (en.target.matches && en.target.matches('data[value]')) els = [en.target];
-        var t0 = 0;
-        (function step(t) {
-          if (!t0) t0 = t;
-          var p = clamp((t - t0) / 1400, 0, 1), e = 1 - Math.pow(1 - p, 3);
-          els.forEach(function (n) { var to = +n.getAttribute('value'); n.textContent = Math.min(to, Math.round(to * e)).toLocaleString('en-GB'); });
-          if (p < 1) requestAnimationFrame(step);
-        })(performance.now());
-      });
-    }, { threshold: 0.4 });
-    groups.forEach(function (g) {
-      // start from 0 only if the group is still below the fold (never re-run, never flash on the first screen)
-      if (g.getBoundingClientRect().top > W.innerHeight) { g.querySelectorAll('.ds-stat-num data[value]').forEach(function (n) { n.textContent = '0'; }); cio.observe(g); }
-    });
+  // count-up changes only the number; any child (the Coral "+") is kept
+  function count(el) {
+    if (el.__counted) return; el.__counted = true;
+    var to = +el.getAttribute('data-count'), node = el.firstChild, t0 = 0, dur = 1200;
+    if (!node || node.nodeType !== 3) return;
+    function f(t) {
+      if (!t0) t0 = t;
+      var p = clamp((t - t0) / dur, 0, 1), e = 1 - Math.pow(1 - p, 3);
+      node.textContent = Math.round(to * e).toLocaleString('en-GB');
+      if (p < 1) requestAnimationFrame(f);
+    }
+    requestAnimationFrame(f);
   }
 
-  /* ---------- hero: the video plays from load; scrolling lifts it like a take-off ---------- */
+  /* ---------- hero: the airliner takes off as you scroll (video scrub) ---------- */
   function scrubSetup() {
-    var hero = scope.querySelector('[data-hero]');
+    var track = scope.querySelector('[data-scrub]');
     st.scrub = null;
-    if (!hero) return;
-    var v = hero.querySelector('video'), lift = hero.querySelector('[data-hero-lift]'), fade = hero.querySelector('[data-hero-fade]');
-    st.scrub = { hero: hero, v: v, lift: lift, fade: fade, vis: true };
-    if (!v || !motion || saveData) return;           // reduced motion / Save-Data: the poster only
-    var start = function () {
-      var s = st.scrub; if (!s || !live() || !s.v.isConnected || s.v.__src) return;
-      s.v.__src = true;
-      s.v.muted = true; s.v.playsInline = true; s.v.loop = true;
+    if (!track) return;
+    var v = track.querySelector('video');
+    var ok = motion && !saveData && v && v.canPlayType && v.canPlayType('video/mp4') !== '';
+    track.classList.toggle('is-scrub', !!ok);
+    if (!ok) return;
+    st.scrub = { track: track, v: v, inner: track.querySelector('[data-scrub-fade]'), cur: 0, target: 0, raf: 0, attached: false };
+    // the video loads only on the live page, after the page has loaded or on the first scroll
+    var attach = function () {
+      var s = st.scrub; if (!s || s.attached || !live() || !s.v.isConnected) return;
+      s.attached = true;
+      s.v.muted = true; s.v.playsInline = true; s.v.preload = 'auto';
       s.v.src = W.innerWidth < 760 ? s.v.getAttribute('data-src-sm') : s.v.getAttribute('data-src');
-      var p = s.v.play(); if (p && p.catch) p.catch(function () {});
-      // pause only when the hero is completely off-screen, resume when it returns
-      new IntersectionObserver(function (es) {
-        var on = es[0].isIntersecting; s.vis = on;
-        if (on) { var q = s.v.play(); if (q && q.catch) q.catch(function () {}); } else s.v.pause();
-      }).observe(s.hero);
+      s.v.load();
+      var p = s.v.play(); if (p && p.then) p.then(function () { s.v.pause(); scrubTick(); }).catch(function () {});
     };
-    if (live()) start();
+    if (d.readyState === 'complete') setTimeout(attach, 200); else W.addEventListener('load', function () { setTimeout(attach, 200); }, { once: true });
+    W.addEventListener('scroll', attach, { once: true, passive: true });
+  }
+  function scrubTick() {
+    var s = st.scrub; if (!s) return;
+    s.raf = 0;
+    var dur = s.v.duration || 9;
+    s.cur += (s.target - s.cur) * 0.12;
+    if (Math.abs(s.target - s.cur) < 0.0005) s.cur = s.target;
+    var t = s.cur * (dur - 0.05);
+    if (s.attached && s.v.readyState >= 1 && !s.v.seeking && Math.abs(s.v.currentTime - t) > 1 / 30) { try { s.v.currentTime = t; } catch (e) {} }
+    if (s.cur !== s.target) s.raf = requestAnimationFrame(scrubTick);
   }
   function scrubFrame(vh) {
-    var s = st.scrub; if (!s || !motion) return;
-    var r = s.hero.getBoundingClientRect();
-    if (r.bottom < 0) return;
-    var p = clamp(-r.top / Math.max(1, r.height), 0, 1);
-    if (s.v) s.v.style.transform = p ? 'translate3d(0,' + (-8 * p).toFixed(2) + '%,0) scale(' + (1 + 0.12 * p).toFixed(4) + ')' : '';
-    if (s.fade) s.fade.style.opacity = p.toFixed(3);
-    if (s.lift) { s.lift.style.transform = p ? 'translate3d(0,' + (-40 * p).toFixed(1) + 'px,0)' : ''; s.lift.style.opacity = p ? (1 - 0.4 * p).toFixed(3) : ''; }
+    var s = st.scrub; if (!s) return;
+    var r = s.track.getBoundingClientRect(), total = Math.max(1, s.track.offsetHeight - vh);
+    var p = clamp(-r.top / total, 0, 1);
+    s.target = p;
+    if (!s.raf) s.raf = requestAnimationFrame(scrubTick);
+    if (s.inner) {
+      var k = clamp((p - 0.55) / 0.3, 0, 1);
+      s.inner.style.transform = k ? 'translate3d(0,' + (-40 * k).toFixed(1) + 'px,0)' : '';
+      s.inner.style.opacity = k ? (1 - 0.85 * k).toFixed(3) : '';
+    }
   }
 
   /* ---------- section navigation on long pages ---------- */
@@ -1167,17 +923,6 @@ html body .ct-steps > li::before{left:-34px;top:4px}
     var links = [].slice.call(nav.querySelectorAll('a[href^="#"]'));
     var sel = nav.querySelector('select');
     if (sel && !sel.__ds) { sel.__ds = true; sel.addEventListener('change', function () { var t = d.getElementById(sel.value); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }); }
-    links.forEach(function (a) {
-      if (a.__ds) return; a.__ds = true;
-      a.addEventListener('click', function (e) {
-        var t = d.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
-        e.preventDefault(); t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-        // sections below render lazily (content-visibility) and can change height mid-scroll: land exactly
-        var fix = function () { W.removeEventListener('scrollend', fix); var off = t.getBoundingClientRect().top - (s0.nav.getBoundingClientRect().bottom + 8); if (Math.abs(off) > 12) t.scrollIntoView({ behavior: 'auto' }); };
-        var s0 = st.snav; if ('onscrollend' in W) W.addEventListener('scrollend', fix); else setTimeout(fix, 900);
-        if (history.replaceState) history.replaceState(null, '', '#' + t.id);
-      });
-    });
     st.snav = { nav: nav, links: links, sel: sel, cur: null };
   }
   function snavFrame() {
@@ -1315,7 +1060,8 @@ html body .ct-steps > li::before{left:-34px;top:4px}
 </head>
 <body>
 <!-- PRERENDER:START (generated by scripts/prerender.mjs, do not edit) -->
-<style id="dc-prerender-css">.fx { display: flex; }
+<style id="dc-prerender-css">#dc-prerender a:focus-visible, #dc-prerender button:focus-visible, #dc-prerender summary:focus-visible, #dc-prerender input:focus-visible, #dc-prerender textarea:focus-visible { outline: rgb(63, 158, 232) solid 2px; outline-offset: 2px; }
+.fx { display: flex; }
 .col { display: flex; flex-direction: column; }
 .grid { display: grid; }
 .ac { align-items: center; }
@@ -1442,17 +1188,19 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
   </header>
 
   <main id="main" data-screen-label="Contact Us" class="aerostrat-page-enter">
-    <section data-tone="navy" class="ds-phero ds-pattern faint ct-hero">
+    <section class="ds-phero ds-pattern faint">
       <img class="ds-phero-img ds-photo" src="uploads/about-hero-bg.webp" alt="" aria-hidden="true" width="1468" height="790" fetchpriority="high">
       <div class="ds-wrap">
+        <nav aria-label="Breadcrumb"><ol class="ds-crumbs"><li><a href="/">Home</a></li><li aria-current="page">Contact Us</li></ol></nav>
         <div class="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Contact us</div>
         <h1 class="ds-h1 ct-h1">Let's talk about <span class="tone-2">your training programme.</span></h1>
-        <p class="ds-lead">Book a walkthrough, send one of your check forms and see how it grades, or see AeroStrat TMS on your own data.</p>
+        <svg class="ds-arc-under" aria-hidden="true" viewBox="0 0 120 14"><path d="M3 11Q60 0 117 11" pathLength="1"></path></svg>
+        <p class="ds-lead">Book a walkthrough, send one of your check forms and see how it grades in AeroStrat, or see AeroStrat TMS on a sample of your own crew and training data.</p>
         <div class="ds-actions"><a class="ds-link" href="#book">Pick a time <span class="arr" aria-hidden="true">↓</span></a></div>
       </div>
     </section>
 
-    <section data-tone="deep" id="book" class="ds-sec on-deep ct-book">
+    <section id="book" class="ds-sec on-deep ds-pattern ct-book">
       <div class="ds-wrap">
         <div class="ds-split">
           <div>
@@ -1461,7 +1209,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           </div>
           <p class="ds-lead">30 minutes on Google Meet, shown on sample data and shaped around your training programme. Prefer to write first? Use the form below and we reply within one business day.</p>
         </div>
-        <div class="ds-glass ds-glass-pad ct-bookcard">
+        <div class="ds-glass ds-glass-pad ct-bookcard" data-rv="" style="--i: 0;">
           
             <div class="ct-bookrow">
               <ul class="ct-facts" aria-label="Walkthrough details">
@@ -1481,23 +1229,23 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
       </div>
     </section>
 
-    <section data-tone="navy" id="message" class="ds-sec on-navy ct-msg">
+    <section id="message" class="ds-sec on-navy ct-msg">
+      <div class="ds-decor"><div class="ds-orb deep" style="left: -20%; top: -10%;"></div></div>
       <div class="ds-wrap">
-        <div class="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Send a message</div>
-        <h2 class="ds-h2 ct-h2">Prefer to write first? <span class="tone-2">We reply within one business day.</span></h2>
+        <div class="ds-split">
+          <div>
+            <div class="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Send a message</div>
+            <h2 class="ds-h2">Prefer to write first? <span class="tone-2">We reply within one business day.</span></h2>
+          </div>
+        </div>
         <div class="ct-grid">
-          <form class="ds-glass ds-glass-pad ct-form" novalidate="" aria-label="Contact form">
+          <form class="ds-glass ds-glass-pad ct-form" novalidate="" aria-label="Contact form" data-rv="" style="--i: 0;">
+            <div class="ds-field">
+              <label class="ds-label" for="cf-name">Full name (required)</label>
+              <input id="cf-name" class="ds-input" type="text" name="cf-name" autocomplete="name" required="" aria-required="true" aria-invalid="false" aria-describedby="cf-name-err" maxlength="120" placeholder="Your name">
+              <p id="cf-name-err" class="ct-err"><span class="sc-interp"></span></p>
+            </div>
             <div class="ct-two">
-              <div class="ds-field">
-                <label class="ds-label" for="cf-name">Full name (required)</label>
-                <input id="cf-name" class="ds-input" type="text" name="cf-name" autocomplete="name" required="" aria-required="true" aria-invalid="false" aria-describedby="cf-name-err" maxlength="120" placeholder="Your name">
-                <p id="cf-name-err" class="ct-err"><span class="sc-interp"></span></p>
-              </div>
-              <div class="ds-field">
-                <label class="ds-label" for="cf-email">Email (required)</label>
-                <input id="cf-email" class="ds-input" type="email" name="cf-email" autocomplete="email" inputmode="email" required="" aria-required="true" aria-invalid="false" aria-describedby="cf-email-err" maxlength="200" placeholder="name@airline.com">
-                <p id="cf-email-err" class="ct-err"><span class="sc-interp"></span></p>
-              </div>
               <div class="ds-field">
                 <label class="ds-label" for="cf-airline">Airline</label>
                 <input id="cf-airline" class="ds-input" type="text" name="cf-airline" autocomplete="organization" maxlength="160" placeholder="Your airline">
@@ -1506,6 +1254,11 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                 <label class="ds-label" for="cf-role">Role</label>
                 <input id="cf-role" class="ds-input" type="text" name="cf-role" autocomplete="organization-title" maxlength="120" placeholder="e.g. Training Director">
               </div>
+            </div>
+            <div class="ds-field">
+              <label class="ds-label" for="cf-email">Email (required)</label>
+              <input id="cf-email" class="ds-input" type="email" name="cf-email" autocomplete="email" inputmode="email" required="" aria-required="true" aria-invalid="false" aria-describedby="cf-email-err" maxlength="200" placeholder="name@airline.com">
+              <p id="cf-email-err" class="ct-err"><span class="sc-interp"></span></p>
             </div>
             <fieldset class="ct-chips">
               <legend class="ds-label">Interested in</legend>
@@ -1537,7 +1290,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             </fieldset>
             <div class="ds-field">
               <label class="ds-label" for="cf-message">Message (required)</label>
-              <textarea id="cf-message" class="ds-input" rows="4" name="cf-message" required="" aria-required="true" aria-invalid="false" aria-describedby="cf-message-err" maxlength="5000" placeholder="Tell us about your fleet and how you run recurrent checks today"></textarea>
+              <textarea id="cf-message" class="ds-input" rows="5" name="cf-message" required="" aria-required="true" aria-invalid="false" aria-describedby="cf-message-err" maxlength="5000" placeholder="Tell us about your fleet and how you run recurrent checks today"></textarea>
               <p id="cf-message-err" class="ct-err"><span class="sc-interp"></span></p>
             </div>
             <div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;">
@@ -1549,17 +1302,39 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
               <p class="ct-note">We use your details only to answer your enquiry. See our <a href="/privacy">privacy notice</a>.</p>
             </div>
           </form>
-          <div class="ct-aside">
-            <h3 class="ds-h3">What happens next</h3>
-            <ol class="ds-steps ct-steps">
-              <li class="is-current"><h4 class="ds-steps-t">Pick a time, or send the form.</h4><p class="ds-steps-d">Book a slot above, or tell us about your fleet, your stage and what you would like to see.</p></li>
-              <li><h4 class="ds-steps-t">You get a calendar invite with a Google Meet link, or a reply within one business day.</h4><p class="ds-steps-d">Replies come from <a href="mailto:info@aero-strat.com">info@aero-strat.com</a>.</p></li>
-              <li><h4 class="ds-steps-t">A 30-minute walkthrough on your data.</h4><p class="ds-steps-d">On a sample of your own crew, records and check forms.</p></li>
-            </ol>
-          </div>
+          <aside class="ct-aside" data-rv="" style="--i: 1;">
+            <h3 class="ds-h3">What a first call covers</h3>
+            <p class="ds-body">For the TMS: your crew list, your current training records and the training rules in your <a href="/glossary#om-d"><abbr title="Operations Manual Part D">OM-D</abbr></a>. For EBT/CBTA: your EBT stage and plans, your check forms, and what AeroStrat needs from you to set up: your forms and competency mapping, your standards, your instructor ranks, and the training managers who receive alerts.</p>
+          </aside>
         </div>
       </div>
     </section>
+
+    <section class="ds-sec on-light ct-next">
+      <div class="ds-wrap">
+        <h2 class="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>What happens next</h2>
+        <ol class="ds-steps ct-steps" data-rv="" style="--i: 0;">
+          <li><h3 class="ds-steps-t">Pick a time, or send the form.</h3><p class="ds-steps-d">Book a slot above, or tell us about your fleet, your stage and what you would like to see.</p></li>
+          <li><h3 class="ds-steps-t">You get a calendar invite with a Google Meet link, or a reply within one business day.</h3><p class="ds-steps-d">Replies come from info@aero-strat.com.</p></li>
+          <li><h3 class="ds-steps-t">A 30-minute walkthrough on your data.</h3><p class="ds-steps-d">On a sample of your own crew, records and check forms.</p></li>
+        </ol>
+        <div class="ct-mail" data-rv="" style="--i: 1;">
+          <span class="ct-mail-k">Email</span>
+          <a class="ct-mail-a" href="mailto:info@aero-strat.com">info@aero-strat.com</a>
+        </div>
+      </div>
+    </section>
+
+    <nav aria-label="Up next" class="ds-next on-deep" style="border-top: 1px solid rgba(255, 255, 255, 0.14);">
+      <div class="ds-wrap">
+        <div class="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Up next</div>
+        <div class="ds-next-row">
+          <a href="/solutions" class="ds-next-a"><span class="ds-next-t">Solutions <span class="arr" aria-hidden="true">→</span></span><span class="ds-next-d">Two connected products for airline pilot training.</span></a>
+          <a href="/ebt-cbta" class="ds-next-a"><span class="ds-next-t">AeroStrat EBT/CBTA <span class="arr" aria-hidden="true">→</span></span><span class="ds-next-d">Every check graded against the nine ICAO competencies.</span></a>
+          <a href="/tms" class="ds-next-a"><span class="ds-next-t">AeroStrat TMS <span class="arr" aria-hidden="true">→</span></span><span class="ds-next-d">Validity, planning, records and audit in one system.</span></a>
+        </div>
+      </div>
+    </nav>
   </main>
 
 
@@ -1671,17 +1446,19 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
   </header>
 
   <main id="main" data-screen-label="Contact Us" className="aerostrat-page-enter">
-    <section data-tone="navy" className="ds-phero ds-pattern faint ct-hero">
+    <section className="ds-phero ds-pattern faint">
       <img className="ds-phero-img ds-photo" src="uploads/about-hero-bg.webp" alt="" aria-hidden="true" width="1468" height="790" fetchpriority="high">
       <div className="ds-wrap">
+        <nav aria-label="Breadcrumb"><ol className="ds-crumbs"><li><a href="/">Home</a></li><li aria-current="page">Contact Us</li></ol></nav>
         <div className="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Contact us</div>
         <h1 className="ds-h1 ct-h1">Let's talk about <span className="tone-2">your training programme.</span></h1>
-        <p className="ds-lead">Book a walkthrough, send one of your check forms and see how it grades, or see AeroStrat TMS on your own data.</p>
+        <svg className="ds-arc-under" aria-hidden="true" viewBox="0 0 120 14"><path d="M3 11Q60 0 117 11" pathLength="1"></path></svg>
+        <p className="ds-lead">Book a walkthrough, send one of your check forms and see how it grades in AeroStrat, or see AeroStrat TMS on a sample of your own crew and training data.</p>
         <div className="ds-actions"><a className="ds-link" href="#book">Pick a time <span className="arr" aria-hidden="true">↓</span></a></div>
       </div>
     </section>
 
-    <section data-tone="deep" id="book" className="ds-sec on-deep ct-book">
+    <section id="book" className="ds-sec on-deep ds-pattern ct-book">
       <div className="ds-wrap">
         <div className="ds-split">
           <div>
@@ -1690,7 +1467,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
           </div>
           <p className="ds-lead">30 minutes on Google Meet, shown on sample data and shaped around your training programme. Prefer to write first? Use the form below and we reply within one business day.</p>
         </div>
-        <div className="ds-glass ds-glass-pad ct-bookcard">
+        <div className="ds-glass ds-glass-pad ct-bookcard" data-rv="">
           <sc-if value="{{ bookClosed }}" hint-placeholder-val="{{ true }}">
             <div className="ct-bookrow">
               <ul className="ct-facts" aria-label="Walkthrough details">
@@ -1712,23 +1489,23 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
       </div>
     </section>
 
-    <section data-tone="navy" id="message" className="ds-sec on-navy ct-msg">
+    <section id="message" className="ds-sec on-navy ct-msg">
+      <div className="ds-decor"><div className="ds-orb deep" style="left:-20%;top:-10%"></div></div>
       <div className="ds-wrap">
-        <div className="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Send a message</div>
-        <h2 className="ds-h2 ct-h2">Prefer to write first? <span className="tone-2">We reply within one business day.</span></h2>
+        <div className="ds-split">
+          <div>
+            <div className="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Send a message</div>
+            <h2 className="ds-h2">Prefer to write first? <span className="tone-2">We reply within one business day.</span></h2>
+          </div>
+        </div>
         <div className="ct-grid">
-          <form className="ds-glass ds-glass-pad ct-form" onSubmit="{{ sendForm }}" noValidate="{{ yes }}" aria-label="Contact form">
+          <form className="ds-glass ds-glass-pad ct-form" onSubmit="{{ sendForm }}" noValidate="{{ yes }}" aria-label="Contact form" data-rv="">
+            <div className="ds-field">
+              <label className="ds-label" for="cf-name">Full name (required)</label>
+              <input id="cf-name" className="ds-input" type="text" name="cf-name" onInput="{{ clearName }}" autoComplete="name" required="{{ yes }}" aria-required="true" aria-invalid="{{ invName }}" aria-describedby="cf-name-err" maxLength="120" placeholder="Your name">
+              <p id="cf-name-err" className="{{ errNameCls }}">{{ errName }}</p>
+            </div>
             <div className="ct-two">
-              <div className="ds-field">
-                <label className="ds-label" for="cf-name">Full name (required)</label>
-                <input id="cf-name" className="ds-input" type="text" name="cf-name" onInput="{{ clearName }}" autoComplete="name" required="{{ yes }}" aria-required="true" aria-invalid="{{ invName }}" aria-describedby="cf-name-err" maxLength="120" placeholder="Your name">
-                <p id="cf-name-err" className="{{ errNameCls }}">{{ errName }}</p>
-              </div>
-              <div className="ds-field">
-                <label className="ds-label" for="cf-email">Email (required)</label>
-                <input id="cf-email" className="ds-input" type="email" name="cf-email" onInput="{{ clearEmail }}" autoComplete="email" inputMode="email" required="{{ yes }}" aria-required="true" aria-invalid="{{ invEmail }}" aria-describedby="cf-email-err" maxLength="200" placeholder="name@airline.com">
-                <p id="cf-email-err" className="{{ errEmailCls }}">{{ errEmail }}</p>
-              </div>
               <div className="ds-field">
                 <label className="ds-label" for="cf-airline">Airline</label>
                 <input id="cf-airline" className="ds-input" type="text" name="cf-airline" autoComplete="organization" maxLength="160" placeholder="Your airline">
@@ -1737,6 +1514,11 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
                 <label className="ds-label" for="cf-role">Role</label>
                 <input id="cf-role" className="ds-input" type="text" name="cf-role" autoComplete="organization-title" maxLength="120" placeholder="e.g. Training Director">
               </div>
+            </div>
+            <div className="ds-field">
+              <label className="ds-label" for="cf-email">Email (required)</label>
+              <input id="cf-email" className="ds-input" type="email" name="cf-email" onInput="{{ clearEmail }}" autoComplete="email" inputMode="email" required="{{ yes }}" aria-required="true" aria-invalid="{{ invEmail }}" aria-describedby="cf-email-err" maxLength="200" placeholder="name@airline.com">
+              <p id="cf-email-err" className="{{ errEmailCls }}">{{ errEmail }}</p>
             </div>
             <fieldset className="ct-chips">
               <legend className="ds-label">Interested in</legend>
@@ -1756,7 +1538,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
             </fieldset>
             <div className="ds-field">
               <label className="ds-label" for="cf-message">Message (required)</label>
-              <textarea id="cf-message" className="ds-input" rows="4" name="cf-message" onInput="{{ clearMessage }}" required="{{ yes }}" aria-required="true" aria-invalid="{{ invMessage }}" aria-describedby="cf-message-err" maxLength="5000" placeholder="Tell us about your fleet and how you run recurrent checks today"></textarea>
+              <textarea id="cf-message" className="ds-input" rows="5" name="cf-message" onInput="{{ clearMessage }}" required="{{ yes }}" aria-required="true" aria-invalid="{{ invMessage }}" aria-describedby="cf-message-err" maxLength="5000" placeholder="Tell us about your fleet and how you run recurrent checks today"></textarea>
               <p id="cf-message-err" className="{{ errMessageCls }}">{{ errMessage }}</p>
             </div>
             <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
@@ -1768,17 +1550,39 @@ a[href^="mailto:"] { overflow-wrap: anywhere; }
               <p className="ct-note">We use your details only to answer your enquiry. See our <a href="/privacy">privacy notice</a>.</p>
             </div>
           </form>
-          <div className="ct-aside">
-            <h3 className="ds-h3">What happens next</h3>
-            <ol className="ds-steps ct-steps">
-              <li className="is-current"><h4 className="ds-steps-t">Pick a time, or send the form.</h4><p className="ds-steps-d">Book a slot above, or tell us about your fleet, your stage and what you would like to see.</p></li>
-              <li><h4 className="ds-steps-t">You get a calendar invite with a Google Meet link, or a reply within one business day.</h4><p className="ds-steps-d">Replies come from <a href="mailto:info@aero-strat.com">info@aero-strat.com</a>.</p></li>
-              <li><h4 className="ds-steps-t">A 30-minute walkthrough on your data.</h4><p className="ds-steps-d">On a sample of your own crew, records and check forms.</p></li>
-            </ol>
-          </div>
+          <aside className="ct-aside" data-rv="">
+            <h3 className="ds-h3">What a first call covers</h3>
+            <p className="ds-body">For the TMS: your crew list, your current training records and the training rules in your <a href="/glossary#om-d"><abbr title="Operations Manual Part D">OM-D</abbr></a>. For EBT/CBTA: your EBT stage and plans, your check forms, and what AeroStrat needs from you to set up: your forms and competency mapping, your standards, your instructor ranks, and the training managers who receive alerts.</p>
+          </aside>
         </div>
       </div>
     </section>
+
+    <section className="ds-sec on-light ct-next">
+      <div className="ds-wrap">
+        <h2 className="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>What happens next</h2>
+        <ol className="ds-steps ct-steps" data-rv="">
+          <li><h3 className="ds-steps-t">Pick a time, or send the form.</h3><p className="ds-steps-d">Book a slot above, or tell us about your fleet, your stage and what you would like to see.</p></li>
+          <li><h3 className="ds-steps-t">You get a calendar invite with a Google Meet link, or a reply within one business day.</h3><p className="ds-steps-d">Replies come from info@aero-strat.com.</p></li>
+          <li><h3 className="ds-steps-t">A 30-minute walkthrough on your data.</h3><p className="ds-steps-d">On a sample of your own crew, records and check forms.</p></li>
+        </ol>
+        <div className="ct-mail" data-rv="">
+          <span className="ct-mail-k">Email</span>
+          <a className="ct-mail-a" href="mailto:info@aero-strat.com">info@aero-strat.com</a>
+        </div>
+      </div>
+    </section>
+
+    <nav aria-label="Up next" className="ds-next on-deep" style="border-top:1px solid rgba(255,255,255,0.14)">
+      <div className="ds-wrap">
+        <div className="ds-eyebrow"><svg aria-hidden="true" width="22" height="8" viewBox="0 0 22 8"><path d="M1.5 6.5Q11 0.5 20.5 6.5"></path></svg>Up next</div>
+        <div className="ds-next-row">
+          <a href="/solutions" className="ds-next-a"><span className="ds-next-t">Solutions <span className="arr" aria-hidden="true">→</span></span><span className="ds-next-d">Two connected products for airline pilot training.</span></a>
+          <a href="/ebt-cbta" className="ds-next-a"><span className="ds-next-t">AeroStrat EBT/CBTA <span className="arr" aria-hidden="true">→</span></span><span className="ds-next-d">Every check graded against the nine ICAO competencies.</span></a>
+          <a href="/tms" className="ds-next-a"><span className="ds-next-t">AeroStrat TMS <span className="arr" aria-hidden="true">→</span></span><span className="ds-next-d">Validity, planning, records and audit in one system.</span></a>
+        </div>
+      </div>
+    </nav>
   </main>
 
 

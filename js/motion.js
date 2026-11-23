@@ -15,8 +15,7 @@
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   if (motion) html.classList.add('ds-motion');
 
-  // React pages carry the runtime loader (js/support.js starts after the load event, so the pre-rendered page paints first)
-  var STATIC = !d.querySelector('script[data-dc-runtime],script[src*="/js/support.js"]');
+  var STATIC = !d.querySelector('script[src*="/js/support.js"]');
   var revealed = {};
   var main = null, scope = null, io = null, stepIo = null;
   var st = { lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], scrub: null, snav: null };
@@ -46,7 +45,6 @@
     prepare();
     observe();
     scrubSetup();
-    countSetup();
     snavSetup();
     onScroll(); frame();
   }
@@ -142,6 +140,7 @@
         if (revealed[el.__k]) { el.classList.add('is-in'); el.classList.remove('rv-wait'); if (el.hasAttribute('data-count')) el.__counted = true; return; }
         if (!below) { el.classList.add('is-in'); revealed[el.__k] = 1; return; }
         el.classList.add('rv-wait');
+        if (el.hasAttribute('data-lm') && !el.querySelector('.ds-w')) { words(el, 'ds-w'); lines(el); }
       });
     }
     st.fills = [].map.call(scope.querySelectorAll('[data-fill]'), function (el) {
@@ -188,6 +187,7 @@
         es.forEach(function (en) {
           if (!en.isIntersecting) return;
           var el = en.target; el.classList.add('is-in'); revealed[el.__k] = 1; io.unobserve(el);
+          if (el.hasAttribute('data-count')) count(el);
         });
       }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
       scope.querySelectorAll(REV).forEach(function (el) { if (!el.classList.contains('is-in') || (el.hasAttribute('data-count') && !el.__counted)) io.observe(el); });
@@ -199,66 +199,63 @@
       st.pins.forEach(function (p) { p.steps.forEach(function (s) { s.classList.add('is-active'); }); });
     }
   }
-  // Proof numbers: the final value is in the HTML (<data value="14000">14,000</data>), so crawlers, screen
-  // readers and no-JS visitors read it. Counts 0 -> final once, 1.4 s, ease-out, never above the final value.
-  function countSetup() {
-    var nums = [].slice.call(scope.querySelectorAll('.ds-stat-num data[value]'));
-    if (!nums.length) return;
-    nums.forEach(function (n) { n.style.minWidth = Math.ceil(n.getBoundingClientRect().width) + 'px'; });
-    if (!motion) return;
-    var groups = [];
-    nums.forEach(function (n) { var g = n.closest('.ds-stats') || n; if (groups.indexOf(g) < 0) groups.push(g); });
-    var cio = new IntersectionObserver(function (es) {
-      es.forEach(function (en) {
-        if (!en.isIntersecting || en.target.__counted) return;
-        en.target.__counted = true; cio.unobserve(en.target);
-        var els = [].slice.call(en.target.querySelectorAll('.ds-stat-num data[value]'));
-        if (en.target.matches && en.target.matches('data[value]')) els = [en.target];
-        var t0 = 0;
-        (function step(t) {
-          if (!t0) t0 = t;
-          var p = clamp((t - t0) / 1400, 0, 1), e = 1 - Math.pow(1 - p, 3);
-          els.forEach(function (n) { var to = +n.getAttribute('value'); n.textContent = Math.min(to, Math.round(to * e)).toLocaleString('en-GB'); });
-          if (p < 1) requestAnimationFrame(step);
-        })(performance.now());
-      });
-    }, { threshold: 0.4 });
-    groups.forEach(function (g) {
-      // start from 0 only if the group is still below the fold (never re-run, never flash on the first screen)
-      if (g.getBoundingClientRect().top > W.innerHeight) { g.querySelectorAll('.ds-stat-num data[value]').forEach(function (n) { n.textContent = '0'; }); cio.observe(g); }
-    });
+  // count-up changes only the number; any child (the Coral "+") is kept
+  function count(el) {
+    if (el.__counted) return; el.__counted = true;
+    var to = +el.getAttribute('data-count'), node = el.firstChild, t0 = 0, dur = 1200;
+    if (!node || node.nodeType !== 3) return;
+    function f(t) {
+      if (!t0) t0 = t;
+      var p = clamp((t - t0) / dur, 0, 1), e = 1 - Math.pow(1 - p, 3);
+      node.textContent = Math.round(to * e).toLocaleString('en-GB');
+      if (p < 1) requestAnimationFrame(f);
+    }
+    requestAnimationFrame(f);
   }
 
-  /* ---------- hero: the video plays from load; scrolling lifts it like a take-off ---------- */
+  /* ---------- hero: the airliner takes off as you scroll (video scrub) ---------- */
   function scrubSetup() {
-    var hero = scope.querySelector('[data-hero]');
+    var track = scope.querySelector('[data-scrub]');
     st.scrub = null;
-    if (!hero) return;
-    var v = hero.querySelector('video'), lift = hero.querySelector('[data-hero-lift]'), fade = hero.querySelector('[data-hero-fade]');
-    st.scrub = { hero: hero, v: v, lift: lift, fade: fade, vis: true };
-    if (!v || !motion || saveData) return;           // reduced motion / Save-Data: the poster only
-    var start = function () {
-      var s = st.scrub; if (!s || !live() || !s.v.isConnected || s.v.__src) return;
-      s.v.__src = true;
-      s.v.muted = true; s.v.playsInline = true; s.v.loop = true;
+    if (!track) return;
+    var v = track.querySelector('video');
+    var ok = motion && !saveData && v && v.canPlayType && v.canPlayType('video/mp4') !== '';
+    track.classList.toggle('is-scrub', !!ok);
+    if (!ok) return;
+    st.scrub = { track: track, v: v, inner: track.querySelector('[data-scrub-fade]'), cur: 0, target: 0, raf: 0, attached: false };
+    // the video loads only on the live page, after the page has loaded or on the first scroll
+    var attach = function () {
+      var s = st.scrub; if (!s || s.attached || !live() || !s.v.isConnected) return;
+      s.attached = true;
+      s.v.muted = true; s.v.playsInline = true; s.v.preload = 'auto';
       s.v.src = W.innerWidth < 760 ? s.v.getAttribute('data-src-sm') : s.v.getAttribute('data-src');
-      var p = s.v.play(); if (p && p.catch) p.catch(function () {});
-      // pause only when the hero is completely off-screen, resume when it returns
-      new IntersectionObserver(function (es) {
-        var on = es[0].isIntersecting; s.vis = on;
-        if (on) { var q = s.v.play(); if (q && q.catch) q.catch(function () {}); } else s.v.pause();
-      }).observe(s.hero);
+      s.v.load();
+      var p = s.v.play(); if (p && p.then) p.then(function () { s.v.pause(); scrubTick(); }).catch(function () {});
     };
-    if (live()) start();
+    if (d.readyState === 'complete') setTimeout(attach, 200); else W.addEventListener('load', function () { setTimeout(attach, 200); }, { once: true });
+    W.addEventListener('scroll', attach, { once: true, passive: true });
+  }
+  function scrubTick() {
+    var s = st.scrub; if (!s) return;
+    s.raf = 0;
+    var dur = s.v.duration || 9;
+    s.cur += (s.target - s.cur) * 0.12;
+    if (Math.abs(s.target - s.cur) < 0.0005) s.cur = s.target;
+    var t = s.cur * (dur - 0.05);
+    if (s.attached && s.v.readyState >= 1 && !s.v.seeking && Math.abs(s.v.currentTime - t) > 1 / 30) { try { s.v.currentTime = t; } catch (e) {} }
+    if (s.cur !== s.target) s.raf = requestAnimationFrame(scrubTick);
   }
   function scrubFrame(vh) {
-    var s = st.scrub; if (!s || !motion) return;
-    var r = s.hero.getBoundingClientRect();
-    if (r.bottom < 0) return;
-    var p = clamp(-r.top / Math.max(1, r.height), 0, 1);
-    if (s.v) s.v.style.transform = p ? 'translate3d(0,' + (-8 * p).toFixed(2) + '%,0) scale(' + (1 + 0.12 * p).toFixed(4) + ')' : '';
-    if (s.fade) s.fade.style.opacity = p.toFixed(3);
-    if (s.lift) { s.lift.style.transform = p ? 'translate3d(0,' + (-40 * p).toFixed(1) + 'px,0)' : ''; s.lift.style.opacity = p ? (1 - 0.4 * p).toFixed(3) : ''; }
+    var s = st.scrub; if (!s) return;
+    var r = s.track.getBoundingClientRect(), total = Math.max(1, s.track.offsetHeight - vh);
+    var p = clamp(-r.top / total, 0, 1);
+    s.target = p;
+    if (!s.raf) s.raf = requestAnimationFrame(scrubTick);
+    if (s.inner) {
+      var k = clamp((p - 0.55) / 0.3, 0, 1);
+      s.inner.style.transform = k ? 'translate3d(0,' + (-40 * k).toFixed(1) + 'px,0)' : '';
+      s.inner.style.opacity = k ? (1 - 0.85 * k).toFixed(3) : '';
+    }
   }
 
   /* ---------- section navigation on long pages ---------- */
@@ -269,17 +266,6 @@
     var links = [].slice.call(nav.querySelectorAll('a[href^="#"]'));
     var sel = nav.querySelector('select');
     if (sel && !sel.__ds) { sel.__ds = true; sel.addEventListener('change', function () { var t = d.getElementById(sel.value); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }); }
-    links.forEach(function (a) {
-      if (a.__ds) return; a.__ds = true;
-      a.addEventListener('click', function (e) {
-        var t = d.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
-        e.preventDefault(); t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-        // sections below render lazily (content-visibility) and can change height mid-scroll: land exactly
-        var fix = function () { W.removeEventListener('scrollend', fix); var off = t.getBoundingClientRect().top - (s0.nav.getBoundingClientRect().bottom + 8); if (Math.abs(off) > 12) t.scrollIntoView({ behavior: 'auto' }); };
-        var s0 = st.snav; if ('onscrollend' in W) W.addEventListener('scrollend', fix); else setTimeout(fix, 900);
-        if (history.replaceState) history.replaceState(null, '', '#' + t.id);
-      });
-    });
     st.snav = { nav: nav, links: links, sel: sel, cur: null };
   }
   function snavFrame() {
