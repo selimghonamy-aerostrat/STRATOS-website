@@ -727,6 +727,12 @@ html:not(.tone-ready) body .on-deep,html:not(.tone-ready) body .ds-band{backgrou
 /* v3.3: shorter pages */
 .ds-sec{padding:clamp(64px,7.5vw,108px) 0}
 html body main > section.ds-sec.ds-sec{padding-top:clamp(64px,7.5vw,108px) !important;padding-bottom:clamp(64px,7.5vw,108px) !important}
+/* steps and timelines as a flight path: waypoints on a line that fades at both ends; the current point is Coral */
+html body .ds-steps::before{height:2px;background:linear-gradient(90deg,transparent,var(--sky) 6%,var(--sky) 94%,transparent);opacity:0.7}
+html body .ds-steps > li::before{width:14px;height:14px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 6px rgba(63,158,232,0.18)}
+html body .on-light .ds-steps > li::before{background:var(--deep);box-shadow:0 0 0 6px rgba(0,52,140,0.12)}
+html body .ds-steps > li.is-current::before,html body .ds-steps > li[aria-current]::before{background:var(--coral);box-shadow:0 0 0 6px rgba(255,90,19,0.22)}
+@media (max-width:820px){html body .ds-steps::before{width:2px;height:auto;background:linear-gradient(180deg,transparent,var(--sky) 6%,var(--sky) 94%,transparent)}}
 </style>
 <style id="page-css">
 /* Home page. Uses the tokens and components in css/ds.css. Inlined by scripts/sync-shared.py. */
