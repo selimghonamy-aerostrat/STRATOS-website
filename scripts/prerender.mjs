@@ -50,6 +50,8 @@ let failed = false;
 for (const file of pages) {
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 900 });
+  // js/motion.js stays idle in the snapshot, so every element is captured visible
+  await page.evaluateOnNewDocument(() => { window.__dcPrerender = true; });
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(`${base}/${file}`, { waitUntil: 'networkidle0', timeout: 60000 });
