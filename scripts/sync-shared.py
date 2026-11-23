@@ -11,6 +11,8 @@ HEADER, FOOTER = rd('scripts/partials/header.html').rstrip('\n'), rd('scripts/pa
 DOMAINS = rd('scripts/partials/domains.html').rstrip('\n')
 SITE_CSS = '\n'.join(rd(p).strip() for p in ['css/fonts.css', 'css/responsive.css', 'css/ds.css'])
 JS = rd('js/motion.js'); assert '</script' not in JS
+# support.js finds the page template by the first '<x-dc' in the source: inlined code must never contain it
+assert '<x-dc' not in JS and '<x-dc' not in SITE_CSS, 'inlined CSS/JS must not contain the text <x-dc'
 PAGE_KEY = {'index.dc.html': 'home', 'About.dc.html': 'about', 'Solutions.dc.html': 'solutions', 'EBT-CBTA.dc.html': 'ebt-cbta',
             'TMS.dc.html': 'tms', 'Clients.dc.html': 'clients', 'Contact.dc.html': 'contact', 'Glossary.dc.html': 'glossary'}
 

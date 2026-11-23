@@ -15,6 +15,7 @@
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   if (motion) html.classList.add('ds-motion');
 
+  var STATIC = !d.querySelector('script[src*="/js/support.js"]');
   var revealed = {};
   var main = null, scope = null, io = null, stepIo = null;
   var st = { lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], scrub: null, snav: null };
@@ -27,10 +28,12 @@
     if (pre) return pre.querySelector('main');
     var m = d.querySelector('#dc-root main.aerostrat-page-enter') || d.querySelector('#dc-root main');
     // static pages (privacy, sub-processors, 404) have no React root
-    return m || (!d.querySelector('x-dc') ? d.querySelector('main') : null);
+    return m || (STATIC ? d.querySelector('main') : null);
   }
-  var isStatic = function () { return !d.querySelector('x-dc'); };
-  function live() { return !!(main && (isStatic() || (main.closest('#dc-root') && !d.getElementById('dc-prerender')))); }
+  // STATIC (set above): React pages load js/support.js before this script; static pages do not.
+  // Testing for the x-dc element is not enough: support.js replaces it before React has drawn the live page.
+  var isStatic = function () { return STATIC; };
+  function live() { return !!(main && main.isConnected && !main.closest('#dc-prerender') && (STATIC || main.closest('#dc-root'))); }
   function check() {
     var m = activeMain();
     if (m && m !== main && m.isConnected) bind(m);

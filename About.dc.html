@@ -234,7 +234,6 @@ a.aerostrat-btn:hover{text-decoration:none}
 html{background:var(--as-navy);scroll-padding-top:88px}
 html body{background:var(--as-navy);color:var(--fg);font-family:var(--font)}
 body,button,input,select,textarea{font-family:var(--font)}
-[id]{scroll-margin-top:88px}
 .ds-page{min-height:100vh;color:var(--fg);font-family:var(--font);overflow-x:clip;position:relative}
 .ds-ui,.ds-ui text{font-family:var(--font-ui) !important}
 .ds-wrap{position:relative;z-index:1;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding-inline:var(--gut)}
@@ -661,6 +660,7 @@ html.rv-ready [data-draw].is-in{stroke-dashoffset:0}
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   if (motion) html.classList.add('ds-motion');
 
+  var STATIC = !d.querySelector('script[src*="/js/support.js"]');
   var revealed = {};
   var main = null, scope = null, io = null, stepIo = null;
   var st = { lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], scrub: null, snav: null };
@@ -673,10 +673,12 @@ html.rv-ready [data-draw].is-in{stroke-dashoffset:0}
     if (pre) return pre.querySelector('main');
     var m = d.querySelector('#dc-root main.aerostrat-page-enter') || d.querySelector('#dc-root main');
     // static pages (privacy, sub-processors, 404) have no React root
-    return m || (!d.querySelector('x-dc') ? d.querySelector('main') : null);
+    return m || (STATIC ? d.querySelector('main') : null);
   }
-  var isStatic = function () { return !d.querySelector('x-dc'); };
-  function live() { return !!(main && (isStatic() || (main.closest('#dc-root') && !d.getElementById('dc-prerender')))); }
+  // STATIC (set above): React pages load js/support.js before this script; static pages do not.
+  // Testing for the x-dc element is not enough: support.js replaces it before React has drawn the live page.
+  var isStatic = function () { return STATIC; };
+  function live() { return !!(main && main.isConnected && !main.closest('#dc-prerender') && (STATIC || main.closest('#dc-root'))); }
   function check() {
     var m = activeMain();
     if (m && m !== main && m.isConnected) bind(m);

@@ -35,7 +35,6 @@ a.aerostrat-btn:hover{text-decoration:none}
 html{background:var(--as-navy);scroll-padding-top:88px}
 html body{background:var(--as-navy);color:var(--fg);font-family:var(--font)}
 body,button,input,select,textarea{font-family:var(--font)}
-[id]{scroll-margin-top:88px}
 .ds-page{min-height:100vh;color:var(--fg);font-family:var(--font);overflow-x:clip;position:relative}
 .ds-ui,.ds-ui text{font-family:var(--font-ui) !important}
 .ds-wrap{position:relative;z-index:1;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding-inline:var(--gut)}

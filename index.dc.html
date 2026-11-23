@@ -92,10 +92,6 @@
    Section rhythm: 40px on a 390px phone, growing with the screen to 56px on tablets.
    Selectors are more specific than the per-page rules so this file sets the scale. */
 @media (max-width:1020px){
-  main > section:not(.aerostrat-hero):not(.aerostrat-hero-alt){
-    padding-top:clamp(40px,8vw,56px) !important;
-    padding-bottom:clamp(40px,8vw,56px) !important;
-  }
   /* No trailing margin on the last block of a section, so gaps stay even */
   main > section > .aerostrat-reveal > :last-child{margin-bottom:0 !important}
 
@@ -226,10 +222,14 @@ html.dc-pre #dc-root .aerostrat-page-enter{animation:none}
   background:var(--as-deep-blue); color:var(--fg)}
 
 /* ---- Base ---- */
+*,*::before,*::after{box-sizing:border-box}
+html body{margin:0}
+a{color:var(--sky);text-decoration:none}
+.aerostrat-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;white-space:nowrap;background:transparent;border:1px solid transparent;color:#fff;padding:15px 26px;font:600 14px/1 var(--font);letter-spacing:0.02em;cursor:pointer;min-height:48px}
+a.aerostrat-btn:hover{text-decoration:none}
 html{background:var(--as-navy);scroll-padding-top:88px}
 html body{background:var(--as-navy);color:var(--fg);font-family:var(--font)}
 body,button,input,select,textarea{font-family:var(--font)}
-[id]{scroll-margin-top:88px}
 .ds-page{min-height:100vh;color:var(--fg);font-family:var(--font);overflow-x:clip;position:relative}
 .ds-ui,.ds-ui text{font-family:var(--font-ui) !important}
 .ds-wrap{position:relative;z-index:1;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding-inline:var(--gut)}
@@ -796,6 +796,7 @@ html.ds-motion .hm-step.is-active .hm-record{opacity:1}
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   if (motion) html.classList.add('ds-motion');
 
+  var STATIC = !d.querySelector('script[src*="/js/support.js"]');
   var revealed = {};
   var main = null, scope = null, io = null, stepIo = null;
   var st = { lastY: 0, ticking: false, fills: [], expands: [], pxs: [], pins: [], scrub: null, snav: null };
@@ -806,9 +807,14 @@ html.ds-motion .hm-step.is-active .hm-record{opacity:1}
   function activeMain() {
     var pre = d.getElementById('dc-prerender');
     if (pre) return pre.querySelector('main');
-    return d.querySelector('#dc-root main.aerostrat-page-enter') || d.querySelector('#dc-root main');
+    var m = d.querySelector('#dc-root main.aerostrat-page-enter') || d.querySelector('#dc-root main');
+    // static pages (privacy, sub-processors, 404) have no React root
+    return m || (STATIC ? d.querySelector('main') : null);
   }
-  function live() { return !!(main && main.closest('#dc-root') && !d.getElementById('dc-prerender')); }
+  // STATIC (set above): React pages load js/support.js before this script; static pages do not.
+  // Testing for the x-dc element is not enough: support.js replaces it before React has drawn the live page.
+  var isStatic = function () { return STATIC; };
+  function live() { return !!(main && main.isConnected && !main.closest('#dc-prerender') && (STATIC || main.closest('#dc-root'))); }
   function check() {
     var m = activeMain();
     if (m && m !== main && m.isConnected) bind(m);
@@ -1165,7 +1171,7 @@ html.ds-motion .hm-step.is-active .hm-record{opacity:1}
     if (pending) return; pending = true;
     requestAnimationFrame(function () {
       pending = false; check();
-      if (live() && main.classList.contains('aerostrat-page-enter')) mo.disconnect();
+      if (live() && (isStatic() || main.classList.contains('aerostrat-page-enter'))) mo.disconnect();
     });
   });
   mo.observe(d.documentElement, { childList: true, subtree: true });
